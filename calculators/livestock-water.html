@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livestock Water Calculator — Daily & Seasonal Water Needs (2026)</title>
+  <meta name="description" content="Calculate daily water requirements for cattle, goats, sheep, horses, pigs, chickens, and more. Plan water storage and delivery. Free water calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/livestock-water.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Livestock Water Calculator",
+    "description": "Calculate daily water requirements for cattle, goats, sheep, horses, pigs, chickens, and more. Plan water storage and delivery.",
+    "url": "https://homesteadcalculators.com/calculators/livestock-water.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; <span>Livestock Water Calculator</span>
+      </nav>
+
+      <!-- Calculator Layout -->
+      <div class="calc-layout">
+        <!-- Main Content -->
+        <div class="calc-main">
+          <h1>Livestock Water Calculator</h1>
+          <p class="text-lg text-muted mb-lg">Calculate daily water needs for your animals. Plan storage tank size and delivery system for your homestead.</p>
+
+          <!-- Calculator Form -->
+          <div class="card">
+            <h2>Select Your Animals</h2>
+            <form id="waterForm" onsubmit="calculateWater(event)">
+              <div class="form-group">
+                <label class="form-label">Animal Types (check all that apply)</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem;">
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="beef" onchange="toggleAnimalInput('beef')"> Beef Cattle
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="dairy" onchange="toggleAnimalInput('dairy')"> Dairy Cattle
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="horse" onchange="toggleAnimalInput('horse')"> Horses
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="sheep" onchange="toggleAnimalInput('sheep')"> Sheep
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="goat" onchange="toggleAnimalInput('goat')"> Goats
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="pig" onchange="toggleAnimalInput('pig')"> Pigs
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="chicken" onchange="toggleAnimalInput('chicken')"> Chickens (per 10)
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="duck" onchange="toggleAnimalInput('duck')"> Ducks (per 10)
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="turkey" onchange="toggleAnimalInput('turkey')"> Turkeys (per 10)
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="rabbit" onchange="toggleAnimalInput('rabbit')"> Rabbits (per 10)
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" class="animal-checkbox" value="alpaca" onchange="toggleAnimalInput('alpaca')"> Alpacas/Llamas
+                  </label>
+                </div>
+              </div>
+
+              <!-- Dynamic animal inputs will be inserted here -->
+              <div id="animalInputs"></div>
+
+              <div class="form-group">
+                <label class="form-label" for="season">Season</label>
+                <select id="season" class="form-select">
+                  <option value="summer" selected>Summer (hottest 3 months)</option>
+                  <option value="winter">Winter (coldest 3 months)</option>
+                  <option value="spring-fall">Spring/Fall (moderate)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="waterSource">Water Source Type</label>
+                <select id="waterSource" class="form-select">
+                  <option value="trough" selected>Trough/Tank (standard evaporation)</option>
+                  <option value="automatic">Automatic Waterer (20% less loss)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Water Needs</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="result-box">
+            <h2>Water Requirements Summary</h2>
+
+            <table style="width:100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); background: var(--gray-50);">
+                  <th style="text-align:left; padding:8px;">Animal</th>
+                  <th style="text-align:center; padding:8px;">Count</th>
+                  <th style="text-align:center; padding:8px;">Daily (gal)</th>
+                  <th style="text-align:center; padding:8px;">Weekly (gal)</th>
+                  <th style="text-align:center; padding:8px;">Annual (gal)</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTableBody">
+              </tbody>
+              <tfoot>
+                <tr style="border-top: 2px solid var(--border-color); font-weight: 600;">
+                  <td style="padding:8px;">TOTAL</td>
+                  <td style="text-align:center; padding:8px;" id="totalCount">—</td>
+                  <td style="text-align:center; padding:8px;" id="totalDaily">—</td>
+                  <td style="text-align:center; padding:8px;" id="totalWeekly">—</td>
+                  <td style="text-align:center; padding:8px;" id="totalAnnual">—</td>
+                </tr>
+              </tfoot>
+            </table>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="dailyTotal">—</div>
+                <div class="label">Daily Total (gal)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="weeklyTotal">—</div>
+                <div class="label">Weekly Total (gal)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="tankSize">—</div>
+                <div class="label">Recommended Tank Size</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthlyTotal">—</div>
+                <div class="label">Monthly Total (gal)</div>
+              </div>
+            </div>
+
+            <div id="lactationNote" style="margin-top: 1rem; padding: 0.75rem; background: #d1ecf1; border: 1px solid #17a2b8; border-radius: var(--radius-sm); display: none;">
+              <strong>Note:</strong> Lactating animals require significantly more water. Ensure water is always available and not frozen in winter.
+            </div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mt-xl">
+            <h2>How It Works</h2>
+            <p>Water is the most essential nutrient for livestock. Animals need clean, fresh water daily for digestion, temperature regulation, and milk production.</p>
+
+            <h3>Factors Affecting Water Needs</h3>
+            <ul>
+              <li><strong>Species:</strong> Larger animals need more water. Cattle and horses need 10-15 gallons/day.</li>
+              <li><strong>Season:</strong> Summer increases water needs by 15% due to heat stress and evaporation.</li>
+              <li><strong>Lactation:</strong> Milk-producing animals need 2× the base water amount.</li>
+              <li><strong>Age/Size:</strong> Younger/smaller animals need less (this calculator uses adult averages).</li>
+              <li><strong>Activity:</strong> Working animals (draft horses, herding dogs) need more water.</li>
+            </ul>
+
+            <h3>Water Source Considerations</h3>
+            <ul>
+              <li><strong>Troughs/Tanks:</strong> Simple but prone to algae and evaporation. Clean weekly.</li>
+              <li><strong>Automatic Waterers:</strong> Reduce evaporation loss by ~20%. Provide fresh water on demand.</li>
+              <li><strong>Pumps:</strong> Ensure adequate pressure for automatic waterers (40-60 PSI).</li>
+              <li><strong>Freeze Protection:</strong> Use heated waterers or tank heaters in winter climates.</li>
+            </ul>
+
+            <div class="formula-box">
+Daily water per animal = Base rate × Season multiplier × Lactation multiplier
+
+Season multipliers:
+  Summer: 1.15 (15% increase)
+  Spring/Fall: 1.00 (base rate)
+  Winter: 0.85 (15% decrease, except dairy which stays higher)
+
+Lactation multiplier: 2.0 (doubles for lactating dairy/beef)
+
+Total daily = Sum of (animal count × daily per animal)
+
+Recommended tank size = Daily total × 3 (3-day emergency supply)
+            </div>
+
+            <h3>Base Water Rates (gallons/day per animal)</h3>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-color); background: var(--gray-50);">
+                  <th style="text-align:left; padding:6px 8px;">Animal</th>
+                  <th style="text-align:center; padding:6px 8px;">Base (gal/day)</th>
+                  <th style="text-align:center; padding:6px 8px;">Summer (gal/day)</th>
+                  <th style="text-align:center; padding:6px 8px;">Winter (gal/day)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Beef Cattle</td>
+                  <td style="text-align:center; padding:6px 8px;">12</td>
+                  <td style="text-align:center; padding:6px 8px;">15</td>
+                  <td style="text-align:center; padding:6px 8px;">8</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Dairy Cattle (dry)</td>
+                  <td style="text-align:center; padding:6px 8px;">17</td>
+                  <td style="text-align:center; padding:6px 8px;">20</td>
+                  <td style="text-align:center; padding:6px 8px;">15</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Dairy Cattle (lactating)</td>
+                  <td style="text-align:center; padding:6px 8px;">35</td>
+                  <td style="text-align:center; padding:6px 8px;">40</td>
+                  <td style="text-align:center; padding:6px 8px;">30</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Horses</td>
+                  <td style="text-align:center; padding:6px 8px;">10</td>
+                  <td style="text-align:center; padding:6px 8px;">12</td>
+                  <td style="text-align:center; padding:6px 8px;">6</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Sheep</td>
+                  <td style="text-align:center; padding:6px 8px;">1.5</td>
+                  <td style="text-align:center; padding:6px 8px;">2</td>
+                  <td style="text-align:center; padding:6px 8px;">0.75</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Goats</td>
+                  <td style="text-align:center; padding:6px 8px;">1.5</td>
+                  <td style="text-align:center; padding:6px 8px;">2</td>
+                  <td style="text-align:center; padding:6px 8px;">0.75</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Pigs</td>
+                  <td style="text-align:center; padding:6px 8px;">4</td>
+                  <td style="text-align:center; padding:6px 8px;">5</td>
+                  <td style="text-align:center; padding:6px 8px;">3</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Chickens (per 10)</td>
+                  <td style="text-align:center; padding:6px 8px;">0.75</td>
+                  <td style="text-align:center; padding:6px 8px;">1</td>
+                  <td style="text-align:center; padding:6px 8px;">0.5</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Ducks (per 10)</td>
+                  <td style="text-align:center; padding:6px 8px;">1.5</td>
+                  <td style="text-align:center; padding:6px 8px;">2</td>
+                  <td style="text-align:center; padding:6px 8px;">1</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Turkeys (per 10)</td>
+                  <td style="text-align:center; padding:6px 8px;">1.25</td>
+                  <td style="text-align:center; padding:6px 8px;">1.5</td>
+                  <td style="text-align:center; padding:6px 8px;">1</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:6px 8px;">Rabbits (per 10)</td>
+                  <td style="text-align:center; padding:6px 8px;">0.75</td>
+                  <td style="text-align:center; padding:6px 8px;">1</td>
+                  <td style="text-align:center; padding:6px 8px;">0.5</td>
+                </tr>
+                <tr>
+                  <td style="padding:6px 8px;">Alpacas/Llamas</td>
+                  <td style="text-align:center; padding:6px 8px;">4</td>
+                  <td style="text-align:center; padding:6px 8px;">5</td>
+                  <td style="text-align:center; padding:6px 8px;">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Related Calculators -->
+          <div class="related-calc">
+            <h3>Related Calculators</h3>
+            <div class="related-calc-list">
+              <a href="chicken-feed.html">Chicken Feed Calculator</a>
+              <a href="chicken-coop-size.html">Chicken Coop Size Calculator</a>
+              <a href="rainwater-harvest.html">Rainwater Harvest Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="calc-sidebar">
+          <div class="card mb-lg">
+            <h3>Quick Reference: Base Rates</h3>
+            <table style="width:100%; font-size:0.8rem; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <th style="text-align:left; padding:4px 6px;">Animal</th>
+                  <th style="text-align:center; padding:4px 6px;">Gal/day</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Beef Cattle</td><td style="text-align:center; padding:4px 6px;">12</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Dairy Cattle</td><td style="text-align:center; padding:4px 6px;">35</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Horses</td><td style="text-align:center; padding:4px 6px;">10</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Sheep/Goats</td><td style="text-align:center; padding:4px 6px;">1.5</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Pigs</td><td style="text-align:center; padding:4px 6px;">4</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Chickens (10)</td><td style="text-align:center; padding:4px 6px;">0.75</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:4px 6px;">Alpacas</td><td style="text-align:center; padding:4px 6px;">4</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ad-slot"></div>
+
+          <div class="card">
+            <h3>Water Quality Tips</h3>
+            <ul style="font-size:0.9rem; padding-left: 1.2rem;">
+              <li>Clean troughs weekly to prevent algae</li>
+              <li>Check for frozen water in winter</li>
+              <li>Use tank heaters safely (GFCI outlets)</li>
+              <li>Test well water annually for contaminants</li>
+              <li>Provide shade over water sources in summer</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const animalData = {
+      beef: { name: 'Beef Cattle', base: 12, summer: 15, winter: 8, unit: 'head' },
+      dairy: { name: 'Dairy Cattle', base: 35, summer: 40, winter: 30, unit: 'head', lactation: true },
+      horse: { name: 'Horses', base: 10, summer: 12, winter: 6, unit: 'head' },
+      sheep: { name: 'Sheep', base: 1.5, summer: 2, winter: 0.75, unit: 'head' },
+      goat: { name: 'Goats', base: 1.5, summer: 2, winter: 0.75, unit: 'head' },
+      pig: { name: 'Pigs', base: 4, summer: 5, winter: 3, unit: 'head' },
+      chicken: { name: 'Chickens', base: 0.75, summer: 1, winter: 0.5, unit: 'per 10' },
+      duck: { name: 'Ducks', base: 1.5, summer: 2, winter: 1, unit: 'per 10' },
+      turkey: { name: 'Turkeys', base: 1.25, summer: 1.5, winter: 1, unit: 'per 10' },
+      rabbit: { name: 'Rabbits', base: 0.75, summer: 1, winter: 0.5, unit: 'per 10' },
+      alpaca: { name: 'Alpacas/Llamas', base: 4, summer: 5, winter: 3, unit: 'head' }
+    };
+
+    function toggleAnimalInput(animal) {
+      const container = document.getElementById('animalInputs');
+      const checkbox = document.querySelector(`.animal-checkbox[value="${animal}"]`);
+
+      if (checkbox.checked) {
+        const div = document.createElement('div');
+        div.className = 'form-group';
+        div.id = `group-${animal}`;
+        let lactationCheckbox = '';
+        if (animalData[animal].lactation) {
+          lactationCheckbox = `
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal; margin-top: 0.25rem; font-size: 0.85rem;">
+              <input type="checkbox" id="lactating-${animal}"> Lactating (doubles water need)
+            </label>
+          `;
+        }
+        div.innerHTML = `
+          <label class="form-label" for="qty-${animal}">${animalData[animal].name} Count (${animalData[animal].unit})</label>
+          <input type="number" id="qty-${animal}" class="form-input" min="1" max="1000" value="1" style="max-width: 200px;">
+          ${lactationCheckbox}
+        `;
+        container.appendChild(div);
+      } else {
+        const existing = document.getElementById(`group-${animal}`);
+        if (existing) existing.remove();
+      }
+    }
+
+    function calculateWater(event) {
+      event.preventDefault();
+
+      const season = document.getElementById('season').value;
+      const waterSource = document.getElementById('waterSource').value;
+      const sourceMult = waterSource === 'automatic' ? 0.8 : 1.0;
+
+      let totalDaily = 0;
+      let totalAnimals = 0;
+      let hasLactating = false;
+      const resultsBody = document.getElementById('resultsTableBody');
+      resultsBody.innerHTML = '';
+
+      // Calculate for each checked animal
+      document.querySelectorAll('.animal-checkbox:checked').forEach(cb => {
+        const animal = cb.value;
+        const qty = parseInt(document.getElementById(`qty-${animal}`).value) || 0;
+        const data = animalData[animal];
+
+        // Get water per day based on season
+        let waterPerDay;
+        if (season === 'summer') waterPerDay = data.summer;
+        else if (season === 'winter') waterPerDay = data.winter;
+        else waterPerDay = data.base;
+
+        // Check if lactating
+        let lactationMult = 1.0;
+        if (data.lactation) {
+          const lactatingCb = document.getElementById(`lactating-${animal}`);
+          if (lactatingCb && lactatingCb.checked) {
+            lactationMult = 2.0;
+            hasLactating = true;
+          }
+        }
+
+        // Calculate
+        const dailyForAnimal = waterPerDay * lactationMult * sourceMult;
+        const dailyTotal = dailyForAnimal * qty;
+        const weeklyTotal = dailyTotal * 7;
+        const annualTotal = dailyTotal * 365;
+
+        totalDaily += dailyTotal;
+        totalAnimals += qty;
+
+        // Add row to table
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-color)';
+        row.innerHTML = `
+          <td style="padding:6px 8px;">${data.name}</td>
+          <td style="text-align:center; padding:6px 8px;">${qty}</td>
+          <td style="text-align:center; padding:6px 8px;">${dailyTotal.toFixed(1)}</td>
+          <td style="text-align:center; padding:6px 8px;">${weeklyTotal.toFixed(0)}</td>
+          <td style="text-align:center; padding:6px 8px;">${annualTotal.toFixed(0)}</td>
+        `;
+        resultsBody.appendChild(row);
+      });
+
+      // Update totals
+      const weeklyTotal = totalDaily * 7;
+      const monthlyTotal = totalDaily * 30.44;
+      const annualTotal = totalDaily * 365;
+      const tankSize = totalDaily * 3; // 3-day supply
+
+      document.getElementById('totalCount').textContent = totalAnimals;
+      document.getElementById('totalDaily').textContent = totalDaily.toFixed(1) + ' gal';
+      document.getElementById('totalWeekly').textContent = weeklyTotal.toFixed(0) + ' gal';
+      document.getElementById('totalAnnual').textContent = annualTotal.toFixed(0) + ' gal';
+
+      document.getElementById('dailyTotal').textContent = totalDaily.toFixed(1) + ' gal';
+      document.getElementById('weeklyTotal').textContent = weeklyTotal.toFixed(0) + ' gal';
+      document.getElementById('monthlyTotal').textContent = monthlyTotal.toFixed(0) + ' gal';
+      document.getElementById('tankSize').textContent = tankSize.toFixed(0) + ' gal';
+
+      // Show lactation note if applicable
+      const lactationNote = document.getElementById('lactationNote');
+      if (hasLactating) {
+        lactationNote.style.display = 'block';
+      } else {
+        lactationNote.style.display = 'none';
+      }
+
+      // Show results
+      document.getElementById('results').classList.add('visible');
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

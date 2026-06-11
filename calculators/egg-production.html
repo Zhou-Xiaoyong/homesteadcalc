@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg Production Estimator — Annual Yield & Cost Per Egg Calculator (2026)</title>
+  <meta name="description" content="Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings. Free egg production calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/egg-production.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Egg Production Estimator",
+    "description": "Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings.",
+    "url": "https://homesteadcalculators.com/calculators/egg-production.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; <span>Egg Production Estimator</span>
+      </nav>
+
+      <!-- Calculator Layout -->
+      <div class="calc-layout">
+        <!-- Main Content -->
+        <div class="calc-main">
+          <h1>Egg Production Estimator</h1>
+          <p class="text-lg text-muted mb-lg">Calculate your flock's annual egg yield, cost per egg, and compare to store prices. Adjust for breed, hen age, and seasonal changes.</p>
+
+          <!-- Calculator Form -->
+          <div class="card">
+            <h2>Enter Your Flock Details</h2>
+            <form id="eggForm" onsubmit="calculateEggs(event)">
+              <div class="form-group">
+                <label class="form-label" for="numHens">Number of Hens</label>
+                <input type="number" id="numHens" class="form-input" min="1" max="100" value="6" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="breedType">Breed Type</label>
+                <select id="breedType" class="form-select" onchange="toggleCustomBreed()">
+                  <option value="280">White Leghorn (280-320 eggs/year)</option>
+                  <option value="275">Rhode Island Red (250-300 eggs/year)</option>
+                  <option value="225">Plymouth Rock (200-250 eggs/year)</option>
+                  <option value="200">Orpington (180-220 eggs/year)</option>
+                  <option value="230">Easter Egger (200-260 eggs/year)</option>
+                  <option value="275">Australorp (250-300 eggs/year)</option>
+                  <option value="220">Wyandotte (200-240 eggs/year)</option>
+                  <option value="265">Sussex (250-280 eggs/year)</option>
+                  <option value="200" selected>Average Backyard (200 eggs/year)</option>
+                  <option value="custom">Custom (enter your own)</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="customBreedGroup" style="display:none;">
+                <label class="form-label" for="customEggs">Custom Eggs Per Year (per hen)</label>
+                <input type="number" id="customEggs" class="form-input" min="50" max="365" value="200">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="henAge">Hen Age (months)</label>
+                <input type="number" id="henAge" class="form-input" min="1" max="120" value="12" required>
+                <span class="form-hint">5-8 months = ramp up, 8-18 peak, 18-36 gradual decline, 36+ steep decline</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="season">Current Season</label>
+                <select id="season" class="form-select">
+                  <option value="1.0" selected>Spring (100% production)</option>
+                  <option value="0.95">Summer (95% production)</option>
+                  <option value="0.85">Fall (85% production)</option>
+                  <option value="0.70">Winter (70% production)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="feedCost">Feed Cost per 50lb Bag ($)</label>
+                <input type="number" id="feedCost" class="form-input" min="0" step="0.01" value="18.00" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="feedPerDay">Feed Consumed Per Hen Per Day (lbs)</label>
+                <input type="number" id="feedPerDay" class="form-input" min="0.1" step="0.05" value="0.25" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="storeEggPrice">Dozen Eggs Price at Store ($)</label>
+                <input type="number" id="storeEggPrice" class="form-input" min="0" step="0.01" value="4.50" required>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Egg Production</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="result-box">
+            <h2>Your Egg Production Results</h2>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="annualEggs">—</div>
+                <div class="label">Eggs Per Year</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="weeklyEggs">—</div>
+                <div class="label">Eggs Per Week</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="feedCostYear">—</div>
+                <div class="label">Feed Cost Per Year</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="costPerEgg">—</div>
+                <div class="label">Cost Per Egg</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="storeEquiv">—</div>
+                <div class="label">Store Equivalent Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="annualSavings">—</div>
+                <div class="label">Annual Savings</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mt-xl">
+            <h2>How It Works</h2>
+            <p>Egg production varies significantly based on the hen's breed, age, and the season. This calculator uses standard production rates and adjusts them based on these factors.</p>
+
+            <h3>Production Rates by Age</h3>
+            <p>Hen egg production follows a predictable pattern as they age:</p>
+            <ul>
+              <li><strong>5-6 months:</strong> 20% of peak production (hens just starting to lay)</li>
+              <li><strong>6-8 months:</strong> 60% of peak production (ramping up)</li>
+              <li><strong>8-18 months:</strong> 100% of peak production (prime laying years)</li>
+              <li><strong>18-24 months:</strong> 90% of peak production (slight decline begins)</li>
+              <li><strong>24-36 months:</strong> 75% of peak production (noticeable decline)</li>
+              <li><strong>36+ months:</strong> 50% of peak production (significant decline, but still laying)</li>
+            </ul>
+
+            <h3>Seasonal Variation</h3>
+            <p>Egg production is influenced by daylight hours. Hens need 14-16 hours of light to maintain peak production:</p>
+            <ul>
+              <li><strong>Spring:</strong> 100% production (increasing daylight)</li>
+              <li><strong>Summer:</strong> 95% production (peak heat can reduce laying)</li>
+              <li><strong>Fall:</strong> 85% production (decreasing daylight)</li>
+              <li><strong>Winter:</strong> 70% production (shortest daylight hours)</li>
+            </ul>
+
+            <div class="formula-box">
+Eggs per hen per year = Base breed rate × Age multiplier × Season multiplier
+
+Age multipliers:
+  5-6 months: 0.20
+  6-8 months: 0.60
+  8-18 months: 1.00
+  18-24 months: 0.90
+  24-36 months: 0.75
+  36+ months: 0.50
+
+Season multipliers:
+  Spring: 1.00
+  Summer: 0.95
+  Fall: 0.85
+  Winter: 0.70
+
+Total annual eggs = Eggs per hen per year × Number of hens
+
+Feed cost per year = (hens × feed per day × 365 / 50) × feed cost per bag
+
+Cost per egg = Feed cost per year / Total annual eggs
+
+Store equivalent = (Annual eggs / 12) × Store price per dozen
+
+Annual savings = Store equivalent - Feed cost per year
+            </div>
+
+            <h3>Breed Egg Colors</h3>
+            <p>Different breeds lay different colored eggs. This doesn't affect nutrition or taste, but can be fun for variety:</p>
+            <ul>
+              <li><strong>White Leghorn:</strong> White eggs</li>
+              <li><strong>Rhode Island Red:</strong> Brown eggs</li>
+              <li><strong>Plymouth Rock:</strong> Brown eggs</li>
+              <li><strong>Orpington:</strong> Light brown / tinted eggs</li>
+              <li><strong>Easter Egger:</strong> Blue, green, or olive eggs</li>
+              <li><strong>Australorp:</strong> Brown eggs</li>
+              <li><strong>Wyandotte:</strong> Brown eggs</li>
+              <li><strong>Sussex:</strong> Light brown / tinted eggs</li>
+            </ul>
+          </div>
+
+          <!-- Related Calculators -->
+          <div class="related-calc">
+            <h3>Related Calculators</h3>
+            <div class="related-calc-list">
+              <a href="chicken-feed.html">Chicken Feed Calculator</a>
+              <a href="chicken-coop-size.html">Chicken Coop Size Calculator</a>
+              <a href="livestock-water.html">Livestock Water Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="calc-sidebar">
+          <div class="card mb-lg">
+            <h3>Egg Color Guide by Breed</h3>
+            <table style="width:100%; font-size:0.85rem; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <th style="text-align:left; padding:4px 8px;">Breed</th>
+                  <th style="text-align:left; padding:4px 8px;">Egg Color</th>
+                  <th style="text-align:right; padding:4px 8px;">Eggs/Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">White Leghorn</td>
+                  <td style="padding:4px 8px;">White</td>
+                  <td style="padding:4px 8px; text-align:right;">280-320</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Rhode Island Red</td>
+                  <td style="padding:4px 8px;">Brown</td>
+                  <td style="padding:4px 8px; text-align:right;">250-300</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Plymouth Rock</td>
+                  <td style="padding:4px 8px;">Brown</td>
+                  <td style="padding:4px 8px; text-align:right;">200-250</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Orpington</td>
+                  <td style="padding:4px 8px;">Light brown</td>
+                  <td style="padding:4px 8px; text-align:right;">180-220</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Easter Egger</td>
+                  <td style="padding:4px 8px;">Blue/Green</td>
+                  <td style="padding:4px 8px; text-align:right;">200-260</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Australorp</td>
+                  <td style="padding:4px 8px;">Brown</td>
+                  <td style="padding:4px 8px; text-align:right;">250-300</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 8px;">Wyandotte</td>
+                  <td style="padding:4px 8px;">Brown</td>
+                  <td style="padding:4px 8px; text-align:right;">200-240</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 8px;">Sussex</td>
+                  <td style="padding:4px 8px;">Light brown</td>
+                  <td style="padding:4px 8px; text-align:right;">250-280</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ad-slot"></div>
+
+          <div class="card">
+            <h3>Quick Tips</h3>
+            <ul style="font-size:0.9rem; padding-left: 1.2rem;">
+              <li>Provide 14-16 hours of light for winter laying</li>
+              <li>Supplement calcium for strong shells</li>
+              <li>Fresh water is critical for production</li>
+              <li>Protein at 16-18% supports laying</li>
+              <li>Molt (feather loss) stops egg production temporarily</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleCustomBreed() {
+      const breedSelect = document.getElementById('breedType');
+      const customGroup = document.getElementById('customBreedGroup');
+      if (breedSelect.value === 'custom') {
+        customGroup.style.display = 'block';
+      } else {
+        customGroup.style.display = 'none';
+      }
+    }
+
+    function getAgeMultiplier(ageMonths) {
+      if (ageMonths < 5) return 0;
+      if (ageMonths < 6) return 0.20;
+      if (ageMonths < 8) return 0.60;
+      if (ageMonths < 18) return 1.00;
+      if (ageMonths < 24) return 0.90;
+      if (ageMonths < 36) return 0.75;
+      return 0.50;
+    }
+
+    function calculateEggs(event) {
+      event.preventDefault();
+
+      const numHens = parseInt(document.getElementById('numHens').value);
+      const breedSelect = document.getElementById('breedType');
+      const breedType = breedSelect.value;
+      let eggsPerYear;
+
+      if (breedType === 'custom') {
+        eggsPerYear = parseInt(document.getElementById('customEggs').value);
+      } else {
+        eggsPerYear = parseInt(breedType);
+      }
+
+      const henAge = parseInt(document.getElementById('henAge').value);
+      const seasonMult = parseFloat(document.getElementById('season').value);
+      const feedCost = parseFloat(document.getElementById('feedCost').value);
+      const feedPerDay = parseFloat(document.getElementById('feedPerDay').value);
+      const storeEggPrice = parseFloat(document.getElementById('storeEggPrice').value);
+
+      // Calculate age multiplier
+      const ageMult = getAgeMultiplier(henAge);
+
+      // Calculate eggs per hen per year
+      const eggsPerHenYear = eggsPerYear * ageMult * seasonMult;
+
+      // Total annual eggs
+      const totalAnnualEggs = eggsPerHenYear * numHens;
+
+      // Eggs per week (average)
+      const eggsPerWeek = totalAnnualEggs / 52;
+
+      // Feed cost per year
+      const feedPerYearPerHen = feedPerDay * 365;
+      const bagsPerYear = (feedPerYearPerHen * numHens) / 50;
+      const feedCostPerYear = bagsPerYear * feedCost;
+
+      // Cost per egg
+      const costPerEgg = totalAnnualEggs > 0 ? feedCostPerYear / totalAnnualEggs : 0;
+
+      // Store equivalent cost
+      const dozensPerYear = totalAnnualEggs / 12;
+      const storeEquivalent = dozensPerYear * storeEggPrice;
+
+      // Annual savings
+      const annualSavings = storeEquivalent - feedCostPerYear;
+
+      // Display results
+      document.getElementById('annualEggs').textContent = Math.round(totalAnnualEggs).toLocaleString();
+      document.getElementById('weeklyEggs').textContent = Math.round(eggsPerWeek).toLocaleString();
+      document.getElementById('feedCostYear').textContent = '$' + feedCostPerYear.toFixed(2);
+      document.getElementById('costPerEgg').textContent = '$' + costPerEgg.toFixed(3);
+      document.getElementById('storeEquiv').textContent = '$' + storeEquivalent.toFixed(2);
+      document.getElementById('annualSavings').textContent = '$' + annualSavings.toFixed(2);
+
+      // Show results
+      document.getElementById('results').classList.add('visible');
+
+      // Scroll to results
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

@@ -73,6 +73,60 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://homesteadcalc.com/calculators/egg-production.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/chicken-coop-size.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/livestock-water.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/greenhouse-heater.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/canning-scaler.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/dehydrator.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/fencing-calculator.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/land-requirement.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/calculators/self-sufficiency-score.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://homesteadcalc.com/blog/</loc>
     <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>

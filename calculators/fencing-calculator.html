@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fencing Material Calculator — Posts, Wire & Cost Estimator (2026)</title>
+  <meta name="description" content="Calculate how much fencing material you need for your homestead. Estimate posts, wire, gates, and total cost for any fence type. Free fencing estimator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/fencing-calculator.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fencing Material Calculator",
+    "description": "Calculate how much fencing material you need for your homestead. Estimate posts, wire, gates, and total cost.",
+    "url": "https://homesteadcalculators.com/calculators/fencing-calculator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    .input-method-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-md);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .method-tab {
+      padding: var(--space-sm) var(--space-md);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .method-tab:hover { color: var(--accent); }
+    .method-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .method-panel { display: none; }
+    .method-panel.active { display: block; }
+    .dimension-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    @media (max-width: 500px) {
+      .dimension-inputs { grid-template-columns: 1fr; }
+    }
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+      font-size: 0.9rem;
+    }
+    .result-table th,
+    .result-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .result-table th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .result-table tr:nth-child(even) { background: var(--gray-50); }
+    .cost-low { color: var(--success); font-weight: 600; }
+    .cost-high { color: var(--warning); font-weight: 600; }
+    .labor-estimate {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .livestock-guide {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .livestock-card {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .livestock-card h4 {
+      color: var(--green-dark);
+      margin-bottom: var(--space-xs);
+    }
+  </style>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page container">
+    <!-- Breadcrumb -->
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; Fencing Material Calculator
+    </nav>
+
+    <div class="calc-layout">
+      <!-- Main Calculator -->
+      <div class="calc-main">
+        <h1>Fencing Material Calculator</h1>
+        <p class="text-muted">Estimate posts, wire, gates, and total cost for any fence type. Perfect for planning pasture, garden, and perimeter fencing on your homestead.</p>
+
+        <form id="fenceForm" class="card" style="margin-top: var(--space-lg);">
+          <!-- Input Method -->
+          <div class="form-group">
+            <label class="form-label">How would you like to enter your fencing area?</label>
+            <div class="input-method-tabs">
+              <button type="button" class="method-tab active" data-method="linear">Linear Feet</button>
+              <button type="button" class="method-tab" data-method="dimensions">Dimensions (W × L)</button>
+              <button type="button" class="method-tab" data-method="acreage">Acreage & Shape</button>
+            </div>
+          </div>
+
+          <!-- Linear Feet Panel -->
+          <div class="method-panel active" id="panel-linear">
+            <div class="form-group">
+              <label class="form-label" for="linearFeet">Total Linear Feet</label>
+              <input type="number" class="form-input" id="linearFeet" min="1" max="50000" placeholder="e.g., 1000">
+            </div>
+          </div>
+
+          <!-- Dimensions Panel -->
+          <div class="method-panel" id="panel-dimensions">
+            <div class="dimension-inputs">
+              <div class="form-group">
+                <label class="form-label" for="widthFt">Width (ft)</label>
+                <input type="number" class="form-input" id="widthFt" min="1" max="5000" placeholder="e.g., 200">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lengthFt">Length (ft)</label>
+                <input type="number" class="form-input" id="lengthFt" min="1" max="5000" placeholder="e.g., 300">
+              </div>
+            </div>
+          </div>
+
+          <!-- Acreage Panel -->
+          <div class="method-panel" id="panel-acreage">
+            <div class="form-group">
+              <label class="form-label" for="acreage">Total Acreage</label>
+              <input type="number" class="form-input" id="acreage" min="0.1" max="1000" step="0.1" placeholder="e.g., 5">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="shape">Property Shape</label>
+              <select class="form-select" id="shape">
+                <option value="square">Square / Rectangle (assumes square)</option>
+                <option value="rectangle">Rectangle (2:1 ratio)</option>
+                <option value="circle">Circle</option>
+              </select>
+            </div>
+          </div>
+
+          <hr style="margin: var(--space-lg) 0; border: none; border-top: 1px solid var(--border-color);">
+
+          <!-- Fence Type -->
+          <div class="form-group">
+            <label class="form-label" for="fenceType">Fence Type</label>
+            <select class="form-select" id="fenceType" required>
+              <option value="">Select fence type...</option>
+              <option value="woven">Woven wire field fence</option>
+              <option value="ht3">High-tensile electric 3-strand</option>
+              <option value="ht5">High-tensile electric 5-strand</option>
+              <option value="barb3">Barbed wire 3-strand</option>
+              <option value="barb5">Barbed wire 5-strand</option>
+              <option value="splitRail">Split rail</option>
+              <option value="picket">Picket / Privacy</option>
+              <option value="chainLink">Chain link</option>
+              <option value="cattlePanel">Cattle panel</option>
+              <option value="hogPanel">Hog panel</option>
+              <option value="poultry">Poultry netting / Electric mesh</option>
+            </select>
+          </div>
+
+          <!-- Post Type -->
+          <div class="form-group">
+            <label class="form-label" for="postType">Post Type</label>
+            <select class="form-select" id="postType">
+              <option value="wood4x4">Wood 4×4</option>
+              <option value="tpost">T-post steel</option>
+              <option value="roundWood">Round wood post</option>
+              <option value="hbrace">Corner H-brace wood</option>
+            </select>
+          </div>
+
+          <!-- Gates -->
+          <div class="form-group">
+            <label class="form-label">Gates</label>
+            <div class="dimension-inputs">
+              <div>
+                <label class="form-label" for="gateCount" style="font-size:0.85rem;">Number of Gates</label>
+                <input type="number" class="form-input" id="gateCount" min="0" max="20" value="0">
+              </div>
+              <div>
+                <label class="form-label" for="gateWidth" style="font-size:0.85rem;">Gate Width</label>
+                <select class="form-select" id="gateWidth">
+                  <option value="4">4 ft</option>
+                  <option value="8" selected>8 ft</option>
+                  <option value="10">10 ft</option>
+                  <option value="12">12 ft</option>
+                  <option value="16">16 ft</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Materials & Cost</button>
+        </form>
+
+        <!-- Results -->
+        <div id="results" class="result-box">
+          <h2 style="margin-bottom: var(--space-md);">Materials & Cost Estimate</h2>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="value" id="resLinearFt">—</div>
+              <div class="label">Total Linear Feet</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resLinePosts">—</div>
+              <div class="label">Line Posts</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resCornerPosts">—</div>
+              <div class="label">Corner / H-brace</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resWire">—</div>
+              <div class="label">Wire / Panels</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: var(--space-lg);">Material Details</h3>
+          <table class="result-table" id="materialTable">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Low Est. Cost</th>
+                <th>High Est. Cost</th>
+              </tr>
+            </thead>
+            <tbody id="materialBody"></tbody>
+            <tfoot id="materialFoot"></tfoot>
+          </table>
+
+          <div class="labor-estimate">
+            <strong>⏱️ Labor Estimate:</strong> <span id="laborEstimate">—</span>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section style="margin-top: var(--space-2xl);">
+          <h2>How It Works</h2>
+          <p>This calculator determines fencing materials based on standard spacing for each fence type. Posts are calculated differently depending on fence style:</p>
+
+          <div class="formula-box">
+Fence Type → Post Spacing:
+  Woven wire field fence : posts every 8 ft
+  High-tensile electric   : posts every 20–30 ft (we use 25 ft)
+  Barbed wire             : posts every 12 ft
+  Split rail              : posts every 8 ft
+  Picket / Privacy        : posts every 6–8 ft (we use 7 ft)
+  Chain link              : posts every 8–10 ft (we use 9 ft)
+  Cattle panel            : 16 ft panels → ceiling(feet / 16)
+  Hog panel               : 16 ft panels → ceiling(feet / 16)
+  Poultry netting         : posts every 8 ft (support posts)
+
+Corner posts: 2 per corner (H-brace assembly)
+  + 2 additional corner posts per gate location
+
+Wire quantity:
+  Woven wire   = linear ft × 1.05 (5% waste factor)
+  Barbed wire   = linear ft × strands × 1.10 (10% waste)
+  High-tensile  = linear ft × strands × 1.05 (5% waste)
+  Poultry netting = linear ft × 1.05 (5% waste)
+
+Staples / clips: line posts × 4 per post × strands
+          </div>
+
+          <h3>Choosing the Right Fence for Your Livestock</h3>
+          <div class="livestock-guide">
+            <div class="livestock-card">
+              <h4>🐔 Chickens & Poultry</h4>
+              <p><strong>Best:</strong> Poultry netting (1/2" or 1" mesh), welded wire. Electric netting for rotational grazing.</p>
+              <p><strong>Height:</strong> 4–6 ft to deter predators climbing.</p>
+            </div>
+            <div class="livestock-card">
+              <h4>🐑 Sheep & Goats</h4>
+              <p><strong>Best:</strong> Woven wire (goats need 4" or smaller mesh), high-tensile electric (5-strand for goats).</p>
+              <p><strong>Height:</strong> 4–5 ft. Goats climb — add electric top strand.</p>
+            </div>
+            <div class="livestock-card">
+              <h4>🐄 Cattle & Horses</h4>
+              <p><strong>Best:</strong> Barbed wire (3–5 strand), high-tensile electric, woven wire with top board for horses.</p>
+              <p><strong>Height:</strong> 4–5 ft. Horses need visibility — use white ribbon or boards.</p>
+            </div>
+            <div class="livestock-card">
+              <h4>🐖 Pigs</h4>
+              <p><strong>Best:</strong> Hog panels (not climbers!), electric wire (they respect it after one shock).</p>
+              <p><strong>Height:</strong> 3–4 ft. Pigs root under — bury mesh 6" or use electric apron.</p>
+            </div>
+            <div class="livestock-card">
+              <h4>🦌 Deer Protection</h4>
+              <p><strong>Best:</strong> Woven wire 8 ft tall, high-tensile 8–10 ft, or electric 8–10 ft.</p>
+              <p><strong>Height:</strong> Minimum 8 ft. Deer jump high — go tall or use double fence.</p>
+            </div>
+            <div class="livestock-card">
+              <h4>🏡 Garden & Property</h4>
+              <p><strong>Best:</strong> Woven wire, polypropylene deer fence, or picket (decorative).</p>
+              <p><strong>Height:</strong> 4–6 ft for garden, 3 ft for decorative picket.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="livestock-water.html">Livestock Water</a>
+            <a href="chicken-coop-size.html">Chicken Coop Size</a>
+            <a href="land-requirement.html">Land Requirement</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="ad-slot"></div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Fence Planning Tips</h3>
+          <ul style="padding-left: var(--space-lg); font-size: 0.9rem;">
+            <li>Always buy 10% extra materials for mistakes and gates</li>
+            <li>Use H-braces at every corner and gate</li>
+            <li>Bury wire mesh 6" to stop digging predators</li>
+            <li>Mark property lines before buying materials</li>
+            <li>Check local zoning for fence height limits</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Cost-Saving Ideas</h3>
+          <ul style="padding-left: var(--space-lg); font-size: 0.9rem;">
+            <li>Use T-posts between wood corner braces</li>
+            <li>Buy wire in full rolls (less waste)</li>
+            <li>Consider used livestock panels from neighbors</li>
+            <li>High-tensile is cheapest per foot for large areas</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.method-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('panel-' + this.dataset.method).classList.add('active');
+      });
+    });
+
+    // Fence type config: [postSpacingFt, strands, isPanel]
+    const fenceConfig = {
+      woven:      { postSpacing: 8,  strands: 1, isPanel: false, name: 'Woven wire field fence' },
+      ht3:        { postSpacing: 25, strands: 3, isPanel: false, name: 'High-tensile electric 3-strand' },
+      ht5:        { postSpacing: 25, strands: 5, isPanel: false, name: 'High-tensile electric 5-strand' },
+      barb3:      { postSpacing: 12, strands: 3, isPanel: false, name: 'Barbed wire 3-strand' },
+      barb5:      { postSpacing: 12, strands: 5, isPanel: false, name: 'Barbed wire 5-strand' },
+      splitRail:  { postSpacing: 8,  strands: 0, isPanel: false, name: 'Split rail' },
+      picket:     { postSpacing: 7,  strands: 0, isPanel: false, name: 'Picket / Privacy' },
+      chainLink:  { postSpacing: 9,  strands: 0, isPanel: false, name: 'Chain link' },
+      cattlePanel:{ postSpacing: 16, strands: 0, isPanel: true,  name: 'Cattle panel' },
+      hogPanel:   { postSpacing: 16, strands: 0, isPanel: true,  name: 'Hog panel' },
+      poultry:    { postSpacing: 8,  strands: 1, isPanel: false, name: 'Poultry netting / Electric mesh' }
+    };
+
+    // Price data [low, high] per unit
+    const prices = {
+      wood4x4:     [12, 15],    // per post
+      tpost:        [5, 8],      // per T-post
+      roundWood:    [8, 10],     // per round post
+      hbrace:       [25, 40],    // per H-brace assembly (estimated materials)
+      woven_wire:   [180, 250],  // per 330ft roll
+      barb_wire:    [80, 120],   // per 1320ft roll
+      ht_wire:      [90, 130],   // per 1320ft roll
+      cattle_panel: [25, 35],    // per 16ft panel
+      hog_panel:    [30, 45],    // per 16ft panel
+      poultry_nett: [150, 250],  // per 164ft roll
+      gate4:        [80, 120],
+      gate8:        [120, 180],
+      gate10:       [160, 220],
+      gate12:       [200, 280],
+      gate16:       [250, 400],
+      staples:      [0.05, 0.10], // per staple (box of 1000 = $50-100)
+      clips:        [0.10, 0.20]  // per clip
+    };
+
+    function getLinearFeet() {
+      // Check which panel is active
+      const activeMethod = document.querySelector('.method-tab.active').dataset.method;
+      if (activeMethod === 'linear') {
+        return parseFloat(document.getElementById('linearFeet').value) || 0;
+      } else if (activeMethod === 'dimensions') {
+        const w = parseFloat(document.getElementById('widthFt').value) || 0;
+        const l = parseFloat(document.getElementById('lengthFt').value) || 0;
+        return 2 * (w + l);
+      } else if (activeMethod === 'acreage') {
+        const acres = parseFloat(document.getElementById('acreage').value) || 0;
+        const shape = document.getElementById('shape').value;
+        // Convert acres to sq ft (1 acre = 43560 sq ft)
+        const sqFt = acres * 43560;
+        if (shape === 'square') {
+          const side = Math.sqrt(sqFt);
+          return side * 4;
+        } else if (shape === 'rectangle') {
+          // 2:1 ratio
+          const side = Math.sqrt(sqFt / 2);
+          return 2 * (side * 2 + side);
+        } else if (shape === 'circle') {
+          const radius = Math.sqrt(sqFt / Math.PI);
+          return 2 * Math.PI * radius;
+        }
+      }
+      return 0;
+    }
+
+    document.getElementById('fenceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateFence();
+    });
+
+    function calculateFence() {
+      const totalFt = getLinearFeet();
+      if (totalFt <= 0) { alert('Please enter valid fencing dimensions.'); return; }
+
+      const fenceType = document.getElementById('fenceType').value;
+      const postType = document.getElementById('postType').value;
+      const gateCount = parseInt(document.getElementById('gateCount').value) || 0;
+      const gateWidth = parseInt(document.getElementById('gateWidth').value) || 8;
+
+      if (!fenceType) { alert('Please select a fence type.'); return; }
+
+      const cfg = fenceConfig[fenceType];
+
+      // Calculate posts
+      const linePosts = Math.ceil(totalFt / cfg.postSpacing);
+      // Assume 4 corners for a rectangular property
+      const corners = 4;
+      const gateCorners = gateCount * 2; // each gate needs 2 corner posts
+      const cornerPosts = corners + gateCorners;
+
+      // Wire / panel quantity
+      let wireQty = 0, wireUnit = '', wireCostLow = 0, wireCostHigh = 0;
+      if (cfg.isPanel) {
+        wireQty = Math.ceil(totalFt / 16);
+        wireUnit = 'panels';
+        if (fenceType === 'cattlePanel') {
+          wireCostLow = wireQty * prices.cattle_panel[0];
+          wireCostHigh = wireQty * prices.cattle_panel[1];
+        } else {
+          wireCostLow = wireQty * prices.hog_panel[0];
+          wireCostHigh = wireQty * prices.hog_panel[1];
+        }
+      } else if (cfg.strands > 0) {
+        if (fenceType === 'barb3' || fenceType === 'barb5') {
+          wireQty = Math.ceil(totalFt * cfg.strands * 1.1 / 1320); // rolls
+          wireUnit = 'rolls (1320ft)';
+          wireCostLow = wireQty * prices.barb_wire[0];
+          wireCostHigh = wireQty * prices.barb_wire[1];
+        } else if (fenceType === 'ht3' || fenceType === 'ht5') {
+          wireQty = Math.ceil(totalFt * cfg.strands * 1.05 / 1320);
+          wireUnit = 'rolls (1320ft)';
+          wireCostLow = wireQty * prices.ht_wire[0];
+          wireCostHigh = wireQty * prices.ht_wire[1];
+        } else {
+          // woven wire, poultry netting
+          wireQty = Math.ceil(totalFt * 1.05 / 330);
+          wireUnit = 'rolls (330ft)';
+          if (fenceType === 'woven') {
+            wireCostLow = wireQty * prices.woven_wire[0];
+            wireCostHigh = wireQty * prices.woven_wire[1];
+          } else {
+            wireQty = Math.ceil(totalFt * 1.05 / 164);
+            wireUnit = 'rolls (164ft)';
+            wireCostLow = wireQty * prices.poultry_nett[0];
+            wireCostHigh = wireQty * prices.poultry_nett[1];
+          }
+        }
+      }
+
+      // Cost calculations
+      let totalLow = 0, totalHigh = 0;
+      const rows = [];
+
+      // Line posts cost
+      let postPriceLow, postPriceHigh, postName;
+      if (postType === 'wood4x4') { postPriceLow = prices.wood4x4[0]; postPriceHigh = prices.wood4x4[1]; postName = 'Wood 4×4 post'; }
+      else if (postType === 'tpost') { postPriceLow = prices.tpost[0]; postPriceHigh = prices.tpost[1]; postName = 'T-post steel'; }
+      else if (postType === 'roundWood') { postPriceLow = prices.roundWood[0]; postPriceHigh = prices.roundWood[1]; postName = 'Round wood post'; }
+      else { postPriceLow = prices.hbrace[0]; postPriceHigh = prices.hbrace[1]; postName = 'H-brace assembly'; }
+
+      const linePostCostLow = linePosts * postPriceLow;
+      const linePostCostHigh = linePosts * postPriceHigh;
+      totalLow += linePostCostLow;
+      totalHigh += linePostCostHigh;
+      rows.push([postName + ' (line)', linePosts, 'posts', '$' + linePostCostLow.toFixed(0), '$' + linePostCostHigh.toFixed(0)]);
+
+      // Corner posts cost (using H-brace price)
+      const cornerPostCostLow = cornerPosts * prices.hbrace[0];
+      const cornerPostCostHigh = cornerPosts * prices.hbrace[1];
+      totalLow += cornerPostCostLow;
+      totalHigh += cornerPostCostHigh;
+      rows.push(['Corner / H-brace assembly', cornerPosts, 'assemblies', '$' + cornerPostCostLow.toFixed(0), '$' + cornerPostCostHigh.toFixed(0)]);
+
+      // Wire / panel cost
+      if (wireQty > 0) {
+        totalLow += wireCostLow;
+        totalHigh += wireCostHigh;
+        rows.push([cfg.name + ' (wire/panels)', wireQty, wireUnit, '$' + wireCostLow.toFixed(0), '$' + wireCostHigh.toFixed(0)]);
+      }
+
+      // Gates cost
+      if (gateCount > 0) {
+        const gateKey = 'gate' + gateWidth;
+        const gatePriceLow = gateCount * prices[gateKey][0];
+        const gatePriceHigh = gateCount * prices[gateKey][1];
+        totalLow += gatePriceLow;
+        totalHigh += gatePriceHigh;
+        rows.push(['Gate (' + gateWidth + ' ft)', gateCount, 'gates', '$' + gatePriceLow.toFixed(0), '$' + gatePriceHigh.toFixed(0)]);
+      }
+
+      // Staples / clips
+      if (cfg.strands > 0) {
+        const staplesNeeded = linePosts * 4 * cfg.strands;
+        const stapleCostLow = staplesNeeded * prices.staples[0];
+        const stapleCostHigh = staplesNeeded * prices.staples[1];
+        totalLow += stapleCostLow;
+        totalHigh += stapleCostHigh;
+        rows.push(['Staples / clips', staplesNeeded, 'pcs', '$' + stapleCostLow.toFixed(0), '$' + stapleCostHigh.toFixed(0)]);
+      }
+
+      // Display results
+      document.getElementById('resLinearFt').textContent = totalFt.toLocaleString() + ' ft';
+      document.getElementById('resLinePosts').textContent = linePosts;
+      document.getElementById('resCornerPosts').textContent = cornerPosts;
+      document.getElementById('resWire').textContent = wireQty + ' ' + (wireUnit || cfg.name);
+
+      // Build material table
+      const tbody = document.getElementById('materialBody');
+      tbody.innerHTML = '';
+      rows.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + row[0] + '</td><td>' + row[1] + '</td><td>' + row[2] + '</td><td>$' + row[3] + '</td><td>$' + row[4] + '</td>';
+        tbody.appendChild(tr);
+      });
+
+      const tfoot = document.getElementById('materialFoot');
+      tfoot.innerHTML = '<tr style="font-weight:700; background:var(--green-pale);"><td>Total</td><td colspan="3">Material Cost</td><td>$' + totalLow.toFixed(0) + ' – $' + totalHigh.toFixed(0) + '</td></tr>';
+
+      // Labor estimate
+      let laborRate, laborUnit;
+      if (postType === 'tpost') {
+        laborRate = 15; // ft per hour for 2 people with T-posts
+        laborUnit = 'ft/hr (2 people, T-post driver)';
+      } else {
+        laborRate = 8; // ft per hour for 2 people with wood posts
+        laborUnit = 'ft/hr (2 people, digging)';
+      }
+      const laborHours = Math.ceil(totalFt / laborRate);
+      document.getElementById('laborEstimate').textContent = 'Approximately ' + laborHours + ' hours of labor for 2 people (' + laborRate + ' ' + laborUnit + '). Add ' + gateCount * 4 + ' extra hours for gate installation.';
+
+      // Show results
+      const resultsBox = document.getElementById('results');
+      resultsBox.classList.add('visible');
+      resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>

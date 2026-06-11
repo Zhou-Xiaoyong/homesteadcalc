@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Sufficiency Score — Rate Your Homestead's Independence (2026)</title>
+  <meta name="description" content="Assess your homestead's self-sufficiency across 8 categories. Get a scored report and actionable improvements. Free self-reliance assessment tool.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/self-sufficiency-score.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Self-Sufficiency Score Calculator",
+    "description": "Assess your homestead's self-sufficiency across 8 categories and get actionable improvement suggestions.",
+    "url": "https://homesteadcalculators.com/calculators/self-sufficiency-score.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    .progress-container {
+      margin-bottom: var(--space-lg);
+      padding: 0;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .progress-bar-outer {
+      height: 10px;
+      background: var(--gray-200);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-light), var(--green-dark));
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+    .quiz-card {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-lg);
+      transition: box-shadow 0.2s ease;
+    }
+    .quiz-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .quiz-card h3 {
+      color: var(--green-dark);
+      margin-bottom: var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .quiz-card h3 .cat-icon {
+      font-size: 1.5rem;
+    }
+    .question-row {
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--gray-100);
+      padding-bottom: var(--space-md);
+    }
+    .question-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .question-text {
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      font-size: 0.95rem;
+      color: var(--gray-800);
+    }
+    .options-row {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .option-btn {
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      background: var(--white);
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .option-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .option-btn.selected {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .option-btn .score-badge {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      display: block;
+      text-align: center;
+      line-height: 1;
+    }
+    .score-breakdown {
+      margin-top: var(--space-lg);
+    }
+    .cat-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+      gap: var(--space-md);
+    }
+    .cat-bar .cat-label {
+      min-width: 140px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: right;
+    }
+    .cat-bar .bar-track {
+      flex: 1;
+      height: 22px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .cat-bar .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--white);
+      min-width: fit-content;
+    }
+    .radar-svg {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: var(--space-lg) auto;
+    }
+    @media (max-width: 600px) {
+      .cat-bar .cat-label {
+        min-width: 110px;
+        font-size: 0.75rem;
+      }
+      .option-btn {
+        font-size: 0.78rem;
+        padding: 0.35rem 0.7rem;
+      }
+    }
+    .strength-card {
+      background: #f0fdf4;
+      border-left: 4px solid var(--success);
+      padding: var(--space-md);
+      margin-bottom: var(--space-sm);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .improve-card {
+      background: #fffbeb;
+      border-left: 4px solid var(--warning);
+      padding: var(--space-md);
+      margin-bottom: var(--space-sm);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .next-steps {
+      background: var(--green-pale);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .next-steps h4 {
+      color: var(--green-dark);
+    }
+    @media print {
+      .quiz-card, .progress-container, .btn {
+        page-break-inside: avoid;
+      }
+      .option-btn.selected {
+        border-color: #333;
+        color: #333;
+        background: #eee;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page container">
+    <!-- Breadcrumb -->
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; Self-Sufficiency Score
+    </nav>
+
+    <div class="calc-layout">
+      <!-- Main Calculator -->
+      <div class="calc-main">
+        <h1>Self-Sufficiency Score</h1>
+        <p class="text-muted">Rate your homestead's independence across 8 categories. Answer all questions honestly to get an accurate assessment with personalized improvement suggestions.</p>
+
+        <!-- Progress -->
+        <div class="progress-container" id="progressContainer">
+          <div class="progress-label">
+            <span>Assessment Progress</span>
+            <span id="progressPercent">0% (0 of 40)</span>
+          </div>
+          <div class="progress-bar-outer">
+            <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
+          </div>
+        </div>
+
+        <form id="quizForm">
+          <!-- Category 1: Food Production -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">🥕</span> Food Production</h3>
+            <div class="question-row">
+              <div class="question-text">1. What percentage of your vegetables do you grow yourself?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="food" data-q="0" data-val="1">0% <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="0" data-val="2">10–25% <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="0" data-val="3">25–50% <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="0" data-val="4">50–75% <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="0" data-val="5">75%+ <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. Do you raise animals for food?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="food" data-q="1" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="1" data-val="2">Eggs only <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="1" data-val="3">Eggs + meat birds <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="1" data-val="4">Small livestock <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="1" data-val="5">Full livestock system <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. What is your fruit and nut production level?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="food" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="2" data-val="2">A few trees <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="2" data-val="3">Small orchard <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="2" data-val="4">Significant <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="2" data-val="5">Major orchard <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. How do you preserve your food?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="food" data-q="3" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="3" data-val="2">Freeze only <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="3" data-val="3">Can/dehydrate <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="3" data-val="4">Root cellar <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="3" data-val="5">Full system <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. What is your seed saving practice?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="food" data-q="4" data-val="1">Buy all seeds <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="4" data-val="2">Save some <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="4" data-val="3">Save most <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="4" data-val="4">Swap/barter <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="food" data-q="4" data-val="5">Seed independent <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Water Independence -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">💧</span> Water Independence</h3>
+            <div class="question-row">
+              <div class="question-text">1. What is your primary water source?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="water" data-q="0" data-val="1">Municipal <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="0" data-val="2">Well (electric pump) <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="0" data-val="3">Well (manual backup) <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="0" data-val="4">Spring/gravity fed <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="0" data-val="5">Spring + rainwater <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. Do you collect rainwater?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="water" data-q="1" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="1" data-val="2">One rain barrel <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="1" data-val="3">Multiple barrels <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="1" data-val="4">Cistern (500–1,000 gal) <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="1" data-val="5">Cistern (1,000+ gal) <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. What water treatment capability do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="water" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="2" data-val="2">Boil only <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="2" data-val="3">Filter <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="2" data-val="4">Filter + UV <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="2" data-val="5">Multi-stage system <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. How do you handle irrigation self-sufficiency?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="water" data-q="3" data-val="1">Municipal water <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="3" data-val="2">Well pump <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="3" data-val="3">Gravity fed <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="3" data-val="4">Drip system <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="3" data-val="5">Full rainwater irrigation <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. What is your emergency water storage?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="water" data-q="4" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="4" data-val="2">1–3 days <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="4" data-val="3">1 week <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="4" data-val="4">2 weeks <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="water" data-q="4" data-val="5">1+ month <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Energy Independence -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">⚡</span> Energy Independence</h3>
+            <div class="question-row">
+              <div class="question-text">1. What is your electricity source?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="energy" data-q="0" data-val="1">Grid only <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="0" data-val="2">Grid + generator <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="0" data-val="3">Partial solar <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="0" data-val="4">Solar + battery <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="0" data-val="5">Off-grid <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. What is your primary heating source?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="energy" data-q="1" data-val="1">Grid electric/gas <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="1" data-val="2">Propane delivered <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="1" data-val="3">Heat pump <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="1" data-val="4">Wood stove backup <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="1" data-val="5">Wood primary <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. What cooking fuel do you use?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="energy" data-q="2" data-val="1">Electric <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="2" data-val="2">Gas <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="2" data-val="3">Propane <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="2" data-val="4">Combo wood/propane <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="2" data-val="5">Wood/solar <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. What backup power do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="energy" data-q="3" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="3" data-val="2">Small generator <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="3" data-val="3">Large generator <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="3" data-val="4">Battery bank <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="3" data-val="5">Full off-grid <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. Do you have a woodlot/fuel source on your property?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="energy" data-q="4" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="4" data-val="2">Some trees <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="4" data-val="3">Managed <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="4" data-val="4">Coppice system <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="energy" data-q="4" data-val="5">Full woodlot <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Shelter & Infrastructure -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">🏠</span> Shelter &amp; Infrastructure</h3>
+            <div class="question-row">
+              <div class="question-text">1. What type of housing do you live in?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="shelter" data-q="0" data-val="1">Rent <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="0" data-val="2">Own standard <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="0" data-val="3">Own efficient <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="0" data-val="4">Passive solar <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="0" data-val="5">Off-grid built <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. How adequate are your outbuildings?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="shelter" data-q="1" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="1" data-val="2">Basic shed <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="1" data-val="3">Workshop <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="1" data-val="4">Barn + shop <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="1" data-val="5">Full infrastructure <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. How reliable is your road access?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="shelter" data-q="2" data-val="1">Paved <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="2" data-val="2">Gravel (maintained) <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="2" data-val="3">Private gravel <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="2" data-val="4">4WD needed <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="2" data-val="5">Self-maintained <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. What level of fencing/property security do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="shelter" data-q="3" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="3" data-val="2">Partial <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="3" data-val="3">Perimeter <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="3" data-val="4">Cross-fenced <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="3" data-val="5">Full system <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. How do you manage waste?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="shelter" data-q="4" data-val="1">Municipal <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="4" data-val="2">Septic <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="4" data-val="3">Composting toilet <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="4" data-val="4">Greywater system <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="shelter" data-q="4" data-val="5">Full closed loop <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5: Health & Preparedness -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">🩺</span> Health &amp; Preparedness</h3>
+            <div class="question-row">
+              <div class="question-text">1. What is your level of medical self-reliance?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="health" data-q="0" data-val="1">ER dependent <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="0" data-val="2">First aid kit <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="0" data-val="3">Basic training <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="0" data-val="4">Advanced first aid <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="0" data-val="5">Medical professional <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. Do you use herbal/plant medicine?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="health" data-q="1" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="1" data-val="2">Basic herbs <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="1" data-val="3">Small garden <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="1" data-val="4">Tinctures/salves <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="1" data-val="5">Full apothecary <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. How many emergency supplies do you store?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="health" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="2" data-val="2">72 hour kit <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="2" data-val="3">1 week <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="2" data-val="4">1 month <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="2" data-val="5">3+ months <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. What is your physical fitness for homestead work?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="health" data-q="3" data-val="1">Sedentary <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="3" data-val="2">Light activity <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="3" data-val="3">Moderate <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="3" data-val="4">Active/fit <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="health" data-q="3" data-val="5">Very fit <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 6: Skills & Knowledge -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">📚</span> Skills &amp; Knowledge</h3>
+            <div class="question-row">
+              <div class="question-text">1. How much gardening experience do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="skills" data-q="0" data-val="1">Beginner <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="0" data-val="2">1–2 years <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="0" data-val="3">3–5 years <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="0" data-val="4">5–10 years <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="0" data-val="5">10+ years <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. What animal husbandry experience do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="skills" data-q="1" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="1" data-val="2">Chickens <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="1" data-val="3">Multiple species <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="1" data-val="4">Breeding <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="1" data-val="5">Expert <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. What construction/repair skills do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="skills" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="2" data-val="2">Basic <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="2" data-val="3">Intermediate <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="2" data-val="4">Advanced DIY <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="2" data-val="5">Professional <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. What food preservation skills do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="skills" data-q="3" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="3" data-val="2">Freezing <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="3" data-val="3">Canning basics <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="3" data-val="4">Multiple methods <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="3" data-val="5">Expert <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. What navigation/woodcraft skills do you have?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="skills" data-q="4" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="4" data-val="2">Basic <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="4" data-val="3">Maps/compass <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="4" data-val="4">Orienteering <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="skills" data-q="4" data-val="5">Expert <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 7: Community & Barter -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">🤝</span> Community &amp; Barter</h3>
+            <div class="question-row">
+              <div class="question-text">1. Do you have a local homesteading community?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="community" data-q="0" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="0" data-val="2">Know a few people <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="0" data-val="3">Casual group <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="0" data-val="4">Active group <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="0" data-val="5">Strong network <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. How often do you barter or trade?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="community" data-q="1" data-val="1">Never <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="1" data-val="2">Occasionally <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="1" data-val="3">Regularly <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="1" data-val="4">Frequently <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="1" data-val="5">Income source <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. How much knowledge sharing do you do?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="community" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="2" data-val="2">Help friends <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="2" data-val="3">Teach informally <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="2" data-val="4">Mentor <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="2" data-val="5">Teach classes <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. What is your connection to the local food system?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="community" data-q="3" data-val="1">Grocery only <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="3" data-val="2">Farmers market <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="3" data-val="3">CSA member <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="3" data-val="4">Farmer connections <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="community" data-q="3" data-val="5">Deeply integrated <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 8: Financial Resilience -->
+          <div class="quiz-card">
+            <h3><span class="cat-icon">💰</span> Financial Resilience</h3>
+            <div class="question-row">
+              <div class="question-text">1. What is your debt-to-income ratio?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="finance" data-q="0" data-val="1">High debt <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="0" data-val="2">Moderate <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="0" data-val="3">Low debt <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="0" data-val="4">Very low <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="0" data-val="5">Debt-free <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">2. How diverse is your income?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="finance" data-q="1" data-val="1">One job <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="1" data-val="2">Side gig <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="1" data-val="3">Homestead income <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="1" data-val="4">Multiple streams <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="1" data-val="5">Fully diversified <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">3. How large is your emergency fund?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="finance" data-q="2" data-val="1">None <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="2" data-val="2">1 month <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="2" data-val="3">3 months <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="2" data-val="4">6 months <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="2" data-val="5">12+ months <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">4. How much does your homestead reduce your living expenses?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="finance" data-q="3" data-val="1">Minimal <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="3" data-val="2">Some <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="3" data-val="3">Moderate <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="3" data-val="4">Significant <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="3" data-val="5">Major <span class="score-badge">5</span></button>
+              </div>
+            </div>
+            <div class="question-row">
+              <div class="question-text">5. What percentage of living expenses could your homestead cover?</div>
+              <div class="options-row">
+                <button type="button" class="option-btn" data-cat="finance" data-q="4" data-val="1">0% <span class="score-badge">1</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="4" data-val="2">10–25% <span class="score-badge">2</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="4" data-val="3">25–50% <span class="score-badge">3</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="4" data-val="4">50–75% <span class="score-badge">4</span></button>
+                <button type="button" class="option-btn" data-cat="finance" data-q="4" data-val="5">75%+ <span class="score-badge">5</span></button>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate My Self-Sufficiency Score</button>
+        </form>
+
+        <!-- Results -->
+        <div id="results" class="result-box">
+          <h2 style="margin-bottom: var(--space-md);">Your Self-Sufficiency Score</h2>
+
+          <div class="result-highlight" style="margin-top:var(--space-md);">
+            <div class="big-number" id="resOverall">—</div>
+            <div class="sub-text" id="resLevel">—</div>
+          </div>
+
+          <div style="max-width:400px;margin:var(--space-lg) auto;">
+            <svg id="radarChart" class="radar-svg" viewBox="0 0 400 400">
+              <defs>
+                <radialGradient id="radarGrad" cx="50%" cy="50%">
+                  <stop offset="0%" stop-color="var(--green-light)" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="var(--green-light)" stop-opacity="0.05"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <h3>Category Breakdown</h3>
+          <div class="score-breakdown" id="catBreakdown"></div>
+
+          <h3 style="margin-top:var(--space-xl);">Top 3 Strengths</h3>
+          <div id="strengthsSection"></div>
+
+          <h3 style="margin-top:var(--space-xl);">Top 3 Areas to Improve</h3>
+          <div id="improvementsSection"></div>
+
+          <div class="next-steps" id="nextStepsSection">
+            <h4>Your Next Steps</h4>
+            <ul id="nextStepsList"></ul>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section style="margin-top: var(--space-2xl);">
+          <h2>How It Works</h2>
+          <p>This self-sufficiency assessment is based on 8 key areas of homestead independence. Each area has multiple questions scored from 1 to 5.</p>
+
+          <div class="formula-box">
+Scoring Methodology:
+  - 40 questions total (5 per category × 8 categories)
+  - Each question scored 1–5
+  - Maximum possible score: 200
+  - Categories weighted equally (25 points max each)
+
+Level Rankings:
+  Novice (0–40)         : Just starting out
+  Beginner (41–80)      : Some homesteading activities
+  Growing (81–120)      : Building serious self-sufficiency
+  Advanced (121–160)    : Significant independence
+  Near Self-Sufficient (161–190) : Very high independence
+  Master Homesteader (191–200)   : Near complete self-reliance
+
+The radar chart shows each category's percentage score
+relative to its maximum (25 points per category).
+
+This assessment is meant as a self-reflection tool, not a
+scientific measurement. Your goal should be continuous
+improvement in areas most important to your situation.
+          </div>
+
+          <h3>Why These 8 Categories Matter</h3>
+          <p>True self-sufficiency isn't just about growing food. Water, energy, shelter, health, skills, community, and financial resilience are all essential. A homestead with a great garden but no water independence is only partially self-sufficient. This assessment helps you identify blind spots.</p>
+        </section>
+
+        <!-- Related Calculators -->
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="land-requirement.html">Land Requirement</a>
+            <a href="garden-yield.html">Garden Yield</a>
+            <a href="solar-power.html">Solar Power</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="ad-slot"></div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Self-Sufficiency Tips</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.9rem;">
+            <li>Start with 1–2 categories; don't try everything at once</li>
+            <li>Food is the easiest category to improve quickly</li>
+            <li>Financial resilience underlies everything</li>
+            <li>Community reduces infrastructure needs</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Score Improvement</h3>
+          <p style="font-size:0.9rem;">Most homesteaders score 80–140. A score above 160 is exceptional. Retake this assessment every 6–12 months to track your progress.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Category metadata
+    const catMeta = {
+      food: { name: 'Food Production', color: '#40916c', icon: '🥕', maxQ: 5 },
+      water: { name: 'Water Independence', color: '#48bfe3', icon: '💧', maxQ: 5 },
+      energy: { name: 'Energy Independence', color: '#fcbf49', icon: '⚡', maxQ: 5 },
+      shelter: { name: 'Shelter & Infrastructure', color: '#a68a64', icon: '🏠', maxQ: 5 },
+      health: { name: 'Health & Preparedness', color: '#e63946', icon: '🩺', maxQ: 4 },
+      skills: { name: 'Skills & Knowledge', color: '#8338ec', icon: '📚', maxQ: 5 },
+      community: { name: 'Community & Barter', color: '#fb8500', icon: '🤝', maxQ: 4 },
+      finance: { name: 'Financial Resilience', color: '#4a90d9', icon: '💰', maxQ: 5 }
+    };
+
+    // Track scores: { cat: [q0_val, q1_val, ...] }
+    const scores = {};
+    Object.keys(catMeta).forEach(cat => { scores[cat] = Array(catMeta[cat].maxQ).fill(0); });
+
+    let answeredCount = 0;
+    const totalQuestions = Object.values(catMeta).reduce((sum, m) => sum + m.maxQ, 0);
+
+    // Option button click handling
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const cat = this.dataset.cat;
+        const q = parseInt(this.dataset.q);
+        const val = parseInt(this.dataset.val);
+
+        // Deselect siblings
+        const siblings = document.querySelectorAll('.option-btn[data-cat="' + cat + '"][data-q="' + q + '"]');
+        siblings.forEach(s => s.classList.remove('selected'));
+
+        // Select this
+        this.classList.add('selected');
+
+        // Track score
+        const oldVal = scores[cat][q];
+        scores[cat][q] = val;
+
+        if (oldVal === 0 && val > 0) answeredCount++;
+        // (If changing, count stays same)
+
+        updateProgress();
+      });
+    });
+
+    function updateProgress() {
+      const pct = Math.round((answeredCount / totalQuestions) * 100);
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressPercent').textContent = pct + '% (' + answeredCount + ' of ' + totalQuestions + ')';
+    }
+
+    // Form submission
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Check if at least some questions are answered
+      let totalScore = 0;
+      const catScores = {};
+
+      Object.keys(scores).forEach(cat => {
+        const catTotal = scores[cat].filter(v => v > 0).reduce((a, b) => a + b, 0);
+        catScores[cat] = catTotal;
+        totalScore += catTotal;
+      });
+
+      if (totalScore === 0) {
+        alert('Please answer at least some questions before calculating your score.');
+        return;
+      }
+
+      // Max possible per category = catMeta[cat].maxQ * 5
+      const maxScore = totalQuestions * 5;
+
+      // Determine level
+      let level;
+      if (totalScore <= 40) level = 'Novice';
+      else if (totalScore <= 80) level = 'Beginner Homesteader';
+      else if (totalScore <= 120) level = 'Growing Independence';
+      else if (totalScore <= 160) level = 'Advanced Homesteader';
+      else if (totalScore <= 190) level = 'Near Self-Sufficient';
+      else level = 'Master Homesteader';
+
+      const pct = Math.round((totalScore / maxScore) * 100);
+
+      // Display results
+      document.getElementById('resOverall').textContent = totalScore + ' / ' + maxScore;
+      document.getElementById('resLevel').textContent = level + ' (' + pct + '%)';
+
+      // Category breakdown
+      const breakdown = document.getElementById('catBreakdown');
+      breakdown.innerHTML = '';
+
+      const catPcts = {};
+      Object.keys(catScores).forEach(cat => {
+        const maxCat = catMeta[cat].maxQ * 5;
+        const catPct = Math.round((catScores[cat] / maxCat) * 100);
+        catPcts[cat] = catPct;
+
+        const catBar = document.createElement('div');
+        catBar.className = 'cat-bar';
+        catBar.innerHTML = '<div class="cat-label">' + catMeta[cat].icon + ' ' + catMeta[cat].name + '</div>' +
+          '<div class="bar-track"><div class="bar-fill" style="width:' + catPct + '%;background:' + catMeta[cat].color + '">' + catPct + '%</div></div>';
+        breakdown.appendChild(catBar);
+      });
+
+      // Radar chart
+      drawRadar(catPcts);
+
+      // Top 3 strengths
+      const sorted = Object.entries(catPcts).sort((a, b) => b[1] - a[1]);
+      document.getElementById('strengthsSection').innerHTML =
+        sorted.slice(0, 3).map(([cat, p]) => '<div class="strength-card"><strong>' + catMeta[cat].name + '</strong> (' + p + '%)</div>').join('');
+
+      // Top 3 improvements
+      document.getElementById('improvementsSection').innerHTML =
+        sorted.slice(-3).reverse().map(([cat, p]) => '<div class="improve-card"><strong>' + catMeta[cat].name + '</strong> (' + p + '%)</div>').join('');
+
+      // Next steps based on lowest category
+      const lowestCat = sorted[sorted.length - 1][0];
+      const steps = {
+        food: ['Start a small raised bed this season', 'Learn canning basics (water bath for tomatoes/jam)', 'Save seeds from 2–3 plants this year'],
+        water: ['Install one rain barrel this month', 'Store 5–10 gallons of emergency water', 'Research well backup options for your area'],
+        energy: ['Buy a small portable generator for backup', 'Start with one solar panel for a small circuit', 'Learn to cook on a backup camp stove'],
+        shelter: ['Build a basic shed or tool storage', 'Install perimeter fencing on at least one side', 'Learn one carpentry or plumbing skill'],
+        health: ['Take a CPR/first aid class', 'Build a comprehensive first aid kit', 'Start a small medicinal herb garden'],
+        skills: ['Grow one new food crop you have never tried', 'Volunteer at a neighbor\'s farm for experience', 'Take one homesteading workshop or online course'],
+        community: ['Visit your local farmers market', 'Join one homesteading Facebook group or forum', 'Introduce yourself to one neighboring homesteader'],
+        finance: ['Start tracking homestead income vs. expenses', 'Pay off one small debt this quarter', 'Build a one-month emergency fund']
+      };
+
+      const stepsList = document.getElementById('nextStepsList');
+      stepsList.innerHTML = '';
+      steps[lowestCat].forEach(step => {
+        const li = document.createElement('li');
+        li.textContent = step;
+        stepsList.appendChild(li);
+      });
+
+      // Show results and scroll
+      const resultsBox = document.getElementById('results');
+      resultsBox.classList.add('visible');
+      resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function drawRadar(catPcts) {
+      const svg = document.getElementById('radarChart');
+      const cx = 200, cy = 200, radius = 150;
+      const cats = Object.keys(catPcts);
+      const n = cats.length;
+      const angleStep = (2 * Math.PI) / n;
+
+      // Background grid circles
+      let svgContent = '<defs><radialGradient id="radarGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#40916c" stop-opacity="0.3"/><stop offset="100%" stop-color="#40916c" stop-opacity="0.05"/></radialGradient></defs>';
+
+      // Grid levels
+      [25, 50, 75, 100].forEach(level => {
+        const r = radius * level / 100;
+        svgContent += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="#e5e7eb" stroke-width="1"/>';
+        if (level === 100) {
+          svgContent += '<text x="' + cx + '" y="' + (cy - r - 5) + '" text-anchor="middle" font-size="9" fill="#9ca3af">100%</text>';
+        }
+      });
+
+      // Axes and labels
+      cats.forEach((cat, i) => {
+        const angle = -Math.PI / 2 + i * angleStep;
+        const x = cx + radius * Math.cos(angle);
+        const y = cy + radius * Math.sin(angle);
+        svgContent += '<line x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" stroke="#e5e7eb" stroke-width="1"/>';
+        const lx = cx + (radius + 25) * Math.cos(angle);
+        const ly = cy + (radius + 25) * Math.sin(angle);
+        svgContent += '<text x="' + lx + '" y="' + ly + '" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">' + catMeta[cat].name + '</text>';
+      });
+
+      // Data polygon
+      const points = cats.map((cat, i) => {
+        const angle = -Math.PI / 2 + i * angleStep;
+        const r = radius * catPcts[cat] / 100;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        return x + ',' + y;
+      });
+
+      svgContent += '<polygon points="' + points.join(' ') + '" fill="url(#radarGrad)" stroke="#40916c" stroke-width="2" stroke-linejoin="round"/>';
+
+      // Data points
+      cats.forEach((cat, i) => {
+        const angle = -Math.PI / 2 + i * angleStep;
+        const r = radius * catPcts[cat] / 100;
+        const x = cx + r * Math.cos(angle);
+        const y = cy + r * Math.sin(angle);
+        svgContent += '<circle cx="' + x + '" cy="' + y + '" r="4" fill="#40916c" stroke="#fff" stroke-width="2"/>';
+      });
+
+      svg.innerHTML = svgContent;
+    }
+  </script>
+</body>
+</html>

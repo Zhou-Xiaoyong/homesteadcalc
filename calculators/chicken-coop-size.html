@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Coop Size Calculator — Minimum Space Requirements (2026)</title>
+  <meta name="description" content="Calculate exactly how big your chicken coop and run need to be. Free-range vs confined space requirements by breed size and flock count.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/chicken-coop-size.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Chicken Coop Size Calculator",
+    "description": "Calculate exactly how big your chicken coop and run need to be. Free-range vs confined space requirements by breed size and flock count.",
+    "url": "https://homesteadcalculators.com/calculators/chicken-coop-size.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; <span>Chicken Coop Size Calculator</span>
+      </nav>
+
+      <!-- Calculator Layout -->
+      <div class="calc-layout">
+        <!-- Main Content -->
+        <div class="calc-main">
+          <h1>Chicken Coop Size Calculator</h1>
+          <p class="text-lg text-muted mb-lg">Calculate the minimum coop and run size for your flock. Get dimensions based on breed size, housing style, and additional features.</p>
+
+          <!-- Calculator Form -->
+          <div class="card">
+            <h2>Enter Your Flock Details</h2>
+            <form id="coopForm" onsubmit="calculateCoop(event)">
+              <div class="form-group">
+                <label class="form-label" for="numChickens">Number of Chickens</label>
+                <input type="number" id="numChickens" class="form-input" min="1" max="100" value="6" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="breedSize">Breed Size</label>
+                <select id="breedSize" class="form-select">
+                  <option value="standard" selected>Standard / Large (8-10 lbs)</option>
+                  <option value="medium">Medium (5-7 lbs)</option>
+                  <option value="bantam">Bantam / Small</option>
+                  <option value="mixed">Mixed Flock</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="housingStyle">Housing Style</label>
+                <select id="housingStyle" class="form-select">
+                  <option value="confined" selected>Confined (coop + run always)</option>
+                  <option value="free-range">Free-range (daytime out, cooped at night)</option>
+                  <option value="pasture">Pasture rotation / tractor</option>
+                  <option value="deep-litter">Deep litter method</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Additional Features (check all that apply)</label>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" id="featureNesting" checked> Nesting boxes included
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" id="featureRoosting" checked> Roosting bars included
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" id="featureStorage"> Storage area (adds 16 sq ft)
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal;">
+                    <input type="checkbox" id="featureBrooder"> Brooder section (adds 16 sq ft)
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Coop Size</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="result-box">
+            <h2>Your Coop Size Requirements</h2>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="coopArea">—</div>
+                <div class="label">Min Coop Area (sq ft)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="coopDimensions">—</div>
+                <div class="label">Suggested Coop Size (W×L)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="runArea">—</div>
+                <div class="label">Min Run Area (sq ft)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="runDimensions">—</div>
+                <div class="label">Suggested Run Size (W×L)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="nestingBoxes">—</div>
+                <div class="label">Nesting Boxes Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="roostLength">—</div>
+                <div class="label">Roosting Bar Length</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding: 1rem; background: var(--white); border-radius: var(--radius-sm);">
+              <strong>Total Footprint:</strong> <span id="totalFootprint">—</span>
+            </div>
+
+            <div id="deepLitterNote" style="margin-top: 1rem; padding: 0.75rem; background: #fff3cd; border: 1px solid #ffc107; border-radius: var(--radius-sm); display: none;">
+              <strong>Deep Litter Method Note:</strong> Minimum 6-8" depth required. Ensure adequate ventilation to prevent ammonia buildup.
+            </div>
+          </div>
+
+          <!-- Coop Size Guide Table -->
+          <div class="mt-xl">
+            <h2>Coop Size Guide</h2>
+            <div class="card">
+              <table style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border-color);">
+                    <th style="text-align:left; padding:8px;">Breed Size</th>
+                    <th style="text-align:center; padding:8px;">Coop (sq ft/bird)</th>
+                    <th style="text-align:center; padding:8px;">Run (sq ft/bird)</th>
+                    <th style="text-align:center; padding:8px;">Roost (in/bird)</th>
+                    <th style="text-align:center; padding:8px;">Nest (per hens)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding:8px;">Standard (8-10 lbs)</td>
+                    <td style="text-align:center; padding:8px;">4</td>
+                    <td style="text-align:center; padding:8px;">10</td>
+                    <td style="text-align:center; padding:8px;">10</td>
+                    <td style="text-align:center; padding:8px;">4-5</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-color);">
+                    <td style="padding:8px;">Medium (5-7 lbs)</td>
+                    <td style="text-align:center; padding:8px;">3</td>
+                    <td style="text-align:center; padding:8px;">8</td>
+                    <td style="text-align:center; padding:8px;">8</td>
+                    <td style="text-align:center; padding:8px;">4-5</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px;">Bantam (Small)</td>
+                    <td style="text-align:center; padding:8px;">2</td>
+                    <td style="text-align:center; padding:8px;">5</td>
+                    <td style="text-align:center; padding:8px;">6</td>
+                    <td style="text-align:center; padding:8px;">4-5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mt-xl">
+            <h2>How It Works</h2>
+            <p>Chicken coop size requirements are based on animal welfare standards and the birds' need for space to roost, nest, and move comfortably. Overcrowding leads to stress, aggression, and disease.</p>
+
+            <h3>Space Requirements by Breed Size</h3>
+            <p>Larger breeds need more space per bird:</p>
+            <ul>
+              <li><strong>Standard/Large (8-10 lbs):</strong> 4 sq ft/bird in coop, 10 sq ft/bird in run</li>
+              <li><strong>Medium (5-7 lbs):</strong> 3 sq ft/bird in coop, 8 sq ft/bird in run</li>
+              <li><strong>Bantam/Small:</strong> 2 sq ft/bird in coop, 5 sq ft/bird in run</li>
+              <li><strong>Mixed Flock:</strong> Uses weighted average based on your flock composition</li>
+            </ul>
+
+            <h3>Housing Style Impact</h3>
+            <ul>
+              <li><strong>Confined:</strong> Birds stay in coop+run full time. Requires full space calculations.</li>
+              <li><strong>Free-range:</strong> Birds roam during day, cooped at night. Run space reduced by 50%.</li>
+              <li><strong>Pasture rotation:</strong> Portable coop moved regularly. Minimum coop space still required.</li>
+              <li><strong>Deep litter:</strong> Bedding builds up over time. Requires 6-8" depth and extra ventilation.</li>
+            </ul>
+
+            <h3>Nesting Boxes and Roosting</h3>
+            <ul>
+              <li><strong>Nesting boxes:</strong> 1 box per 4-5 hens, each 12"×12"×12"</li>
+              <li><strong>Roosting bars:</strong> 8-10 linear inches per bird (standard), 6-8" (bantam)</li>
+            </ul>
+
+            <div class="formula-box">
+Coop area (sq ft) = Number of chickens × Coop sq ft per bird
+
+Run area (sq ft) = Number of chickens × Run sq ft per bird
+(if free-range: Run area × 0.5)
+
+Nesting boxes = Ceiling(Number of chickens / 5)
+
+Roosting bar length (inches) = Number of chickens × Inches per bird
+(Roosting bar length in feet = Roosting bar length in inches / 12)
+
+Total footprint (sq ft) = Coop area + Run area + Storage (16 if selected) + Brooder (16 if selected)
+
+Note: Suggested dimensions are approximate squares/rectangles
+that meet the minimum area requirements.
+            </div>
+          </div>
+
+          <!-- Related Calculators -->
+          <div class="related-calc">
+            <h3>Related Calculators</h3>
+            <div class="related-calc-list">
+              <a href="chicken-feed.html">Chicken Feed Calculator</a>
+              <a href="egg-production.html">Egg Production Estimator</a>
+              <a href="livestock-water.html">Livestock Water Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="calc-sidebar">
+          <div class="card mb-lg">
+            <h3>Space Requirements Quick Reference</h3>
+            <ul style="font-size:0.85rem; padding-left: 1.2rem;">
+              <li><strong>Standard:</strong> 4 sq ft coop, 10 sq ft run</li>
+              <li><strong>Medium:</strong> 3 sq ft coop, 8 sq ft run</li>
+              <li><strong>Bantam:</strong> 2 sq ft coop, 5 sq ft run</li>
+              <li><strong>Nest boxes:</strong> 1 per 4-5 hens</li>
+              <li><strong>Roost:</strong> 8-10" per bird</li>
+            </ul>
+          </div>
+
+          <div class="ad-slot"></div>
+
+          <div class="card">
+            <h3>Tips for Coop Design</h3>
+            <ul style="font-size:0.9rem; padding-left: 1.2rem;">
+              <li>Face coop door away from prevailing winds</li>
+              <li>Provide 1-2 windows for light and ventilation</li>
+              <li>Elevate coop 12-18" off ground for drainage</li>
+              <li>Hardware cloth (not chicken wire) for predator protection</li>
+              <li>Plan for easy cleaning access</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function calculateCoop(event) {
+      event.preventDefault();
+
+      const numChickens = parseInt(document.getElementById('numChickens').value);
+      const breedSize = document.getElementById('breedSize').value;
+      const housingStyle = document.getElementById('housingStyle').value;
+      const featureNesting = document.getElementById('featureNesting').checked;
+      const featureRoosting = document.getElementById('featureRoosting').checked;
+      const featureStorage = document.getElementById('featureStorage').checked;
+      const featureBrooder = document.getElementById('featureBrooder').checked;
+
+      // Space per bird based on breed size
+      let coopSqFtPerBird, runSqFtPerBird, roostInchesPerBird;
+      if (breedSize === 'standard') {
+        coopSqFtPerBird = 4;
+        runSqFtPerBird = 10;
+        roostInchesPerBird = 10;
+      } else if (breedSize === 'medium') {
+        coopSqFtPerBird = 3;
+        runSqFtPerBird = 8;
+        roostInchesPerBird = 8;
+      } else if (breedSize === 'bantam') {
+        coopSqFtPerBird = 2;
+        runSqFtPerBird = 5;
+        roostInchesPerBird = 6;
+      } else {
+        // Mixed - use weighted average (assume 50% standard, 30% medium, 20% bantam)
+        coopSqFtPerBird = (4 * 0.5) + (3 * 0.3) + (2 * 0.2);
+        runSqFtPerBird = (10 * 0.5) + (8 * 0.3) + (5 * 0.2);
+        roostInchesPerBird = (10 * 0.5) + (8 * 0.3) + (6 * 0.2);
+      }
+
+      // Calculate coop area
+      const coopArea = numChickens * coopSqFtPerBird;
+
+      // Calculate run area (adjust for housing style)
+      let runArea = numChickens * runSqFtPerBird;
+      if (housingStyle === 'free-range') {
+        runArea = runArea * 0.5; // 50% reduction for free-range
+      }
+
+      // Calculate nesting boxes (1 per 4-5 hens, use 5 for conservative estimate)
+      const nestingBoxes = Math.ceil(numChickens / 5);
+
+      // Calculate roosting bar length
+      const roostLengthInches = numChickens * roostInchesPerBird;
+      const roostLengthFeet = roostLengthInches / 12;
+
+      // Calculate total footprint
+      let totalFootprint = coopArea + runArea;
+      if (featureStorage) totalFootprint += 16;
+      if (featureBrooder) totalFootprint += 16;
+
+      // Suggested dimensions (make as square as possible)
+      const coopWidth = Math.sqrt(coopArea);
+      const coopLength = coopArea / coopWidth;
+      const runWidth = Math.sqrt(runArea);
+      const runLength = runArea / runWidth;
+
+      // Display results
+      document.getElementById('coopArea').textContent = coopArea.toFixed(0) + ' sq ft';
+      document.getElementById('coopDimensions').textContent = coopWidth.toFixed(0) + "' × " + coopLength.toFixed(0) + "'";
+      document.getElementById('runArea').textContent = runArea.toFixed(0) + ' sq ft';
+      document.getElementById('runDimensions').textContent = runWidth.toFixed(0) + "' × " + runLength.toFixed(0) + "'";
+      document.getElementById('nestingBoxes').textContent = nestingBoxes;
+      document.getElementById('roostLength').textContent = roostLengthFeet.toFixed(1) + ' ft (' + roostLengthInches.toFixed(0) + '" total)';
+      document.getElementById('totalFootprint').textContent = totalFootprint.toFixed(0) + ' sq ft';
+
+      // Show deep litter note if applicable
+      const deepLitterNote = document.getElementById('deepLitterNote');
+      if (housingStyle === 'deep-litter') {
+        deepLitterNote.style.display = 'block';
+      } else {
+        deepLitterNote.style.display = 'none';
+      }
+
+      // Show results
+      document.getElementById('results').classList.add('visible');
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

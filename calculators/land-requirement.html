@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Requirement Calculator — How Much Land for Self-Sufficiency (2026)</title>
+  <meta name="description" content="Calculate how much land you need for food, livestock, and energy self-sufficiency. Plan your homestead acreage based on your goals. Free land planner.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/land-requirement.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Land Requirement Calculator",
+    "description": "Calculate how much land you need for food, livestock, and energy self-sufficiency.",
+    "url": "https://homesteadcalculators.com/calculators/land-requirement.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    .category-section {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+      background: var(--white);
+    }
+    .category-section h3 {
+      color: var(--green-dark);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .category-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .item-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .item-row label {
+      min-width: 180px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .item-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--green-mid);
+    }
+    .slider-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex: 1;
+    }
+    .slider-group input[type="range"] {
+      flex: 1;
+      max-width: 200px;
+    }
+    .slider-value {
+      min-width: 70px;
+      font-size: 0.9rem;
+      color: var(--green-dark);
+      font-weight: 600;
+    }
+    .presets-bar {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-lg);
+    }
+    .preset-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .preset-btn:hover, .preset-btn.active {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .land-breakdown {
+      margin-top: var(--space-lg);
+    }
+    .breakdown-bar {
+      display: flex;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: var(--space-sm);
+    }
+    .breakdown-bar div {
+      transition: width 0.5s ease;
+    }
+    .breakdown-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.85rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+    .result-highlight {
+      background: var(--green-pale);
+      border: 2px solid var(--green-light);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .result-highlight .big-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+    .result-highlight .sub-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-top: var(--space-xs);
+    }
+    .region-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+      font-size: 0.9rem;
+    }
+    .region-table th, .region-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .region-table th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .region-table tr:nth-child(even) { background: var(--gray-50); }
+    @media (max-width: 600px) {
+      .item-row { flex-direction: column; align-items: flex-start; }
+      .item-row label { min-width: auto; }
+      .presets-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page container">
+    <!-- Breadcrumb -->
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; Land Requirement Calculator
+    </nav>
+
+    <div class="calc-layout">
+      <!-- Main Calculator -->
+      <div class="calc-main">
+        <h1>Land Requirement Calculator</h1>
+        <p class="text-muted">Calculate how much land you need for food, livestock, and energy self-sufficiency. Select your goals below and get a detailed land breakdown with cost estimates.</p>
+
+        <!-- Presets -->
+        <div style="margin-top: var(--space-lg);">
+          <label style="font-weight:600; font-size:0.9rem; display:block; margin-bottom:var(--space-sm);">Quick Presets:</label>
+          <div class="presets-bar">
+            <button type="button" class="preset-btn" data-preset="onePerson">Feed 1 Person</button>
+            <button type="button" class="preset-btn" data-preset="family4">Family of 4</button>
+            <button type="button" class="preset-btn" data-preset="full">Full Homestead</button>
+            <button type="button" class="preset-btn" data-preset="urban">Small Urban Farm</button>
+            <button type="button" class="preset-btn" data-preset="clear">Clear All</button>
+          </div>
+        </div>
+
+        <form id="landForm" style="margin-top: var(--space-md);">
+          <!-- Food Production -->
+          <div class="category-section">
+            <h3>🥕 Food Production</h3>
+            <div class="category-items">
+              <div class="item-row">
+                <label>Vegetable garden</label>
+                <input type="checkbox" class="item-check" data-item="vegGarden" checked>
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="vegGarden" min="0.1" max="0.5" step="0.05" value="0.2">
+                  <span class="slider-value" data-item="vegGarden">0.20 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Fruit orchard</label>
+                <input type="checkbox" class="item-check" data-item="fruitOrchard" checked>
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="fruitOrchard" min="0.25" max="1" step="0.05" value="0.5">
+                  <span class="slider-value" data-item="fruitOrchard">0.50 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Nut trees</label>
+                <input type="checkbox" class="item-check" data-item="nutTrees">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="nutTrees" min="0.5" max="2" step="0.1" value="1">
+                  <span class="slider-value" data-item="nutTrees">1.0 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Grains / corn</label>
+                <input type="checkbox" class="item-check" data-item="grains">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="grains" min="1" max="5" step="0.5" value="2">
+                  <span class="slider-value" data-item="grains">2.0 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Potato / pumpkin patch</label>
+                <input type="checkbox" class="item-check" data-item="potatoPatch">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="potatoPatch" min="0.25" max="0.5" step="0.05" value="0.25">
+                  <span class="slider-value" data-item="potatoPatch">0.25 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Herb garden</label>
+                <input type="checkbox" class="item-check" data-item="herbGarden">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="herbGarden" min="0.05" max="0.1" step="0.01" value="0.05">
+                  <span class="slider-value" data-item="herbGarden">0.05 acres</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Livestock -->
+          <div class="category-section">
+            <h3>🐄 Livestock</h3>
+            <div class="category-items">
+              <div class="item-row">
+                <label>Chickens (coop + run)</label>
+                <input type="checkbox" class="item-check" data-item="chickens" checked>
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="chickens" min="0.01" max="0.05" step="0.005" value="0.02">
+                  <span class="slider-value" data-item="chickens">0.02 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Goats (2–4 goats)</label>
+                <input type="checkbox" class="item-check" data-item="goats">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="goats" min="0.5" max="2" step="0.1" value="1">
+                  <span class="slider-value" data-item="goats">1.0 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Sheep (4–6 sheep)</label>
+                <input type="checkbox" class="item-check" data-item="sheep">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="sheep" min="0.5" max="2" step="0.1" value="1">
+                  <span class="slider-value" data-item="sheep">1.0 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Pigs (2 pigs)</label>
+                <input type="checkbox" class="item-check" data-item="pigs">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="pigs" min="0.25" max="0.5" step="0.05" value="0.25">
+                  <span class="slider-value" data-item="pigs">0.25 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Beef cattle (per head)</label>
+                <input type="checkbox" class="item-check" data-item="beef">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="beef" min="1" max="2" step="0.1" value="1.5">
+                  <span class="slider-value" data-item="beef">1.5 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Dairy cow (+ calf)</label>
+                <input type="checkbox" class="item-check" data-item="dairyCow">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="dairyCow" min="1" max="2" step="0.1" value="1.5">
+                  <span class="slider-value" data-item="dairyCow">1.5 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Horses (per horse)</label>
+                <input type="checkbox" class="item-check" data-item="horses">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="horses" min="1" max="2" step="0.1" value="1.5">
+                  <span class="slider-value" data-item="horses">1.5 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Beekeeping</label>
+                <input type="checkbox" class="item-check" data-item="bees">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="bees" min="0.01" max="0.05" step="0.005" value="0.01">
+                  <span class="slider-value" data-item="bees">0.01 acres</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Energy -->
+          <div class="category-section">
+            <h3>⚡ Energy</h3>
+            <div class="category-items">
+              <div class="item-row">
+                <label>Solar panels</label>
+                <input type="checkbox" class="item-check" data-item="solar" checked>
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="solar" min="0.1" max="0.3" step="0.01" value="0.15">
+                  <span class="slider-value" data-item="solar">0.15 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Wind turbine</label>
+                <input type="checkbox" class="item-check" data-item="wind">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="wind" min="0.05" max="0.2" step="0.01" value="0.05">
+                  <span class="slider-value" data-item="wind">0.05 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Woodlot for firewood</label>
+                <input type="checkbox" class="item-check" data-item="woodlot">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="woodlot" min="2" max="10" step="0.5" value="5">
+                  <span class="slider-value" data-item="woodlot">5.0 acres</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other -->
+          <div class="category-section">
+            <h3>🏡 Other</h3>
+            <div class="category-items">
+              <div class="item-row">
+                <label>House & yard</label>
+                <input type="checkbox" class="item-check" data-item="house" checked>
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="house" min="0.5" max="1" step="0.05" value="0.5">
+                  <span class="slider-value" data-item="house">0.50 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Access roads / paths</label>
+                <input type="checkbox" class="item-check" data-item="roads">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="roads" min="0.1" max="0.2" step="0.01" value="0.1">
+                  <span class="slider-value" data-item="roads">0.10 acres</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <label>Water feature / pond</label>
+                <input type="checkbox" class="item-check" data-item="pond">
+                <div class="slider-group">
+                  <input type="range" class="item-slider" data-item="pond" min="0.1" max="0.5" step="0.05" value="0.25">
+                  <span class="slider-value" data-item="pond">0.25 acres</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Region selector for cost -->
+          <div class="category-section">
+            <h3>💰 Land Cost Estimate</h3>
+            <div class="form-group">
+              <label class="form-label" for="region">Your Region (for land cost estimate)</label>
+              <select class="form-select" id="region">
+                <option value="northeast">Northeast ($5,000–15,000/acre)</option>
+                <option value="southeast">Southeast ($3,000–8,000/acre)</option>
+                <option value="midwest" selected>Midwest ($5,000–12,000/acre)</option>
+                <option value="greatplains">Great Plains ($2,000–5,000/acre)</option>
+                <option value="southwest">Southwest ($1,000–4,000/acre)</option>
+                <option value="west">West ($3,000–12,000/acre)</option>
+                <option value="pacificNW">Pacific NW ($4,000–15,000/acre)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate Land Requirements</button>
+        </form>
+
+        <!-- Results -->
+        <div id="results" class="result-box">
+          <h2 style="margin-bottom: var(--space-md);">Land Requirement Results</h2>
+
+          <div class="result-highlight">
+            <div class="big-number" id="resTotalAcres">—</div>
+            <div class="sub-text" id="resPeopleFed">Total acres needed</div>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="value" id="resSelfSuff">—</div>
+              <div class="label">Self-Sufficiency</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resLandCost">—</div>
+              <div class="label">Est. Land Cost</div>
+            </div>
+          </div>
+
+          <!-- Land Breakdown Chart -->
+          <div class="land-breakdown">
+            <h3>Land Use Breakdown</h3>
+            <div class="breakdown-bar" id="breakdownBar"></div>
+            <div class="breakdown-legend" id="breakdownLegend"></div>
+          </div>
+
+          <!-- Detail table -->
+          <div style="margin-top: var(--space-lg);">
+            <h3>Detailed Breakdown</h3>
+            <table class="region-table" id="detailTable">
+              <thead>
+                <tr><th>Category</th><th>Item</th><th>Acres</th><th>% of Total</th></tr>
+              </thead>
+              <tbody id="detailBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section style="margin-top: var(--space-2xl);">
+          <h2>How It Works</h2>
+          <p>This calculator uses widely accepted homesteading references to estimate land needs. The assumptions are based on intensive gardening methods, managed grazing, and realistic yields per acre.</p>
+
+          <div class="formula-box">
+Land Calculation:
+  Total Acres = Σ (selected items' acreage values)
+
+Self-Sufficiency %:
+  Food self-sufficiency: based on % of calories produced on-site
+  Livestock self-sufficiency: based on % of protein needs met
+  Energy self-sufficiency: based on % of power needs met on-site
+
+References used:
+  - Vegetable garden: 0.1 acre feeds 1 person (intensive biointensive)
+  - Fruit trees: 4 semi-dwarf per 0.1 acre (10 ft spacing)
+  - Dairy cow: 2–3 acres pasture per cow (with calf)
+  - Beef steer: 1–2 acres pasture per head
+  - Goats: 4 goats need 1 acre (rotational grazing)
+  - Chickens: minimal land if feed is purchased
+  - Solar panels: 0.1–0.3 acres for average home (5–10 kW)
+  - Woodlot: 2–10 acres for firewood (depending on management)
+          </div>
+
+          <h3>US Farmland Prices by Region (2024–2026 data)</h3>
+          <table class="region-table">
+            <thead>
+              <tr><th>Region</th><th>Price Range ($/acre)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Northeast</td><td>$5,000 – $15,000</td><td>Highest prices near cities; rural NH/ME can be lower</td></tr>
+              <tr><td>Southeast</td><td>$3,000 – $8,000</td><td>Good value; watch for flood risk in low areas</td></tr>
+              <tr><td>Midwest</td><td>$5,000 – $12,000</td><td>Corn belt premium; farther north is cheaper</td></tr>
+              <tr><td>Great Plains</td><td>$2,000 – $5,000</td><td>Most affordable; dryland may need irrigation</td></tr>
+              <tr><td>Southwest</td><td>$1,000 – $4,000</td><td>Cheap land but limited water; check well depth</td></tr>
+              <tr><td>West</td><td>$3,000 – $12,000</td><td>Mountain states vary wildly; CA is expensive</td></tr>
+              <tr><td>Pacific NW</td><td>$4,000 – $15,000</td><td>WA/OR mild climate; CA north coast very expensive</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Key Planning Considerations</h3>
+          <div class="card-grid" style="margin-top: var(--space-md);">
+            <div class="card">
+              <h4>Zoning & Permits</h4>
+              <p>Check local zoning before buying. Some counties restrict livestock, minimum lot sizes, or building placement. Call the planning department first.</p>
+            </div>
+            <div class="card">
+              <h4>Water Rights</h4>
+              <p>In the western US, water rights are separate from land ownership. Verify well rights and irrigation access before purchasing.</p>
+            </div>
+            <div class="card">
+              <h4>Access & Roads</h4>
+              <p>Year-round road access is critical. A landlocked parcel or one with a seasonal creek crossing can become inaccessible when you need it most.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield</a>
+            <a href="self-sufficiency-score.html">Self-Sufficiency Score</a>
+            <a href="fencing-calculator.html">Fencing Calculator</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="ad-slot"></div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Land Buying Tips</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.9rem;">
+            <li>Visit land in different seasons</li>
+            <li>Test well output before buying</li>
+            <li>Check flood zone maps (FEMA)</li>
+            <li>Soil test for gardening potential</li>
+            <li>Verify legal access (deed research)</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Minimum for Self-Sufficiency</h3>
+          <p style="font-size:0.9rem;">Many homesteaders find 2–5 acres sufficient for a family of 4 with a garden, orchard, and a few animals. 10+ acres allows for cattle and serious timber.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Item display names and categories
+    const itemMeta = {
+      vegGarden:    { name: 'Vegetable garden',    cat: 'Food',    color: '#40916c' },
+      fruitOrchard: { name: 'Fruit orchard',       cat: 'Food',    color: '#2d6a4f' },
+      nutTrees:     { name: 'Nut trees',           cat: 'Food',    color: '#588157' },
+      grains:       { name: 'Grains / corn',       cat: 'Food',    color: '#a3b18a' },
+      potatoPatch:  { name: 'Potato / pumpkin',    cat: 'Food',    color: '#b5c99a' },
+      herbGarden:   { name: 'Herb garden',         cat: 'Food',    color: '#dad7cd' },
+      chickens:     { name: 'Chickens',            cat: 'Livestock', color: '#bc6c25' },
+      goats:        { name: 'Goats',               cat: 'Livestock', color: '#a68a64' },
+      sheep:        { name: 'Sheep',               cat: 'Livestock', color: '#ddb892' },
+      pigs:         { name: 'Pigs',                cat: 'Livestock', color: '#e6b89c' },
+      beef:         { name: 'Beef cattle',         cat: 'Livestock', color: '#9c6644' },
+      dairyCow:     { name: 'Dairy cow',           cat: 'Livestock', color: '#7f5539' },
+      horses:       { name: 'Horses',              cat: 'Livestock', color: '#8b6f47' },
+      bees:         { name: 'Beekeeping',           cat: 'Livestock', color: '#f4d35e' },
+      solar:        { name: 'Solar panels',        cat: 'Energy',   color: '#fcbf49' },
+      wind:         { name: 'Wind turbine',        cat: 'Energy',   color: '#f77f00' },
+      woodlot:      { name: 'Woodlot',             cat: 'Energy',   color: '#2d6a4f' },
+      house:        { name: 'House & yard',        cat: 'Other',    color: '#778da9' },
+      roads:        { name: 'Roads / paths',       cat: 'Other',    color: '#a0aec0' },
+      pond:         { name: 'Pond / water',        cat: 'Other',    color: '#48bfe3' }
+    };
+
+    const regionPrices = {
+      northeast:   [5000, 15000],
+      southeast:   [3000, 8000],
+      midwest:     [5000, 12000],
+      greatplains: [2000, 5000],
+      southwest:   [1000, 4000],
+      west:        [3000, 12000],
+      pacificNW:   [4000, 15000]
+    };
+
+    // Wire up sliders and checkboxes
+    document.querySelectorAll('.item-slider').forEach(slider => {
+      slider.addEventListener('input', function() {
+        const item = this.dataset.item;
+        const val = parseFloat(this.value);
+        const display = document.querySelector('.slider-value[data-item="' + item + '"]');
+        display.textContent = val.toFixed(2) + ' acres';
+      });
+    });
+
+    document.querySelectorAll('.item-check').forEach(cb => {
+      cb.addEventListener('change', function() {
+        const item = this.dataset.item;
+        const slider = document.querySelector('.item-slider[data-item="' + item + '"]');
+        const valSpan = document.querySelector('.slider-value[data-item="' + item + '"]');
+        if (slider) {
+          slider.disabled = !this.checked;
+          slider.style.opacity = this.checked ? '1' : '0.4';
+          valSpan.style.opacity = this.checked ? '1' : '0.4';
+        }
+      });
+    });
+
+    // Presets
+    const presets = {
+      onePerson: {
+        vegGarden:0.1, fruitOrchard:0.25, nutTrees:0, grains:0, potatoPatch:0.25, herbGarden:0.05,
+        chickens:0.02, goats:0, sheep:0, pigs:0, beef:0, dairyCow:0, horses:0, bees:0.01,
+        solar:0.1, wind:0, woodlot:0, house:0.5, roads:0.1, pond:0.1
+      },
+      family4: {
+        vegGarden:0.4, fruitOrchard:0.5, nutTrees:0.5, grains:1, potatoPatch:0.25, herbGarden:0.05,
+        chickens:0.03, goats:1, sheep:0, pigs:0.25, beef:0, dairyCow:1.5, horses:0, bees:0.01,
+        solar:0.2, wind:0.05, woodlot:3, house:0.75, roads:0.15, pond:0.25
+      },
+      full: {
+        vegGarden:0.5, fruitOrchard:1, nutTrees:1.5, grains:3, potatoPatch:0.5, herbGarden:0.1,
+        chickens:0.05, goats:2, sheep:2, pigs:0.5, beef:3, dairyCow:0, horses:1.5, bees:0.02,
+        solar:0.3, wind:0.1, woodlot:10, house:1, roads:0.2, pond:0.5
+      },
+      urban: {
+        vegGarden:0.1, fruitOrchard:0.25, nutTrees:0, grains:0, potatoPatch:0.1, herbGarden:0.05,
+        chickens:0.02, goats:0, sheep:0, pigs:0, beef:0, dairyCow:0, horses:0, bees:0.01,
+        solar:0.1, wind:0, woodlot:0, house:0.25, roads:0.05, pond:0
+      },
+      clear: {}
+    };
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const preset = presets[this.dataset.preset];
+        // Clear all first
+        document.querySelectorAll('.item-check').forEach(cb => { cb.checked = false; cb.dispatchEvent(new Event('change')); });
+        if (this.dataset.preset === 'clear') return;
+
+        Object.keys(preset).forEach(key => {
+          const cb = document.querySelector('.item-check[data-item="' + key + '"]');
+          const slider = document.querySelector('.item-slider[data-item="' + key + '"]');
+          if (cb && preset[key] > 0) {
+            cb.checked = true;
+            cb.dispatchEvent(new Event('change'));
+            if (slider) {
+              slider.value = preset[key];
+              slider.dispatchEvent(new Event('input'));
+            }
+          }
+        });
+      });
+    });
+
+    // Form submit
+    document.getElementById('landForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateLand();
+    });
+
+    function calculateLand() {
+      let totalAcres = 0;
+      const items = [];
+
+      document.querySelectorAll('.item-check').forEach(cb => {
+        if (cb.checked) {
+          const item = cb.dataset.item;
+          const slider = document.querySelector('.item-slider[data-item="' + item + '"]');
+          const acres = parseFloat(slider.value);
+          totalAcres += acres;
+          items.push({ key: item, acres: acres, meta: itemMeta[item] });
+        }
+      });
+
+      if (items.length === 0) { alert('Please select at least one item.'); return; }
+
+      // Self-sufficiency estimate (rough)
+      // Food items contribute to food self-sufficiency; livestock to protein; energy to power
+      let foodAcres = 0, liveAcres = 0, energyAcres = 0, otherAcres = 0;
+      items.forEach(it => {
+        if (it.meta.cat === 'Food') foodAcres += it.acres;
+        else if (it.meta.cat === 'Livestock') liveAcres += it.acres;
+        else if (it.meta.cat === 'Energy') energyAcres += it.acres;
+        else otherAcres += it.acres;
+      });
+
+      // Rough self-sufficiency scoring
+      const foodScore = Math.min(100, (foodAcres / (totalAcres * 0.4)) * 100);
+      const liveScore = Math.min(100, (liveAcres / (totalAcres * 0.3)) * 100);
+      const energyScore = Math.min(100, (energyAcres / (totalAcres * 0.1)) * 100);
+      const overallScore = Math.round((foodScore * 0.5 + liveScore * 0.3 + energyScore * 0.2));
+
+      let suffLabel = 'Low';
+      if (overallScore >= 80) suffLabel = 'High';
+      else if (overallScore >= 50) suffLabel = 'Moderate';
+      else if (overallScore >= 30) suffLabel = 'Some';
+
+      // Land cost
+      const region = document.getElementById('region').value;
+      const [priceLow, priceHigh] = regionPrices[region];
+      const costLow = totalAcres * priceLow;
+      const costHigh = totalAcres * priceHigh;
+
+      // Display
+      document.getElementById('resTotalAcres').textContent = totalAcres.toFixed(2) + ' acres';
+      document.getElementById('resPeopleFed').textContent = 'Estimated total land needed for your homestead plan';
+      document.getElementById('resSelfSuff').textContent = overallScore + '% (' + suffLabel + ')';
+      document.getElementById('resLandCost').textContent = '$' + costLow.toLocaleString() + ' – $' + costHigh.toLocaleString();
+
+      // Build breakdown bar
+      const bar = document.getElementById('breakdownBar');
+      bar.innerHTML = '';
+      const legend = document.getElementById('breakdownLegend');
+      legend.innerHTML = '';
+
+      // Group by category
+      const cats = {};
+      items.forEach(it => {
+        if (!cats[it.meta.cat]) cats[it.meta.cat] = { acres: 0, color: it.meta.color };
+        cats[it.meta.cat].acres += it.acres;
+      });
+
+      Object.keys(cats).forEach(cat => {
+        const pct = (cats[cat].acres / totalAcres * 100).toFixed(1);
+        const seg = document.createElement('div');
+        seg.style.width = pct + '%';
+        seg.style.background = cats[cat].color;
+        seg.title = cat + ': ' + cats[cat].acres.toFixed(2) + ' acres (' + pct + '%)';
+        bar.appendChild(seg);
+
+        const leg = document.createElement('div');
+        leg.className = 'legend-item';
+        leg.innerHTML = '<div class="legend-color" style="background:' + cats[cat].color + '"></div><span>' + cat + ' (' + pct + '%)</span>';
+        legend.appendChild(leg);
+      });
+
+      // Detail table
+      const tbody = document.getElementById('detailBody');
+      tbody.innerHTML = '';
+      items.forEach(it => {
+        const pct = (it.acres / totalAcres * 100).toFixed(1);
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + it.meta.cat + '</td><td>' + it.meta.name + '</td><td>' + it.acres.toFixed(2) + '</td><td>' + pct + '%</td>';
+        tbody.appendChild(tr);
+      });
+
+      // Show results
+      const resultsBox = document.getElementById('results');
+      resultsBox.classList.add('visible');
+      resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>

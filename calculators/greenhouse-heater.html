@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenhouse Heater Size Calculator — BTU Requirements (2026)</title>
+  <meta name="description" content="Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater. Free tool.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/greenhouse-heater.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Greenhouse Heater Size Calculator",
+    "description": "Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater.",
+    "url": "https://homesteadcalculators.com/calculators/greenhouse-heater.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; <span>Greenhouse Heater BTU Calculator</span>
+      </nav>
+
+      <!-- Calculator Layout -->
+      <div class="calc-layout">
+        <!-- Main Content -->
+        <div class="calc-main">
+          <h1>Greenhouse Heater Size Calculator</h1>
+          <p class="text-lg text-muted mb-lg">Calculate the BTU heating requirements for your greenhouse based on dimensions, glazing type, and your local climate.</p>
+
+          <!-- Calculator Form -->
+          <div class="card">
+            <h2>Enter Greenhouse Details</h2>
+            <form id="greenhouseForm" onsubmit="calculateBTU(event)">
+              <div class="form-group">
+                <label class="form-label">Greenhouse Dimensions</label>
+                <div class="input-group">
+                  <div style="flex:1;">
+                    <label style="font-size:0.8rem; color: var(--text-muted);">Length (ft)</label>
+                    <input type="number" id="length" class="form-input" min="1" max="500" value="20" required>
+                  </div>
+                  <div style="flex:1;">
+                    <label style="font-size:0.8rem; color: var(--text-muted);">Width (ft)</label>
+                    <input type="number" id="width" class="form-input" min="1" max="500" value="12" required>
+                  </div>
+                  <div style="flex:1;">
+                    <label style="font-size:0.8rem; color: var(--text-muted);">Height (ft)</label>
+                    <input type="number" id="height" class="form-input" min="1" max="50" value="8" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="glazingType">Glazing / Cover Type</label>
+                <select id="glazingType" class="form-select">
+                  <option value="0.45">Polycarbonate triple-wall (U=0.45) — Best insulation</option>
+                  <option value="0.55">Polycarbonate twin-wall 10mm (U=0.55)</option>
+                  <option value="0.65" selected>Polycarbonate twin-wall 6mm (U=0.65) — Good value</option>
+                  <option value="0.70">Polyethylene double layer (U=0.70)</option>
+                  <option value="0.70">Double-pane glass (U=0.70)</option>
+                  <option value="1.10">Single-pane glass (U=1.10) — Least efficient</option>
+                  <option value="1.15">Polyethylene single layer (U=1.15)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="insideTemp">Desired Inside Temperature (°F)</label>
+                <input type="number" id="insideTemp" class="form-input" min="40" max="90" value="55" required>
+                <span class="form-hint">Most plants thrive at 55-65°F overnight, 65-75°F daytime</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="usdaZone">USDA Hardiness Zone</label>
+                <select id="usdaZone" class="form-select" onchange="updateOutsideTemp()">
+                  <option value="manual">Manual Entry (enter temperature below)</option>
+                  <option value="-30">Zone 3 (min -30°F) — Northern MN, ND, MT</option>
+                  <option value="-20">Zone 4 (min -20°F) — Upper Midwest, New England</option>
+                  <option value="-10">Zone 5 (min -10°F) — Midwest, Plains</option>
+                  <option value="0" selected>Zone 6 (min 0°F) — Mid-Atlantic, Ohio Valley</option>
+                  <option value="10">Zone 7 (min 10°F) — Upper South, Pacific NW</option>
+                  <option value="20">Zone 8 (min 20°F) — Deep South, Southeast</option>
+                  <option value="30">Zone 9 (min 30°F) — Gulf Coast, Florida</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="outsideTempGroup">
+                <label class="form-label" for="outsideTemp">Lowest Outside Temperature (°F)</label>
+                <input type="number" id="outsideTemp" class="form-input" value="0" required>
+                <span class="form-hint">Use the coldest temperature you expect during your growing season</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="fuelType">Fuel Type (for cost estimate)</label>
+                <select id="fuelType" class="form-select">
+                  <option value="propane" selected>Propane (~$2.50/gal, 91,500 BTU/gal)</option>
+                  <option value="natural-gas">Natural Gas (~$1.50/therm, 100,000 BTU/therm)</option>
+                  <option value="electric">Electric (~$0.15/kWh, 3,412 BTU/kWh)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Calculate BTU Requirements</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="result-box">
+            <h2>Heating Requirements</h2>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="btuRequired">—</div>
+                <div class="label">Required BTU/hr</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="heaterSize">—</div>
+                <div class="label">Recommended Heater Size</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="surfaceArea">—</div>
+                <div class="label">Surface Area (sq ft)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="tempDiff">—</div>
+                <div class="label">Temperature Difference</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="annualCost">—</div>
+                <div class="label">Est. Annual Heating Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="heatingHours">—</div>
+                <div class="label">Est. Heating Hours/Year</div>
+              </div>
+            </div>
+
+            <div id="fuelSuggestions" style="margin-top: 1.5rem; padding: 1rem; background: var(--white); border-radius: var(--radius-sm);"></div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mt-xl">
+            <h2>How It Works</h2>
+            <p>Greenhouse heat loss occurs through the walls, roof, and floor (collectively the "envelope"). The rate of heat loss depends on the surface area, the insulating quality of the glazing material (U-value), and the temperature difference between inside and outside.</p>
+
+            <h3>Understanding U-Values</h3>
+            <p>The U-value (or U-factor) measures how well a material conducts heat. Lower U-values mean better insulation and less heat loss:</p>
+            <ul>
+              <li><strong>U = 0.45</strong> — Polycarbonate triple-wall (best insulation)</li>
+              <li><strong>U = 0.55</strong> — Polycarbonate twin-wall 10mm</li>
+              <li><strong>U = 0.65</strong> — Polycarbonate twin-wall 6mm</li>
+              <li><strong>U = 0.70</strong> — Double-pane glass or double-layer polyethylene</li>
+              <li><strong>U = 1.10</strong> — Single-pane glass</li>
+              <li><strong>U = 1.15</strong> — Single-layer polyethylene (least efficient)</li>
+            </ul>
+
+            <h3>Safety Factor</h3>
+            <p>A 10% safety factor is applied to the calculation to account for air leaks, door openings, and windy conditions. This ensures your heater isn't undersized on the coldest nights.</p>
+
+            <div class="formula-box">
+Surface Area (sq ft) = 2 × (L×H + W×H) + L×W
+  (This accounts for walls and simplified roof area)
+
+Temperature Difference (°F) = Inside temp - Outside temp
+
+BTU/hr = Surface Area × U-value × Temperature Difference × 1.1
+
+Annual Heating Cost = (BTU/hr × Heating Hours / BTU per unit) × Fuel cost per unit
+
+Heating hours per year (by USDA Zone):
+  Zone 3-4: 4,000 hours
+  Zone 5-6: 3,000 hours
+  Zone 7-8: 2,000 hours
+  Zone 9: 1,000 hours
+
+Standard heater sizes:
+  10,000 / 15,000 / 20,000 / 30,000 / 50,000 / 80,000 / 100,000 BTU/hr
+  (Round up to next available size)
+            </div>
+          </div>
+
+          <!-- Related Calculators -->
+          <div class="related-calc">
+            <h3>Related Calculators</h3>
+            <div class="related-calc-list">
+              <a href="rainwater-harvest.html">Rainwater Harvest Calculator</a>
+              <a href="solar-power.html">Solar Power Calculator</a>
+              <a href="land-requirement.html">Land Requirement Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="calc-sidebar">
+          <div class="card mb-lg">
+            <h3>USDA Zone Reference</h3>
+            <table style="width:100%; font-size:0.8rem; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <th style="text-align:left; padding:4px 6px;">Zone</th>
+                  <th style="text-align:center; padding:4px 6px;">Min Temp</th>
+                  <th style="text-align:center; padding:4px 6px;">Heat Hrs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">3</td>
+                  <td style="text-align:center; padding:4px 6px;">-30°F</td>
+                  <td style="text-align:center; padding:4px 6px;">4,000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">4</td>
+                  <td style="text-align:center; padding:4px 6px;">-20°F</td>
+                  <td style="text-align:center; padding:4px 6px;">4,000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">5</td>
+                  <td style="text-align:center; padding:4px 6px;">-10°F</td>
+                  <td style="text-align:center; padding:4px 6px;">3,000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">6</td>
+                  <td style="text-align:center; padding:4px 6px;">0°F</td>
+                  <td style="text-align:center; padding:4px 6px;">3,000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">7</td>
+                  <td style="text-align:center; padding:4px 6px;">10°F</td>
+                  <td style="text-align:center; padding:4px 6px;">2,000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">8</td>
+                  <td style="text-align:center; padding:4px 6px;">20°F</td>
+                  <td style="text-align:center; padding:4px 6px;">2,000</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 6px;">9</td>
+                  <td style="text-align:center; padding:4px 6px;">30°F</td>
+                  <td style="text-align:center; padding:4px 6px;">1,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ad-slot"></div>
+
+          <div class="card">
+            <h3>Energy-Saving Tips</h3>
+            <ul style="font-size:0.9rem; padding-left: 1.2rem;">
+              <li>Install thermal mass (water barrels) to store daytime heat</li>
+              <li>Seal all gaps and cracks for air leaks</li>
+              <li>Add bubble wrap insulation to glazing in winter</li>
+              <li>Use thermal curtains at night</li>
+              <li>Consider a ground-source heat pump for efficiency</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const standardHeaterSizes = [10000, 15000, 20000, 30000, 50000, 80000, 100000];
+
+    function updateOutsideTemp() {
+      const zone = document.getElementById('usdaZone').value;
+      const outsideTempInput = document.getElementById('outsideTemp');
+      const outsideTempGroup = document.getElementById('outsideTempGroup');
+
+      if (zone === 'manual') {
+        outsideTempGroup.style.display = 'block';
+        return;
+      }
+
+      outsideTempInput.value = zone;
+    }
+
+    function getHeatingHours(zoneValue) {
+      const temp = parseInt(zoneValue);
+      if (isNaN(temp)) return 3000; // default
+      if (temp <= -20) return 4000;  // Zone 3-4
+      if (temp <= 0) return 3000;    // Zone 5-6
+      if (temp <= 20) return 2000;   // Zone 7-8
+      return 1000;                   // Zone 9
+    }
+
+    function getRecommendedHeaterSize(btu) {
+      for (let i = 0; i < standardHeaterSizes.length; i++) {
+        if (standardHeaterSizes[i] >= btu) {
+          return standardHeaterSizes[i];
+        }
+      }
+      return Math.ceil(btu / 5000) * 5000; // Custom size if very large
+    }
+
+    function calculateBTU(event) {
+      event.preventDefault();
+
+      const length = parseFloat(document.getElementById('length').value);
+      const width = parseFloat(document.getElementById('width').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const uValue = parseFloat(document.getElementById('glazingType').value);
+      const insideTemp = parseFloat(document.getElementById('insideTemp').value);
+      const outsideTemp = parseFloat(document.getElementById('outsideTemp').value);
+      const fuelType = document.getElementById('fuelType').value;
+      const zoneSelect = document.getElementById('usdaZone');
+
+      // Surface area: 2*(L*H + W*H) + L*W
+      const surfaceArea = 2 * (length * height + width * height) + length * width;
+
+      // Temperature difference
+      const tempDiff = insideTemp - outsideTemp;
+
+      // BTU/hr calculation with 10% safety factor
+      const btuPerHour = surfaceArea * uValue * tempDiff * 1.1;
+
+      // Recommended heater size (round up to next standard)
+      const heaterSize = getRecommendedHeaterSize(btuPerHour);
+
+      // Heating hours per year based on zone
+      const heatingHours = getHeatingHours(zoneSelect.value === 'manual' ? outsideTemp.toString() : zoneSelect.value);
+
+      // Fuel cost calculations
+      let costPerBTU, fuelName;
+      if (fuelType === 'propane') {
+        costPerBTU = 2.50 / 91500;
+        fuelName = 'Propane';
+      } else if (fuelType === 'natural-gas') {
+        costPerBTU = 1.50 / 100000;
+        fuelName = 'Natural Gas';
+      } else {
+        costPerBTU = 0.15 / 3412;
+        fuelName = 'Electric';
+      }
+
+      const annualCost = btuPerHour * heatingHours * costPerBTU;
+
+      // Display results
+      document.getElementById('btuRequired').textContent = Math.round(btuPerHour).toLocaleString() + ' BTU/hr';
+      document.getElementById('heaterSize').textContent = heaterSize.toLocaleString() + ' BTU/hr';
+      document.getElementById('surfaceArea').textContent = Math.round(surfaceArea).toLocaleString() + ' sq ft';
+      document.getElementById('tempDiff').textContent = Math.round(tempDiff) + '°F';
+      document.getElementById('annualCost').textContent = '$' + annualCost.toFixed(2);
+      document.getElementById('heatingHours').textContent = heatingHours.toLocaleString() + ' hours';
+
+      // Fuel suggestions
+      const fuelSuggestions = document.getElementById('fuelSuggestions');
+      const allFuelTypes = [
+        { name: 'Propane', costPerBTU: 2.50 / 91500, efficiency: '80-95%' },
+        { name: 'Natural Gas', costPerBTU: 1.50 / 100000, efficiency: '80-95%' },
+        { name: 'Electric', costPerBTU: 0.15 / 3412, efficiency: '100%' }
+      ];
+
+      fuelSuggestions.innerHTML = '<h4 style="margin-bottom: 0.5rem;">Fuel Type Comparison</h4>';
+      const table = document.createElement('table');
+      table.style.cssText = 'width:100%; border-collapse: collapse; font-size: 0.85rem;';
+      table.innerHTML = `
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-color); background: var(--gray-50);">
+            <th style="text-align:left; padding:6px 8px;">Fuel Type</th>
+            <th style="text-align:center; padding:6px 8px;">Efficiency</th>
+            <th style="text-align:right; padding:6px 8px;">Est. Annual Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${allFuelTypes.map(f => {
+            const cost = btuPerHour * heatingHours * f.costPerBTU;
+            return `<tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding:6px 8px;">${f.name}</td>
+              <td style="text-align:center; padding:6px 8px;">${f.efficiency}</td>
+              <td style="text-align:right; padding:6px 8px;">$${cost.toFixed(2)}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      `;
+      fuelSuggestions.appendChild(table);
+      fuelSuggestions.innerHTML += '<p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Actual costs vary by local rates. These are national averages for estimation only.</p>';
+
+      // Show results
+      document.getElementById('results').classList.add('visible');
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

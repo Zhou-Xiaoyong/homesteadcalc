@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dehydrator Time & Temperature Guide — Food Drying Calculator (2026)</title>
+  <meta name="description" content="Find the correct dehydrator time and temperature for fruits, vegetables, meat jerky, herbs, and more. Get doneness tests for each food. Free drying guide.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/dehydrator.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dehydrator Time & Temperature Calculator",
+    "description": "Find the correct dehydrator time and temperature for fruits, vegetables, meat jerky, herbs, and more.",
+    "url": "https://homesteadcalculators.com/calculators/dehydrator.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    .food-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+      font-size: 0.9rem;
+    }
+    .food-data-table th,
+    .food-data-table td {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .food-data-table th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .food-data-table tr:nth-child(even) {
+      background: var(--gray-50);
+    }
+    .doneness-test {
+      background: var(--cream);
+      border-left: 4px solid var(--earth);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .doneness-test h4 {
+      color: var(--earth);
+      margin-bottom: var(--space-xs);
+    }
+    .safety-note {
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      color: #991b1b;
+      font-size: 0.9rem;
+    }
+    .safety-note strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .result-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .result-detail-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      border: 1px solid var(--border-color);
+    }
+    .result-detail-item .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .result-detail-item .value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    @media print {
+      .safety-note, .doneness-test {
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page container">
+    <!-- Breadcrumb -->
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; Dehydrator Guide
+    </nav>
+
+    <div class="calc-layout">
+      <!-- Main Calculator -->
+      <div class="calc-main">
+        <h1>Dehydrator Time & Temperature Guide</h1>
+        <p class="text-muted">Find the correct drying time and temperature for any food. Get doneness tests, safety notes, and storage tips for fruits, vegetables, meat jerky, herbs, and more.</p>
+
+        <form id="dehydratorForm" class="card" style="margin-top: var(--space-lg);">
+          <div class="form-group">
+            <label class="form-label" for="foodCategory">Food Category</label>
+            <select class="form-select" id="foodCategory" required>
+              <option value="">Select a category...</option>
+              <option value="fruits">Fruits</option>
+              <option value="vegetables">Vegetables</option>
+              <option value="meat">Meat / Jerky</option>
+              <option value="herbs">Herbs</option>
+              <option value="mushrooms">Mushrooms</option>
+              <option value="fruitLeather">Fruit Leather</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="foodGroup" style="display:none;">
+            <label class="form-label" for="specificFood">Specific Food</label>
+            <select class="form-select" id="specificFood">
+              <option value="">Select food...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="thickness">Food Thickness / Cut Style</label>
+            <select class="form-select" id="thickness">
+              <option value="thin">Thin sliced 1/8" (-20% time)</option>
+              <option value="standard" selected>Standard 1/4" (baseline)</option>
+              <option value="thick">Thick 3/8" (+30% time)</option>
+              <option value="wholeSmall">Whole small (+40% time)</option>
+              <option value="wholeHalved">Whole halved (+60% time)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="altitude">Your Altitude</label>
+            <select class="form-select" id="altitude">
+              <option value="seaLevel">Sea level – 1,000 ft (baseline)</option>
+              <option value="low">1,000 – 3,000 ft (+10% time, +5°F)</option>
+              <option value="mid">3,000 – 6,000 ft (+20% time, +5°F)</option>
+              <option value="high">6,000 ft+ (+30% time, +10°F)</option>
+            </select>
+            <span class="form-hint">Dehydrating takes longer at higher altitudes due to lower air pressure.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Get Drying Guide</button>
+        </form>
+
+        <!-- Results -->
+        <div id="results" class="result-box">
+          <h2 style="margin-bottom: var(--space-md);">Drying Guide Results</h2>
+
+          <div class="result-detail-grid">
+            <div class="result-detail-item">
+              <div class="label">Recommended Temperature</div>
+              <div class="value" id="resultTemp">—</div>
+            </div>
+            <div class="result-detail-item">
+              <div class="label">Estimated Time</div>
+              <div class="value" id="resultTime">—</div>
+            </div>
+            <div class="result-detail-item">
+              <div class="label">Pretreatment Needed</div>
+              <div class="value" id="resultPreTreat" style="font-size:1rem;">—</div>
+            </div>
+            <div class="result-detail-item">
+              <div class="label">Storage Life</div>
+              <div class="value" id="resultStorage">—</div>
+            </div>
+          </div>
+
+          <div class="doneness-test" id="donenessSection">
+            <h4>Doneness Test</h4>
+            <p id="donenessText"></p>
+          </div>
+
+          <div class="safety-note" id="safetySection" style="display:none;">
+            <strong>⚠️ Safety Note</strong>
+            <p id="safetyText"></p>
+          </div>
+
+          <div style="margin-top: var(--space-lg);">
+            <h3>Preparation Tips</h3>
+            <ul id="prepTips" style="padding-left: var(--space-xl);"></ul>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section style="margin-top: var(--space-2xl);">
+          <h2>How It Works</h2>
+          <p>This calculator uses USDA-recommended drying temperatures and time ranges from experienced homesteaders. The adjustments are based on food thickness and altitude:</p>
+
+          <div class="formula-box">
+Food drying time = Base time × Thickness factor × Altitude factor
+
+Thickness factors:
+  Thin (1/8")   = 0.80 × base time
+  Standard (1/4")= 1.00 × base time (baseline)
+  Thick (3/8")   = 1.30 × base time
+  Whole small     = 1.40 × base time
+  Whole halved    = 1.60 × base time
+
+Altitude factors:
+  Sea level – 1,000ft  = 1.00 × (baseline)
+  1,000 – 3,000ft       = 1.10 × + 5°F
+  3,000 – 6,000ft       = 1.20 × + 5°F
+  6,000ft+              = 1.30 × + 10°F
+
+Temperature is adjusted UP at altitude to compensate for
+faster moisture evaporation at lower boiling points.
+          </div>
+
+          <h3>Why Temperature Matters</h3>
+          <p>Too low a temperature allows bacteria to grow before moisture is removed. Too high and the outside hardens (case hardening) while the inside stays moist. The USDA recommends these minimum temperatures:</p>
+          <ul style="padding-left: var(--space-xl);">
+            <li><strong>Fruits & vegetables:</strong> 125–135°F (enzymes deactivate at 140°F)</li>
+            <li><strong>Meat jerky:</strong> 155–165°F (must reach internal 160°F for safety)</li>
+            <li><strong>Herbs:</strong> 95–105°F (preserves essential oils and color)</li>
+          </ul>
+
+          <h3>Benefits of Dehydrating</h3>
+          <div class="card-grid" style="margin-top: var(--space-md);">
+            <div class="card">
+              <h4>Shelf Life</h4>
+              <p>Properly dried foods store 6–12 months at room temperature, up to 2 years if vacuum sealed and frozen.</p>
+            </div>
+            <div class="card">
+              <h4>Nutrition Retention</h4>
+              <p>Dehydrating preserves 80–90% of nutrients versus canning (40–60%). Vitamin A and fiber remain intact.</p>
+            </div>
+            <div class="card">
+              <h4>Weight Reduction</h4>
+              <p>Dried food weighs 10–15% of fresh weight — perfect for backpacking, emergency kits, and barn storage.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Food Data Reference -->
+        <section style="margin-top: var(--space-2xl);">
+          <h2>Complete Drying Reference</h2>
+          <p>Use this table as a quick reference for all common dehydrator foods:</p>
+
+          <div style="overflow-x:auto;">
+            <table class="food-data-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Food</th>
+                  <th>Temp (°F)</th>
+                  <th>Time (hrs)</th>
+                  <th>Pretreat?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Fruits</td><td>Apples</td><td>135</td><td>6–12</td><td>Yes (ascorbic acid)</td></tr>
+                <tr><td>Fruits</td><td>Bananas</td><td>135</td><td>6–12</td><td>Yes (citrus dip)</td></tr>
+                <tr><td>Fruits</td><td>Strawberries</td><td>135</td><td>8–15</td><td>Yes (ascorbic acid)</td></tr>
+                <tr><td>Fruits</td><td>Peaches</td><td>135</td><td>8–16</td><td>Yes (ascorbic acid)</td></tr>
+                <tr><td>Fruits</td><td>Mangoes</td><td>135</td><td>8–16</td><td>No</td></tr>
+                <tr><td>Fruits</td><td>Pears</td><td>135</td><td>8–16</td><td>Yes (ascorbic acid)</td></tr>
+                <tr><td>Fruits</td><td>Pineapple</td><td>135</td><td>10–18</td><td>No</td></tr>
+                <tr><td>Fruits</td><td>Blueberries</td><td>135</td><td>15–25</td><td>Yes (prick skin)</td></tr>
+                <tr><td>Fruits</td><td>Cherries</td><td>135</td><td>12–24</td><td>Yes (pierce/split)</td></tr>
+                <tr><td>Fruits</td><td>Grapes (raisins)</td><td>135</td><td>12–24</td><td>Yes (pierce skin)</td></tr>
+                <tr><td>Vegetables</td><td>Tomatoes</td><td>135</td><td>6–12</td><td>No (blanch optional)</td></tr>
+                <tr><td>Vegetables</td><td>Bell Peppers</td><td>125</td><td>6–12</td><td>No</td></tr>
+                <tr><td>Vegetables</td><td>Onions</td><td>125</td><td>6–10</td><td>No</td></tr>
+                <tr><td>Vegetables</td><td>Zucchini</td><td>125</td><td>6–10</td><td>No</td></tr>
+                <tr><td>Vegetables</td><td>Carrots</td><td>125</td><td>6–10</td><td>Yes (blanch first)</td></tr>
+                <tr><td>Vegetables</td><td>Green Beans</td><td>125</td><td>8–12</td><td>Yes (blanch)</td></tr>
+                <tr><td>Vegetables</td><td>Corn</td><td>125</td><td>6–10</td><td>No</td></tr>
+                <tr><td>Vegetables</td><td>Kale (chips)</td><td>115</td><td>4–6</td><td>No</td></tr>
+                <tr><td>Vegetables</td><td>Sweet Potatoes</td><td>125</td><td>8–12</td><td>Yes (blanch)</td></tr>
+                <tr><td>Vegetables</td><td>Celery</td><td>125</td><td>4–8</td><td>No</td></tr>
+                <tr><td>Meat</td><td>Beef Jerky</td><td>155–165</td><td>4–8</td><td>Yes (marinate)</td></tr>
+                <tr><td>Meat</td><td>Turkey Jerky</td><td>165</td><td>4–6</td><td>Yes (marinate)</td></tr>
+                <tr><td>Meat</td><td>Venison Jerky</td><td>155–165</td><td>4–8</td><td>Yes (marinate)</td></tr>
+                <tr><td>Meat</td><td>Fish (jerky)</td><td>145</td><td>6–12</td><td>Yes (brine)</td></tr>
+                <tr><td>Herbs</td><td>Basil</td><td>95–105</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Oregano</td><td>95–105</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Thyme</td><td>95</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Rosemary</td><td>95</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Mint</td><td>95</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Parsley</td><td>95</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Cilantro</td><td>95</td><td>1–3</td><td>No</td></tr>
+                <tr><td>Herbs</td><td>Dill</td><td>95</td><td>2–4</td><td>No</td></tr>
+                <tr><td>Mushrooms</td><td>All varieties</td><td>125</td><td>6–10</td><td>No (slice evenly)</td></tr>
+                <tr><td>Fruit Leather</td><td>Any fruit puree</td><td>135</td><td>6–10</td><td>No (puree smooth)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="canning-scaler.html">Canning Scaler</a>
+            <a href="garden-yield.html">Garden Yield</a>
+            <a href="solar-power.html">Solar Power</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="ad-slot"></div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Quick Tips</h3>
+          <ul style="padding-left: var(--space-lg); font-size: 0.9rem;">
+            <li>Rotate trays every 2 hours for even drying</li>
+            <li>Condition dried fruit in covered jars for 7–10 days</li>
+            <li>Store in airtight containers in a cool, dark place</li>
+            <li>Test doneness before turning off the dehydrator</li>
+            <li>Vacuum seal for maximum shelf life</li>
+          </ul>
+        </div>
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Equipment Needed</h3>
+          <ul style="padding-left: var(--space-lg); font-size: 0.9rem;">
+            <li>Dehydrator with temperature control</li>
+            <li>Mandoline slicer (uniform thickness)</li>
+            <li>Ascorbic acid (Fruit Fresh)</li>
+            <li>Vacuum sealer (for storage)</li>
+            <li>Mason jars (for conditioning)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Food data organized by category
+    const foodData = {
+      fruits: {
+        apples:      { name: 'Apples', temp: 135, timeMin: 6,  timeMax: 12, pretreat: 'Yes – dip in ascorbic acid solution (Fruit Fresh) to prevent browning', doneness: 'Leathery, not sticky. No moisture when torn. Can bend without breaking.', storage: '6–12 months', safety: '', prep: ['Wash and core apples', 'Slice 1/4" thick uniformly', 'Dip in ascorbic acid for 3–5 minutes', 'Arrange in single layer on trays'] },
+        bananas:     { name: 'Bananas', temp: 135, timeMin: 6,  timeMax: 12, pretreat: 'Yes – dip in citrus juice (lemon/lime) for 3–5 minutes', doneness: 'Leathery and dry but still flexible. No stickiness when cooled.', storage: '6–12 months', safety: '', prep: ['Peel and slice 1/4" to 3/8" thick', 'Dip in citrus juice to prevent browning', 'Pat dry before placing on trays', 'Rotate trays for even drying'] },
+        strawberries:{ name: 'Strawberries', temp: 135, timeMin: 8,  timeMax: 15, pretreat: 'Yes – dip in ascorbic acid solution', doneness: 'Leathery, no visible moisture. Can squeeze without juice appearing.', storage: '6–12 months', safety: '', prep: ['Hull and slice 1/4" thick', 'Dip in ascorbic acid for 3 minutes', 'Pat dry before dehydrating', 'Berries take longer than most fruits'] },
+        peaches:     { name: 'Peaches', temp: 135, timeMin: 8,  timeMax: 16, pretreat: 'Yes – dip in ascorbic acid solution', doneness: 'Leathery, no pockets of moisture. Fold without breaking.', storage: '6–12 months', safety: '', prep: ['Blanch to remove skins easily', 'Pit and slice 1/4" thick', 'Dip in ascorbic acid 3–5 minutes', 'Arrange pit-side up for faster drying'] },
+        mangoes:     { name: 'Mangoes', temp: 135, timeMin: 8,  timeMax: 16, pretreat: 'No pretreatment needed', doneness: 'Leathery and pliable. No sticky juice when pressed.', storage: '6–12 months', safety: '', prep: ['Peel and slice 1/4" to 3/8" thick', 'Remove fibrous bits', 'Arrange in single layer', 'Takes 8–16 hours depending on thickness'] },
+        pears:       { name: 'Pears', temp: 135, timeMin: 8,  timeMax: 16, pretreat: 'Yes – dip in ascorbic acid solution', doneness: 'Leathery, not sticky. Can squeeze without moisture appearing.', storage: '6–12 months', safety: '', prep: ['Peel, core, and slice 1/4" thick', 'Dip in ascorbic acid 3–5 minutes', 'Pat dry before placing on trays', 'Pears darken quickly without treatment'] },
+        pineapple:   { name: 'Pineapple', temp: 135, timeMin: 10, timeMax: 18, pretreat: 'No pretreatment needed', doneness: 'Leathery, no juice when squeezed. Slightly translucent.', storage: '6–12 months', safety: '', prep: ['Peel, core, and cut into 1/4" rings or chunks', 'Pat dry with paper towel', 'Arrange in single layer', 'Pineapple is very juicy – expect 10–18 hours'] },
+        blueberries:  { name: 'Blueberries', temp: 135, timeMin: 15, timeMax: 25, pretreat: 'Yes – prick skins with fork or blanch 30 seconds', doneness: 'Wrinkled, no soft spots when squeezed. Skins should be fully shriveled.', storage: '6–12 months', safety: '', prep: ['Wash and sort berries', 'Prick each berry with fork OR dip in boiling water 30 seconds', 'Drain and pat dry', 'Blueberries take longest – be patient'] },
+        cherries:    { name: 'Cherries', temp: 135, timeMin: 12, timeMax: 24, pretreat: 'Yes – pierce or split skins', doneness: 'Wrinkled, no soft spots. Pit area should be fully dry.', storage: '6–12 months', safety: '', prep: ['Wash and remove stems', 'Pierce or split each cherry with knife', 'Pit if desired (optional)', 'Takes 12–24 hours – very slow drying'] },
+        grapes:      { name: 'Grapes (Raisins)', temp: 135, timeMin: 12, timeMax: 24, pretreat: 'Yes – pierce skins with fork or blanch', doneness: 'Wrinkled, no soft spots. Should rattle when shaken.', storage: '6–12 months', safety: '', prep: ['Wash and remove stems', 'Pierce skins with fork or toothpick', 'Pat dry before placing on trays', 'Seedless varieties work best'] }
+      },
+      vegetables: {
+        tomatoes:    { name: 'Tomatoes', temp: 135, timeMin: 6,  timeMax: 12, pretreat: 'No (blanching optional – dip 30 sec to remove skins)', doneness: 'Leathery, no soft spots. Can squeeze without juice.', storage: '6–12 months', safety: '', prep: ['Wash and core tomatoes', 'Blanch 30 seconds to loosen skins (optional)', 'Slice 1/4" to 1/2" or halve cherry tomatoes', 'Arrange cut-side up for faster drying'] },
+        peppers:     { name: 'Bell Peppers', temp: 125, timeMin: 6,  timeMax: 12, pretreat: 'No pretreatment needed', doneness: 'Brittle or very leathery. No soft spots when squeezed.', storage: '6–12 months', safety: '', prep: ['Wash and remove seeds/core', 'Cut into 1/4" to 1/2" strips', 'Pat dry before dehydrating', 'Rotate trays for even drying'] },
+        onions:      { name: 'Onions', temp: 125, timeMin: 6,  timeMax: 10, pretreat: 'No (blanching optional to reduce sharpness)', doneness: 'Crisp and brittle. No soft spots. Powders easily when crushed.', storage: '6–12 months', safety: '', prep: ['Peel and slice 1/8" to 1/4" rings', 'Separate rings', 'Blanch 2–3 minutes to reduce sharpness (optional)', 'Dehydrate until crisp'] },
+        zucchini:    { name: 'Zucchini', temp: 125, timeMin: 6,  timeMax: 10, pretreat: 'No pretreatment needed', doneness: 'Leathery to brittle. No soft spots when squeezed.', storage: '6–12 months', safety: '', prep: ['Wash and slice 1/4" rounds', 'Pat dry with paper towel', 'Arrange in single layer', 'Zucchini is very moist – may take 10 hours'] },
+        carrots:     { name: 'Carrots', temp: 125, timeMin: 6,  timeMax: 10, pretreat: 'Yes – blanch 2–3 minutes before dehydrating', doneness: 'Brittle, no soft spots. Should snap when bent.', storage: '6–12 months', safety: 'Blanching is required to destroy enzymes that cause off-flavors during storage.', prep: ['Wash, peel, and slice 1/8" to 1/4" rounds', 'Blanch in boiling water 2–3 minutes', 'Plunge into ice water 2 minutes', 'Pat dry and dehydrate'] },
+        greenbeans:  { name: 'Green Beans', temp: 125, timeMin: 8,  timeMax: 12, pretreat: 'Yes – blanch 3 minutes before dehydrating', doneness: 'Leathery to brittle. No soft spots. Should snap when bent.', storage: '6–12 months', safety: 'Blanching is required to preserve color and destroy enzymes.', prep: ['Wash and trim ends', 'Cut into 1–2" pieces', 'Blanch 3 minutes in boiling water', 'Ice bath 3 minutes, then pat dry'] },
+        corn:        { name: 'Corn', temp: 125, timeMin: 6,  timeMax: 10, pretreat: 'No (blanching recommended)', doneness: 'Hard and glassy. Kernels should be completely dry and dented.', storage: '6–12 months', safety: '', prep: ['Husk corn and remove silk', 'Blanch ears 4–6 minutes', 'Cut kernels off cob', 'Spread in single layer on trays'] },
+        kale:        { name: 'Kale (Chips)', temp: 115, timeMin: 4,  timeMax: 6,  pretreat: 'No (massage with oil and salt)', doneness: 'Crisp and brittle. Crumbles easily. No moisture left in stems.', storage: '1–2 months (best eaten fresh)', safety: 'Low temperature preserves nutrients but monitor for any moisture.', prep: ['Wash and dry kale thoroughly', 'Remove tough stems', 'Massage with olive oil and salt', 'Spread in single layer – do not overlap'] },
+        sweetpotatoes:{ name: 'Sweet Potatoes', temp: 125, timeMin: 8,  timeMax: 12, pretreat: 'Yes – blanch 3–4 minutes before dehydrating', doneness: 'Leathery to brittle. No soft spots. Should snap when bent.', storage: '6–12 months', safety: 'Blanching required to destroy enzymes and ensure safe storage.', prep: ['Wash and peel sweet potatoes', 'Slice 1/4" rounds or 1/2" cubes', 'Blanch 3–4 minutes', 'Ice bath, pat dry, then dehydrate'] },
+        celery:      { name: 'Celery', temp: 125, timeMin: 4,  timeMax: 8,  pretreat: 'No (blanching optional)', doneness: 'Brittle and crisp. Should crumble easily. No soft spots.', storage: '6–12 months', safety: '', prep: ['Wash and trim ends', 'Slice 1/4" pieces (including leaves)', 'Blanch 2 minutes (optional, preserves color)', 'Dehydrate until crisp'] }
+      },
+      meat: {
+        beef:    { name: 'Beef Jerky', temp: 160, timeMin: 4,  timeMax: 8,  pretreat: 'Yes – marinate 4–24 hours. Meat must reach 160°F internal temp.', doneness: 'Firm but pliable. Fiber should separate when bent but not break. No raw center.', storage: '1–2 months (room temp), 6+ months (refrigerated)', safety: 'CRITICAL: Meat must reach 160°F internal temperature to kill E. coli and Salmonella. Use a meat thermometer to verify. Preheat dehydrator to 160°F or bake meat strips at 275°F for 10 minutes before dehydrating.', prep: ['Use lean meat (eye of round, top round)', 'Partially freeze meat for easier slicing', 'Slice 1/8" to 1/4" against the grain', 'Marinate 4–24 hours in refrigerator', 'Pat dry before placing on trays', 'Heat to 160°F internal before or during drying'] },
+        turkey:   { name: 'Turkey Jerky', temp: 165, timeMin: 4,  timeMax: 6,  pretreat: 'Yes – marinate 4–12 hours. Must reach 165°F internal.', doneness: 'Firm, no pink when torn. Slightly pliable but not soft.', storage: '1–2 months (room temp), 6+ months (refrigerated)', safety: 'CRITICAL: Turkey must reach 165°F internal temperature. Poultry is higher risk than beef. Verify with thermometer.', prep: ['Use turkey breast, trim all fat', 'Slice 1/8" to 1/4" against grain', 'Marinate in refrigerator 4–12 hours', 'Preheat to 165°F internal (bake 275°F 10 min)', 'Dehydrate at 165°F'] },
+        venison:  { name: 'Venison Jerky', temp: 160, timeMin: 4,  timeMax: 8,  pretreat: 'Yes – marinate 8–24 hours. Must reach 160°F internal.', doneness: 'Firm, breaks when bent but fibers visible. Dark red/brown color.', storage: '1–2 months (room temp), 6+ months (refrigerated)', safety: 'CRITICAL: Wild game must reach 160°F internal temperature. Game meat has higher contamination risk than store meat.', prep: ['Use lean venison roasts or steaks', 'Partially freeze for cleaner slices', 'Slice 1/8" to 1/4" with grain (more chewy) or against (more tender)', 'Marinate 8–24 hours refrigerated', 'Preheat to 160°F before dehydrating'] },
+        fish:     { name: 'Fish Jerky', temp: 145, timeMin: 6,  timeMax: 12, pretreat: 'Yes – brine in salt water 1–2 hours', doneness: 'Firm, flaky but dry. No translucent flesh remaining.', storage: '2 weeks (room temp), 3+ months (refrigerated)', safety: 'Fish must be fully dried to prevent botulism. Refrigerate for longest storage. Use only fresh, high-quality fish.', prep: ['Use firm fish (salmon, trout, halibut)', 'Remove all bones and skin', 'Cut into 1/4" to 1/2" strips', 'Brine in 1:3 salt:water ratio 1–2 hours', 'Rinse and pat very dry', 'Dehydrate at 145°F until firm'] }
+      },
+      herbs: {
+        basil:   { name: 'Basil', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No pretreatment. Harvest in morning after dew dries.', doneness: 'Crisp and crumble easily. No moisture left in stems.', storage: '6–12 months', safety: '', prep: ['Harvest after dew dries but before hot sun', 'Remove large stems (keep small leaves)', 'Arrange in single layer', 'Store in airtight jar away from light'] },
+        oregano: { name: 'Oregano', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Crisp, leaves crumble easily. No green moisture.', storage: '6–12 months', safety: '', prep: ['Harvest before flowers open (best flavor)', 'Rinse and pat dry', 'Arrange stems on trays', 'Strip leaves after drying for easier storage'] },
+        thyme:   { name: 'Thyme', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Leaves crumble easily. Stems feel dry and brittle.', storage: '6–12 months', safety: '', prep: ['Harvest before flowering', 'Rinse gently and dry', 'Dry whole sprigs (easier than stripping)', 'Strip leaves after drying'] },
+        rosemary:{ name: 'Rosemary', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Needles crumble when rubbed. No flexibility left.', storage: '6–12 months', safety: '', prep: ['Harvest young, tender stems', 'Rinse and pat dry thoroughly', 'Dry whole sprigs', 'Strip needles after drying'] },
+        mint:    { name: 'Mint', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Crumble easily. No moisture when squeezed.', storage: '6–12 months', safety: '', prep: ['Harvest before flowering for best flavor', 'Remove long stems', 'Arrange leaves in single layer', 'Mint dries fast – check after 2 hours'] },
+        parsley: { name: 'Parsley', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Crumble easily. Stems should be fully dry.', storage: '6–12 months', safety: '', prep: ['Harvest outer stalks first', 'Rinse and dry thoroughly', 'Arrange in single layer', 'Both flat and curly work well'] },
+        cilantro:{ name: 'Cilantro', temp: 95,  timeMin: 1,  timeMax: 3,  pretreat: 'No', doneness: 'Crumble easily. Leaves feel papery dry.', storage: '6–12 months', safety: '', prep: ['Use fresh, vibrant bunches', 'Rinse and dry thoroughly', 'Remove large stems', 'Cilantro dries very fast – watch closely'] },
+        dill:    { name: 'Dill', temp: 95,  timeMin: 2,  timeMax: 4,  pretreat: 'No', doneness: 'Fern-like leaves crumble. No green moisture left.', storage: '6–12 months', safety: '', prep: ['Harvest before flowers open', 'Rinse gently', 'Dry whole sprigs', 'Dill weed (leaves) and dill seed dry differently'] }
+      },
+      mushrooms: {
+        all: { name: 'Mushrooms (all varieties)', temp: 125, timeMin: 6,  timeMax: 10, pretreat: 'No (clean and slice evenly)', doneness: 'Crisp and brittle. Cap should snap when bent. No rubbery texture.', storage: '6–12 months', safety: 'Only use mushrooms you can identify 100%. Store in airtight containers. If any doubt, discard.', prep: ['Clean with damp cloth (do not soak)', 'Slice 1/4" thick uniformly', 'Arrange gill-side up', 'Dry until crisp – rubbery texture means not done'] }
+      },
+      fruitLeather: {
+        any: { name: 'Fruit Leather (any fruit puree)', temp: 135, timeMin: 6,  timeMax: 10, pretreat: 'No (cook fruit first for smoothest leather)', doneness: 'No indentation when touched. Peels off tray liner cleanly. No sticky spots.', storage: '1 month (room temp), 6+ months (refrigerated)', safety: 'Cool completely before rolling. If leather is still tacky, it needs more drying time.', prep: ['Cook fruit until soft (10–15 min)', 'Puree until smooth', 'Spread 1/4" thick on parchment or tray liner', 'Rotate trays halfway through drying'] }
+      }
+    };
+
+    // Populate food dropdown based on category
+    const categorySelect = document.getElementById('foodCategory');
+    const foodGroup = document.getElementById('foodGroup');
+    const foodSelect = document.getElementById('specificFood');
+
+    categorySelect.addEventListener('change', function() {
+      const cat = this.value;
+      foodSelect.innerHTML = '<option value="">Select food...</option>';
+      if (cat && foodData[cat]) {
+        foodGroup.style.display = 'block';
+        Object.keys(foodData[cat]).forEach(key => {
+          const food = foodData[cat][key];
+          const opt = document.createElement('option');
+          opt.value = key;
+          opt.textContent = food.name;
+          foodSelect.appendChild(opt);
+        });
+      } else {
+        foodGroup.style.display = 'none';
+      }
+    });
+
+    // Form submission
+    document.getElementById('dehydratorForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateDrying();
+    });
+
+    function calculateDrying() {
+      const category = categorySelect.value;
+      const foodKey = foodSelect.value;
+      const thickness = document.getElementById('thickness').value;
+      const altitude = document.getElementById('altitude').value;
+
+      if (!category || !foodKey) return;
+
+      const food = foodData[category][foodKey];
+
+      // Thickness factors
+      const thicknessFactors = {
+        thin: 0.8,
+        standard: 1.0,
+        thick: 1.3,
+        wholeSmall: 1.4,
+        wholeHalved: 1.6
+      };
+
+      // Altitude factors [timeFactor, tempAdjustment]
+      const altitudeFactors = {
+        seaLevel: [1.0, 0],
+        low:      [1.1, 5],
+        mid:      [1.2, 5],
+        high:     [1.3, 10]
+      };
+
+      const tFactor = thicknessFactors[thickness];
+      const [aTimeFactor, aTempAdj] = altitudeFactors[altitude];
+
+      // Calculate adjusted time
+      const adjTimeMin = Math.round(food.timeMin * tFactor * aTimeFactor);
+      const adjTimeMax = Math.round(food.timeMax * tFactor * aTimeFactor);
+
+      // Calculate adjusted temperature
+      const adjTemp = food.temp + aTempAdj;
+
+      // Display results
+      document.getElementById('resultTemp').textContent = adjTemp + '°F';
+      document.getElementById('resultTime').textContent = adjTimeMin + '–' + adjTimeMax + ' hrs';
+      document.getElementById('resultPreTreat').textContent = food.pretreat;
+      document.getElementById('resultStorage').textContent = food.storage;
+
+      // Doneness test
+      document.getElementById('donenessText').textContent = food.doneness;
+
+      // Safety note (only show if exists)
+      const safetySection = document.getElementById('safetySection');
+      if (food.safety) {
+        safetySection.style.display = 'block';
+        document.getElementById('safetyText').textContent = food.safety;
+      } else {
+        safetySection.style.display = 'none';
+      }
+
+      // Prep tips
+      const prepList = document.getElementById('prepTips');
+      prepList.innerHTML = '';
+      food.prep.forEach(tip => {
+        const li = document.createElement('li');
+        li.textContent = tip;
+        prepList.appendChild(li);
+      });
+
+      // Show results
+      const resultsBox = document.getElementById('results');
+      resultsBox.classList.add('visible');
+      resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>

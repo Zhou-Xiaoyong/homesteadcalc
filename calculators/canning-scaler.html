@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canning Recipe Scaler — Safe Batch Scaling Tool (2026)</title>
+  <meta name="description" content="Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times. Free canning calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://homesteadcalculators.com/calculators/canning-scaler.html">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Canning Recipe Scaler",
+    "description": "Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times.",
+    "url": "https://homesteadcalculators.com/calculators/canning-scaler.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- SHARED HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+        <span class="logo-icon">🌱</span>
+        <span>Homestead Calculators</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/calculators/">All Calculators</a>
+        <a href="/blog/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="calc-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> &gt; <a href="/calculators/">Calculators</a> &gt; <span>Canning Recipe Scaler</span>
+      </nav>
+
+      <!-- Calculator Layout -->
+      <div class="calc-layout">
+        <!-- Main Content -->
+        <div class="calc-main">
+          <h1>Canning Recipe Scaler</h1>
+          <p class="text-lg text-muted mb-lg">Safely scale your canning recipes for larger or smaller batches. Maintains proper acid levels, headspace, and processing times.</p>
+
+          <!-- Calculator Form -->
+          <div class="card">
+            <h2>Scale Your Recipe</h2>
+            <form id="canningForm" onsubmit="scaleRecipe(event)">
+              <div class="form-group">
+                <label class="form-label" for="canningMethod">Canning Method</label>
+                <select id="canningMethod" class="form-select" onchange="updateRecipeTypes()">
+                  <option value="water-bath" selected>Water Bath Canner (high-acid foods)</option>
+                  <option value="steam">Steam Canner (high-acid foods)</option>
+                  <option value="pressure">Pressure Canner (low-acid foods)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="recipeType">Recipe Type</label>
+                <select id="recipeType" class="form-select" onchange="updateExampleIngredients()">
+                  <option value="tomato-sauce" selected>Tomato Sauce (acidified with lemon juice/citric acid)</option>
+                  <option value="pickles">Pickles (vinegar brine)</option>
+                  <option value="jam-standard">Jam / Jelly (standard sugar)</option>
+                  <option value="jam-low-sugar">Jam / Jelly (low-sugar pectin)</option>
+                  <option value="salsa">Salsa (acidified)</option>
+                  <option value="fruit-syrup">Fruit in Syrup</option>
+                  <option value="vegetables">Vegetables (pressure canned)</option>
+                  <option value="meat-stock">Meat / Stock (pressure canned)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <div style="flex:1;">
+                    <label class="form-label" for="origJars">Original Recipe Servings / Jars</label>
+                    <input type="number" id="origJars" class="form-input" min="1" max="100" value="6" required>
+                  </div>
+                  <div style="flex:1;">
+                    <label class="form-label" for="newJars">Desired Servings / Jars</label>
+                    <input type="number" id="newJars" class="form-input" min="1" max="500" value="12" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="altitude">Your Altitude (feet above sea level)</label>
+                <input type="number" id="altitude" class="form-input" min="0" max="14000" value="500">
+                <span class="form-hint">Processing times increase at altitudes above 1,000 feet</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ingredients">Original Ingredient Quantities</label>
+                <p class="form-hint">Enter one ingredient per line: <strong>Name:Amount:Unit</strong> (e.g., "Tomatoes:10:lbs")</p>
+                <textarea id="ingredients" class="form-input" rows="8" style="font-family: var(--font-mono); font-size: 0.85rem;">Tomatoes:10:lbs
+Lemon juice (bottled):2:tbsp
+Salt:1:tsp
+Dried oregano:1:tbsp
+Fresh basil:0.25:cup
+Garlic cloves:4:cloves</textarea>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Scale Recipe</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Results -->
+          <div id="results" class="result-box">
+            <h2>Scaled Recipe</h2>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="scaleFactorDisplay">—</div>
+                <div class="label">Scale Factor</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="headspace">—</div>
+                <div class="label">Required Headspace</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="processingTime">—</div>
+                <div class="label">Processing Time</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="psiRecommendation">—</div>
+                <div class="label">Pressure (Pressure Canner)</div>
+              </div>
+            </div>
+
+            <!-- Scaled Ingredients Table -->
+            <div style="margin-top: 1.5rem;">
+              <h3>Scaled Ingredient Quantities</h3>
+              <table style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border-color); background: var(--gray-50);">
+                    <th style="text-align:left; padding:8px;">Ingredient</th>
+                    <th style="text-align:center; padding:8px;">Original</th>
+                    <th style="text-align:center; padding:8px;">Scaled</th>
+                    <th style="text-align:left; padding:8px;">Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="scaledIngredients"></tbody>
+              </table>
+            </div>
+
+            <!-- Altitude Adjustment -->
+            <div id="altitudeNote" style="margin-top: 1rem; padding: 1rem; background: #d1ecf1; border: 1px solid #17a2b8; border-radius: var(--radius-sm); display: none;"></div>
+
+            <!-- Safety Warnings -->
+            <div id="safetyWarnings" style="margin-top: 1rem;"></div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mt-xl">
+            <h2>How It Works</h2>
+            <p>Canning recipe scaling isn't as simple as multiplying everything by a factor. Some ingredients and parameters must remain constant regardless of batch size to ensure food safety.</p>
+
+            <h3>Safety Rules for Scaling</h3>
+            <ul>
+              <li><strong>Acid ingredients (vinegar, lemon juice, citric acid):</strong> MUST scale proportionally. Never reduce the acid content, as it's critical for preventing botulism in water bath canning.</li>
+              <li><strong>Sugar:</strong> In jams and jellies, sugar can be reduced up to 50% of the original amount when using low-sugar pectin. In standard recipes, maintain at least 50% for safe gelling.</li>
+              <li><strong>Spices and herbs:</strong> Scale proportionally, but small adjustments to taste are safe.</li>
+              <li><strong>Headspace:</strong> Never changes with batch size. Always use the headspace specified in the original recipe.</li>
+              <li><strong>Processing time:</strong> Never changes based on batch size. Only altitude affects processing time.</li>
+            </ul>
+
+            <h3>Water Bath vs. Pressure Canning</h3>
+            <ul>
+              <li><strong>Water Bath (212°F):</strong> Safe only for high-acid foods (pH < 4.6) such as fruits, pickles, jams, and acidified tomatoes.</li>
+              <li><strong>Pressure Canner (240°F):</strong> Required for low-acid foods (pH > 4.6) such as vegetables, meats, and stocks.</li>
+            </ul>
+
+            <h3>Altitude Adjustments</h3>
+            <p>Water boils at lower temperatures at higher elevations, so processing times must be increased:</p>
+            <ul>
+              <li><strong>1,000 - 3,000 ft:</strong> +5 minutes</li>
+              <li><strong>3,000 - 6,000 ft:</strong> +10 minutes</li>
+              <li><strong>6,000 - 8,000 ft:</strong> +15 minutes</li>
+              <li><strong>8,000 - 10,000 ft:</strong> +20 minutes</li>
+            </ul>
+            <p>For pressure canning, increase pressure instead (11 PSI at 1,000-2,000 ft, up to 15 PSI at 6,000+ ft).</p>
+
+            <div class="formula-box">
+Scale Factor = Desired jars / Original jars
+
+Each ingredient amount = Original amount × Scale Factor
+
+Safety Rule: DO NOT scale tomato/salsa water-bath recipes
+more than 2× without a verified source recipe.
+Pressure-canned recipes are safe to scale proportionally.
+
+Processing Time Adjustments (altitude):
+  Water bath at sea level: 35 min (tomatoes)
+  Water bath at 1,000-3,000 ft: +5 min
+  Water bath at 3,000-6,000 ft: +10 min
+  Water bath at 6,000-8,000 ft: +15 min
+  Water bath at 8,000-10,000 ft: +20 min
+
+Pressure Canner PSI by altitude:
+  Sea level - 1,000 ft: 10 PSI (weighted gauge) / 11 PSI (dial gauge)
+  1,000 - 2,000 ft: 11 PSI
+  2,000 - 4,000 ft: 12 PSI
+  4,000 - 6,000 ft: 13 PSI
+  6,000 - 8,000 ft: 14 PSI
+  8,000 - 10,000 ft: 15 PSI
+            </div>
+
+            <div class="info-box">
+              <strong>Important:</strong> Always use tested recipes from trusted sources (USDA, Ball, NCHFP) when scaling. This calculator provides estimates only — follow the instructions from your verified recipe for safe canning.
+            </div>
+          </div>
+
+          <!-- Related Calculators -->
+          <div class="related-calc">
+            <h3>Related Calculators</h3>
+            <div class="related-calc-list">
+              <a href="dehydrator.html">Dehydrator Calculator</a>
+              <a href="garden-yield.html">Garden Yield Calculator</a>
+              <a href="square-foot-gardening.html">Square Foot Gardening Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="calc-sidebar">
+          <div class="card mb-lg">
+            <h3>Headspace Quick Reference</h3>
+            <table style="width:100%; font-size:0.8rem; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <th style="text-align:left; padding:4px 6px;">Food Type</th>
+                  <th style="text-align:center; padding:4px 6px;">Headspace</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">Jams / Jellies</td>
+                  <td style="text-align:center; padding:4px 6px;">0.25"</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">Fruits / Pickles / Salsa</td>
+                  <td style="text-align:center; padding:4px 6px;">0.5"</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding:4px 6px;">Tomatoes</td>
+                  <td style="text-align:center; padding:4px 6px;">0.5"</td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 6px;">Low-Acid (pressure)</td>
+                  <td style="text-align:center; padding:4px 6px;">1"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ad-slot"></div>
+
+          <div class="card">
+            <h3>Canning Safety Tips</h3>
+            <ul style="font-size:0.9rem; padding-left: 1.2rem;">
+              <li>Always use tested recipes from USDA, Ball, or NCHFP</li>
+              <li>Never reuse commercial jar lids for canning</li>
+              <li>Check jar rims for chips before processing</li>
+              <li>Store jars without rings to detect seal failure</li>
+              <li>If in doubt about safety, refrigerate and use within 3 days</li>
+            </ul>
+          </div>
+
+          <div class="card mt-lg">
+            <h3>Processing Times Reference</h3>
+            <table style="width:100%; font-size:0.75rem; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <th style="text-align:left; padding:3px 4px;">Recipe</th>
+                  <th style="text-align:center; padding:3px 4px;">Method</th>
+                  <th style="text-align:center; padding:3px 4px;">Pint</th>
+                  <th style="text-align:center; padding:3px 4px;">Quart</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:3px 4px;">Tomato sauce</td><td style="text-align:center; padding:3px 4px;">WB</td><td style="text-align:center; padding:3px 4px;">35</td><td style="text-align:center; padding:3px 4px;">40</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:3px 4px;">Pickles</td><td style="text-align:center; padding:3px 4px;">WB</td><td style="text-align:center; padding:3px 4px;">10</td><td style="text-align:center; padding:3px 4px;">15</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:3px 4px;">Jam/Jelly</td><td style="text-align:center; padding:3px 4px;">WB</td><td style="text-align:center; padding:3px 4px;">10</td><td style="text-align:center; padding:3px 4px;">—</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:3px 4px;">Salsa</td><td style="text-align:center; padding:3px 4px;">WB</td><td style="text-align:center; padding:3px 4px;">15</td><td style="text-align:center; padding:3px 4px;">—</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding:3px 4px;">Green beans</td><td style="text-align:center; padding:3px 4px;">PC</td><td style="text-align:center; padding:3px 4px;">20</td><td style="text-align:center; padding:3px 4px;">25</td></tr>
+                <tr><td style="padding:3px 4px;">Meat/Stock</td><td style="text-align:center; padding:3px 4px;">PC</td><td style="text-align:center; padding:3px 4px;">75</td><td style="text-align:center; padding:3px 4px;">90</td></tr>
+              </tbody>
+            </table>
+            <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;">WB = Water Bath, PC = Pressure Canner. Times at sea level.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About Homestead Calculators</h4>
+          <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+          <a href="/calculators/garden-yield.html">Garden Yield</a>
+          <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+          <a href="/calculators/solar-power.html">Solar Power</a>
+          <a href="/calculators/">All Calculators →</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy.html">Privacy</a>
+          <a href="/terms.html">Terms</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Recipe type definitions
+    const recipeTypes = {
+      'tomato-sauce': {
+        method: 'water-bath',
+        headspace: '0.5',
+        baseTime: 35,
+        acidRequired: true,
+        maxScale: 2,
+        isTomato: true
+      },
+      'pickles': {
+        method: 'water-bath',
+        headspace: '0.5',
+        baseTime: 10,
+        acidRequired: true,
+        maxScale: 5
+      },
+      'jam-standard': {
+        method: 'water-bath',
+        headspace: '0.25',
+        baseTime: 10,
+        maxScale: 8
+      },
+      'jam-low-sugar': {
+        method: 'water-bath',
+        headspace: '0.25',
+        baseTime: 10,
+        maxScale: 8
+      },
+      'salsa': {
+        method: 'water-bath',
+        headspace: '0.5',
+        baseTime: 15,
+        acidRequired: true,
+        maxScale: 2,
+        isTomato: true
+      },
+      'fruit-syrup': {
+        method: 'water-bath',
+        headspace: '0.5',
+        baseTime: 20,
+        maxScale: 5
+      },
+      'vegetables': {
+        method: 'pressure',
+        headspace: '1',
+        baseTime: 25,
+        maxScale: 10
+      },
+      'meat-stock': {
+        method: 'pressure',
+        headspace: '1',
+        baseTime: 75,
+        maxScale: 10
+      }
+    };
+
+    const acidKeywords = ['vinegar', 'lemon juice', 'citric acid', 'lime juice'];
+    const saltKeywords = ['salt'];
+    const sugarKeywords = ['sugar', 'honey'];
+
+    function updateRecipeTypes() {
+      const method = document.getElementById('canningMethod').value;
+      const recipeSelect = document.getElementById('recipeType');
+
+      if (method === 'pressure') {
+        // Auto-select appropriate recipe types
+        if (recipeSelect.value !== 'vegetables' && recipeSelect.value !== 'meat-stock') {
+          recipeSelect.value = 'vegetables';
+          updateExampleIngredients();
+        }
+      } else {
+        if (recipeSelect.value === 'vegetables' || recipeSelect.value === 'meat-stock') {
+          recipeSelect.value = 'tomato-sauce';
+          updateExampleIngredients();
+        }
+      }
+    }
+
+    function updateExampleIngredients() {
+      const type = document.getElementById('recipeType').value;
+      const examples = {
+        'tomato-sauce': 'Tomatoes:10:lbs\nLemon juice (bottled):2:tbsp\nSalt:1:tsp\nDried oregano:1:tbsp\nFresh basil:0.25:cup\nGarlic cloves:4:cloves',
+        'pickles': 'Cucumbers:4:lbs\nWhite vinegar (5%):3:cups\nWater:3:cups\nPickling salt:0.25:cup\nDill seed:2:tbsp\nGarlic cloves:8:cloves',
+        'jam-standard': 'Strawberries:8:cups\nGranulated sugar:6:cups\nLemon juice:0.25:cup\nPowdered pectin:1:package',
+        'jam-low-sugar': 'Blueberries:8:cups\nGranulated sugar:2:cups\nLemon juice:0.25:cup\nLow-sugar pectin:3:tbsp',
+        'salsa': 'Tomatoes:5:lbs\nOnions:2:cups\nJalapenos:0.5:cup\nCilantro:0.5:cup\nLime juice:0.5:cup\nVinegar (5%):0.5:cup\nSalt:1:tbsp',
+        'fruit-syrup': 'Peaches:8:lbs\nSugar:2:cups\nWater:4:cups\nLemon juice:0.25:cup',
+        'vegetables': 'Green beans:4:lbs\nWater:4:cups\nSalt:1:tsp',
+        'meat-stock': 'Beef bones:5:lbs\nWater:8:quarts\nOnions:2:medium\nCarrots:3:medium\nCelery:3:stalks\nSalt:1:tbsp\nPeppercorns:1:tsp'
+      };
+      document.getElementById('ingredients').value = examples[type] || '';
+    }
+
+    function getAltitudeAdjustment(altitude, method) {
+      if (altitude <= 1000) return { timeAdjust: 0, psi: 10 };
+
+      if (method === 'water-bath' || method === 'steam') {
+        if (altitude <= 3000) return { timeAdjust: 5, psi: null };
+        if (altitude <= 6000) return { timeAdjust: 10, psi: null };
+        if (altitude <= 8000) return { timeAdjust: 15, psi: null };
+        return { timeAdjust: 20, psi: null };
+      } else {
+        // Pressure canning PSI adjustments
+        if (altitude <= 2000) return { timeAdjust: 0, psi: 11 };
+        if (altitude <= 4000) return { timeAdjust: 0, psi: 12 };
+        if (altitude <= 6000) return { timeAdjust: 0, psi: 13 };
+        if (altitude <= 8000) return { timeAdjust: 0, psi: 14 };
+        return { timeAdjust: 0, psi: 15 };
+      }
+    }
+
+    function getAdjustedProcessingTime(baseTime, altitude, method) {
+      const adj = getAltitudeAdjustment(altitude, method);
+      return baseTime + adj.timeAdjust;
+    }
+
+    // Ingredient type classification for safety notes
+    function classifyIngredient(name) {
+      const lower = name.toLowerCase();
+      for (const kw of acidKeywords) {
+        if (lower.includes(kw)) return 'acid';
+      }
+      for (const kw of sugarKeywords) {
+        if (lower.includes(kw)) return 'sugar';
+      }
+      for (const kw of saltKeywords) {
+        if (lower.includes(kw)) return 'salt';
+      }
+      return 'regular';
+    }
+
+    function formatNumber(n) {
+      if (Number.isInteger(n)) return n.toString();
+      return n.toFixed(2);
+    }
+
+    function scaleRecipe(event) {
+      event.preventDefault();
+
+      const method = document.getElementById('canningMethod').value;
+      const recipeType = document.getElementById('recipeType').value;
+      const origJars = parseInt(document.getElementById('origJars').value);
+      const newJars = parseInt(document.getElementById('newJars').value);
+      const altitude = parseInt(document.getElementById('altitude').value);
+      const ingredientsText = document.getElementById('ingredients').value.trim();
+
+      const recipe = recipeTypes[recipeType];
+      const scaleFactor = newJars / origJars;
+
+      // Display scale factor
+      document.getElementById('scaleFactorDisplay').textContent = scaleFactor.toFixed(2) + 'x';
+
+      // Headspace
+      document.getElementById('headspace').textContent = recipe.headspace + '"';
+
+      // Processing time
+      const processingTime = getAdjustedProcessingTime(recipe.baseTime, altitude, method);
+      document.getElementById('processingTime').textContent = processingTime + ' min';
+
+      // PSI recommendation
+      if (method === 'pressure') {
+        const psi = getAltitudeAdjustment(altitude, method).psi;
+        document.getElementById('psiRecommendation').textContent = psi + ' PSI';
+      } else {
+        document.getElementById('psiRecommendation').textContent = 'N/A (Water Bath)';
+      }
+
+      // Parse and scale ingredients
+      const lines = ingredientsText.split('\n').filter(line => line.trim());
+      const scaledBody = document.getElementById('scaledIngredients');
+      scaledBody.innerHTML = '';
+
+      const warnings = [];
+
+      // Check max scale
+      if (scaleFactor > recipe.maxScale && method !== 'pressure') {
+        warnings.push({
+          type: 'warning',
+          text: `Scaling ${scaleFactor.toFixed(1)}× exceeds the recommended maximum of ${recipe.maxScale}× for ${method === 'water-bath' ? 'water bath' : 'steam'} canning this recipe type. Use a verified larger-batch recipe from USDA, Ball, or NCHFP.`
+        });
+      }
+
+      for (const line of lines) {
+        const parts = line.split(':');
+        if (parts.length < 3) continue;
+
+        const name = parts[0].trim();
+        const origAmount = parseFloat(parts[1]);
+        const unit = parts[2].trim();
+        const type = classifyIngredient(name);
+
+        let scaledAmount = origAmount * scaleFactor;
+        let notes = '';
+
+        if (type === 'acid') {
+          // Acid MUST scale proportionally
+          notes = 'Must maintain proportion — critical for safety';
+        } else if (type === 'sugar') {
+          // Sugar can be reduced up to 50%
+          notes = 'Can reduce to 50% of scaled amount for taste';
+        } else if (type === 'salt') {
+          notes = 'Scale proportionally or adjust to taste';
+        }
+
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-color)';
+        row.innerHTML = `
+          <td style="padding:6px 8px;">${name}</td>
+          <td style="text-align:center; padding:6px 8px;">${formatNumber(origAmount)} ${unit}</td>
+          <td style="text-align:center; padding:6px 8px; font-weight: 600;">${formatNumber(scaledAmount)} ${unit}</td>
+          <td style="padding:6px 8px; font-size: 0.8rem; color: var(--text-secondary);">${notes}</td>
+        `;
+        scaledBody.appendChild(row);
+      }
+
+      // Altitude note
+      const altitudeNote = document.getElementById('altitudeNote');
+      if (altitude > 1000) {
+        const adj = getAltitudeAdjustment(altitude, method);
+        altitudeNote.style.display = 'block';
+        if (method === 'water-bath' || method === 'steam') {
+          altitudeNote.innerHTML = `<strong>Altitude Adjustment:</strong> At ${altitude.toLocaleString()} feet, add <strong>${adj.timeAdjust} minutes</strong> to the processing time. Water boils at approximately ${Math.round(212 - altitude * 0.0018)}°F at this elevation.`;
+        } else {
+          altitudeNote.innerHTML = `<strong>Altitude Adjustment:</strong> At ${altitude.toLocaleString()} feet, pressure can at <strong>${adj.psi} PSI</strong>. Water boils at approximately ${Math.round(212 - altitude * 0.0018)}°F at this elevation.`;
+        }
+      } else {
+        altitudeNote.style.display = 'none';
+      }
+
+      // Safety warnings
+      const safetyContainer = document.getElementById('safetyWarnings');
+      safetyContainer.innerHTML = '';
+
+      // General safety warning for water bath
+      if (method === 'water-bath' || method === 'steam') {
+        warnings.push({
+          type: 'info',
+          text: 'Water bath canning is safe only for high-acid foods (pH below 4.6). Ensure your recipe includes sufficient acidification.'
+        });
+      }
+
+      // Add scale warning
+      if (scaleFactor > 4) {
+        warnings.push({
+          type: 'warning',
+          text: `Large batch scaling (${scaleFactor.toFixed(1)}×). For safety, do not exceed the capacity of your canner. Large batches may have heat penetration differences.`
+        });
+      }
+
+      // Processing time warning
+      warnings.push({
+        type: 'info',
+        text: `Processing time (${processingTime} minutes) is based on ${method === 'pressure' ? 'pressure' : 'water bath'} canning at ${altitude} feet. Processing time does NOT change with batch size — it only changes with altitude.`
+      });
+
+      warnings.forEach(w => {
+        const bg = w.type === 'warning' ? '#fff3cd' : '#d1ecf1';
+        const border = w.type === 'warning' ? '#ffc107' : '#17a2b8';
+        const div = document.createElement('div');
+        div.style.cssText = `padding: 0.75rem; background: ${bg}; border: 1px solid ${border}; border-radius: var(--radius-sm); margin-bottom: 0.5rem; font-size: 0.9rem;`;
+        div.innerHTML = `<strong>${w.type === 'warning' ? 'Warning' : 'Note'}:</strong> ${w.text}`;
+        safetyContainer.appendChild(div);
+      });
+
+      // Show results
+      document.getElementById('results').classList.add('visible');
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>
