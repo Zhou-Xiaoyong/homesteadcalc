@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fertilizer Calculator — NPK Ratio & Application Rate Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .npk-inputs {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    .npk-inputs .form-group {
+      flex: 1;
+    }
+    .npk-inputs input {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .npk-display {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-top: var(--space-sm);
+    }
+    .soil-level-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .soil-tab {
+      flex: 1;
+      padding: 6px 8px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .soil-tab:hover {
+      border-color: var(--accent);
+    }
+    .soil-tab.active {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .application-instructions {
+      background: var(--bg-accent);
+      border-left: 4px solid var(--accent);
+      padding: var(--space-md);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fertilizer Calculator",
+    "url": "https://homesteadcalc.com/calculators/fertilizer.html",
+    "description": "Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Fertilizer Calculator
+    </nav>
+
+    <h1>Fertilizer Calculator</h1>
+    <p class="text-lg text-muted">Match your fertilizer to your soil and crop needs. Calculate NPK application rates, total fertilizer needed, and estimated costs.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Fertilizer Application Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="garden-size">Garden / Field Size (sq ft)</label>
+            <input type="number" id="garden-size" class="form-input" value="500" min="1" max="1000000" step="1" oninput="calculateFertilizer()">
+            <div class="form-hint">Enter the total area you need to fertilize. 1 acre = 43,560 sq ft.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="crop-type">Crop Type</label>
+            <select id="crop-type" class="form-select" onchange="calculateFertilizer()">
+              <option value="lawn">Lawn</option>
+              <option value="vegetables-general" selected>Vegetables — General</option>
+              <option value="tomatoes">Tomatoes</option>
+              <option value="corn">Corn</option>
+              <option value="leafy-greens">Leafy Greens (Lettuce, Kale, Spinach)</option>
+              <option value="root-crops">Root Crops (Carrots, Potatoes, Beets)</option>
+              <option value="fruit-trees">Fruit Trees</option>
+              <option value="berries">Berries</option>
+            </select>
+          </div>
+
+          <h4 style="margin-bottom:var(--space-xs);">Soil Test Levels</h4>
+          <p class="text-sm text-muted mb-md">Set levels based on your soil test results. If unknown, leave at "Medium" (no adjustment).</p>
+
+          <div class="form-group">
+            <label class="form-label">Nitrogen (N) Level</label>
+            <div class="soil-level-tabs" id="n-level-tabs">
+              <div class="soil-tab" data-level="low" onclick="setSoilLevel('N','low')">Low</div>
+              <div class="soil-tab active" data-level="medium" onclick="setSoilLevel('N','medium')">Medium</div>
+              <div class="soil-tab" data-level="high" onclick="setSoilLevel('N','high')">High</div>
+            </div>
+            <input type="hidden" id="n-level" value="medium">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phosphorus (P) Level</label>
+            <div class="soil-level-tabs" id="p-level-tabs">
+              <div class="soil-tab" data-level="low" onclick="setSoilLevel('P','low')">Low</div>
+              <div class="soil-tab active" data-level="medium" onclick="setSoilLevel('P','medium')">Medium</div>
+              <div class="soil-tab" data-level="high" onclick="setSoilLevel('P','high')">High</div>
+            </div>
+            <input type="hidden" id="p-level" value="medium">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Potassium (K) Level</label>
+            <div class="soil-level-tabs" id="k-level-tabs">
+              <div class="soil-tab" data-level="low" onclick="setSoilLevel('K','low')">Low</div>
+              <div class="soil-tab active" data-level="medium" onclick="setSoilLevel('K','medium')">Medium</div>
+              <div class="soil-tab" data-level="high" onclick="setSoilLevel('K','high')">High</div>
+            </div>
+            <input type="hidden" id="k-level" value="medium">
+          </div>
+
+          <h4 style="margin-bottom:var(--space-xs);">Fertilizer NPK Values (from bag label)</h4>
+          <p class="text-sm text-muted mb-md">Enter the three numbers from your fertilizer bag (e.g., 10-10-10 or 5-10-5).</p>
+
+          <div class="npk-inputs">
+            <div class="form-group">
+              <label class="form-label" style="text-align:center;">N (%)</label>
+              <input type="number" id="n-percent" class="form-input" value="10" min="0" max="100" step="0.1" oninput="calculateFertilizer()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="text-align:center;">P (%)</label>
+              <input type="number" id="p-percent" class="form-input" value="10" min="0" max="100" step="0.1" oninput="calculateFertilizer()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="text-align:center;">K (%)</label>
+              <input type="number" id="k-percent" class="form-input" value="10" min="0" max="100" step="0.1" oninput="calculateFertilizer()">
+            </div>
+          </div>
+          <div class="npk-display" id="npk-display">You selected: 10-10-10</div>
+
+          <div class="form-group">
+            <label class="form-label" for="bag-weight">Fertilizer Bag Weight (lbs)</label>
+            <input type="number" id="bag-weight" class="form-input" value="40" min="1" max="100" step="1" oninput="calculateFertilizer()">
+            <div class="form-hint">Common sizes: 5 lb, 10 lb, 40 lb, 50 lb.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bag-price">Price per Bag ($)</label>
+            <input type="number" id="bag-price" class="form-input" value="25.00" min="0" max="1000" step="0.01" oninput="calculateFertilizer()">
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateFertilizer()">Calculate Application Rate</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Application Results</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="fertilizer-needed">—</div>
+                <div class="label">Total Fertilizer (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bags-needed">—</div>
+                <div class="label">Bags Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="estimated-cost">—</div>
+                <div class="label">Estimated Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="n-applied">—</div>
+                <div class="label">Actual N Applied (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="p-applied">—</div>
+                <div class="label">Actual P<sub>2</sub>O<sub>5</sub> Applied (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="k-applied">—</div>
+                <div class="label">Actual K<sub>2</sub>O Applied (lbs)</div>
+              </div>
+            </div>
+
+            <div class="result-item mt-lg" style="text-align:left;">
+              <div class="label" style="text-align:left;margin-bottom:4px;">N Application Rate</div>
+              <div class="value" id="n-rate" style="font-size:1.2rem;">—</div>
+            </div>
+
+            <div class="application-instructions" id="instructions"></div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our fertilizer calculator uses research-based nitrogen requirements from university extension services. N-P-K stands for Nitrogen, Phosphorus (as P<sub>2</sub>O<sub>5</sub>), and Potassium (as K<sub>2</sub>O) — the three primary nutrients plants need. The three numbers on a fertilizer bag (e.g., 10-10-10) represent the percentage by weight of each nutrient.</p>
+
+          <h3>Understanding NPK Ratios</h3>
+          <ul style="margin-bottom:var(--space-md);padding-left:1.5rem;">
+            <li><strong>Nitrogen (N)</strong> — Leaf and stem growth. Crucial for lawns and leafy greens.</li>
+            <li><strong>Phosphorus (P)</strong> — Root development, flowering, and fruiting. Important for tomatoes and peppers.</li>
+            <li><strong>Potassium (K)</strong> — Overall plant health, disease resistance, and water regulation.</li>
+          </ul>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+N Needed (lbs) = Base Rate × (Area ÷ 1000) × Soil Adjustment
+Fertilizer Needed (lbs) = N Needed ÷ (N% ÷ 100)
+P₂O₅ Applied (lbs) = Fertilizer Needed × (P% ÷ 100)
+K₂O Applied (lbs) = Fertilizer Needed × (K% ÷ 100)
+Bags = Fertilizer Needed ÷ Bag Weight (round up)
+Cost = Bags × Price per Bag
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Always soil test before fertilizing. Over-fertilization wastes money, harms beneficial soil organisms, and can pollute groundwater. Most home gardens need less fertilizer than you think — compost alone may be sufficient for many vegetable gardens.
+          </div>
+        </section>
+
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="compost-mix.html">Compost Mix Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="plant-spacing.html">Plant Spacing Calculator</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>N Requirements by Crop</h3>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:3px 0;">Crop</th>
+                <th style="text-align:right;padding:3px 0;">lbs N/1000 sq ft</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Lawn</td><td style="text-align:right;">3–4</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Vegetables (General)</td><td style="text-align:right;">2–3</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Tomatoes</td><td style="text-align:right;">1.5–2</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Corn</td><td style="text-align:right;">4–5</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Leafy Greens</td><td style="text-align:right;">3–4</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Root Crops</td><td style="text-align:right;">1.5–2</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:3px 0;">Fruit Trees</td><td style="text-align:right;">1–2</td></tr>
+              <tr><td style="padding:3px 0;">Berries</td><td style="text-align:right;">0.5–1.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Common NPK Formulas</h3>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:2px 0;">10-10-10</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">All-purpose</td></tr>
+            <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:2px 0;">5-10-10</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">Tomatoes/peppers</td></tr>
+            <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:2px 0;">16-4-8</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">Lawn fertilizer</td></tr>
+            <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:2px 0;">46-0-0</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">Urea (N only)</td></tr>
+            <tr style="border-bottom:1px solid var(--gray-100);"><td style="padding:2px 0;">0-46-0</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">Triple superphosphate</td></tr>
+            <tr><td style="padding:2px 0;">0-0-60</td><td style="text-align:right;font-size:0.75rem;color:var(--text-muted);">Potash (K only)</td></tr>
+          </table>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Base N rates (lbs per 1000 sq ft, using midpoint)
+var baseNRates = {
+  'lawn': 3.5,
+  'vegetables-general': 2.5,
+  'tomatoes': 1.75,
+  'corn': 4.5,
+  'leafy-greens': 3.5,
+  'root-crops': 1.75,
+  'fruit-trees': 1.5,
+  'berries': 1.0
+};
+
+var soilLevels = { N: 'medium', P: 'medium', K: 'medium' };
+
+function setSoilLevel(nutrient, level) {
+  soilLevels[nutrient] = level;
+  document.getElementById(nutrient.toLowerCase() + '-level').value = level;
+
+  var tabsContainer = document.getElementById(nutrient.toLowerCase() + '-level-tabs');
+  var tabs = tabsContainer.querySelectorAll('.soil-tab');
+  tabs.forEach(function(tab) {
+    tab.classList.remove('active');
+    if (tab.getAttribute('data-level') === level) {
+      tab.classList.add('active');
+    }
+  });
+
+  calculateFertilizer();
+}
+
+function getSoilMultiplier(nutrient) {
+  var level = soilLevels[nutrient];
+  if (level === 'low') return 1.5;
+  if (level === 'high') return 0.5;
+  return 1.0;
+}
+
+function calculateFertilizer() {
+  var area = parseFloat(document.getElementById('garden-size').value) || 500;
+  var cropType = document.getElementById('crop-type').value;
+  var nPercent = parseFloat(document.getElementById('n-percent').value) || 0;
+  var pPercent = parseFloat(document.getElementById('p-percent').value) || 0;
+  var kPercent = parseFloat(document.getElementById('k-percent').value) || 0;
+  var bagWeight = parseFloat(document.getElementById('bag-weight').value) || 40;
+  var bagPrice = parseFloat(document.getElementById('bag-price').value) || 0;
+
+  document.getElementById('npk-display').textContent = 'You selected: ' + nPercent + '-' + pPercent + '-' + kPercent;
+
+  if (nPercent === 0) {
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+
+  var baseRate = baseNRates[cropType] || 2.5;
+  var soilMult = getSoilMultiplier('N');
+  var nNeeded = baseRate * (area / 1000) * soilMult;
+
+  var fertilizerNeeded = (nPercent > 0) ? nNeeded / (nPercent / 100) : 0;
+  var pApplied = fertilizerNeeded * (pPercent / 100);
+  var kApplied = fertilizerNeeded * (kPercent / 100);
+  var bagsNeeded = Math.ceil(fertilizerNeeded / bagWeight);
+  var cost = bagsNeeded * bagPrice;
+  var nRatePer1000 = (nNeeded / area) * 1000;
+
+  document.getElementById('fertilizer-needed').textContent = fertilizerNeeded.toFixed(1) + ' lbs';
+  document.getElementById('bags-needed').textContent = bagsNeeded;
+  document.getElementById('estimated-cost').textContent = '$' + cost.toFixed(2);
+  document.getElementById('n-applied').textContent = nNeeded.toFixed(1) + ' lbs';
+  document.getElementById('p-applied').textContent = pApplied.toFixed(1) + ' lbs';
+  document.getElementById('k-applied').textContent = kApplied.toFixed(1) + ' lbs';
+  document.getElementById('n-rate').textContent = nRatePer1000.toFixed(1) + ' lbs N / 1000 sq ft';
+
+  // Instructions
+  var instructions = document.getElementById('instructions');
+  var cropNames = {
+    'lawn': 'lawn',
+    'vegetables-general': 'vegetable garden',
+    'tomatoes': 'tomato plants',
+    'corn': 'corn crop',
+    'leafy-greens': 'leafy greens',
+    'root-crops': 'root crops',
+    'fruit-trees': 'fruit trees',
+    'berries': 'berry bushes'
+  };
+
+  var splitApps = fertilizerNeeded > 20 ? ' Split this into 2–3 applications: before planting, mid-season, and (if applicable) after first harvest.' : ' Apply evenly across the entire area.';
+  instructions.innerHTML = '<strong>Application Instructions:</strong><br>' +
+    'For your ' + area + ' sq ft ' + (cropNames[cropType] || 'garden') + ', apply <strong>' + fertilizerNeeded.toFixed(1) + ' lbs</strong> (' + bagsNeeded + ' bag' + (bagsNeeded !== 1 ? 's' : '') + ') of ' + nPercent + '-' + pPercent + '-' + kPercent + ' fertilizer.' +
+    splitApps +
+    ' Water thoroughly after application to help nutrients reach the root zone.<br><br>' +
+    '<strong>Note:</strong> Always calibrate your spreader and follow label instructions. These calculations are estimates based on standard N requirements — adjust for your specific conditions.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  calculateFertilizer();
+});
+</script>
+
+</body>
+</html>

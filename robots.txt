@@ -1,0 +1,5 @@
+﻿User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+Sitemap: https://homesteadcalc.com/sitemap.xml

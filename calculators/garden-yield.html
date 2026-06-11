@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Yield Planner — Estimate Your Vegetable Harvest (2026) | Homestead Calculators</title>
+  <meta name="description" content="Plan how much to plant for your family. Estimate pounds of vegetables per plant, per square foot, and total garden yield. Free garden planning tool.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .veg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+    }
+    .veg-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .veg-checkbox:hover {
+      border-color: var(--accent);
+      background: var(--bg-accent);
+    }
+    .veg-checkbox.selected {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+    .veg-checkbox input[type="checkbox"] {
+      accent-color: var(--accent);
+    }
+    .plant-inputs {
+      margin-top: var(--space-md);
+    }
+    .plant-inputs h3 {
+      margin-bottom: var(--space-sm);
+    }
+    .plant-input-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+    .plant-input-row label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      min-width: 140px;
+    }
+    .plant-input-row input {
+      width: 80px;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+    .plant-input-row input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+    .yield-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .yield-table th {
+      background: var(--gray-50);
+      font-weight: 600;
+      padding: 8px 10px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .yield-table td {
+      padding: 6px 10px;
+      border: 1px solid var(--border-color);
+    }
+    .yield-table tr:nth-child(even) td {
+      background: var(--gray-50);
+    }
+    .total-row {
+      font-weight: 700;
+      background: var(--bg-accent) !important;
+    }
+    .max-select-warning {
+      color: var(--warning);
+      font-size: 0.85rem;
+      margin-top: 4px;
+      display: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Garden Yield Planner",
+    "url": "https://homesteadcalc.com/calculators/garden-yield.html",
+    "description": "Plan how much to plant for your family. Estimate pounds of vegetables per plant, per square foot, and total garden yield.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Garden Yield Planner
+    </nav>
+
+    <h1>Garden Yield Planner</h1>
+    <p class="text-lg text-muted">Select what you're growing, enter how many plants, and get a complete harvest estimate. Know exactly how much food your garden will produce this season.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Select Your Vegetables</h2>
+          <p class="text-sm text-muted mb-md">Choose up to 10 vegetables to plan your garden yield. Then enter how many plants you'll grow of each.</p>
+          <div class="veg-grid" id="veg-grid"></div>
+          <div class="max-select-warning" id="max-warning">You can select up to 10 vegetables at a time.</div>
+
+          <div id="plant-inputs-container" class="plant-inputs" style="display:none;">
+            <h3>Number of Plants</h3>
+            <div id="plant-inputs"></div>
+          </div>
+
+          <div class="form-group mt-lg">
+            <label class="form-label" for="garden-space">Garden Space Available (sq ft)</label>
+            <input type="number" id="garden-space" class="form-input" value="200" min="1" max="100000" step="1">
+            <div class="form-hint">Total growing area. Used to calculate yield per square foot.</div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateYield()">Calculate Harvest Yield</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Harvest Estimate</h3>
+            <div style="overflow-x:auto;">
+              <table class="yield-table" id="yield-table">
+                <thead>
+                  <tr>
+                    <th>Vegetable</th>
+                    <th>Plants</th>
+                    <th>Min Yield (lbs)</th>
+                    <th>Max Yield (lbs)</th>
+                    <th>Avg Yield (lbs)</th>
+                  </tr>
+                </thead>
+                <tbody id="yield-tbody"></tbody>
+                <tfoot id="yield-tfoot"></tfoot>
+              </table>
+            </div>
+            <div class="result-grid mt-lg">
+              <div class="result-item">
+                <div class="value" id="total-yield">—</div>
+                <div class="label">Total Avg Yield (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="people-fed">—</div>
+                <div class="label">Feeds This Many People</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yield-per-sqft">—</div>
+                <div class="label">Yield per Sq Ft (lbs)</div>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="yield-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our garden yield planner uses research-backed per-plant yield data drawn from university extension services, including Cornell, UC Davis, and Iowa State. Each vegetable has a published yield range per plant per growing season under normal conditions.</p>
+
+          <h3>Yield Data Sources</h3>
+          <p>Yield estimates vary based on variety, soil quality, climate, and management practices. Our ranges represent typical home garden yields, not commercial production. Heirloom varieties often produce less than modern hybrids but offer better flavor and seed-saving potential.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Average Yield (lbs) = (Min Yield + Max Yield) ÷ 2 × Number of Plants
+Total Garden Yield = Sum of Average Yield for all selected vegetables
+People Fed = Total Yield ÷ 200 (lbs/person/year)
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> For a family of four, plan on 800–1,000 lbs of vegetables per year. A well-managed 500 sq ft garden can produce 200–400 lbs of vegetables in a single growing season.
+          </div>
+        </section>
+
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="plant-spacing.html">Plant Spacing Calculator</a>
+            <a href="square-foot-gardening.html">Square Foot Gardening Planner</a>
+            <a href="fertilizer.html">Fertilizer Calculator</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Yield Quick Reference</h3>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:3px 0;">Vegetable</th>
+                <th style="text-align:right;padding:3px 0;">lbs/Plant</th>
+              </tr>
+            </thead>
+            <tbody id="sidebar-yield-ref">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Feeding Your Family</h3>
+          <p class="text-sm">How many plants to grow per person per year (approximate):</p>
+          <ul style="font-size:0.8rem;padding-left:1rem;margin-top:0.5rem;line-height:1.8;">
+            <li>Tomatoes: 3–5 plants</li>
+            <li>Lettuce: 10–15 plants</li>
+            <li>Carrots: 30–50 plants</li>
+            <li>Green Beans: 15–20 plants</li>
+            <li>Potatoes: 10–15 plants</li>
+            <li>Onions: 20–30 plants</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Yield data per plant
+var yieldData = {
+  'Tomatoes': { min: 10, max: 20 },
+  'Peppers': { min: 3, max: 5 },
+  'Cucumbers': { min: 5, max: 10 },
+  'Zucchini': { min: 6, max: 10 },
+  'Green Beans': { min: 0.5, max: 1 },
+  'Carrots': { min: 0.5, max: 0.5 },
+  'Lettuce': { min: 0.5, max: 1 },
+  'Kale': { min: 1, max: 1.5 },
+  'Spinach': { min: 0.25, max: 0.5 },
+  'Onions': { min: 0.5, max: 0.5 },
+  'Garlic': { min: 0.1, max: 0.1 },
+  'Potatoes': { min: 2, max: 5 },
+  'Sweet Potatoes': { min: 2, max: 3 },
+  'Broccoli': { min: 1, max: 2 },
+  'Cabbage': { min: 3, max: 5 },
+  'Corn': { min: 1, max: 2 },
+  'Peas': { min: 0.25, max: 0.5 },
+  'Beets': { min: 0.5, max: 0.5 },
+  'Radishes': { min: 0.1, max: 0.1 },
+  'Swiss Chard': { min: 1, max: 2 }
+};
+
+var MAX_SELECTIONS = 10;
+var selectedVeggies = [];
+
+function buildVegGrid() {
+  var grid = document.getElementById('veg-grid');
+  var veggies = Object.keys(yieldData);
+  grid.innerHTML = '';
+
+  veggies.forEach(function(veg) {
+    var label = document.createElement('label');
+    label.className = 'veg-checkbox';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.value = veg;
+    cb.addEventListener('change', function() { toggleVeggie(veg, label, cb); });
+    label.appendChild(cb);
+    label.appendChild(document.createTextNode(veg));
+    grid.appendChild(label);
+  });
+
+  // Build sidebar reference
+  var sidebarRef = document.getElementById('sidebar-yield-ref');
+  sidebarRef.innerHTML = '';
+  veggies.forEach(function(veg) {
+    var d = yieldData[veg];
+    var row = document.createElement('tr');
+    row.style.borderBottom = '1px solid var(--gray-100)';
+    row.innerHTML = '<td style="padding:3px 0;">' + veg + '</td><td style="text-align:right;padding:3px 0;">' + d.min + (d.min !== d.max ? '–' + d.max : '') + '</td>';
+    sidebarRef.appendChild(row);
+  });
+}
+
+function toggleVeggie(veg, labelEl, cb) {
+  if (cb.checked) {
+    if (selectedVeggies.length >= MAX_SELECTIONS) {
+      cb.checked = false;
+      document.getElementById('max-warning').style.display = 'block';
+      setTimeout(function() {
+        document.getElementById('max-warning').style.display = 'none';
+      }, 3000);
+      return;
+    }
+    selectedVeggies.push(veg);
+    labelEl.classList.add('selected');
+  } else {
+    selectedVeggies = selectedVeggies.filter(function(v) { return v !== veg; });
+    labelEl.classList.remove('selected');
+  }
+  updatePlantInputs();
+}
+
+function updatePlantInputs() {
+  var container = document.getElementById('plant-inputs-container');
+  var inputsDiv = document.getElementById('plant-inputs');
+  inputsDiv.innerHTML = '';
+
+  if (selectedVeggies.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  container.style.display = 'block';
+  selectedVeggies.forEach(function(veg) {
+    var row = document.createElement('div');
+    row.className = 'plant-input-row';
+    row.innerHTML = '<label>' + veg + '</label>' +
+      '<input type="number" class="veg-plant-count" data-veg="' + veg + '" value="4" min="1" max="10000" step="1">' +
+      '<span class="text-sm text-muted">plants (' + yieldData[veg].min + (yieldData[veg].min !== yieldData[veg].max ? '–' + yieldData[veg].max : '') + ' lbs each)</span>';
+    inputsDiv.appendChild(row);
+  });
+}
+
+function calculateYield() {
+  var tbody = document.getElementById('yield-tbody');
+  var tfoot = document.getElementById('yield-tfoot');
+  tbody.innerHTML = '';
+  tfoot.innerHTML = '';
+
+  var totalAvg = 0;
+  var totalMin = 0;
+  var totalMax = 0;
+  var gardenSpace = parseInt(document.getElementById('garden-space').value) || 200;
+
+  var plantInputs = document.querySelectorAll('.veg-plant-count');
+  if (plantInputs.length === 0) {
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+
+  plantInputs.forEach(function(input) {
+    var veg = input.getAttribute('data-veg');
+    var numPlants = parseInt(input.value) || 0;
+    if (numPlants <= 0) return;
+
+    var d = yieldData[veg];
+    var minYield = d.min * numPlants;
+    var maxYield = d.max * numPlants;
+    var avgYield = (minYield + maxYield) / 2;
+
+    totalMin += minYield;
+    totalMax += maxYield;
+    totalAvg += avgYield;
+
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + veg + '</td><td>' + numPlants + '</td><td>' + minYield.toFixed(1) + '</td><td>' + maxYield.toFixed(1) + '</td><td>' + avgYield.toFixed(1) + '</td>';
+    tbody.appendChild(tr);
+  });
+
+  var totalTr = document.createElement('tr');
+  totalTr.className = 'total-row';
+  totalTr.innerHTML = '<td><strong>TOTAL</strong></td><td></td><td>' + totalMin.toFixed(1) + '</td><td>' + totalMax.toFixed(1) + '</td><td><strong>' + totalAvg.toFixed(1) + '</strong></td>';
+  tfoot.appendChild(totalTr);
+
+  var peopleFed = totalAvg / 200;
+  var yieldPerSqft = gardenSpace > 0 ? totalAvg / gardenSpace : 0;
+
+  document.getElementById('total-yield').textContent = totalAvg.toFixed(1) + ' lbs';
+  document.getElementById('people-fed').textContent = peopleFed.toFixed(1);
+  document.getElementById('yield-per-sqft').textContent = yieldPerSqft.toFixed(2) + ' lbs';
+
+  var summary = document.getElementById('yield-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<strong>Summary:</strong> With ' + selectedVeggies.length + ' vegetable types across ' + gardenSpace + ' sq ft, your garden can produce an estimated <strong>' + totalAvg.toFixed(1) + ' lbs</strong> of fresh produce — enough to feed approximately <strong>' + peopleFed.toFixed(1) + ' people</strong> for a year (based on 200 lbs/person).';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  buildVegGrid();
+});
+</script>
+
+</body>
+</html>

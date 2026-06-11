@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainwater Harvest Calculator — Tank Size & Collection Estimate (2026) | Homestead Calculators</title>
+  <meta name="description" content="Calculate how much rainwater you can collect from your roof. Size your storage tanks, estimate annual collection, and plan your rainwater harvesting system.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .efficiency-badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    .efficiency-high { background: var(--green-pale); color: var(--green-dark); }
+    .efficiency-med { background: #fef3c7; color: #92400e; }
+    .efficiency-low { background: #fee2e2; color: #991b1b; }
+    .rainfall-table {
+      width: 100%;
+      font-size: 0.8rem;
+      border-collapse: collapse;
+    }
+    .rainfall-table th {
+      text-align: left;
+      padding: 3px 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .rainfall-table td {
+      padding: 3px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .rainfall-table tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Rainwater Harvest Calculator",
+    "url": "https://homesteadcalc.com/calculators/rainwater-harvest.html",
+    "description": "Calculate how much rainwater you can collect from your roof. Size your storage tanks, estimate annual collection, and plan your rainwater harvesting system.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Rainwater Harvest Calculator
+    </nav>
+
+    <h1>Rainwater Harvest Calculator</h1>
+    <p class="text-lg text-muted">Estimate how much rainwater you can collect from your roof. Find the right tank size and see potential water savings for your homestead.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Collection Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="roof-area">Roof Footprint Area (sq ft)</label>
+            <input type="number" id="roof-area" class="form-input" value="1500" min="10" max="100000" step="1" oninput="calculateRainwater()">
+            <div class="form-hint">This is the building's footprint (length × width), not the total sloped roof area. For a rectangular house, multiply length by width. For example, a 30×50 ft house = 1,500 sq ft.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="roof-type">Roof Type</label>
+            <select id="roof-type" class="form-select" onchange="calculateRainwater()">
+              <option value="metal">Metal Roof (95% efficiency)</option>
+              <option value="shingle" selected>Standard Asphalt Shingle (85% efficiency)</option>
+              <option value="tile">Clay/Concrete Tile (85% efficiency)</option>
+              <option value="flat-gravel">Flat / Built-Up Gravel (75% efficiency)</option>
+              <option value="green">Green / Living Roof (50% efficiency)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="annual-rainfall">Annual Rainfall (inches)</label>
+            <input type="number" id="annual-rainfall" class="form-input" value="38" min="1" max="200" step="0.1" oninput="calculateRainwater()">
+            <div class="form-hint">US national average is approximately 38 inches. See sidebar for major city rainfall data.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Collection Efficiency</label>
+            <div style="padding:0.625rem 0;font-size:1.1rem;font-weight:700;color:var(--green-dark);">
+              <span id="efficiency-display">85%</span>
+              <span class="efficiency-badge efficiency-high" id="efficiency-badge">Good</span>
+            </div>
+            <div class="form-hint">Efficiency is determined by roof type. Smoother surfaces collect more water; porous or rough surfaces lose more.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="daily-usage">Household Water Usage (gallons/day) — Optional</label>
+            <input type="number" id="daily-usage" class="form-input" value="" min="0" max="10000" step="1" placeholder="e.g., 100" oninput="calculateRainwater()">
+            <div class="form-hint">Average US household uses about 300 gallons/day. For garden-only use, estimate 50–100 gallons/day during growing season.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="existing-tank">Existing Tank Size (gallons) — Optional</label>
+            <input type="number" id="existing-tank" class="form-input" value="" min="0" max="100000" step="1" placeholder="e.g., 500" oninput="calculateRainwater()">
+            <div class="form-hint">If you already have tanks, enter the total capacity to see how many days of supply they provide.</div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateRainwater()">Calculate Collection Potential</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Collection Estimates</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="annual-collection">—</div>
+                <div class="label">Annual Collection (gallons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-avg">—</div>
+                <div class="label">Monthly Average (gallons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="recommended-tank">—</div>
+                <div class="label">Recommended Tank Size</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="daily-collection">—</div>
+                <div class="label">Avg Daily Collection (gallons)</div>
+              </div>
+              <div class="result-item" id="days-supply-item">
+                <div class="value" id="days-of-supply">—</div>
+                <div class="label">Days of Supply</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="cost-saved">—</div>
+                <div class="label">Municipal Water Cost Saved</div>
+              </div>
+            </div>
+
+            <div class="info-box mt-lg" id="harvest-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our rainwater harvest calculator estimates how much water you can collect based on your roof area, local rainfall, and roof material. One inch of rain on 1,000 square feet of roof yields about 623 gallons of water — more than most people realize.</p>
+
+          <h3>The 0.623 Conversion Factor</h3>
+          <p>The magic number 0.623 comes from basic geometry: 1 inch of rain falling on 1 square foot of surface equals 1/12 of a cubic foot of water. One cubic foot contains 7.48 gallons. So: <strong>1/12 × 7.48 = 0.623 gallons per square foot per inch of rain.</strong></p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Annual Collection (gallons) = Roof Area (sq ft) × Annual Rainfall (in) × 0.623 × Collection Efficiency
+
+Monthly Average = Annual Collection ÷ 12
+
+Recommended Tank = Daily Usage × 30 days (one month of supply)
+
+Days of Supply = Existing Tank Size ÷ Daily Usage
+
+Cost Saved = Annual Collection ÷ 748 × Municipal Water Rate ($/100 cu ft)
+  (assumes avg US rate of $3.50 per 100 cubic feet / 748 gallons)
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> A 1,500 sq ft roof in an area with 40 inches of annual rain can collect over 30,000 gallons per year. Even with a 50% green roof, that's still 15,000+ gallons — enough to water a large garden all season.
+          </div>
+        </section>
+
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="solar-power.html">Solar Power Calculator</a>
+            <a href="livestock-water.html">Livestock Water Calculator</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>US City Rainfall Reference</h3>
+          <table class="rainfall-table">
+            <thead>
+              <tr>
+                <th>City</th>
+                <th style="text-align:right;">Annual Rain (in)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Seattle, WA</td><td style="text-align:right;">37.5</td></tr>
+              <tr><td>Portland, OR</td><td style="text-align:right;">36.0</td></tr>
+              <tr><td>San Francisco, CA</td><td style="text-align:right;">23.6</td></tr>
+              <tr><td>Los Angeles, CA</td><td style="text-align:right;">14.8</td></tr>
+              <tr><td>Phoenix, AZ</td><td style="text-align:right;">8.0</td></tr>
+              <tr><td>Denver, CO</td><td style="text-align:right;">14.3</td></tr>
+              <tr><td>Dallas, TX</td><td style="text-align:right;">37.6</td></tr>
+              <tr><td>Houston, TX</td><td style="text-align:right;">49.8</td></tr>
+              <tr><td>Minneapolis, MN</td><td style="text-align:right;">30.6</td></tr>
+              <tr><td>Chicago, IL</td><td style="text-align:right;">36.9</td></tr>
+              <tr><td>Atlanta, GA</td><td style="text-align:right;">49.7</td></tr>
+              <tr><td>Miami, FL</td><td style="text-align:right;">61.9</td></tr>
+              <tr><td>New York, NY</td><td style="text-align:right;">49.9</td></tr>
+              <tr><td>Boston, MA</td><td style="text-align:right;">43.8</td></tr>
+              <tr><td>Nashville, TN</td><td style="text-align:right;">47.3</td></tr>
+              <tr><td>Boise, ID</td><td style="text-align:right;">11.7</td></tr>
+              <tr><td>Anchorage, AK</td><td style="text-align:right;">16.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Is Rainwater Harvesting Legal?</h3>
+          <p class="text-sm">Rainwater harvesting is legal in all 50 states, but regulations vary. Colorado historically had the strictest laws but now allows up to 110 gallons of storage per household. Most states actively encourage rainwater collection with tax incentives and rebates. Check your local county regulations for specific requirements.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var roofEfficiencies = {
+  'metal': 0.95,
+  'shingle': 0.85,
+  'tile': 0.85,
+  'flat-gravel': 0.75,
+  'green': 0.50
+};
+
+var MUNICIPAL_WATER_RATE = 3.50; // per 100 cubic feet (748 gallons)
+
+function calculateRainwater() {
+  var roofArea = parseFloat(document.getElementById('roof-area').value) || 1500;
+  var roofType = document.getElementById('roof-type').value;
+  var annualRainfall = parseFloat(document.getElementById('annual-rainfall').value) || 38;
+  var dailyUsage = parseFloat(document.getElementById('daily-usage').value) || 0;
+  var existingTank = parseFloat(document.getElementById('existing-tank').value) || 0;
+
+  var efficiency = roofEfficiencies[roofType] || 0.85;
+
+  // Update efficiency display
+  document.getElementById('efficiency-display').textContent = (efficiency * 100).toFixed(0) + '%';
+  var badge = document.getElementById('efficiency-badge');
+  if (efficiency >= 0.90) {
+    badge.textContent = 'Excellent';
+    badge.className = 'efficiency-badge efficiency-high';
+  } else if (efficiency >= 0.80) {
+    badge.textContent = 'Good';
+    badge.className = 'efficiency-badge efficiency-high';
+  } else if (efficiency >= 0.60) {
+    badge.textContent = 'Fair';
+    badge.className = 'efficiency-badge efficiency-med';
+  } else {
+    badge.textContent = 'Low';
+    badge.className = 'efficiency-badge efficiency-low';
+  }
+
+  // Calculations
+  var annualCollection = roofArea * annualRainfall * 0.623 * efficiency;
+  var monthlyAvg = annualCollection / 12;
+  var dailyCollection = annualCollection / 365;
+
+  // Recommended tank size
+  var recommendedTank;
+  if (dailyUsage > 0) {
+    var oneMonthSupply = dailyUsage * 30;
+    var maxMonthlyCollection = monthlyAvg;
+    recommendedTank = Math.min(oneMonthSupply, maxMonthlyCollection);
+  } else {
+    recommendedTank = monthlyAvg; // default to one month of collection
+  }
+
+  // Days of supply
+  var daysOfSupply = 0;
+  if (dailyUsage > 0 && existingTank > 0) {
+    daysOfSupply = existingTank / dailyUsage;
+  }
+
+  // Cost saved
+  var costSaved = (annualCollection / 748) * MUNICIPAL_WATER_RATE;
+
+  document.getElementById('annual-collection').textContent = annualCollection.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('monthly-avg').textContent = monthlyAvg.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('recommended-tank').textContent = Math.round(recommendedTank).toLocaleString() + ' gallons';
+  document.getElementById('daily-collection').textContent = dailyCollection.toFixed(0) + ' gallons';
+
+  if (dailyUsage > 0 && existingTank > 0) {
+    document.getElementById('days-of-supply').textContent = daysOfSupply.toFixed(0) + ' days';
+    document.getElementById('days-supply-item').style.display = '';
+  } else {
+    document.getElementById('days-of-supply').textContent = '—';
+    if (dailyUsage <= 0 && existingTank <= 0) {
+      document.getElementById('days-supply-item').style.display = 'none';
+    } else {
+      document.getElementById('days-supply-item').style.display = '';
+      document.getElementById('days-of-supply').textContent = 'Enter both values';
+    }
+  }
+
+  document.getElementById('cost-saved').textContent = '$' + costSaved.toFixed(2) + '/yr';
+
+  // Summary
+  var summary = document.getElementById('harvest-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<strong>Summary:</strong> Your ' + roofArea.toLocaleString() + ' sq ft roof can collect approximately <strong>' + Math.round(annualCollection).toLocaleString() + ' gallons</strong> of rainwater per year (about ' + Math.round(dailyCollection) + ' gallons/day on average). ';
+  if (dailyUsage > 0) {
+    var percentCovered = Math.min(100, (dailyCollection / dailyUsage) * 100);
+    summary.innerHTML += 'This covers about <strong>' + percentCovered.toFixed(0) + '%</strong> of your daily usage of ' + dailyUsage + ' gallons. ';
+  }
+  summary.innerHTML += 'A recommended tank size of <strong>' + Math.round(recommendedTank).toLocaleString() + ' gallons</strong> would provide a good buffer for dry periods.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  calculateRainwater();
+});
+</script>
+
+</body>
+</html>

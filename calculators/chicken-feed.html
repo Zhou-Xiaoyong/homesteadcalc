@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Feed Calculator — Free Feed Cost & Quantity Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Calculate exactly how much feed your chickens need based on flock size, breed type, age, and purpose. Save money and avoid waste with our free chicken feed calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Chicken Feed Calculator",
+    "url": "https://homesteadcalc.com/calculators/chicken-feed.html",
+    "description": "Calculate exactly how much feed your chickens need based on flock size, breed type, age, and purpose.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Chicken Feed Calculator
+    </nav>
+
+    <h1>Chicken Feed Calculator</h1>
+    <p class="text-lg text-muted">Estimate daily, weekly, and monthly feed needs for your flock. Input your flock size, breed type, and feed prices to calculate total costs and bags needed.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Feed Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="num-chickens">Number of Chickens</label>
+            <input type="number" id="num-chickens" class="form-input" value="10" min="1" max="10000" step="1">
+            <div class="form-hint">Enter the total number of birds in your flock.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="breed-type">Breed Type</label>
+            <select id="breed-type" class="form-select">
+              <option value="layers">Layers (egg production)</option>
+              <option value="broilers">Broilers (meat production)</option>
+              <option value="dual-purpose">Dual-Purpose</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="age-group">Age Group</label>
+            <select id="age-group" class="form-select">
+              <option value="chicks">Chicks (0–8 weeks)</option>
+              <option value="pullets">Pullets (8–20 weeks)</option>
+              <option value="adults">Adults (20+ weeks)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="feed-type">Feed Type</label>
+            <select id="feed-type" class="form-select">
+              <option value="starter">Starter Feed (18–20% protein)</option>
+              <option value="grower">Grower Feed (15–16% protein)</option>
+              <option value="layer">Layer Feed (16–18% protein)</option>
+              <option value="all-purpose">All-Purpose / Scratch</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="feed-price">Feed Price per 50 lb Bag ($)</label>
+            <input type="number" id="feed-price" class="form-input" value="18.00" min="0" max="500" step="0.01">
+            <div class="form-hint">Average US price: $16–$22 per 50 lb bag of layer feed.</div>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateFeed()">Calculate Feed Needs</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Feed Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="daily-feed">—</div>
+                <div class="label">Daily Feed (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="weekly-feed">—</div>
+                <div class="label">Weekly Feed (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-feed">—</div>
+                <div class="label">Monthly Feed (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="daily-cost">—</div>
+                <div class="label">Daily Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-cost">—</div>
+                <div class="label">Monthly Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bags-monthly">—</div>
+                <div class="label">50 lb Bags / Month</div>
+              </div>
+            </div>
+
+            <div class="info-box mt-lg" id="feed-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our chicken feed calculator uses standardized daily feed intake rates based on breed type and age group. These values are derived from poultry science research and are widely used by commercial and backyard poultry keepers across the US.</p>
+
+          <h3>Feed Conversion Ratios</h3>
+          <p>Feed conversion ratio (FCR) measures how efficiently a chicken converts feed into body weight or eggs. Broilers are the most efficient, achieving FCRs as low as 1.5:1 — meaning 1.5 pounds of feed produces 1 pound of live weight. Layers require more energy for egg production, with typical FCRs around 2.0–2.5:1 for eggs.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Daily Feed (lbs) = Number of Chickens × Daily Feed Rate per Bird (lbs)
+Daily Cost ($) = (Daily Feed ÷ 50) × Price per 50 lb Bag
+Monthly Cost = Daily Cost × 30
+Bags per Month = Monthly Feed ÷ 50
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Free-ranging chickens typically consume 20–30% less commercial feed during growing season when forage is abundant. Adjust your estimates downward if your flock has significant pasture access.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="egg-production.html">Egg Production Estimator</a>
+            <a href="chicken-coop-size.html">Chicken Coop Size Calculator</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Feed Requirements by Breed Type (Adult Birds)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Breed Type</th>
+                <th style="text-align:right;padding:4px 0;">Feed/Day</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Layers</td>
+                <td style="text-align:right;">0.25 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Broilers</td>
+                <td style="text-align:right;">0.35 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Dual-Purpose</td>
+                <td style="text-align:right;">0.30 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Pullets</td>
+                <td style="text-align:right;">0.18 lb</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Chicks</td>
+                <td style="text-align:right;">0.10 lb</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">A 50 lb bag of layer feed typically costs $16–$22 and lasts roughly 2–3 weeks for a flock of 10 adult layers.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">An adult laying hen consumes approximately 1.5 pounds of feed for every dozen eggs she lays. For a flock of 10 layers, that means about 15 lbs of feed per dozen eggs produced.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+function calculateFeed() {
+  var numChickens = parseInt(document.getElementById('num-chickens').value) || 0;
+  var breedType = document.getElementById('breed-type').value;
+  var ageGroup = document.getElementById('age-group').value;
+  var feedPrice = parseFloat(document.getElementById('feed-price').value) || 0;
+
+  // Determine daily feed rate per bird
+  var dailyRate;
+  if (ageGroup === 'chicks') {
+    dailyRate = 0.1;
+  } else if (ageGroup === 'pullets') {
+    dailyRate = 0.18;
+  } else {
+    // Adults
+    if (breedType === 'broilers') {
+      dailyRate = 0.35;
+    } else if (breedType === 'dual-purpose') {
+      dailyRate = 0.3;
+    } else {
+      dailyRate = 0.25; // layers
+    }
+  }
+
+  var dailyFeed = numChickens * dailyRate;
+  var weeklyFeed = dailyFeed * 7;
+  var monthlyFeed = dailyFeed * 30;
+  var dailyCost = (dailyFeed / 50) * feedPrice;
+  var monthlyCost = (monthlyFeed / 50) * feedPrice;
+  var bagsMonthly = monthlyFeed / 50;
+
+  document.getElementById('daily-feed').textContent = dailyFeed.toFixed(1);
+  document.getElementById('weekly-feed').textContent = weeklyFeed.toFixed(1);
+  document.getElementById('monthly-feed').textContent = monthlyFeed.toFixed(1);
+  document.getElementById('daily-cost').textContent = '$' + dailyCost.toFixed(2);
+  document.getElementById('monthly-cost').textContent = '$' + monthlyCost.toFixed(2);
+  document.getElementById('bags-monthly').textContent = bagsMonthly.toFixed(1);
+
+  // Summary
+  var summary = document.getElementById('feed-summary');
+  summary.style.display = 'block';
+  var breedLabel = breedType === 'broilers' ? 'Broilers' : breedType === 'dual-purpose' ? 'Dual-Purpose' : 'Layers';
+  var ageLabel = ageGroup === 'chicks' ? 'Chicks (0–8 wks)' : ageGroup === 'pullets' ? 'Pullets (8–20 wks)' : 'Adults (20+ wks)';
+  summary.innerHTML = '<strong>Flock Profile:</strong> ' + numChickens + ' × ' + breedLabel + ' (' + ageLabel + ') — consuming ' + dailyFeed.toFixed(1) + ' lbs of feed per day. At $' + feedPrice.toFixed(2) + '/bag, your estimated monthly feed cost is <strong>$' + monthlyCost.toFixed(2) + '</strong> (' + bagsMonthly.toFixed(1) + ' bags).';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateFeed();
+});
+</script>
+
+</body>
+</html>

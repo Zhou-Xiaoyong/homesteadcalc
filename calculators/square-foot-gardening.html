@@ -1,0 +1,574 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Square Foot Gardening Planner — Free Online Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot for 30+ vegetables and herbs.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .veg-search {
+      margin-bottom: var(--space-md);
+    }
+    .veg-search .form-input {
+      margin-bottom: var(--space-sm);
+    }
+    .veg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-sm);
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: var(--space-sm);
+    }
+    .veg-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 0;
+    }
+    .veg-option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+    }
+    .veg-option label {
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .veg-option .veg-count {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .bed-config {
+      display: flex;
+      gap: var(--space-md);
+      align-items: end;
+      flex-wrap: wrap;
+    }
+    .bed-config .form-group {
+      margin-bottom: 0;
+    }
+    .sfg-bed {
+      display: inline-grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      background: var(--gray-700);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      margin: var(--space-md) 0;
+    }
+    .sfg-cell {
+      width: 70px;
+      height: 70px;
+      background: #8B6914;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      color: var(--white);
+      text-align: center;
+      line-height: 1.2;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .sfg-cell.planted {
+      background: var(--green-mid);
+    }
+    .sfg-cell .cell-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .sfg-cell .cell-name {
+      font-weight: 600;
+      max-width: 65px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .bed-label {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-top: var(--space-xs);
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: var(--space-md);
+    }
+    .summary-table th {
+      background: var(--gray-50);
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .summary-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .summary-table tr:hover td {
+      background: var(--gray-50);
+    }
+    .size-badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .size-xl { background: #fee2e2; color: #991b1b; }
+    .size-lg { background: #fef3c7; color: #92400e; }
+    .size-md { background: #d1fae5; color: #065f46; }
+    .size-sm { background: #e0e7ff; color: #3730a3; }
+    .plan-text {
+      background: var(--bg-accent);
+      border: 1px solid var(--accent-light);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    @media print {
+      .site-header, .site-footer, .ad-slot, .calc-sidebar, .btn, .veg-search, .bed-config { display: none !important; }
+      body { font-size: 12pt; }
+      .container { max-width: 100%; padding: 0; }
+      .sfg-cell { width: 55px; height: 55px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Square Foot Gardening Planner",
+    "url": "https://homesteadcalc.com/calculators/square-foot-gardening.html",
+    "description": "Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot for 30+ vegetables and herbs.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Square Foot Gardening Planner
+    </nav>
+
+    <h1>Square Foot Gardening Planner</h1>
+    <p class="text-muted">Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>Select Vegetables</h2>
+
+        <div class="veg-search">
+          <input type="text" class="form-input" id="vegSearch" placeholder="Search vegetables..." oninput="filterVeggies()">
+        </div>
+
+        <div class="veg-grid" id="vegGrid"></div>
+        <p class="form-hint mt-sm">Select up to 10 vegetables. Each shows plants per square foot.</p>
+
+        <div class="bed-config mt-xl">
+          <div class="form-group">
+            <label class="form-label" for="bedCount">Number of 4'x4' Beds</label>
+            <input type="number" class="form-input" id="bedCount" value="1" min="1" max="10" style="width:80px;">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bedName">Bed Name (optional)</label>
+            <input type="text" class="form-input" id="bedName" placeholder="e.g. Main Bed" style="width:200px;">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block mt-lg" onclick="generatePlan()">Generate Planting Plan</button>
+
+        <div class="result-box" id="results">
+          <div class="result-value" id="mainResult"></div>
+          <div class="result-label" id="mainLabel"></div>
+
+          <div id="bedsContainer"></div>
+
+          <div class="plan-text" id="planText"></div>
+
+          <h3 style="margin-top:var(--space-xl);">Plant Summary</h3>
+          <table class="summary-table" id="summaryTable">
+            <thead>
+              <tr>
+                <th>Vegetable</th>
+                <th>Size</th>
+                <th>Per Sq Ft</th>
+                <th>Squares Used</th>
+                <th>Total Plants</th>
+              </tr>
+            </thead>
+            <tbody id="summaryBody"></tbody>
+          </table>
+
+          <div class="result-grid mt-lg">
+            <div class="result-item">
+              <div class="value" id="resTotalPlants">0</div>
+              <div class="label">Total Plants</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resTotalSquares">0</div>
+              <div class="label">Squares Used</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resSquaresLeft">0</div>
+              <div class="label">Squares Available</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>Square Foot Gardening (SFG) was developed by Mel Bartholomew as a space-efficient way to grow more food in less area. Instead of planting in rows, you divide your raised bed into 1-foot squares, each planted with a specific number of plants based on their size.</p>
+
+        <div class="formula-box">
+Plants per square foot by plant size:
+
+  Extra Large (1 per sq ft):  Tomatoes, Broccoli, Cabbage, Peppers...
+  Large (4 per sq ft):        Lettuce, Kale, Basil, Strawberries...
+  Medium (9 per sq ft):       Bush Beans, Spinach, Beets, Garlic...
+  Small (16 per sq ft):       Carrots, Radishes, Onions, Parsley...
+
+Total squares per 4'x4' bed = 16
+Total plants = sum of (squares × plants_per_sq_ft)</div>
+
+        <h3>The SFG Method</h3>
+        <p>Each 4'x4' bed contains 16 one-foot squares. The number of plants per square depends on the mature size of the plant. Large plants like tomatoes get a full square to themselves, while small plants like carrots can fit 16 in the same space. This method typically produces 5x more harvest per square foot than traditional row gardening.</p>
+
+        <h3>Spacing Grid</h3>
+        <ul>
+          <li><strong>1 per sq ft</strong> (12" spacing): Indeterminate tomatoes, broccoli, cabbage, cauliflower, peppers, eggplant, sunflowers</li>
+          <li><strong>4 per sq ft</strong> (6" spacing): Head lettuce, Swiss chard, kale, basil, rosemary, strawberries</li>
+          <li><strong>9 per sq ft</strong> (4" spacing): Bush beans, spinach, beets, turnips, garlic</li>
+          <li><strong>16 per sq ft</strong> (3" spacing): Carrots, radishes, green onions, parsley, cilantro, leeks</li>
+        </ul>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/garden-yield.html">Garden Yield</a>
+            <a href="/calculators/plant-spacing.html">Plant Spacing</a>
+            <a href="/calculators/seed-starting.html">Seed Starting Dates</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>Plants Per Square Foot</h3>
+          <p class="text-sm text-muted mb-md">Quick reference by spacing category.</p>
+          <table style="width:100%;font-size:0.75rem;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Spacing</th>
+                <th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">#/sq ft</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:3px 0;border-bottom:1px solid var(--gray-100);">12 inches</td><td style="text-align:center;padding:3px 0;border-bottom:1px solid var(--gray-100);font-weight:700;">1</td></tr>
+              <tr><td style="padding:3px 0;border-bottom:1px solid var(--gray-100);">6 inches</td><td style="text-align:center;padding:3px 0;border-bottom:1px solid var(--gray-100);font-weight:700;">4</td></tr>
+              <tr><td style="padding:3px 0;border-bottom:1px solid var(--gray-100);">4 inches</td><td style="text-align:center;padding:3px 0;border-bottom:1px solid var(--gray-100);font-weight:700;">9</td></tr>
+              <tr><td style="padding:3px 0;">3 inches</td><td style="text-align:center;padding:3px 0;font-weight:700;">16</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>SFG Soil Mix</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Mel's Mix (by volume):</p>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li><strong>1/3</strong> vermiculite</li>
+            <li><strong>1/3</strong> peat moss (or coconut coir)</li>
+            <li><strong>1/3</strong> blended compost</li>
+          </ul>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Bed Size</h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0;">
+            Standard SFG bed: 4' × 4' × 6" deep<br>
+            = 16 square feet<br>
+            = ~8 cubic feet of soil mix
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const vegetables = [
+  {name:"Tomatoes (indeterminate)",perSqFt:1,size:"xl",icon:"🍅"},
+  {name:"Broccoli",perSqFt:1,size:"xl",icon:"🥦"},
+  {name:"Cabbage",perSqFt:1,size:"xl",icon:"🥬"},
+  {name:"Cauliflower",perSqFt:1,size:"xl",icon:"🤍"},
+  {name:"Peppers",perSqFt:1,size:"xl",icon:"🫑"},
+  {name:"Eggplant",perSqFt:1,size:"xl",icon:"🍆"},
+  {name:"Sunflowers",perSqFt:1,size:"xl",icon:"🌻"},
+  {name:"Watermelon (trellised)",perSqFt:1,size:"xl",icon:"🍉"},
+  {name:"Pumpkins",perSqFt:1,size:"xl",icon:"🎃"},
+  {name:"Zucchini/Summer Squash",perSqFt:1,size:"xl",icon:"🥒"},
+  {name:"Lettuce (head)",perSqFt:4,size:"lg",icon:"🥬"},
+  {name:"Swiss Chard",perSqFt:4,size:"lg",icon:"🥗"},
+  {name:"Kale",perSqFt:4,size:"lg",icon:"🥬"},
+  {name:"Marigolds",perSqFt:4,size:"lg",icon:"🌼"},
+  {name:"Basil",perSqFt:4,size:"lg",icon:"🌿"},
+  {name:"Rosemary",perSqFt:4,size:"lg",icon:"🌿"},
+  {name:"Strawberries",perSqFt:4,size:"lg",icon:"🍓"},
+  {name:"Bush Beans",perSqFt:9,size:"md",icon:"🫘"},
+  {name:"Spinach",perSqFt:9,size:"md",icon:"🥬"},
+  {name:"Beets",perSqFt:9,size:"md",icon:"🫐"},
+  {name:"Turnips",perSqFt:9,size:"md",icon:"🥕"},
+  {name:"Garlic",perSqFt:9,size:"md",icon:"🧄"},
+  {name:"Carrots",perSqFt:16,size:"sm",icon:"🥕"},
+  {name:"Radishes",perSqFt:16,size:"sm",icon:"🔴"},
+  {name:"Onions (green)",perSqFt:16,size:"sm",icon:"🧅"},
+  {name:"Parsley",perSqFt:16,size:"sm",icon:"🌿"},
+  {name:"Cilantro",perSqFt:16,size:"sm",icon:"🌿"},
+  {name:"Leeks",perSqFt:16,size:"sm",icon:"🧅"},
+  {name:"Green Onions",perSqFt:16,size:"sm",icon:"🧅"},
+  {name:"Corn",perSqFt:4,size:"lg",icon:"🌽"},
+  {name:"Peas",perSqFt:8,size:"md",icon:"🫛"},
+  {name:"Potatoes",perSqFt:1,size:"xl",icon:"🥔"}
+];
+
+const sizeLabels = {xl:"Extra Large",lg:"Large",md:"Medium",sm:"Small"};
+const sizeBadges = {xl:"size-xl",lg:"size-lg",md:"size-md",sm:"size-sm"};
+
+// Build veg grid
+function buildVegGrid() {
+  const grid = document.getElementById('vegGrid');
+  grid.innerHTML = '';
+  vegetables.forEach((veg, i) => {
+    const div = document.createElement('div');
+    div.className = 'veg-option';
+    div.dataset.name = veg.name.toLowerCase();
+    div.innerHTML = `
+      <input type="checkbox" id="veg_${i}" value="${i}">
+      <label for="veg_${i}">${veg.icon} ${veg.name} <span class="veg-count">${veg.perSqFt}/sq ft</span></label>
+    `;
+    grid.appendChild(div);
+  });
+}
+buildVegGrid();
+
+function filterVeggies() {
+  const query = document.getElementById('vegSearch').value.toLowerCase();
+  document.querySelectorAll('.veg-option').forEach(opt => {
+    opt.style.display = opt.dataset.name.includes(query) ? '' : 'none';
+  });
+}
+
+function generatePlan() {
+  const selected = [];
+  document.querySelectorAll('.veg-option input[type="checkbox"]:checked').forEach(cb => {
+    if (selected.length >= 10) { cb.checked = false; return; }
+    selected.push(parseInt(cb.value));
+  });
+
+  if (selected.length === 0) return;
+
+  const bedCount = parseInt(document.getElementById('bedCount').value) || 1;
+  const bedName = document.getElementById('bedName').value || 'Bed';
+  const totalSquares = bedCount * 16;
+
+  // Distribute squares among selected vegetables
+  const vegsWithSquares = selected.map(i => ({
+    ...vegetables[i],
+    squares: 1 // minimum 1 square each
+  }));
+
+  let usedSquares = vegsWithSquares.length;
+  let remaining = totalSquares - usedSquares;
+
+  // Distribute remaining squares proportionally
+  let idx = 0;
+  while (remaining > 0) {
+    vegsWithSquares[idx % vegsWithSquares.length].squares++;
+    remaining--;
+    idx++;
+  }
+
+  // Build beds
+  const container = document.getElementById('bedsContainer');
+  container.innerHTML = '';
+
+  let squareQueue = [];
+  vegsWithSquares.forEach(v => {
+    for (let s = 0; s < v.squares; s++) {
+      squareQueue.push(v);
+    }
+  });
+
+  // Shuffle for visual variety
+  for (let i = squareQueue.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [squareQueue[i], squareQueue[j]] = [squareQueue[j], squareQueue[i]];
+  }
+
+  for (let b = 0; b < bedCount; b++) {
+    const bedDiv = document.createElement('div');
+    bedDiv.style.marginBottom = 'var(--space-lg)';
+
+    const label = document.createElement('div');
+    label.className = 'bed-label';
+    label.textContent = bedName + ' ' + (b + 1) + ' (4\' × 4\')';
+    bedDiv.appendChild(label);
+
+    const grid = document.createElement('div');
+    grid.className = 'sfg-bed';
+
+    const bedStart = b * 16;
+    const bedEnd = Math.min(bedStart + 16, squareQueue.length);
+
+    for (let s = 0; s < 16; s++) {
+      const cell = document.createElement('div');
+      cell.className = 'sfg-cell';
+      const sqIdx = bedStart + s;
+      if (sqIdx < squareQueue.length) {
+        const v = squareQueue[sqIdx];
+        cell.classList.add('planted');
+        cell.innerHTML = `<span class="cell-icon">${v.icon}</span><span class="cell-name">${v.name.split(' ')[0]}</span><span style="font-size:0.5rem;">${v.perSqFt}</span>`;
+        cell.title = v.name + ' — ' + v.perSqFt + ' per sq ft';
+      } else {
+        cell.innerHTML = '<span style="opacity:0.3;font-size:0.7rem;">empty</span>';
+      }
+      grid.appendChild(cell);
+    }
+
+    bedDiv.appendChild(grid);
+    container.appendChild(bedDiv);
+  }
+
+  // Summary table
+  const summaryBody = document.getElementById('summaryBody');
+  summaryBody.innerHTML = '';
+  let totalPlants = 0;
+
+  vegsWithSquares.forEach(v => {
+    const plants = v.squares * v.perSqFt;
+    totalPlants += plants;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${v.icon} <strong>${v.name}</strong></td>
+      <td><span class="size-badge ${sizeBadges[v.size]}">${sizeLabels[v.size]}</span></td>
+      <td>${v.perSqFt}</td>
+      <td>${v.squares}</td>
+      <td style="font-weight:700;">${plants}</td>
+    `;
+    summaryBody.appendChild(tr);
+  });
+
+  // Plan text
+  const planParts = vegsWithSquares.map(v => {
+    const plants = v.squares * v.perSqFt;
+    return plants + ' ' + v.name.toLowerCase() + (plants > 1 ? 's' : '');
+  });
+  const planText = document.getElementById('planText');
+  planText.innerHTML = '<strong>Your planting plan:</strong> In ' + bedCount + ' 4×4 bed' + (bedCount > 1 ? 's' : '') + ' you can grow ' + planParts.join(', ') + '.';
+
+  document.getElementById('resTotalPlants').textContent = totalPlants;
+  document.getElementById('resTotalSquares').textContent = usedSquares + (totalSquares - usedSquares);
+  document.getElementById('resSquaresLeft').textContent = 0;
+
+  document.getElementById('mainResult').textContent = totalPlants + ' Total Plants';
+  document.getElementById('mainLabel').textContent = 'Across ' + bedCount + ' bed' + (bedCount > 1 ? 's' : '') + ' (' + totalSquares + ' sq ft)';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+</script>
+</body>
+</html>

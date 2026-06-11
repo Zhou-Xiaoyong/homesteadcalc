@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compost Mix Ratio Calculator — Free Online Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Calculate the perfect carbon-to-nitrogen ratio for your compost pile. Balance greens and browns for fast, odor-free composting. Free C:N ratio tool.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .material-section {
+      margin-bottom: var(--space-xl);
+    }
+    .material-section h3 {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--accent-light);
+    }
+    .material-item {
+      display: grid;
+      grid-template-columns: auto 1fr 100px;
+      gap: var(--space-sm);
+      align-items: center;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .material-item:last-child {
+      border-bottom: none;
+    }
+    .material-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+    .material-item label {
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .cn-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .material-item .parts-input {
+      width: 70px;
+      padding: 4px 8px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+    .material-item .parts-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-light);
+    }
+    .ratio-display {
+      text-align: center;
+      padding: var(--space-xl);
+      margin-top: var(--space-md);
+    }
+    .ratio-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .ratio-number.ideal { color: var(--success); }
+    .ratio-number.acceptable { color: var(--warning); }
+    .ratio-number.needs-adjustment { color: var(--error); }
+    .ratio-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    .ratio-bar {
+      background: var(--gray-200);
+      height: 20px;
+      border-radius: 10px;
+      position: relative;
+      margin: var(--space-lg) 0;
+      overflow: hidden;
+    }
+    .ratio-ideal-zone {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      background: rgba(22, 163, 74, 0.2);
+      border-left: 2px solid var(--success);
+      border-right: 2px solid var(--success);
+    }
+    .ratio-pointer {
+      position: absolute;
+      top: -4px;
+      width: 4px;
+      height: 28px;
+      background: var(--gray-900);
+      border-radius: 2px;
+      transform: translateX(-50%);
+      transition: left 0.3s ease;
+    }
+    .ratio-pointer::after {
+      content: 'You';
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      white-space: nowrap;
+    }
+    .adjustment-box {
+      background: var(--gray-50);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+    }
+    .adjustment-box strong {
+      color: var(--green-dark);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .summary-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+    .summary-item .value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .summary-item .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compost Mix Ratio Calculator",
+    "url": "https://homesteadcalc.com/calculators/compost-mix.html",
+    "description": "Calculate the perfect carbon-to-nitrogen ratio for your compost pile. Balance greens and browns for fast, odor-free composting. Free C:N ratio tool.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Compost Mix Ratio Calculator
+    </nav>
+
+    <h1>Compost Mix Ratio Calculator</h1>
+    <p class="text-muted">Balance your compost's carbon-to-nitrogen ratio for fast, odor-free decomposition. Select your materials and quantities below.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <div class="material-section">
+          <h3>Greens (Nitrogen-Rich)</h3>
+          <div id="greensContainer"></div>
+        </div>
+
+        <div class="material-section">
+          <h3>Browns (Carbon-Rich)</h3>
+          <div id="brownsContainer"></div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" onclick="calculateCompost()">Calculate C:N Ratio</button>
+
+        <div class="result-box" id="results">
+          <div class="ratio-display">
+            <div class="ratio-number" id="ratioNumber">—</div>
+            <div class="ratio-label">Overall C:N Ratio</div>
+          </div>
+
+          <div class="ratio-bar">
+            <div class="ratio-ideal-zone" id="idealZone"></div>
+            <div class="ratio-pointer" id="ratioPointer"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--text-muted);margin-bottom:var(--space-md);">
+            <span>0:1</span>
+            <span style="color:var(--success);font-weight:600;">25-30:1 Ideal</span>
+            <span>50:1</span>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-item">
+              <div class="value" id="resTotalParts">—</div>
+              <div class="label">Total Parts</div>
+            </div>
+            <div class="summary-item">
+              <div class="value" id="resStatus">—</div>
+              <div class="label">Status</div>
+            </div>
+          </div>
+
+          <div class="adjustment-box" id="adjustmentBox" style="display:none;"></div>
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>Compost needs the right balance of carbon (browns) and nitrogen (greens) to decompose efficiently. The ideal C:N ratio is between 25:1 and 30:1. This is because soil microbes use about 30 parts carbon for every 1 part nitrogen as they break down organic matter.</p>
+
+        <div class="formula-box">
+For each material:
+  total_C = parts × C_value  (first number in C:N ratio)
+  total_N = parts × N_value  (second number, always 1 for N)
+
+Overall C:N = sum(total_C) / sum(total_N)
+
+Ideal range: 25:1 to 30:1
+  20-25 or 30-40: Acceptable (slower decomposition)
+  Below 20 or above 40: Needs adjustment</div>
+
+        <h3>Why 30:1 Is Ideal</h3>
+        <p>Microorganisms need carbon for energy and nitrogen to build proteins. At a 30:1 ratio, they have exactly what they need. Too much carbon (high C:N) and decomposition slows to a crawl. Too much nitrogen (low C:N) and you get ammonia odors and nitrogen runoff.</p>
+
+        <h3>Tips</h3>
+        <p><strong>If too much carbon (high C:N):</strong> Add more greens like grass clippings, coffee grounds, or blood meal.</p>
+        <p><strong>If too much nitrogen (low C:N):</strong> Add more browns like dry leaves, straw, or shredded paper.</p>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/fertilizer.html">Fertilizer Calculator</a>
+            <a href="/calculators/garden-yield.html">Garden Yield</a>
+            <a href="/calculators/plant-spacing.html">Plant Spacing</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>Common C:N Ratios</h3>
+          <p class="text-sm text-muted mb-md">Reference for popular compost materials.</p>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Material</th>
+                <th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">C:N</th>
+                <th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Type</th>
+              </tr>
+            </thead>
+            <tbody id="referenceTable"></tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Composting Tips</h3>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li>Keep pile moist like a wrung-out sponge</li>
+            <li>Turn every 1-2 weeks for airflow</li>
+            <li>Shred materials smaller for faster breakdown</li>
+            <li>Ideal pile size: 3×3×3 feet minimum</li>
+            <li>Avoid meat, dairy, and diseased plants</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const greens = [
+  {name:"Grass Clippings", cn:17},
+  {name:"Vegetable Scraps", cn:25},
+  {name:"Coffee Grounds", cn:20},
+  {name:"Chicken Manure", cn:7},
+  {name:"Cow Manure", cn:18},
+  {name:"Horse Manure", cn:25},
+  {name:"Garden Weeds", cn:20},
+  {name:"Alfalfa Hay", cn:12},
+  {name:"Seaweed", cn:19},
+  {name:"Blood Meal", cn:4}
+];
+
+const browns = [
+  {name:"Dry Leaves", cn:60},
+  {name:"Straw", cn:80},
+  {name:"Hay", cn:40},
+  {name:"Sawdust", cn:325},
+  {name:"Wood Chips", cn:400},
+  {name:"Shredded Paper", cn:175},
+  {name:"Cardboard", cn:350},
+  {name:"Pine Needles", cn:110},
+  {name:"Corn Stalks", cn:75},
+  {name:"Newspaper", cn:175}
+];
+
+function buildMaterials(containerId, materials, type) {
+  const container = document.getElementById(containerId);
+  materials.forEach((mat, i) => {
+    const id = type + '_' + i;
+    const div = document.createElement('div');
+    div.className = 'material-item';
+    div.innerHTML = `
+      <input type="checkbox" id="${id}_cb" data-type="${type}" data-index="${i}" data-cn="${mat.cn}">
+      <label for="${id}_cb">${mat.name} <span class="cn-tag">(${mat.cn}:1)</span></label>
+      <input type="number" class="parts-input" id="${id}_parts" value="1" min="0.1" max="20" step="0.5" data-type="${type}" data-index="${i}">
+    `;
+    container.appendChild(div);
+  });
+}
+
+buildMaterials('greensContainer', greens, 'green');
+buildMaterials('brownsContainer', browns, 'brown');
+
+// Build reference table
+const refTable = document.getElementById('referenceTable');
+const allMats = [...greens.map(g=>({...g,type:'G'})), ...browns.map(b=>({...b,type:'B'}))];
+allMats.sort((a,b) => a.cn - b.cn);
+allMats.forEach(m => {
+  const tr = document.createElement('tr');
+  const typeColor = m.type === 'G' ? 'var(--green-light)' : 'var(--earth-light)';
+  tr.innerHTML = `<td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">${m.name}</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);font-size:0.75rem;">${m.cn}:1</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${typeColor};"></span></td>`;
+  refTable.appendChild(tr);
+});
+
+// Set ideal zone on ratio bar (25-30 out of 0-50 scale)
+const idealLeft = (25 / 50) * 100;
+const idealWidth = ((30 - 25) / 50) * 100;
+document.getElementById('idealZone').style.left = idealLeft + '%';
+document.getElementById('idealZone').style.width = idealWidth + '%';
+
+function calculateCompost() {
+  let totalC = 0;
+  let totalN = 0;
+  let totalParts = 0;
+  let selectedCount = 0;
+
+  document.querySelectorAll('input[type="checkbox"][data-type]').forEach(cb => {
+    if (cb.checked) {
+      const type = cb.dataset.type;
+      const index = parseInt(cb.dataset.index);
+      const cn = parseFloat(cb.dataset.cn);
+      const partsInput = document.getElementById(cb.id.replace('_cb', '_parts'));
+      const parts = parseFloat(partsInput.value) || 0;
+
+      if (parts > 0) {
+        totalC += parts * cn;
+        totalN += parts * 1; // N value is always 1 in C:N ratio
+        totalParts += parts;
+        selectedCount++;
+      }
+    }
+  });
+
+  if (selectedCount === 0 || totalN === 0) return;
+
+  const ratio = totalC / totalN;
+
+  // Display ratio
+  const ratioEl = document.getElementById('ratioNumber');
+  ratioEl.textContent = ratio.toFixed(1) + ':1';
+  ratioEl.className = 'ratio-number';
+  let status = '';
+  let statusClass = '';
+
+  if (ratio >= 25 && ratio <= 30) {
+    ratioEl.classList.add('ideal');
+    status = 'Ideal';
+    statusClass = 'color:var(--success);';
+  } else if ((ratio >= 20 && ratio < 25) || (ratio > 30 && ratio <= 40)) {
+    ratioEl.classList.add('acceptable');
+    status = 'Acceptable';
+    statusClass = 'color:var(--warning);';
+  } else {
+    ratioEl.classList.add('needs-adjustment');
+    status = 'Needs Adjustment';
+    statusClass = 'color:var(--error);';
+  }
+
+  document.getElementById('resTotalParts').textContent = totalParts.toFixed(1);
+  document.getElementById('resStatus').innerHTML = '<span style="' + statusClass + 'font-weight:700;">' + status + '</span>';
+
+  // Position pointer on bar (0-50 scale)
+  const pct = Math.min((ratio / 50) * 100, 100);
+  document.getElementById('ratioPointer').style.left = pct + '%';
+
+  // Adjustment advice
+  const adjBox = document.getElementById('adjustmentBox');
+  if (ratio < 20) {
+    adjBox.style.display = 'block';
+    adjBox.innerHTML = '<strong>Too much nitrogen!</strong> Your C:N ratio is low. Add more <strong>browns</strong> like dry leaves, straw, or shredded paper to bring the ratio up. Try adding 2-3 more parts of dry leaves or straw.';
+  } else if (ratio > 40) {
+    adjBox.style.display = 'block';
+    adjBox.innerHTML = '<strong>Too much carbon!</strong> Your C:N ratio is high. Add more <strong>greens</strong> like grass clippings, coffee grounds, or vegetable scraps to bring the ratio down. Try adding 2-3 more parts of grass clippings or blood meal.';
+  } else if (ratio >= 20 && ratio < 25) {
+    adjBox.style.display = 'block';
+    adjBox.innerHTML = '<strong>Slightly nitrogen-heavy.</strong> This will work, but may produce some odor. Add a handful of dry leaves or straw to push closer to the 25-30:1 ideal.';
+  } else if (ratio > 30 && ratio <= 40) {
+    adjBox.style.display = 'block';
+    adjBox.innerHTML = '<strong>Slightly carbon-heavy.</strong> Decomposition will be slower. Add a bit more grass clippings or coffee grounds to speed things up toward the 25-30:1 ideal.';
+  } else {
+    adjBox.style.display = 'none';
+  }
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+</script>
+</body>
+</html>

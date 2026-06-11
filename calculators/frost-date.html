@@ -1,0 +1,547 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Date Calculator — Free Online Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Find your average first and last frost dates by zip code. Calculate your growing season length. Plan your planting calendar with confidence.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .frost-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .frost-card {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+    .frost-card .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .frost-card .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    .frost-card.spring { border-left: 4px solid var(--green-light); }
+    .frost-card.fall { border-left: 4px solid var(--earth-light); }
+    .frost-card.season { border-left: 4px solid var(--accent); }
+    .planting-calendar {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: var(--space-md);
+    }
+    .planting-calendar th {
+      background: var(--gray-50);
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .planting-calendar td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .planting-calendar tr:hover td {
+      background: var(--gray-50);
+    }
+    .input-method-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-lg);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .method-tab {
+      padding: var(--space-sm) var(--space-lg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .method-tab:hover { color: var(--accent); }
+    .method-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .method-panel { display: none; }
+    .method-panel.active { display: block; }
+    .season-bar {
+      background: var(--gray-100);
+      border-radius: 20px;
+      height: 28px;
+      position: relative;
+      margin: var(--space-md) 0;
+      overflow: hidden;
+    }
+    .season-fill {
+      background: linear-gradient(90deg, var(--green-pale) 0%, var(--green-light) 100%);
+      border-radius: 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Frost Date Calculator",
+    "url": "https://homesteadcalc.com/calculators/frost-date.html",
+    "description": "Find your average first and last frost dates by zip code. Calculate your growing season length. Plan your planting calendar with confidence.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Frost Date Calculator
+    </nav>
+
+    <h1>Frost Date Calculator</h1>
+    <p class="text-muted">Find your average first and last frost dates to plan your planting season with confidence.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <div class="input-method-tabs">
+          <button class="method-tab active" onclick="switchMethod('city')">By City</button>
+          <button class="method-tab" onclick="switchMethod('zip')">By Zip Code</button>
+          <button class="method-tab" onclick="switchMethod('zone')">By USDA Zone</button>
+        </div>
+
+        <div class="method-panel active" id="method-city">
+          <div class="form-group">
+            <label class="form-label" for="stateSelect">State</label>
+            <select class="form-select" id="stateSelect" onchange="updateCities()">
+              <option value="">Select a state...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="citySelect">City</label>
+            <select class="form-select" id="citySelect">
+              <option value="">Select a city...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="method-panel" id="method-zip">
+          <div class="form-group">
+            <label class="form-label" for="zipInput">Zip Code</label>
+            <input type="text" class="form-input" id="zipInput" maxlength="5" placeholder="e.g. 10001">
+            <p class="form-hint">Enter a 5-digit US zip code. Covers 30 major metro areas.</p>
+          </div>
+        </div>
+
+        <div class="method-panel" id="method-zone">
+          <div class="form-group">
+            <label class="form-label" for="zoneSelect">USDA Hardiness Zone</label>
+            <select class="form-select" id="zoneSelect">
+              <option value="">Select your zone...</option>
+              <option value="1a">Zone 1a (&lt; -60°F)</option>
+              <option value="1b">Zone 1b (-60 to -55°F)</option>
+              <option value="2a">Zone 2a (-55 to -50°F)</option>
+              <option value="2b">Zone 2b (-50 to -45°F)</option>
+              <option value="3a">Zone 3a (-45 to -40°F)</option>
+              <option value="3b">Zone 3b (-40 to -35°F)</option>
+              <option value="4a">Zone 4a (-35 to -30°F)</option>
+              <option value="4b">Zone 4b (-30 to -25°F)</option>
+              <option value="5a">Zone 5a (-25 to -20°F)</option>
+              <option value="5b">Zone 5b (-20 to -15°F)</option>
+              <option value="6a">Zone 6a (-15 to -10°F)</option>
+              <option value="6b">Zone 6b (-10 to -5°F)</option>
+              <option value="7a">Zone 7a (-5 to 0°F)</option>
+              <option value="7b">Zone 7b (0 to 5°F)</option>
+              <option value="8a">Zone 8a (5 to 10°F)</option>
+              <option value="8b">Zone 8b (10 to 15°F)</option>
+              <option value="9a">Zone 9a (15 to 20°F)</option>
+              <option value="9b">Zone 9b (20 to 25°F)</option>
+              <option value="10a">Zone 10a (25 to 30°F)</option>
+              <option value="10b">Zone 10b (30 to 35°F)</option>
+              <option value="11a">Zone 11a (35 to 40°F)</option>
+              <option value="11b">Zone 11b (40 to 45°F)</option>
+              <option value="12a">Zone 12a (45 to 50°F)</option>
+              <option value="12b">Zone 12b (50 to 55°F)</option>
+              <option value="13a">Zone 13a (55 to 60°F)</option>
+              <option value="13b">Zone 13b (60 to 65°F)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" onclick="calculateFrost()">Find My Frost Dates</button>
+
+        <div class="result-box" id="results">
+          <div class="result-value" id="mainResult"></div>
+          <div class="result-label" id="mainLabel"></div>
+
+          <div class="frost-display">
+            <div class="frost-card spring">
+              <div class="value" id="resSpringFrost"></div>
+              <div class="label">Last Spring Frost</div>
+            </div>
+            <div class="frost-card fall">
+              <div class="value" id="resFallFrost"></div>
+              <div class="label">First Fall Frost</div>
+            </div>
+            <div class="frost-card season">
+              <div class="value" id="resSeasonDays"></div>
+              <div class="label">Growing Season (days)</div>
+            </div>
+            <div class="frost-card">
+              <div class="value" id="resZone"></div>
+              <div class="label">USDA Zone</div>
+            </div>
+          </div>
+
+          <div class="season-bar">
+            <div class="season-fill" id="seasonBar"></div>
+          </div>
+
+          <div style="margin-top:var(--space-lg);">
+            <div class="form-group">
+              <label class="form-label" for="springPlant">Spring Planting Start (after last frost + 2 weeks)</label>
+              <div class="frost-card" style="text-align:left;border-left:4px solid var(--green-light);">
+                <div class="value" id="resSpringPlant" style="font-size:1.2rem;"></div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg);margin-bottom:var(--space-sm);">Mini Planting Calendar</h3>
+          <table class="planting-calendar" id="plantingCalendar">
+            <thead>
+              <tr>
+                <th>Crop</th>
+                <th>Start Indoors</th>
+                <th>Transplant / Outdoor</th>
+              </tr>
+            </thead>
+            <tbody id="calendarBody"></tbody>
+          </table>
+        </div>
+
+        <div id="notFound" class="info-box" style="display:none;">
+          <strong>Zip code not in our database.</strong> No worries! Try selecting your state and city from the "By City" tab, or choose your USDA zone manually from the "By USDA Zone" tab.
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>Frost dates are based on 30-year climate normals from the NOAA National Centers for Environmental Information. The "last spring frost" is the average date of the last 32°F freeze in spring, and the "first fall frost" is the average date of the first 32°F freeze in autumn.</p>
+
+        <div class="formula-box">
+Growing Season (days) = First Fall Frost − Last Spring Frost
+
+Spring Planting = Last Frost + 14 days (safety margin)
+
+Start Indoors = Last Frost − (weeks before frost × 7 days)
+Transplant   = Last Frost + (weeks after frost × 7 days)
+Direct Sow   = Last Frost + (weeks after frost × 7 days)</div>
+
+        <h3>Why 30-Year Normals?</h3>
+        <p>Climate data is averaged over 30 years to smooth out year-to-year variability. Your actual frost dates may vary by 1-2 weeks in any given year. Always harden off seedlings and watch the 10-day forecast before transplanting.</p>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/seed-starting.html">Seed Starting Dates</a>
+            <a href="/calculators/garden-yield.html">Garden Yield</a>
+            <a href="/calculators/plant-spacing.html">Plant Spacing</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>Frost Date Lookup</h3>
+          <p class="text-sm text-muted mb-md">Quick reference for 30 major US cities.</p>
+          <table style="width:100%;font-size:0.75rem;border-collapse:collapse;">
+            <thead>
+              <tr><th style="text-align:left;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">City</th><th style="padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;text-align:center;">Last</th><th style="padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;text-align:center;">First</th></tr>
+            </thead>
+            <tbody id="sidebarTable"></tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Understanding Frost</h3>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li><strong>Light freeze:</strong> 29-32°F — tender plants damaged</li>
+            <li><strong>Moderate freeze:</strong> 25-28°F — widely destructive</li>
+            <li><strong>Severe freeze:</strong> 24°F or colder — heavy damage</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cityData = [
+  {city:"New York",state:"NY",lastFrost:"Apr 7",firstFrost:"Nov 10",zone:"7b",zipPrefix:["100","101","102","104","111","112"]},
+  {city:"Chicago",state:"IL",lastFrost:"Apr 22",firstFrost:"Oct 25",zone:"6a",zipPrefix:["606","607","608"]},
+  {city:"Denver",state:"CO",lastFrost:"May 15",firstFrost:"Oct 1",zone:"5b",zipPrefix:["800","801","802"]},
+  {city:"Seattle",state:"WA",lastFrost:"Mar 25",firstFrost:"Nov 15",zone:"8b",zipPrefix:["981","980"]},
+  {city:"Portland",state:"OR",lastFrost:"Apr 3",firstFrost:"Nov 5",zone:"8b",zipPrefix:["972","971"]},
+  {city:"San Francisco",state:"CA",lastFrost:"Feb 1",firstFrost:"Dec 10",zone:"10a",zipPrefix:["941","940"]},
+  {city:"Los Angeles",state:"CA",lastFrost:"Jan 20",firstFrost:"Dec 20",zone:"10b",zipPrefix:["900","902","903","904","905","906","907","908"]},
+  {city:"Phoenix",state:"AZ",lastFrost:"Feb 5",firstFrost:"Dec 5",zone:"9b",zipPrefix:["850","851","852","853"]},
+  {city:"Dallas",state:"TX",lastFrost:"Mar 18",firstFrost:"Nov 15",zone:"8a",zipPrefix:["751","752","750","753"]},
+  {city:"Houston",state:"TX",lastFrost:"Feb 25",firstFrost:"Dec 5",zone:"9a",zipPrefix:["770","772","775"]},
+  {city:"Atlanta",state:"GA",lastFrost:"Mar 30",firstFrost:"Nov 5",zone:"7b",zipPrefix:["303","300","302"]},
+  {city:"Miami",state:"FL",lastFrost:"Jan 25",firstFrost:"Jan 15",zone:"11a",zipPrefix:["331","330","332"]},
+  {city:"Minneapolis",state:"MN",lastFrost:"May 5",firstFrost:"Oct 5",zone:"4b",zipPrefix:["554","553"]},
+  {city:"Detroit",state:"MI",lastFrost:"Apr 25",firstFrost:"Oct 20",zone:"6a",zipPrefix:["482","480","481"]},
+  {city:"Boston",state:"MA",lastFrost:"Apr 15",firstFrost:"Oct 25",zone:"6b",zipPrefix:["021","022","024"]},
+  {city:"Philadelphia",state:"PA",lastFrost:"Apr 10",firstFrost:"Oct 30",zone:"7a",zipPrefix:["191","190","193"]},
+  {city:"Washington",state:"DC",lastFrost:"Apr 5",firstFrost:"Nov 5",zone:"7b",zipPrefix:["200","202","203"]},
+  {city:"Nashville",state:"TN",lastFrost:"Apr 10",firstFrost:"Oct 25",zone:"7a",zipPrefix:["372","370","371"]},
+  {city:"St. Louis",state:"MO",lastFrost:"Apr 12",firstFrost:"Oct 22",zone:"6b",zipPrefix:["631","630"]},
+  {city:"Kansas City",state:"MO",lastFrost:"Apr 15",firstFrost:"Oct 20",zone:"6a",zipPrefix:["641","640"]},
+  {city:"Omaha",state:"NE",lastFrost:"Apr 25",firstFrost:"Oct 10",zone:"5b",zipPrefix:["681","680"]},
+  {city:"Salt Lake City",state:"UT",lastFrost:"Apr 25",firstFrost:"Oct 20",zone:"7a",zipPrefix:["841","840"]},
+  {city:"Boise",state:"ID",lastFrost:"May 1",firstFrost:"Oct 10",zone:"6b",zipPrefix:["837","836"]},
+  {city:"Albuquerque",state:"NM",lastFrost:"Apr 20",firstFrost:"Oct 25",zone:"7a",zipPrefix:["871","870"]},
+  {city:"Charlotte",state:"NC",lastFrost:"Apr 5",firstFrost:"Nov 1",zone:"7b",zipPrefix:["282","280","281"]},
+  {city:"Raleigh",state:"NC",lastFrost:"Apr 10",firstFrost:"Oct 28",zone:"7b",zipPrefix:["276","275"]},
+  {city:"Indianapolis",state:"IN",lastFrost:"Apr 20",firstFrost:"Oct 18",zone:"6a",zipPrefix:["462","460","461"]},
+  {city:"Columbus",state:"OH",lastFrost:"Apr 22",firstFrost:"Oct 20",zone:"6a",zipPrefix:["432","430","431"]},
+  {city:"Pittsburgh",state:"PA",lastFrost:"Apr 25",firstFrost:"Oct 18",zone:"6b",zipPrefix:["152","150","151"]},
+  {city:"Burlington",state:"VT",lastFrost:"May 15",firstFrost:"Sep 30",zone:"4b",zipPrefix:["054","053"]}
+];
+
+const plantingCrops = [
+  {name:"Tomatoes",weeksBefore:7,weeksAfter:2,type:"indoor"},
+  {name:"Peppers",weeksBefore:9,weeksAfter:2,type:"indoor"},
+  {name:"Broccoli",weeksBefore:7,weeksAfter:-2,type:"indoor"},
+  {name:"Lettuce",weeksBefore:5,weeksAfter:-4,type:"indoor"},
+  {name:"Cucumbers",weeksBefore:3,weeksAfter:2,type:"indoor"},
+  {name:"Squash/Zucchini",weeksBefore:3,weeksAfter:2,type:"indoor"},
+  {name:"Peas",weeksBefore:0,weeksAfter:-6,type:"direct"},
+  {name:"Green Beans",weeksBefore:0,weeksAfter:0,type:"direct"}
+];
+
+const zoneFrostEstimates = {
+  "1a":{last:"Jun 1",first:"Aug 15"},"1b":{last:"May 25",first:"Aug 25"},
+  "2a":{last:"May 20",first:"Sep 1"},"2b":{last:"May 15",first:"Sep 5"},
+  "3a":{last:"May 10",first:"Sep 15"},"3b":{last:"May 5",first:"Sep 20"},
+  "4a":{last:"May 5",first:"Sep 25"},"4b":{last:"Apr 30",first:"Oct 1"},
+  "5a":{last:"Apr 25",first:"Oct 10"},"5b":{last:"Apr 20",first:"Oct 15"},
+  "6a":{last:"Apr 20",first:"Oct 15"},"6b":{last:"Apr 15",first:"Oct 20"},
+  "7a":{last:"Apr 10",first:"Oct 25"},"7b":{last:"Apr 5",first:"Oct 30"},
+  "8a":{last:"Mar 25",first:"Nov 5"},"8b":{last:"Mar 15",first:"Nov 10"},
+  "9a":{last:"Mar 1",first:"Nov 20"},"9b":{last:"Feb 15",first:"Dec 1"},
+  "10a":{last:"Feb 1",first:"Dec 10"},"10b":{last:"Jan 15",first:"Dec 20"},
+  "11a":{last:"Jan 1",first:"Dec 31"},"11b":{last:"Jan 1",first:"Dec 31"},
+  "12a":{last:"Jan 1",first:"Dec 31"},"12b":{last:"Jan 1",first:"Dec 31"},
+  "13a":{last:"Jan 1",first:"Dec 31"},"13b":{last:"Jan 1",first:"Dec 31"}
+};
+
+// Populate state dropdown and sidebar table
+const states = [...new Set(cityData.map(c=>c.state))].sort();
+const stateSelect = document.getElementById('stateSelect');
+states.forEach(s => {
+  const opt = document.createElement('option');
+  opt.value = s; opt.textContent = s;
+  stateSelect.appendChild(opt);
+});
+
+const sidebarBody = document.getElementById('sidebarTable');
+cityData.forEach(c => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">${c.city}, ${c.state}</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">${c.lastFrost.replace(/^0/,'')}</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">${c.firstFrost.replace(/^0/,'')}</td>`;
+  sidebarBody.appendChild(tr);
+});
+
+function updateCities() {
+  const state = document.getElementById('stateSelect').value;
+  const citySelect = document.getElementById('citySelect');
+  citySelect.innerHTML = '<option value="">Select a city...</option>';
+  cityData.filter(c => c.state === state).forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.city;
+    opt.textContent = c.city + ', ' + c.state;
+    citySelect.appendChild(opt);
+  });
+}
+
+function switchMethod(method) {
+  document.querySelectorAll('.method-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.method-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('method-' + method).classList.add('active');
+}
+
+function parseDate(str) {
+  const d = new Date(Date.parse(str + ' 2026'));
+  return d;
+}
+
+function formatDate(d) {
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+}
+
+function calculateFrost() {
+  document.getElementById('notFound').style.display = 'none';
+  let found = null;
+
+  const activeTab = document.querySelector('.method-tab.active').textContent.trim();
+
+  if (activeTab === 'By City') {
+    const state = document.getElementById('stateSelect').value;
+    const city = document.getElementById('citySelect').value;
+    found = cityData.find(c => c.state === state && c.city === city);
+  } else if (activeTab === 'By Zip Code') {
+    const zip = document.getElementById('zipInput').value.trim();
+    found = cityData.find(c => c.zipPrefix.some(p => zip.startsWith(p)));
+    if (!found) {
+      document.getElementById('notFound').style.display = 'block';
+      document.getElementById('results').classList.remove('visible');
+      return;
+    }
+  } else if (activeTab === 'By USDA Zone') {
+    const zone = document.getElementById('zoneSelect').value;
+    if (zone && zoneFrostEstimates[zone]) {
+      const est = zoneFrostEstimates[zone];
+      found = {city:'Zone '+zone,state:'',lastFrost:est.last,firstFrost:est.first,zone:zone};
+    }
+  }
+
+  if (!found) {
+    document.getElementById('notFound').style.display = 'block';
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+
+  const lastFrost = parseDate(found.lastFrost);
+  const firstFrost = parseDate(found.firstFrost);
+  let seasonDays = Math.round((firstFrost - lastFrost) / (1000*60*60*24));
+  if (seasonDays < 0) seasonDays = 365 + seasonDays; // e.g. Miami wraps around
+
+  const springPlant = new Date(lastFrost);
+  springPlant.setDate(springPlant.getDate() + 14);
+
+  document.getElementById('mainResult').textContent = 'Growing Season: ' + seasonDays + ' Days';
+  document.getElementById('mainLabel').textContent = found.city + (found.state ? ', ' + found.state : '') + ' — Based on 30-year averages';
+  document.getElementById('resSpringFrost').textContent = formatDate(lastFrost);
+  document.getElementById('resFallFrost').textContent = formatDate(firstFrost);
+  document.getElementById('resSeasonDays').textContent = seasonDays + ' days';
+  document.getElementById('resZone').textContent = found.zone || '—';
+  document.getElementById('resSpringPlant').textContent = formatDate(springPlant);
+
+  // Season bar
+  const barPct = Math.min(Math.round((seasonDays / 365) * 100), 100);
+  document.getElementById('seasonBar').style.width = barPct + '%';
+  document.getElementById('seasonBar').textContent = seasonDays + ' growing days';
+
+  // Planting calendar
+  const tbody = document.getElementById('calendarBody');
+  tbody.innerHTML = '';
+  plantingCrops.forEach(crop => {
+    const startIndoor = new Date(lastFrost);
+    startIndoor.setDate(startIndoor.getDate() - (crop.weeksBefore * 7));
+    const transplant = new Date(lastFrost);
+    transplant.setDate(transplant.getDate() + (crop.weeksAfter * 7));
+    const tr = document.createElement('tr');
+    const startText = crop.weeksBefore > 0 ? formatDate(startIndoor) : 'Direct sow';
+    const transText = crop.weeksAfter < 0 ? Math.abs(crop.weeksAfter) + ' wks before frost' : (crop.weeksAfter === 0 ? 'At frost date' : formatDate(transplant));
+    tr.innerHTML = `<td><strong>${crop.name}</strong></td><td>${startText}</td><td>${transText}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+</script>
+</body>
+</html>

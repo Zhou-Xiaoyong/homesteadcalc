@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Power System Calculator — Free Online Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Size your off-grid solar system: panels, batteries, inverter. Calculate payback period. Free solar calculator for homesteads, cabins, and RVs.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .slider-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slider-group input[type="range"] {
+      flex: 1;
+      height: 6px;
+      appearance: none;
+      background: var(--gray-200);
+      border-radius: 3px;
+      outline: none;
+    }
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .slider-group .form-input {
+      width: 80px;
+      text-align: center;
+    }
+    .sun-table {
+      width: 100%;
+      font-size: 0.8rem;
+      border-collapse: collapse;
+    }
+    .sun-table th {
+      text-align: left;
+      padding: 4px 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sun-table td {
+      padding: 4px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .sun-table tr:last-child td {
+      border-bottom: none;
+    }
+    .payback-highlight {
+      background: var(--green-pale);
+      border: 2px solid var(--green-light);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+    .payback-highlight .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .payback-highlight .label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Solar Power System Calculator",
+    "url": "https://homesteadcalc.com/calculators/solar-power.html",
+    "description": "Size your off-grid solar system: panels, batteries, inverter. Calculate payback period. Free solar calculator for homesteads, cabins, and RVs.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Solar Power System Calculator
+    </nav>
+
+    <h1>Solar Power System Calculator</h1>
+    <p class="text-muted">Size your off-grid solar system and estimate your payback period. Enter your daily energy usage and location details below.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <div id="solarForm">
+          <div class="form-group">
+            <label class="form-label" for="dailyKwh">Daily Energy Usage</label>
+            <div class="slider-group">
+              <input type="range" id="kwhSlider" min="1" max="50" value="10" step="0.5">
+              <input type="number" class="form-input" id="dailyKwh" value="10" min="1" max="50" step="0.5">
+              <span class="text-muted" style="white-space:nowrap;">kWh/day</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sunHours">Peak Sun Hours Per Day</label>
+            <input type="number" class="form-input" id="sunHours" value="4.5" min="1" max="8" step="0.1">
+            <p class="form-hint">US average is 4.5 peak sun hours. See sidebar table for your area.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sysVoltage">System Voltage</label>
+            <select class="form-select" id="sysVoltage">
+              <option value="12">12V</option>
+              <option value="24">24V</option>
+              <option value="48" selected>48V</option>
+            </select>
+            <p class="form-hint">48V is recommended for larger systems. 12V suits small RV setups.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="batteryType">Battery Type</label>
+            <select class="form-select" id="batteryType">
+              <option value="lead-acid">Lead-Acid (50% DoD)</option>
+              <option value="lifepo4" selected>LiFePO4 (80% DoD)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="autonomy">Days of Autonomy</label>
+            <select class="form-select" id="autonomy">
+              <option value="1">1 day</option>
+              <option value="2" selected>2 days</option>
+              <option value="3">3 days</option>
+              <option value="4">4 days</option>
+              <option value="5">5 days</option>
+            </select>
+            <p class="form-hint">How many days should batteries last without sun?</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="panelWattage">Individual Panel Wattage</label>
+            <input type="number" class="form-input" id="panelWattage" value="400" min="50" max="600" step="10">
+            <p class="form-hint">Common residential panels: 300-450W.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="elecRate">Electricity Rate ($/kWh)</label>
+            <input type="number" class="form-input" id="elecRate" value="0.14" min="0.05" max="0.50" step="0.01">
+            <p class="form-hint">US average: $0.14/kWh. Check your utility bill.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="costPerWatt">System Cost Per Watt ($)</label>
+            <input type="number" class="form-input" id="costPerWatt" value="2.50" min="1" max="5" step="0.10">
+            <p class="form-hint">Off-grid systems average $2.50/W installed. Grid-tied: ~$1.50/W.</p>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateSolar()">Calculate My Solar System</button>
+        </div>
+
+        <div class="result-box" id="results">
+          <div class="result-value" id="mainResult"></div>
+          <div class="result-label" id="mainLabel"></div>
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="value" id="resPanels"></div>
+              <div class="label">Panels Needed</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resArrayKw"></div>
+              <div class="label">Array Size (kW)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resBatteryAh"></div>
+              <div class="label">Battery Bank (Ah)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resBatteryKwh"></div>
+              <div class="label">Battery Bank (kWh)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resCost"></div>
+              <div class="label">Estimated System Cost</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="resAnnualSavings"></div>
+              <div class="label">Annual Savings</div>
+            </div>
+          </div>
+          <div class="payback-highlight">
+            <div class="value" id="resPayback"></div>
+            <div class="label">Payback Period (years)</div>
+          </div>
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>This calculator sizes a complete off-grid solar power system based on your daily energy consumption and local sun conditions. It accounts for real-world losses and battery chemistry.</p>
+
+        <div class="formula-box">
+Required Panels = ceil( Daily Wh / (Panel W × Sun Hours × 0.75) )
+
+Battery Ah = (Daily Wh × Autonomy Days) / (Voltage × DoD Factor)
+  Lead-Acid DoD factor = 0.5  (50% max discharge)
+  LiFePO4  DoD factor = 0.8  (80% max discharge)
+
+Battery kWh = Ah × Voltage / 1000
+
+Array kW = Panels × Panel Wattage / 1000
+
+System Cost = Array kW × 1000 × Cost/Watt
+
+Annual Savings = Daily Wh × 365 / 1000 × Electricity Rate
+
+Payback Years = System Cost / Annual Savings</div>
+
+        <h3>Derating Factor (0.75)</h3>
+        <p>The 0.75 derating factor accounts for real-world system losses: inverter efficiency (~90%), wiring losses (~2%), panel degradation, temperature losses, and dust/shading. A system rated at 100W typically produces about 75W in practice.</p>
+
+        <h3>Depth of Discharge (DoD)</h3>
+        <p>Lead-acid batteries should only be discharged to 50% to avoid damage and extend life. LiFePO4 (lithium iron phosphate) batteries can safely discharge to 80-90%, giving you more usable capacity per dollar invested.</p>
+
+        <h3>Peak Sun Hours</h3>
+        <p>Peak sun hours are not the same as daylight hours. They represent the equivalent number of hours with full 1,000 W/m² solar irradiance. A location with 6 daylight hours and partly cloudy skies may only have 4 peak sun hours. Use the sidebar table to find your area's value.</p>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+            <a href="/calculators/greenhouse-heater.html">Greenhouse Heater</a>
+            <a href="/calculators/garden-yield.html">Garden Yield</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>US Peak Sun Hours</h3>
+          <p class="text-sm text-muted mb-md">Average peak sun hours by region (annual).</p>
+          <table class="sun-table">
+            <thead>
+              <tr><th>City</th><th>Hours</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Phoenix, AZ</td><td>6.5</td></tr>
+              <tr><td>Los Angeles, CA</td><td>5.5</td></tr>
+              <tr><td>Denver, CO</td><td>5.5</td></tr>
+              <tr><td>San Antonio, TX</td><td>5.0</td></tr>
+              <tr><td>Atlanta, GA</td><td>4.5</td></tr>
+              <tr><td>Kansas City, MO</td><td>4.5</td></tr>
+              <tr><td>Nashville, TN</td><td>4.3</td></tr>
+              <tr><td>New York, NY</td><td>4.0</td></tr>
+              <tr><td>Chicago, IL</td><td>4.0</td></tr>
+              <tr><td>Seattle, WA</td><td>3.5</td></tr>
+              <tr><td>Portland, OR</td><td>3.5</td></tr>
+              <tr><td>Boston, MA</td><td>4.0</td></tr>
+              <tr><td>Minneapolis, MN</td><td>4.2</td></tr>
+              <tr><td>Dallas, TX</td><td>5.2</td></tr>
+              <tr><td>Miami, FL</td><td>5.0</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Quick Tips</h3>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li>South-facing panels at latitude tilt maximize production</li>
+            <li>LiFePO4 batteries last 3-5x longer than lead-acid</li>
+            <li>Add 10-20% more panels if you expect shading</li>
+            <li>MPPT charge controllers are 30% more efficient than PWM</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sync slider and number input
+const kwhSlider = document.getElementById('kwhSlider');
+const dailyKwh = document.getElementById('dailyKwh');
+kwhSlider.addEventListener('input', function() { dailyKwh.value = this.value; });
+dailyKwh.addEventListener('input', function() {
+  let v = parseFloat(this.value);
+  if (v >= 1 && v <= 50) kwhSlider.value = v;
+});
+
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+
+function calculateSolar() {
+  const kWh = parseFloat(document.getElementById('dailyKwh').value) || 10;
+  const sunHrs = parseFloat(document.getElementById('sunHours').value) || 4.5;
+  const voltage = parseInt(document.getElementById('sysVoltage').value);
+  const battType = document.getElementById('batteryType').value;
+  const autonomy = parseInt(document.getElementById('autonomy').value);
+  const panelW = parseFloat(document.getElementById('panelWattage').value) || 400;
+  const elecRate = parseFloat(document.getElementById('elecRate').value) || 0.14;
+  const costW = parseFloat(document.getElementById('costPerWatt').value) || 2.50;
+
+  const dailyWh = kWh * 1000;
+  const panels = Math.ceil(dailyWh / (panelW * sunHrs * 0.75));
+  const dodFactor = battType === 'lifepo4' ? 0.8 : 0.5;
+  const batteryAh = (dailyWh * autonomy) / (voltage * dodFactor);
+  const batteryKwh = batteryAh * voltage / 1000;
+  const arrayKw = panels * panelW / 1000;
+  const systemCost = arrayKw * 1000 * costW;
+  const annualProdKwh = dailyWh * 365 / 1000;
+  const annualSavings = annualProdKwh * elecRate;
+  const payback = annualSavings > 0 ? systemCost / annualSavings : Infinity;
+
+  document.getElementById('mainResult').textContent = panels + ' × ' + panelW + 'W Panels';
+  document.getElementById('mainLabel').textContent = 'Recommended system configuration';
+  document.getElementById('resPanels').textContent = panels;
+  document.getElementById('resArrayKw').textContent = arrayKw.toFixed(1) + ' kW';
+  document.getElementById('resBatteryAh').textContent = Math.round(batteryAh);
+  document.getElementById('resBatteryKwh').textContent = batteryKwh.toFixed(1);
+  document.getElementById('resCost').textContent = '$' + systemCost.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('resAnnualSavings').textContent = '$' + annualSavings.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  document.getElementById('resPayback').textContent = payback === Infinity ? 'N/A' : payback.toFixed(1) + ' years';
+
+  document.getElementById('results').classList.add('visible');
+}
+</script>
+</body>
+</html>

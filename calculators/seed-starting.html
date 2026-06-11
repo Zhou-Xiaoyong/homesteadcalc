@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seed Starting Date Calculator — Free Online Tool (2026) | Homestead Calculators</title>
+  <meta name="description" content="Get personalized seed starting dates based on your last frost date. When to start seeds indoors, transplant, and direct sow. Free planting calendar.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .filter-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: var(--space-md);
+    }
+    .filter-tab {
+      padding: var(--space-sm) var(--space-lg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-tab:hover { color: var(--accent); }
+    .filter-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .seed-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .seed-table th {
+      background: var(--gray-50);
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border-color);
+    }
+    .seed-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .seed-table tr:hover td {
+      background: var(--gray-50);
+    }
+    .seed-table .crop-name {
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .badge-indoor { background: var(--green-pale); color: var(--green-dark); }
+    .badge-direct { background: #fef3c7; color: #92400e; }
+    .badge-both { background: #e0e7ff; color: #3730a3; }
+    .timeline {
+      position: relative;
+      margin: var(--space-lg) 0;
+      padding: var(--space-lg) 0;
+    }
+    .timeline-bar {
+      background: var(--gray-200);
+      height: 8px;
+      border-radius: 4px;
+      position: relative;
+    }
+    .timeline-frost {
+      position: absolute;
+      top: -8px;
+      transform: translateX(-50%);
+      background: var(--error);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .timeline-marker {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+    }
+    .timeline-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    @media print {
+      .site-header, .site-footer, .ad-slot, .calc-sidebar, .btn, .filter-tabs { display: none !important; }
+      body { font-size: 12pt; }
+      .container { max-width: 100%; padding: 0; }
+      .seed-table { font-size: 10pt; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Seed Starting Date Calculator",
+    "url": "https://homesteadcalc.com/calculators/seed-starting.html",
+    "description": "Get personalized seed starting dates based on your last frost date. When to start seeds indoors, transplant, and direct sow. Free planting calendar.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Seed Starting Date Calculator
+    </nav>
+
+    <h1>Seed Starting Date Calculator</h1>
+    <p class="text-muted">Get personalized seed starting dates based on your last frost date. Know exactly when to start indoors, transplant, and direct sow.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="frostDate">Last Spring Frost Date</label>
+          <input type="date" class="form-input" id="frostDate" value="2026-04-15">
+          <p class="form-hint">Default: April 15. <a href="/calculators/frost-date.html">Find your frost date →</a></p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="locationName">Location Name (optional)</label>
+          <input type="text" class="form-input" id="locationName" placeholder="e.g. Zone 6a, Central Ohio">
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" onclick="calculateDates()">Calculate Seed Starting Dates</button>
+
+        <div class="result-box" id="results">
+          <div class="result-value" id="mainResult"></div>
+          <div class="result-label" id="mainLabel"></div>
+
+          <div class="timeline" id="timelineSection">
+            <div class="timeline-bar" id="timelineBar">
+              <div class="timeline-frost" id="frostMarker">Last Frost</div>
+            </div>
+            <div class="timeline-labels">
+              <span id="tlStart"></span>
+              <span id="tlEnd"></span>
+            </div>
+          </div>
+
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="filterTable('all')">All Crops</button>
+            <button class="filter-tab" onclick="filterTable('indoor')">Indoor Starts</button>
+            <button class="filter-tab" onclick="filterTable('direct')">Direct Sow Only</button>
+          </div>
+
+          <table class="seed-table" id="seedTable">
+            <thead>
+              <tr>
+                <th>Crop</th>
+                <th>Type</th>
+                <th>Start Indoors</th>
+                <th>Transplant / Sow</th>
+                <th>Weeks</th>
+              </tr>
+            </thead>
+            <tbody id="seedBody"></tbody>
+          </table>
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>This calculator works backwards from your last spring frost date to determine the ideal dates for starting seeds indoors and planting outdoors. Different crops need different lead times — some need 10-12 weeks of indoor growth, while others prefer to be sown directly in the garden.</p>
+
+        <div class="formula-box">
+Start Indoors = Last Frost Date − (weeks_before × 7 days)
+Transplant   = Last Frost Date + (weeks_after × 7 days)
+Direct Sow   = Last Frost Date + (weeks_after × 7 days)
+
+Cold-hardy crops: weeks_after can be negative
+  (plant BEFORE last frost date)</div>
+
+        <h3>Indoor vs. Direct Sow</h3>
+        <p><strong>Start indoors:</strong> Crops with long growing seasons (tomatoes, peppers, onions) or those that need warmth to germinate. Give them a head start under grow lights 6-12 weeks before your last frost.</p>
+        <p><strong>Direct sow:</strong> Crops that hate transplanting (carrots, radishes, beans, corn) or grow quickly enough that indoor starting isn't needed. Root crops in particular should always be direct sown.</p>
+
+        <h3>Hardening Off</h3>
+        <p>Before transplanting indoor seedlings outdoors, harden them off over 7-10 days: gradually increase outdoor exposure from 1 hour to full days. This prevents transplant shock and sunburn.</p>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/frost-date.html">Frost Date Finder</a>
+            <a href="/calculators/garden-yield.html">Garden Yield</a>
+            <a href="/calculators/plant-spacing.html">Plant Spacing</a>
+            <a href="/calculators/square-foot-gardening.html">Square Foot Gardening</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>Quick Reference</h3>
+          <p class="text-sm text-muted mb-md">Weeks before last frost to start indoors.</p>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead><tr><th style="text-align:left;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Crop</th><th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Wks</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Onions</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">10-12</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Celery</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">10-12</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Peppers</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">8-10</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Eggplant</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">8-10</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Tomatoes</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">6-8</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Broccoli</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">6-8</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">Lettuce</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);">4-6</td></tr>
+              <tr><td style="padding:2px 0;">Cucumbers</td><td style="text-align:center;padding:2px 0;">3-4</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Growing Tips</h3>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li>Use seed-starting mix, not potting soil</li>
+            <li>Keep seedlings under lights 14-16 hrs/day</li>
+            <li>Bottom-water to prevent damping off</li>
+            <li>Use a heat mat for peppers and eggplant (75-80°F)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const crops = [
+  {name:"Tomatoes",weeksBefore:7,weeksAfter:2,type:"indoor",category:"fruit"},
+  {name:"Peppers",weeksBefore:9,weeksAfter:2,type:"indoor",category:"fruit"},
+  {name:"Eggplant",weeksBefore:9,weeksAfter:2,type:"indoor",category:"fruit"},
+  {name:"Broccoli",weeksBefore:7,weeksAfter:-2,type:"indoor",category:"brassica"},
+  {name:"Cabbage",weeksBefore:7,weeksAfter:-4,type:"indoor",category:"brassica"},
+  {name:"Cauliflower",weeksBefore:7,weeksAfter:-2,type:"indoor",category:"brassica"},
+  {name:"Kale",weeksBefore:7,weeksAfter:-4,type:"indoor",category:"brassica"},
+  {name:"Lettuce",weeksBefore:5,weeksAfter:-4,type:"indoor",category:"leaf"},
+  {name:"Onions",weeksBefore:11,weeksAfter:-4,type:"indoor",category:"root"},
+  {name:"Celery",weeksBefore:11,weeksAfter:2,type:"indoor",category:"stem"},
+  {name:"Basil",weeksBefore:5,weeksAfter:2,type:"indoor",category:"herb"},
+  {name:"Cucumbers",weeksBefore:3,weeksAfter:2,type:"both",category:"fruit"},
+  {name:"Zucchini/Squash",weeksBefore:3,weeksAfter:2,type:"both",category:"fruit"},
+  {name:"Melons",weeksBefore:3,weeksAfter:2,type:"indoor",category:"fruit"},
+  {name:"Pumpkins",weeksBefore:3,weeksAfter:2,type:"both",category:"fruit"},
+  {name:"Corn",weeksBefore:0,weeksAfter:1,type:"direct",category:"grain"},
+  {name:"Green Beans",weeksBefore:0,weeksAfter:0,type:"direct",category:"legume"},
+  {name:"Peas",weeksBefore:0,weeksAfter:-7,type:"direct",category:"legume"},
+  {name:"Carrots",weeksBefore:0,weeksAfter:-4,type:"direct",category:"root"},
+  {name:"Beets",weeksBefore:0,weeksAfter:-4,type:"direct",category:"root"},
+  {name:"Radishes",weeksBefore:0,weeksAfter:-6,type:"direct",category:"root"},
+  {name:"Spinach",weeksBefore:0,weeksAfter:-6,type:"direct",category:"leaf"},
+  {name:"Swiss Chard",weeksBefore:5,weeksAfter:-2,type:"indoor",category:"leaf"},
+  {name:"Sunflowers",weeksBefore:3,weeksAfter:2,type:"both",category:"flower"},
+  {name:"Marigolds",weeksBefore:7,weeksAfter:1,type:"indoor",category:"flower"}
+];
+
+let currentFilter = 'all';
+
+function formatDate(d) {
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+}
+
+function calculateDates() {
+  const frostInput = document.getElementById('frostDate').value;
+  if (!frostInput) return;
+  const frost = new Date(frostInput + 'T12:00:00');
+  const location = document.getElementById('locationName').value;
+
+  document.getElementById('mainResult').textContent = 'Personalized Planting Calendar';
+  document.getElementById('mainLabel').textContent = location ? 'For ' + location + ' — Last frost: ' + formatDate(frost) : 'Last frost: ' + formatDate(frost);
+
+  // Timeline
+  const earliestDate = new Date(frost);
+  earliestDate.setDate(earliestDate.getDate() - 84); // 12 weeks before
+  const latestDate = new Date(frost);
+  latestDate.setDate(latestDate.getDate() + 42); // 6 weeks after
+  document.getElementById('tlStart').textContent = formatDate(earliestDate);
+  document.getElementById('tlEnd').textContent = formatDate(latestDate);
+
+  // Position frost marker at correct % (frost is 84/(84+42) = 66.7% from start)
+  const totalDays = 126;
+  const frostPct = (84 / totalDays) * 100;
+  document.getElementById('frostMarker').style.left = frostPct + '%';
+
+  // Build table
+  renderTable(frost, 'all');
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function renderTable(frost, filter) {
+  const tbody = document.getElementById('seedBody');
+  tbody.innerHTML = '';
+
+  const filtered = crops.filter(c => {
+    if (filter === 'indoor') return c.type === 'indoor' || c.type === 'both';
+    if (filter === 'direct') return c.type === 'direct';
+    return true;
+  });
+
+  filtered.forEach(crop => {
+    const startIndoor = new Date(frost);
+    startIndoor.setDate(startIndoor.getDate() - (crop.weeksBefore * 7));
+    const transplant = new Date(frost);
+    transplant.setDate(transplant.getDate() + (crop.weeksAfter * 7));
+
+    let typeBadge = '';
+    if (crop.type === 'indoor') typeBadge = '<span class="badge badge-indoor">Indoor</span>';
+    else if (crop.type === 'direct') typeBadge = '<span class="badge badge-direct">Direct</span>';
+    else typeBadge = '<span class="badge badge-both">Both</span>';
+
+    const startText = crop.weeksBefore > 0 ? formatDate(startIndoor) : '—';
+    const transText = crop.weeksAfter < 0
+      ? Math.abs(crop.weeksAfter) + ' wks before frost (' + formatDate(transplant) + ')'
+      : (crop.weeksAfter === 0 ? 'At frost date' : formatDate(transplant));
+
+    const weeksText = crop.weeksBefore > 0 ? crop.weeksBefore + ' wks before' : 'Direct sow';
+
+    const tr = document.createElement('tr');
+    tr.dataset.type = crop.type;
+    tr.innerHTML = `<td class="crop-name">${crop.name}</td><td>${typeBadge}</td><td>${startText}</td><td>${transText}</td><td>${weeksText}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function filterTable(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const frostInput = document.getElementById('frostDate').value;
+  if (!frostInput) return;
+  const frost = new Date(frostInput + 'T12:00:00');
+  renderTable(frost, filter);
+}
+
+// Mobile menu
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+</script>
+</body>
+</html>

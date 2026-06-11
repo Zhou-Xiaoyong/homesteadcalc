@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Spacing Calculator — How Many Plants Fit in Your Garden (2026) | Homestead Calculators</title>
+  <meta name="description" content="Calculate exactly how many vegetable plants fit in your garden bed. Optimal plant spacing for 50+ vegetables and herbs. Free interactive garden planner.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .plant-grid-viz {
+      margin-top: var(--space-lg);
+      padding: var(--space-md);
+      background: var(--gray-50);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
+    .plant-grid-viz h3 {
+      text-align: center;
+      margin-bottom: var(--space-sm);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .grid-legend {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+    .grid-legend span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .grid-container {
+      display: grid;
+      gap: 2px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .grid-cell {
+      background: var(--green-pale);
+      border-radius: 2px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      min-width: 18px;
+      min-height: 18px;
+      transition: background 0.15s ease;
+    }
+    .grid-cell.empty {
+      background: var(--gray-100);
+    }
+    .grid-cell.plant {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .grid-dimensions {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+    }
+    .warning-text {
+      color: var(--warning);
+      font-size: 0.85rem;
+      margin-top: var(--space-sm);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Plant Spacing Calculator",
+    "url": "https://homesteadcalc.com/calculators/plant-spacing.html",
+    "description": "Calculate exactly how many vegetable plants fit in your garden bed. Optimal plant spacing for 50+ vegetables and herbs.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Plant Spacing Calculator
+    </nav>
+
+    <h1>Plant Spacing Calculator</h1>
+    <p class="text-lg text-muted">Optimize your garden layout. Find out exactly how many plants fit in your beds using recommended spacing for 50+ vegetables and herbs.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Spacing Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="vegetable">Select Vegetable or Herb</label>
+            <select id="vegetable" class="form-select" onchange="calculateSpacing()">
+            </select>
+          </div>
+
+          <div class="input-group">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label" for="bed-width">Bed Width (ft)</label>
+              <input type="number" id="bed-width" class="form-input" value="4" min="1" max="100" step="0.5" oninput="calculateSpacing()">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label class="form-label" for="bed-length">Bed Length (ft)</label>
+              <input type="number" id="bed-length" class="form-input" value="8" min="1" max="200" step="0.5" oninput="calculateSpacing()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pattern">Planting Pattern</label>
+            <select id="pattern" class="form-select" onchange="calculateSpacing()">
+              <option value="grid">Grid Pattern (square spacing)</option>
+              <option value="rows">Row Pattern (between rows)</option>
+            </select>
+            <div class="form-hint">Grid uses equal spacing in both directions. Row pattern spaces plants closer within rows and wider between rows.</div>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateSpacing()">Calculate Plant Count</button>
+
+          <div id="results" class="result-box visible">
+            <h3 style="margin-bottom:1rem;">Spacing Results</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="plant-count">—</div>
+                <div class="label">Total Plants</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="plant-spacing">—</div>
+                <div class="label">Plant Spacing (in)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="row-spacing">—</div>
+                <div class="label">Row Spacing (in)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="plants-per-100">—</div>
+                <div class="label">Plants per 100 sq ft</div>
+              </div>
+            </div>
+
+            <div id="visualization-container" style="display:none;">
+              <div class="plant-grid-viz" id="plant-grid-viz">
+                <h3>Garden Layout Preview</h3>
+                <div class="grid-legend">
+                  <span>🟢 = Plant</span><span>⬜ = Empty Space</span>
+                </div>
+                <div class="grid-container" id="grid-viz"></div>
+                <div class="grid-dimensions" id="grid-dimensions"></div>
+              </div>
+            </div>
+
+            <div class="info-box mt-lg" id="spacing-note"></div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our plant spacing calculator uses standard spacing recommendations from university extension services and organic farming guides. Proper spacing is critical: too tight, and plants compete for nutrients and sunlight; too sparse, and you waste valuable growing space.</p>
+
+          <h3>Square Foot vs. Row Gardening</h3>
+          <p><strong>Grid/Square Foot gardening</strong> uses equal spacing in all directions, maximizing yield in small spaces. <strong>Traditional row gardening</strong> spaces plants closer together within rows and leaves wider paths between rows for walking and cultivation. The row method is better for larger gardens and crops that need airflow (like tomatoes and squash).</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Grid Pattern:
+  Plants = floor(Bed Width × 12 ÷ Spacing) × floor(Bed Length × 12 ÷ Spacing)
+
+Row Pattern:
+  Plants = floor(Bed Width × 12 ÷ Plant Spacing) × floor(Bed Length × 12 ÷ Row Spacing)
+
+Plants per 100 sq ft = (Total Plants ÷ Bed Area in sq ft) × 100
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> For intensive planting, you can reduce spacings by 10–20% if you amend soil heavily with compost and use drip irrigation. But don't overcrowd — stressed plants are more susceptible to pests and disease.
+          </div>
+        </section>
+
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="square-foot-gardening.html">Square Foot Gardening Planner</a>
+            <a href="seed-starting.html">Seed Starting Calculator</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Spacing Categories</h3>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:3px 0;">Category</th>
+                <th style="text-align:right;padding:3px 0;">Spacing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:3px 0;">Extra Small</td>
+                <td style="text-align:right;">2–4 in</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:3px 0;">Small</td>
+                <td style="text-align:right;">4–8 in</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:3px 0;">Medium</td>
+                <td style="text-align:right;">8–18 in</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:3px 0;">Large</td>
+                <td style="text-align:right;">18–36 in</td>
+              </tr>
+              <tr>
+                <td style="padding:3px 0;">Extra Large</td>
+                <td style="text-align:right;">36+ in</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Spacing is based on the plant's mature size. Always check your seed packet for variety-specific recommendations.</p>
+        </div>
+
+        <div class="card">
+          <h3>Common Mistakes</h3>
+          <ul style="font-size:0.8rem;padding-left:1rem;line-height:1.8;">
+            <li>Crowding tomatoes — they need 2+ ft for airflow</li>
+            <li>Under-spacing squash — zucchini needs 3 ft</li>
+            <li>Ignoring row spacing for walking paths</li>
+            <li>Not accounting for trellising (cucumbers)</li>
+            <li>Planting mint without barriers (it spreads!)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Spacing data: [plant_spacing_inches, row_spacing_inches]
+var spacingData = {
+  'Tomatoes': [24, 36],
+  'Peppers': [18, 24],
+  'Cucumbers': [12, 48],
+  'Cucumbers (Trellised)': [12, 12],
+  'Zucchini': [36, 48],
+  'Green Beans': [3, 18],
+  'Carrots': [3, 12],
+  'Lettuce': [10, 12],
+  'Kale': [18, 24],
+  'Spinach': [6, 12],
+  'Onions': [4, 12],
+  'Garlic': [6, 12],
+  'Potatoes': [12, 30],
+  'Broccoli': [18, 24],
+  'Cabbage': [18, 24],
+  'Corn': [12, 30],
+  'Peas': [3, 18],
+  'Beets': [4, 12],
+  'Radishes': [2, 6],
+  'Swiss Chard': [12, 18],
+  'Basil': [12, 18],
+  'Cilantro': [6, 12],
+  'Dill': [12, 12],
+  'Mint': [18, 24],
+  'Oregano': [12, 12],
+  'Parsley': [8, 12],
+  'Rosemary': [24, 36],
+  'Sage': [18, 24],
+  'Thyme': [12, 12],
+  'Strawberries': [12, 24],
+  'Watermelon': [36, 72],
+  'Cantaloupe': [24, 48],
+  'Pumpkin': [48, 72],
+  'Sunflowers': [12, 24],
+  'Sweet Potatoes': [12, 36],
+  'Eggplant': [18, 24],
+  'Cauliflower': [18, 24],
+  'Celery': [8, 12],
+  'Asparagus': [12, 36],
+  'Brussels Sprouts': [18, 24]
+};
+
+function buildVegDropdown() {
+  var select = document.getElementById('vegetable');
+  var veggies = Object.keys(spacingData);
+  veggies.forEach(function(v) {
+    var option = document.createElement('option');
+    option.value = v;
+    option.textContent = v;
+    select.appendChild(option);
+  });
+}
+
+function calculateSpacing() {
+  var veg = document.getElementById('vegetable').value;
+  var width = parseFloat(document.getElementById('bed-width').value) || 4;
+  var length = parseFloat(document.getElementById('bed-length').value) || 8;
+  var pattern = document.getElementById('pattern').value;
+
+  if (!veg || !spacingData[veg]) return;
+
+  var data = spacingData[veg];
+  var plantSpacing = data[0];
+  var rowSpacing = data[1];
+  var bedArea = width * length;
+
+  var plantsAcross, plantsDown;
+  if (pattern === 'grid') {
+    plantsAcross = Math.floor((width * 12) / plantSpacing);
+    plantsDown = Math.floor((length * 12) / plantSpacing);
+  } else {
+    plantsAcross = Math.floor((width * 12) / plantSpacing);
+    plantsDown = Math.floor((length * 12) / rowSpacing);
+  }
+
+  // Ensure at least 1 if bed is large enough
+  if (plantsAcross < 1 && width * 12 >= plantSpacing) plantsAcross = 1;
+  if (plantsDown < 1 && length * 12 >= (pattern === 'grid' ? plantSpacing : rowSpacing)) plantsDown = 1;
+  if (plantsAcross < 1) plantsAcross = 0;
+  if (plantsDown < 1) plantsDown = 0;
+
+  var totalPlants = plantsAcross * plantsDown;
+  var plantsPer100 = bedArea > 0 ? (totalPlants / bedArea) * 100 : 0;
+
+  document.getElementById('plant-count').textContent = totalPlants;
+  document.getElementById('plant-spacing').textContent = plantSpacing + ' in';
+  document.getElementById('row-spacing').textContent = (pattern === 'grid' ? plantSpacing : rowSpacing) + ' in';
+  document.getElementById('plants-per-100').textContent = plantsPer100.toFixed(0);
+
+  // Visualization
+  var vizContainer = document.getElementById('visualization-container');
+  var gridViz = document.getElementById('grid-viz');
+
+  if (totalPlants > 0 && totalPlants <= 400 && plantsAcross > 0 && plantsDown > 0) {
+    vizContainer.style.display = 'block';
+    gridViz.style.gridTemplateColumns = 'repeat(' + plantsAcross + ', 1fr)';
+    gridViz.innerHTML = '';
+
+    for (var i = 0; i < plantsAcross * plantsDown; i++) {
+      var cell = document.createElement('div');
+      cell.className = 'grid-cell plant';
+      cell.textContent = '🌱';
+      gridViz.appendChild(cell);
+    }
+
+    document.getElementById('grid-dimensions').textContent = plantsAcross + ' plants across × ' + plantsDown + ' rows deep = ' + totalPlants + ' plants in ' + bedArea.toFixed(0) + ' sq ft';
+  } else if (totalPlants > 400) {
+    vizContainer.style.display = 'block';
+    gridViz.innerHTML = '';
+    var note = document.createElement('p');
+    note.className = 'text-sm text-muted text-center';
+    note.textContent = 'Layout grid hidden for large plant counts (' + totalPlants + ' plants). Spacing is still accurate.';
+    gridViz.appendChild(note);
+    document.getElementById('grid-dimensions').textContent = plantsAcross + ' plants across × ' + plantsDown + ' rows = ' + totalPlants + ' plants in ' + bedArea.toFixed(0) + ' sq ft';
+  } else {
+    vizContainer.style.display = 'none';
+  }
+
+  // Spacing note
+  var note = document.getElementById('spacing-note');
+  if (totalPlants === 0) {
+    note.innerHTML = '<strong>Note:</strong> Your bed is too small for this vegetable. ' + veg + ' needs at least ' + plantSpacing + ' inches of spacing. Try a larger bed or a smaller vegetable.';
+    note.style.display = 'block';
+  } else {
+    note.innerHTML = '<strong>Recommended:</strong> Plant ' + veg.toLowerCase() + ' ' + plantSpacing + ' inches apart' + (pattern === 'rows' ? ' within rows and ' + rowSpacing + ' inches between rows' : ' in all directions') + '. This gives you <strong>' + totalPlants + ' plants</strong> in a ' + width + '×' + length + ' ft bed.';
+    note.style.display = 'block';
+  }
+
+  document.getElementById('results').classList.add('visible');
+}
+
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  buildVegDropdown();
+  calculateSpacing();
+});
+</script>
+
+</body>
+</html>
