@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  scaleRecipe()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -15,6 +20,22 @@
   <meta name="description" content="Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times. Free canning calculator.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/canning-scaler.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Canning Recipe Scaler — Safe Batch Scaling Tool (2026)">
+  <meta property="og:description" content="Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times. Free canning calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/canning-scaler.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Canning Recipe Scaler — Safe Batch Scaling Tool (2026)">
+  <meta name="twitter:description" content="Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times. Free canning calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -352,6 +373,13 @@ Pressure Canner PSI by altitude:
   </footer>
 
   <script>
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    var nav = document.querySelector('.header-nav');
+    var expanded = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+
     // Recipe type definitions
     const recipeTypes = {
       'tomato-sauce': {

@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  calculateBTU()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -15,6 +20,22 @@
   <meta name="description" content="Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater. Free tool.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/greenhouse-heater.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Greenhouse Heater Size Calculator — BTU Requirements (2026)">
+  <meta property="og:description" content="Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater. Free tool.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/greenhouse-heater.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Greenhouse Heater Size Calculator — BTU Requirements (2026)">
+  <meta name="twitter:description" content="Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater. Free tool.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -331,6 +352,13 @@ Standard heater sizes:
   </footer>
 
   <script>
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    var nav = document.querySelector('.header-nav');
+    var expanded = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+
     const standardHeaterSizes = [10000, 15000, 20000, 30000, 50000, 80000, 100000];
 
     function updateOutsideTemp() {

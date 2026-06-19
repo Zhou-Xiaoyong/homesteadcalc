@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  calculateDates()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -12,8 +17,25 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seed Starting Date Calculator — Free Online Tool (2026) | Homestead Calculators</title>
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/seed-starting.html">
+  <title>Seed Starting Date Calculator — Indoor Sow Dates (2026)</title>
   <meta name="description" content="Get personalized seed starting dates based on your last frost date. When to start seeds indoors, transplant, and direct sow. Free planting calendar.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Seed Starting Date Calculator — Free Online Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Get personalized seed starting dates based on your last frost date. When to start seeds indoors, transplant, and direct sow. Free planting calendar.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/seed-starting.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seed Starting Date Calculator — Free Online Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Get personalized seed starting dates based on your last frost date. When to start seeds indoors, transplant, and direct sow. Free planting calendar.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .filter-tabs {
@@ -193,9 +215,9 @@
           </div>
 
           <div class="filter-tabs">
-            <button class="filter-tab active" onclick="filterTable('all')">All Crops</button>
-            <button class="filter-tab" onclick="filterTable('indoor')">Indoor Starts</button>
-            <button class="filter-tab" onclick="filterTable('direct')">Direct Sow Only</button>
+            <button class="filter-tab active" onclick="filterTable('all', event)">All Crops</button>
+            <button class="filter-tab" onclick="filterTable('indoor', event)">Indoor Starts</button>
+            <button class="filter-tab" onclick="filterTable('direct', event)">Direct Sow Only</button>
           </div>
 
           <table class="seed-table" id="seedTable">
@@ -410,7 +432,7 @@ function renderTable(frost, filter) {
   });
 }
 
-function filterTable(filter) {
+function filterTable(filter, event) {
   currentFilter = filter;
   document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
   event.target.classList.add('active');

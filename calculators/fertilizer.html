@@ -12,8 +12,25 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fertilizer Calculator — NPK Ratio & Application Rate Tool (2026) | Homestead Calculators</title>
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/fertilizer.html">
+  <title>Fertilizer Calculator — NPK Ratio & Application Rate (2026)</title>
   <meta name="description" content="Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Fertilizer Calculator — NPK Ratio &amp; Application Rate Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/fertilizer.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fertilizer Calculator — NPK Ratio &amp; Application Rate Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .npk-inputs {
@@ -408,9 +425,13 @@ function calculateFertilizer() {
   var soilMult = getSoilMultiplier('N');
   var nNeeded = baseRate * (area / 1000) * soilMult;
 
+  // P and K levels also affect the calculation based on soil test results
+  var pSoilMult = getSoilMultiplier('P');
+  var kSoilMult = getSoilMultiplier('K');
+
   var fertilizerNeeded = (nPercent > 0) ? nNeeded / (nPercent / 100) : 0;
-  var pApplied = fertilizerNeeded * (pPercent / 100);
-  var kApplied = fertilizerNeeded * (kPercent / 100);
+  var pApplied = fertilizerNeeded * (pPercent / 100) * pSoilMult;
+  var kApplied = fertilizerNeeded * (kPercent / 100) * kSoilMult;
   var bagsNeeded = Math.ceil(fertilizerNeeded / bagWeight);
   var cost = bagsNeeded * bagPrice;
   var nRatePer1000 = (nNeeded / area) * 1000;

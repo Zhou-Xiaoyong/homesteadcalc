@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  calculateDrying()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -11,10 +16,26 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dehydrator Time & Temperature Guide — Food Drying Calculator (2026)</title>
+  <title>Dehydrator Guide — Time & Temperature (2026)</title>
   <meta name="description" content="Find the correct dehydrator time and temperature for fruits, vegetables, meat jerky, herbs, and more. Get doneness tests for each food. Free drying guide.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/dehydrator.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dehydrator Time &amp; Temperature Guide — Food Drying Calculator (2026)">
+  <meta property="og:description" content="Find the correct dehydrator time and temperature for fruits, vegetables, meat jerky, herbs, and more. Get doneness tests for each food. Free drying guide.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/dehydrator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dehydrator Time &amp; Temperature Guide — Food Drying Calculator (2026)">
+  <meta name="twitter:description" content="Find the correct dehydrator time and temperature for fruits, vegetables, meat jerky, herbs, and more. Get doneness tests for each food. Free drying guide.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -403,6 +424,13 @@ faster moisture evaporation at lower boiling points.
   </footer>
 
   <script>
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    var nav = document.querySelector('.header-nav');
+    var expanded = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+
     // Food data organized by category
     const foodData = {
       fruits: {

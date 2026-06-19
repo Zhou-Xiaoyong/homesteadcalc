@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  calculateEggs()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -11,10 +16,26 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Egg Production Estimator — Annual Yield & Cost Per Egg Calculator (2026)</title>
+  <title>Egg Production Estimator — Yield & Cost Per Egg (2026)</title>
   <meta name="description" content="Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings. Free egg production calculator.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/egg-production.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Egg Production Estimator — Annual Yield &amp; Cost Per Egg Calculator (2026)">
+  <meta property="og:description" content="Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings. Free egg production calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/egg-production.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Egg Production Estimator — Annual Yield &amp; Cost Per Egg Calculator (2026)">
+  <meta name="twitter:description" content="Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings. Free egg production calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -351,6 +372,13 @@ Annual savings = Store equivalent - Feed cost per year
   </footer>
 
   <script>
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    var nav = document.querySelector('.header-nav');
+    var expanded = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+
     function toggleCustomBreed() {
       const breedSelect = document.getElementById('breedType');
       const customGroup = document.getElementById('customBreedGroup');

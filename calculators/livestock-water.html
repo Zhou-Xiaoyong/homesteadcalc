@@ -2,7 +2,12 @@
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
+// Auto-calculate on page load with defaults
+document.addEventListener('DOMContentLoaded', function() {
+  calculateWater()
+});
+</script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -11,10 +16,26 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livestock Water Calculator — Daily & Seasonal Water Needs (2026)</title>
+  <title>Livestock Water Needs Calculator (2026)</title>
   <meta name="description" content="Calculate daily water requirements for cattle, goats, sheep, horses, pigs, chickens, and more. Plan water storage and delivery. Free water calculator.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/livestock-water.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Livestock Water Calculator — Daily &amp; Seasonal Water Needs (2026)">
+  <meta property="og:description" content="Calculate daily water requirements for cattle, goats, sheep, horses, pigs, chickens, and more. Plan water storage and delivery. Free water calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/livestock-water.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Livestock Water Calculator — Daily &amp; Seasonal Water Needs (2026)">
+  <meta name="twitter:description" content="Calculate daily water requirements for cattle, goats, sheep, horses, pigs, chickens, and more. Plan water storage and delivery. Free water calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -396,6 +417,13 @@ Recommended tank size = Daily total × 3 (3-day emergency supply)
   </footer>
 
   <script>
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+    var nav = document.querySelector('.header-nav');
+    var expanded = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', expanded);
+  });
+
     const animalData = {
       beef: { name: 'Beef Cattle', base: 12, summer: 15, winter: 8, unit: 'head' },
       dairy: { name: 'Dairy Cattle', base: 35, summer: 40, winter: 30, unit: 'head', lactation: true },

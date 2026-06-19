@@ -11,10 +11,26 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Self-Sufficiency Score — Rate Your Homestead's Independence (2026)</title>
+  <title>Self-Sufficiency Score — Rate Your Independence (2026)</title>
   <meta name="description" content="Assess your homestead's self-sufficiency across 8 categories. Get a scored report and actionable improvements. Free self-reliance assessment tool.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/self-sufficiency-score.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Self-Sufficiency Score — Rate Your Homestead's Independence (2026)">
+  <meta property="og:description" content="Assess your homestead's self-sufficiency across 8 categories. Get a scored report and actionable improvements. Free self-reliance assessment tool.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/self-sufficiency-score.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Self-Sufficiency Score — Rate Your Homestead's Independence (2026)">
+  <meta name="twitter:description" content="Assess your homestead's self-sufficiency across 8 categories. Get a scored report and actionable improvements. Free self-reliance assessment tool.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -245,7 +261,7 @@
         <div class="progress-container" id="progressContainer">
           <div class="progress-label">
             <span>Assessment Progress</span>
-            <span id="progressPercent">0% (0 of 40)</span>
+            <span id="progressPercent">0% (0 of 38)</span>
           </div>
           <div class="progress-bar-outer">
             <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
@@ -718,21 +734,21 @@
 
           <div class="formula-box">
 Scoring Methodology:
-  - 40 questions total (5 per category × 8 categories)
+  - 38 questions across 8 categories
   - Each question scored 1–5
-  - Maximum possible score: 200
-  - Categories weighted equally (25 points max each)
+  - Maximum possible score: 190
+  - Categories weighted equally (23.75 points max each)
 
 Level Rankings:
-  Novice (0–40)         : Just starting out
-  Beginner (41–80)      : Some homesteading activities
-  Growing (81–120)      : Building serious self-sufficiency
-  Advanced (121–160)    : Significant independence
-  Near Self-Sufficient (161–190) : Very high independence
-  Master Homesteader (191–200)   : Near complete self-reliance
+  Novice (0–38)         : Just starting out
+  Beginner (39–76)      : Some homesteading activities
+  Growing (77–114)      : Building serious self-sufficiency
+  Advanced (115–152)    : Significant independence
+  Near Self-Sufficient (153–180) : Very high independence
+  Master Homesteader (181–190)   : Near complete self-reliance
 
 The radar chart shows each category's percentage score
-relative to its maximum (25 points per category).
+relative to its maximum (23.75 points per category).
 
 This assessment is meant as a self-reflection tool, not a
 scientific measurement. Your goal should be continuous
@@ -855,7 +871,15 @@ improvement in areas most important to your situation.
       });
     });
 
-    function updateProgress() {
+    
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+function updateProgress() {
       const pct = Math.round((answeredCount / totalQuestions) * 100);
       document.getElementById('progressBar').style.width = pct + '%';
       document.getElementById('progressPercent').textContent = pct + '% (' + answeredCount + ' of ' + totalQuestions + ')';
@@ -885,11 +909,11 @@ improvement in areas most important to your situation.
 
       // Determine level
       let level;
-      if (totalScore <= 40) level = 'Novice';
-      else if (totalScore <= 80) level = 'Beginner Homesteader';
-      else if (totalScore <= 120) level = 'Growing Independence';
-      else if (totalScore <= 160) level = 'Advanced Homesteader';
-      else if (totalScore <= 190) level = 'Near Self-Sufficient';
+      if (totalScore <= 38) level = 'Novice';
+      else if (totalScore <= 76) level = 'Beginner Homesteader';
+      else if (totalScore <= 114) level = 'Growing Independence';
+      else if (totalScore <= 152) level = 'Advanced Homesteader';
+      else if (totalScore <= 180) level = 'Near Self-Sufficient';
       else level = 'Master Homesteader';
 
       const pct = Math.round((totalScore / maxScore) * 100);

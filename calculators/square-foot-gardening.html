@@ -12,8 +12,25 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Square Foot Gardening Planner — Free Online Tool (2026) | Homestead Calculators</title>
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/square-foot-gardening.html">
+  <title>Square Foot Gardening Planner — Plant Spacing (2026)</title>
   <meta name="description" content="Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot for 30+ vegetables and herbs.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Square Foot Gardening Planner — Free Online Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot for 30+ vegetables and herbs.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/square-foot-gardening.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Square Foot Gardening Planner — Free Online Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Plan your raised bed garden using the Square Foot Gardening method. See exactly how many plants fit per square foot for 30+ vegetables and herbs.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .veg-search {
@@ -562,6 +579,9 @@ function generatePlan() {
 
   document.getElementById('results').classList.add('visible');
 }
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', generatePlan);
 
 // Mobile menu
 document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
