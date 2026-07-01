@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  calculateLand()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Land Requirement Calculator — Acres Needed (2026)</title>
   <meta name="description" content="Calculate how much land you need for food, livestock, and energy self-sufficiency. Plan your homestead acreage based on your goals. Free land planner.">
   <link rel="stylesheet" href="../css/style.css">
@@ -197,6 +196,34 @@ document.addEventListener('DOMContentLoaded', function() {
       .presets-bar { flex-direction: column; }
     }
   </style>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Land Requirement Calculator",
+        "item": "https://homesteadcalc.com/calculators/land-requirement.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- SHARED HEADER -->
@@ -823,6 +850,9 @@ References used:
       resultsBox.classList.add('visible');
       resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { calculateLand() });
   </script>
 </body>
 </html>

@@ -30,7 +30,7 @@
   /* Semantic */
   --text-primary: var(--gray-900);
   --text-secondary: var(--gray-600);
-  --text-muted: var(--gray-400);
+  --text-muted: var(--gray-500);
   --bg-primary: var(--white);
   --bg-secondary: var(--gray-50);
   --bg-accent: var(--green-bg);
@@ -326,6 +326,21 @@ p { margin-bottom: var(--space-md); }
 }
 
 .calc-breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb a {
+  color: var(--text-secondary);
+}
+
+.breadcrumb a:hover {
   color: var(--accent);
 }
 

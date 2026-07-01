@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,6 +12,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/">
   <title>All Homestead Calculators — 19 Free Tools (2026)</title>
   <meta name="description" content="Browse all 19 free homestead calculators: chicken feed, garden planning, rainwater harvesting, solar power, composting, and more. No sign-up required.">
@@ -44,6 +48,28 @@
       "name": "Homestead Calculators",
       "url": "https://homesteadcalc.com"
     }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "All Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      }
+    ]
   }
   </script>
 </head>
@@ -279,13 +305,6 @@
   </div>
 </footer>
 
-<script>
-// Mobile menu toggle
-document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-  const nav = document.querySelector('.header-nav');
-  const expanded = nav.classList.toggle('open');
-  this.setAttribute('aria-expanded', expanded);
-});
-</script>
+<script src="../js/main.js"></script>
 </body>
 </html>

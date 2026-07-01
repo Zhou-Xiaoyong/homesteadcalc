@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  calculateFence()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Fencing Calculator — Posts, Wire & Cost (2026)</title>
   <meta name="description" content="Calculate how much fencing material you need for your homestead. Estimate posts, wire, gates, and total cost for any fence type. Free fencing estimator.">
   <link rel="stylesheet" href="../css/style.css">
@@ -131,6 +130,34 @@ document.addEventListener('DOMContentLoaded', function() {
       margin-bottom: var(--space-xs);
     }
   </style>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fencing Material Calculator",
+        "item": "https://homesteadcalc.com/calculators/fencing-calculator.html"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- SHARED HEADER -->
@@ -336,7 +363,7 @@ Wire quantity:
   High-tensile  = linear ft × strands × 1.05 (5% waste)
   Poultry netting = linear ft × 1.05 (5% waste)
 
-Staples / clips: line posts × 4 per post × strands
+Staples / clips: line posts × 1 per post × strands
           </div>
 
           <h3>Choosing the Right Fence for Your Livestock</h3>
@@ -637,7 +664,7 @@ Staples / clips: line posts × 4 per post × strands
 
       // Staples / clips
       if (cfg.strands > 0) {
-        const staplesNeeded = linePosts * 4 * cfg.strands;
+        const staplesNeeded = linePosts * cfg.strands;
         const stapleCostLow = staplesNeeded * prices.staples[0];
         const stapleCostHigh = staplesNeeded * prices.staples[1];
         totalLow += stapleCostLow;
@@ -680,6 +707,9 @@ Staples / clips: line posts × 4 per post × strands
       resultsBox.classList.add('visible');
       resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { calculateFence() });
   </script>
 </body>
 </html>

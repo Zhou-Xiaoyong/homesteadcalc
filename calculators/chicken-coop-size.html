@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  calculateCoop()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Chicken Coop Size Calculator — Space Requirements (2026)</title>
   <meta name="description" content="Calculate exactly how big your chicken coop and run need to be. Free-range vs confined space requirements by breed size and flock count.">
   <link rel="stylesheet" href="../css/style.css">
@@ -50,6 +49,34 @@ document.addEventListener('DOMContentLoaded', function() {
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Chicken Coop Size Calculator",
+        "item": "https://homesteadcalc.com/calculators/chicken-coop-size.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -350,7 +377,7 @@ that meet the minimum area requirements.
   });
 
     function calculateCoop(event) {
-      event.preventDefault();
+      if (event && event.preventDefault) event.preventDefault();
 
       const numChickens = parseInt(document.getElementById('numChickens').value);
       const breedSize = document.getElementById('breedSize').value;
@@ -433,6 +460,9 @@ that meet the minimum area requirements.
       document.getElementById('results').classList.add('visible');
       document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { calculateCoop() });
   </script>
 </body>
 </html>

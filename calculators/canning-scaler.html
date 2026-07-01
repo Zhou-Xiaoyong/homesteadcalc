@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  scaleRecipe()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Canning Recipe Scaler — Safe Batch Scaling Tool (2026)</title>
   <meta name="description" content="Scale your canning recipes safely. Adjust ingredient quantities while maintaining proper acid levels and processing times. Free canning calculator.">
   <link rel="stylesheet" href="../css/style.css">
@@ -50,6 +49,34 @@ document.addEventListener('DOMContentLoaded', function() {
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Canning Recipe Scaler",
+        "item": "https://homesteadcalc.com/calculators/canning-scaler.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -126,6 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
 
               <div class="form-group">
+                <label class="form-label" for="jarSize">Jar Size</label>
+                <select id="jarSize" class="form-select">
+                  <option value="pint" selected>Pint (16 oz)</option>
+                  <option value="quart">Quart (32 oz)</option>
+                </select>
+                <span class="form-hint">Processing time differs by jar size — quart jars require longer processing</span>
+              </div>
+
+              <div class="form-group">
                 <label class="form-label" for="altitude">Your Altitude (feet above sea level)</label>
                 <input type="number" id="altitude" class="form-input" min="0" max="14000" value="500">
                 <span class="form-hint">Processing times increase at altitudes above 1,000 feet</span>
@@ -166,7 +202,7 @@ Garlic cloves:4:cloves</textarea>
               </div>
               <div class="result-item">
                 <div class="value" id="psiRecommendation">—</div>
-                <div class="label">Pressure (Pressure Canner)</div>
+                <div class="label">Pressure (Dial / Weighted)</div>
               </div>
             </div>
 
@@ -221,7 +257,7 @@ Garlic cloves:4:cloves</textarea>
               <li><strong>6,000 - 8,000 ft:</strong> +15 minutes</li>
               <li><strong>8,000 - 10,000 ft:</strong> +20 minutes</li>
             </ul>
-            <p>For pressure canning, increase pressure instead (11 PSI at 1,000-2,000 ft, up to 15 PSI at 6,000+ ft).</p>
+            <p>For pressure canning, increase pressure instead. <strong>Dial gauge:</strong> 11 PSI at 1,000–2,000 ft, 12 PSI at 2,000–4,000 ft, 13 PSI at 4,000–6,000 ft, 14 PSI at 6,000–8,000 ft, 15 PSI above 8,000 ft. <strong>Weighted gauge:</strong> 10 PSI at sea level (≤1,000 ft), 15 PSI at any altitude above 1,000 ft. Always use the gauge type your canner is equipped with — when in doubt, consult your canner's manual and USDA Complete Guide to Home Canning.</p>
 
             <div class="formula-box">
 Scale Factor = Desired jars / Original jars
@@ -385,7 +421,8 @@ Pressure Canner PSI by altitude:
       'tomato-sauce': {
         method: 'water-bath',
         headspace: '0.5',
-        baseTime: 35,
+        pintTime: 35,
+        quartTime: 40,
         acidRequired: true,
         maxScale: 2,
         isTomato: true
@@ -393,26 +430,30 @@ Pressure Canner PSI by altitude:
       'pickles': {
         method: 'water-bath',
         headspace: '0.5',
-        baseTime: 10,
+        pintTime: 10,
+        quartTime: 15,
         acidRequired: true,
         maxScale: 5
       },
       'jam-standard': {
         method: 'water-bath',
         headspace: '0.25',
-        baseTime: 10,
+        pintTime: 10,
+        quartTime: 10,
         maxScale: 8
       },
       'jam-low-sugar': {
         method: 'water-bath',
         headspace: '0.25',
-        baseTime: 10,
+        pintTime: 10,
+        quartTime: 10,
         maxScale: 8
       },
       'salsa': {
         method: 'water-bath',
         headspace: '0.5',
-        baseTime: 15,
+        pintTime: 15,
+        quartTime: 15,
         acidRequired: true,
         maxScale: 2,
         isTomato: true
@@ -420,19 +461,22 @@ Pressure Canner PSI by altitude:
       'fruit-syrup': {
         method: 'water-bath',
         headspace: '0.5',
-        baseTime: 20,
+        pintTime: 20,
+        quartTime: 20,
         maxScale: 5
       },
       'vegetables': {
         method: 'pressure',
         headspace: '1',
-        baseTime: 25,
+        pintTime: 20,
+        quartTime: 25,
         maxScale: 10
       },
       'meat-stock': {
         method: 'pressure',
         headspace: '1',
-        baseTime: 75,
+        pintTime: 75,
+        quartTime: 90,
         maxScale: 10
       }
     };
@@ -475,20 +519,23 @@ Pressure Canner PSI by altitude:
     }
 
     function getAltitudeAdjustment(altitude, method) {
-      if (altitude <= 1000) return { timeAdjust: 0, psi: 10 };
+      // Sea level baseline — dial and weighted gauge both 10/15 PSI at <=1000ft
+      if (altitude <= 1000) return { timeAdjust: 0, psiDial: 10, psiWeighted: 15 };
 
       if (method === 'water-bath' || method === 'steam') {
-        if (altitude <= 3000) return { timeAdjust: 5, psi: null };
-        if (altitude <= 6000) return { timeAdjust: 10, psi: null };
-        if (altitude <= 8000) return { timeAdjust: 15, psi: null };
-        return { timeAdjust: 20, psi: null };
+        if (altitude <= 3000) return { timeAdjust: 5, psiDial: null, psiWeighted: null };
+        if (altitude <= 6000) return { timeAdjust: 10, psiDial: null, psiWeighted: null };
+        if (altitude <= 8000) return { timeAdjust: 15, psiDial: null, psiWeighted: null };
+        return { timeAdjust: 20, psiDial: null, psiWeighted: null };
       } else {
-        // Pressure canning PSI adjustments
-        if (altitude <= 2000) return { timeAdjust: 0, psi: 11 };
-        if (altitude <= 4000) return { timeAdjust: 0, psi: 12 };
-        if (altitude <= 6000) return { timeAdjust: 0, psi: 13 };
-        if (altitude <= 8000) return { timeAdjust: 0, psi: 14 };
-        return { timeAdjust: 0, psi: 15 };
+        // Pressure canning PSI adjustments per USDA
+        // Dial gauge: increments of 1 PSI per 2,000 ft above 1,000 ft
+        // Weighted gauge: 15 PSI for ALL altitudes above 1,000 ft
+        if (altitude <= 2000) return { timeAdjust: 0, psiDial: 11, psiWeighted: 15 };
+        if (altitude <= 4000) return { timeAdjust: 0, psiDial: 12, psiWeighted: 15 };
+        if (altitude <= 6000) return { timeAdjust: 0, psiDial: 13, psiWeighted: 15 };
+        if (altitude <= 8000) return { timeAdjust: 0, psiDial: 14, psiWeighted: 15 };
+        return { timeAdjust: 0, psiDial: 15, psiWeighted: 15 };
       }
     }
 
@@ -518,17 +565,19 @@ Pressure Canner PSI by altitude:
     }
 
     function scaleRecipe(event) {
-      event.preventDefault();
+      if (event && event.preventDefault) event.preventDefault();
 
       const method = document.getElementById('canningMethod').value;
       const recipeType = document.getElementById('recipeType').value;
       const origJars = parseInt(document.getElementById('origJars').value);
       const newJars = parseInt(document.getElementById('newJars').value);
+      const jarSize = document.getElementById('jarSize').value;
       const altitude = parseInt(document.getElementById('altitude').value);
       const ingredientsText = document.getElementById('ingredients').value.trim();
 
       const recipe = recipeTypes[recipeType];
       const scaleFactor = newJars / origJars;
+      const baseTime = (jarSize === 'quart') ? recipe.quartTime : recipe.pintTime;
 
       // Display scale factor
       document.getElementById('scaleFactorDisplay').textContent = scaleFactor.toFixed(2) + 'x';
@@ -536,16 +585,17 @@ Pressure Canner PSI by altitude:
       // Headspace
       document.getElementById('headspace').textContent = recipe.headspace + '"';
 
-      // Processing time
-      const processingTime = getAdjustedProcessingTime(recipe.baseTime, altitude, method);
-      document.getElementById('processingTime').textContent = processingTime + ' min';
+      // Processing time (jar-size aware)
+      const processingTime = getAdjustedProcessingTime(baseTime, altitude, method);
+      document.getElementById('processingTime').textContent = processingTime + ' min (' + jarSize + ')';
 
-      // PSI recommendation
+      // PSI recommendation — show BOTH dial gauge and weighted gauge for pressure canning
+      const psiEl = document.getElementById('psiRecommendation');
       if (method === 'pressure') {
-        const psi = getAltitudeAdjustment(altitude, method).psi;
-        document.getElementById('psiRecommendation').textContent = psi + ' PSI';
+        const adj = getAltitudeAdjustment(altitude, method);
+        psiEl.innerHTML = 'Dial: <strong>' + adj.psiDial + ' PSI</strong><br>Weighted: <strong>' + adj.psiWeighted + ' PSI</strong>';
       } else {
-        document.getElementById('psiRecommendation').textContent = 'N/A (Water Bath)';
+        psiEl.textContent = 'N/A (Water Bath)';
       }
 
       // Parse and scale ingredients
@@ -604,7 +654,7 @@ Pressure Canner PSI by altitude:
         if (method === 'water-bath' || method === 'steam') {
           altitudeNote.innerHTML = `<strong>Altitude Adjustment:</strong> At ${altitude.toLocaleString()} feet, add <strong>${adj.timeAdjust} minutes</strong> to the processing time. Water boils at approximately ${Math.round(212 - altitude * 0.0018)}°F at this elevation.`;
         } else {
-          altitudeNote.innerHTML = `<strong>Altitude Adjustment:</strong> At ${altitude.toLocaleString()} feet, pressure can at <strong>${adj.psi} PSI</strong>. Water boils at approximately ${Math.round(212 - altitude * 0.0018)}°F at this elevation.`;
+          altitudeNote.innerHTML = `<strong>Altitude Adjustment:</strong> At ${altitude.toLocaleString()} feet, use <strong>${adj.psiDial} PSI</strong> (dial gauge) or <strong>${adj.psiWeighted} PSI</strong> (weighted gauge). Water boils at approximately ${Math.round(212 - altitude * 0.0018)}°F at this elevation.`;
         }
       } else {
         altitudeNote.style.display = 'none';
@@ -633,7 +683,7 @@ Pressure Canner PSI by altitude:
       // Processing time warning
       warnings.push({
         type: 'info',
-        text: `Processing time (${processingTime} minutes) is based on ${method === 'pressure' ? 'pressure' : 'water bath'} canning at ${altitude} feet. Processing time does NOT change with batch size — it only changes with altitude.`
+        text: `Processing time (${processingTime}) is based on ${jarSize} jars, ${method === 'pressure' ? 'pressure' : 'water bath'} canning at ${altitude} feet. Processing time depends on jar size and altitude — it does NOT change with batch size. Always use the time for the LARGEST jar size in your batch.`
       });
 
       warnings.forEach(w => {
@@ -649,6 +699,9 @@ Pressure Canner PSI by altitude:
       document.getElementById('results').classList.add('visible');
       document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { scaleRecipe() });
   </script>
 </body>
 </html>

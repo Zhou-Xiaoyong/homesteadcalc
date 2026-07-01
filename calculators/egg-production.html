@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  calculateEggs()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Egg Production Estimator — Yield & Cost Per Egg (2026)</title>
   <meta name="description" content="Estimate how many eggs your hens will lay per year based on breed, age, and season. Calculate cost per egg and potential savings. Free egg production calculator.">
   <link rel="stylesheet" href="../css/style.css">
@@ -50,6 +49,34 @@ document.addEventListener('DOMContentLoaded', function() {
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Egg Production Estimator",
+        "item": "https://homesteadcalc.com/calculators/egg-production.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -400,7 +427,7 @@ Annual savings = Store equivalent - Feed cost per year
     }
 
     function calculateEggs(event) {
-      event.preventDefault();
+      if (event && event.preventDefault) event.preventDefault();
 
       const numHens = parseInt(document.getElementById('numHens').value);
       const breedSelect = document.getElementById('breedType');
@@ -460,6 +487,9 @@ Annual savings = Store equivalent - Feed cost per year
       // Scroll to results
       document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { calculateEggs() });
   </script>
 </body>
 </html>

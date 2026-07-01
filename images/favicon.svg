@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#1b4332"/>
+  <!-- stem -->
+  <rect x="30" y="28" width="4" height="20" fill="#40916c"/>
+  <!-- left leaf -->
+  <ellipse cx="22" cy="30" rx="11" ry="8" transform="rotate(-25 22 30)" fill="#d8f3dc"/>
+  <!-- right leaf -->
+  <ellipse cx="42" cy="30" rx="11" ry="8" transform="rotate(25 42 30)" fill="#d8f3dc"/>
+  <!-- pot -->
+  <rect x="22" y="44" width="20" height="12" rx="2" fill="#2d6a4f"/>
+</svg>

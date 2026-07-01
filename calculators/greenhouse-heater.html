@@ -1,13 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL">
-// Auto-calculate on page load with defaults
-document.addEventListener('DOMContentLoaded', function() {
-  calculateBTU()
-});
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -16,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <title>Greenhouse Heater Size Calculator — BTU Requirements (2026)</title>
   <meta name="description" content="Calculate the BTU heating requirements for your greenhouse based on size, glazing type, and climate. Avoid under/over-sizing your heater. Free tool.">
   <link rel="stylesheet" href="../css/style.css">
@@ -50,6 +49,34 @@ document.addEventListener('DOMContentLoaded', function() {
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Greenhouse Heater BTU Calculator",
+        "item": "https://homesteadcalc.com/calculators/greenhouse-heater.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -393,7 +420,7 @@ Standard heater sizes:
     }
 
     function calculateBTU(event) {
-      event.preventDefault();
+      if (event && event.preventDefault) event.preventDefault();
 
       const length = parseFloat(document.getElementById('length').value);
       const width = parseFloat(document.getElementById('width').value);
@@ -419,20 +446,26 @@ Standard heater sizes:
       // Heating hours per year based on zone
       const heatingHours = getHeatingHours(zoneSelect.value === 'manual' ? outsideTemp.toString() : zoneSelect.value);
 
-      // Fuel cost calculations
-      let costPerBTU, fuelName;
+      // Fuel cost calculations — divide by heater efficiency (input BTU needed = output BTU ÷ efficiency)
+      let costPerBTU, fuelName, fuelEfficiency, fuelEffLabel;
       if (fuelType === 'propane') {
         costPerBTU = 2.50 / 91500;
         fuelName = 'Propane';
+        fuelEfficiency = 0.875; // midpoint of 80-95%
+        fuelEffLabel = '80-95%';
       } else if (fuelType === 'natural-gas') {
         costPerBTU = 1.50 / 100000;
         fuelName = 'Natural Gas';
+        fuelEfficiency = 0.875;
+        fuelEffLabel = '80-95%';
       } else {
         costPerBTU = 0.15 / 3412;
         fuelName = 'Electric';
+        fuelEfficiency = 1.0; // electric resistance = 100%
+        fuelEffLabel = '100%';
       }
 
-      const annualCost = btuPerHour * heatingHours * costPerBTU;
+      const annualCost = btuPerHour * heatingHours * costPerBTU / fuelEfficiency;
 
       // Display results
       document.getElementById('btuRequired').textContent = Math.round(btuPerHour).toLocaleString() + ' BTU/hr';
@@ -442,12 +475,12 @@ Standard heater sizes:
       document.getElementById('annualCost').textContent = '$' + annualCost.toFixed(2);
       document.getElementById('heatingHours').textContent = heatingHours.toLocaleString() + ' hours';
 
-      // Fuel suggestions
+      // Fuel suggestions — each fuel's cost accounts for its own efficiency
       const fuelSuggestions = document.getElementById('fuelSuggestions');
       const allFuelTypes = [
-        { name: 'Propane', costPerBTU: 2.50 / 91500, efficiency: '80-95%' },
-        { name: 'Natural Gas', costPerBTU: 1.50 / 100000, efficiency: '80-95%' },
-        { name: 'Electric', costPerBTU: 0.15 / 3412, efficiency: '100%' }
+        { name: 'Propane', costPerBTU: 2.50 / 91500, efficiency: 0.875, efficiencyLabel: '80-95%' },
+        { name: 'Natural Gas', costPerBTU: 1.50 / 100000, efficiency: 0.875, efficiencyLabel: '80-95%' },
+        { name: 'Electric', costPerBTU: 0.15 / 3412, efficiency: 1.0, efficiencyLabel: '100%' }
       ];
 
       fuelSuggestions.innerHTML = '<h4 style="margin-bottom: 0.5rem;">Fuel Type Comparison</h4>';
@@ -463,10 +496,10 @@ Standard heater sizes:
         </thead>
         <tbody>
           ${allFuelTypes.map(f => {
-            const cost = btuPerHour * heatingHours * f.costPerBTU;
+            const cost = btuPerHour * heatingHours * f.costPerBTU / f.efficiency;
             return `<tr style="border-bottom: 1px solid var(--border-color);">
               <td style="padding:6px 8px;">${f.name}</td>
-              <td style="text-align:center; padding:6px 8px;">${f.efficiency}</td>
+              <td style="text-align:center; padding:6px 8px;">${f.efficiencyLabel}</td>
               <td style="text-align:right; padding:6px 8px;">$${cost.toFixed(2)}</td>
             </tr>`;
           }).join('')}
@@ -479,6 +512,9 @@ Standard heater sizes:
       document.getElementById('results').classList.add('visible');
       document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+
+    // Auto-calculate on page load with defaults
+    document.addEventListener('DOMContentLoaded', function() { calculateBTU() });
   </script>
 </body>
 </html>

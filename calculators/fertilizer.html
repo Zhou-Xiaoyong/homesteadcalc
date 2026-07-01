@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -12,6 +12,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
   <link rel="canonical" href="https://homesteadcalc.com/calculators/fertilizer.html">
   <title>Fertilizer Calculator — NPK Ratio & Application Rate (2026)</title>
   <meta name="description" content="Calculate the right fertilizer NPK ratio and application rate for your garden. Avoid over-fertilizing with our free, research-backed fertilizer calculator.">
@@ -97,6 +101,34 @@
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Fertilizer Calculator",
+        "item": "https://homesteadcalc.com/calculators/fertilizer.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -380,6 +412,29 @@ var baseNRates = {
   'berries': 1.0
 };
 
+// Base P2O5 and K2O rates (lbs per 1000 sq ft) — used when N=0 (e.g. 0-46-0 or 0-0-60 blends)
+// Based on standard soil-buildup recommendations for low-testing soils
+var basePRates = {
+  'lawn': 2.0,
+  'vegetables-general': 2.5,
+  'tomatoes': 3.0,
+  'corn': 2.5,
+  'leafy-greens': 2.0,
+  'root-crops': 3.0,
+  'fruit-trees': 2.5,
+  'berries': 2.0
+};
+var baseKRates = {
+  'lawn': 1.5,
+  'vegetables-general': 2.0,
+  'tomatoes': 2.5,
+  'corn': 2.0,
+  'leafy-greens': 2.0,
+  'root-crops': 2.5,
+  'fruit-trees': 2.0,
+  'berries': 2.0
+};
+
 var soilLevels = { N: 'medium', P: 'medium', K: 'medium' };
 
 function setSoilLevel(nutrient, level) {
@@ -416,32 +471,61 @@ function calculateFertilizer() {
 
   document.getElementById('npk-display').textContent = 'You selected: ' + nPercent + '-' + pPercent + '-' + kPercent;
 
-  if (nPercent === 0) {
+  // Need at least one nutrient to calculate
+  if (nPercent === 0 && pPercent === 0 && kPercent === 0) {
     document.getElementById('results').classList.remove('visible');
     return;
   }
 
-  var baseRate = baseNRates[cropType] || 2.5;
-  var soilMult = getSoilMultiplier('N');
-  var nNeeded = baseRate * (area / 1000) * soilMult;
-
-  // P and K levels also affect the calculation based on soil test results
+  // Soil-test multipliers scale the TARGET (recommended) nutrient need, not the physical applied amount
+  var nSoilMult = getSoilMultiplier('N');
   var pSoilMult = getSoilMultiplier('P');
   var kSoilMult = getSoilMultiplier('K');
 
-  var fertilizerNeeded = (nPercent > 0) ? nNeeded / (nPercent / 100) : 0;
-  var pApplied = fertilizerNeeded * (pPercent / 100) * pSoilMult;
-  var kApplied = fertilizerNeeded * (kPercent / 100) * kSoilMult;
+  // Compute target nutrient needs (lbs) based on crop and soil test
+  var nBaseRate = baseNRates[cropType] || 2.5;
+  var pBaseRate = basePRates[cropType] || 2.5;
+  var kBaseRate = baseKRates[cropType] || 2.0;
+  var nNeeded = nBaseRate * (area / 1000) * nSoilMult;
+  var pNeeded = pBaseRate * (area / 1000) * pSoilMult;
+  var kNeeded = kBaseRate * (area / 1000) * kSoilMult;
+
+  // Determine the "driver" nutrient: the one with the highest percent in the blend that's > 0
+  // Fertilizer needed is derived from the driver's target need ÷ its percent in the blend
+  var fertilizerNeeded = 0;
+  var driverNutrient = 'none';
+  if (nPercent > 0) {
+    fertilizerNeeded = nNeeded / (nPercent / 100);
+    driverNutrient = 'N';
+  } else if (pPercent > 0) {
+    fertilizerNeeded = pNeeded / (pPercent / 100);
+    driverNutrient = 'P';
+  } else if (kPercent > 0) {
+    fertilizerNeeded = kNeeded / (kPercent / 100);
+    driverNutrient = 'K';
+  }
+
+  // ACTUAL physical applied amounts come out of the bag — these do NOT get soil-multiplier applied
+  // (the soil multiplier already adjusted the target need, which set the fertilizer amount)
+  var nApplied = fertilizerNeeded * (nPercent / 100);
+  var pApplied = fertilizerNeeded * (pPercent / 100);
+  var kApplied = fertilizerNeeded * (kPercent / 100);
+
   var bagsNeeded = Math.ceil(fertilizerNeeded / bagWeight);
   var cost = bagsNeeded * bagPrice;
-  var nRatePer1000 = (nNeeded / area) * 1000;
+  // For display: the "applied" equals the "needed" only for the driver; for non-driver nutrients
+  // we show the actual physical applied amount (what comes out of the bag at this fertilizer rate)
+  var nDisplay = (nPercent > 0) ? nApplied : 0;
+  var pDisplay = (pPercent > 0) ? pApplied : 0;
+  var kDisplay = (kPercent > 0) ? kApplied : 0;
+  var nRatePer1000 = (nDisplay / area) * 1000;
 
   document.getElementById('fertilizer-needed').textContent = fertilizerNeeded.toFixed(1) + ' lbs';
   document.getElementById('bags-needed').textContent = bagsNeeded;
   document.getElementById('estimated-cost').textContent = '$' + cost.toFixed(2);
-  document.getElementById('n-applied').textContent = nNeeded.toFixed(1) + ' lbs';
-  document.getElementById('p-applied').textContent = pApplied.toFixed(1) + ' lbs';
-  document.getElementById('k-applied').textContent = kApplied.toFixed(1) + ' lbs';
+  document.getElementById('n-applied').textContent = nDisplay.toFixed(1) + ' lbs';
+  document.getElementById('p-applied').textContent = pDisplay.toFixed(1) + ' lbs';
+  document.getElementById('k-applied').textContent = kDisplay.toFixed(1) + ' lbs';
   document.getElementById('n-rate').textContent = nRatePer1000.toFixed(1) + ' lbs N / 1000 sq ft';
 
   // Instructions
@@ -458,11 +542,17 @@ function calculateFertilizer() {
   };
 
   var splitApps = fertilizerNeeded > 20 ? ' Split this into 2–3 applications: before planting, mid-season, and (if applicable) after first harvest.' : ' Apply evenly across the entire area.';
+  var driverNote = '';
+  if (driverNutrient === 'P') {
+    driverNote = ' This blend is P-driven (no nitrogen) — ideal for established plantings where soil N is adequate but phosphorus is low. ';
+  } else if (driverNutrient === 'K') {
+    driverNote = ' This blend is K-driven (no nitrogen or phosphorus) — typically used as a potassium boost. ';
+  }
   instructions.innerHTML = '<strong>Application Instructions:</strong><br>' +
     'For your ' + area + ' sq ft ' + (cropNames[cropType] || 'garden') + ', apply <strong>' + fertilizerNeeded.toFixed(1) + ' lbs</strong> (' + bagsNeeded + ' bag' + (bagsNeeded !== 1 ? 's' : '') + ') of ' + nPercent + '-' + pPercent + '-' + kPercent + ' fertilizer.' +
     splitApps +
     ' Water thoroughly after application to help nutrients reach the root zone.<br><br>' +
-    '<strong>Note:</strong> Always calibrate your spreader and follow label instructions. These calculations are estimates based on standard N requirements — adjust for your specific conditions.';
+    '<strong>Note:</strong> Always calibrate your spreader and follow label instructions. Soil-test multipliers adjust the target nutrient need (low = +50%, high = −50%); the "Applied" amounts below show what physically comes out of the bag at the recommended rate.' + driverNote;
 
   document.getElementById('results').classList.add('visible');
 }
