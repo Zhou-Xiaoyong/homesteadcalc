@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/compost-temperature.html">
+  <title>Compost Temperature Tracker — Optimal Decomposition (2026)</title>
+  <meta name="description" content="Track compost pile temperature and determine optimal decomposition stages. Get recommendations for turning and maintaining your compost.">
+  <meta property="og:title" content="Compost Temperature Tracker — Free Composting Tool (2026)">
+  <meta property="og:description" content="Track compost pile temperature and determine optimal decomposition stages.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/compost-temperature.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compost Temperature Tracker — Free Composting Tool (2026)">
+  <meta name="twitter:description" content="Track compost pile temperature and determine optimal decomposition stages.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compost Temperature Tracker",
+    "url": "https://homesteadcalc.com/calculators/compost-temperature.html",
+    "description": "Track compost pile temperature and determine optimal decomposition stages. Get recommendations for turning and maintaining your compost.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "Compost Temperature Tracker", "item": "https://homesteadcalc.com/calculators/compost-temperature.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Compost Temperature Tracker
+    </nav>
+    <h1>Compost Temperature Tracker</h1>
+    <p class="text-lg text-muted">Track compost pile temperature to determine decomposition stage and get recommendations for turning, moisture, and maintenance.</p>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Temperature Tracker</h2>
+          <div class="form-group">
+            <label class="form-label" for="current-temp">Current Temperature (°F)</label>
+            <input type="number" id="current-temp" class="form-input" value="140" min="40" max="180" step="5">
+            <div class="form-hint">Insert thermometer 12–18 inches deep into the center of the pile.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="days-since-turn">Days Since Last Turn</label>
+            <input type="number" id="days-since-turn" class="form-input" value="7" min="0" max="60" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="moisture-level">Moisture Level</label>
+            <select id="moisture-level" class="form-select">
+              <option value="optimal">Optimal (like wrung-out sponge)</option>
+              <option value="dry">Too Dry (crumbly)</option>
+              <option value="wet">Too Wet (soggy)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pile-size">Pile Size (cubic feet)</label>
+            <input type="number" id="pile-size" class="form-input" value="64" min="10" max="500" step="1">
+            <div class="form-hint">Minimum effective size: 3x3x3 ft (27 cu ft)</div>
+          </div>
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateCompost()">Analyze Compost</button>
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Compost Analysis</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="compost-stage">—</div>
+                <div class="label">Decomposition Stage</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="temp-status">—</div>
+                <div class="label">Temperature Status</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="turn-recommendation">—</div>
+                <div class="label">Turn Recommendation</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="pathogen-kill">—</div>
+                <div class="label">Pathogen Kill Status</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="estimated-ready">—</div>
+                <div class="label">Estimated Ready In</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="maintenance-task">—</div>
+                <div class="label">Next Maintenance Task</div>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="compost-summary" style="display:none;"></div>
+          </div>
+        </div>
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>This tracker is based on research from <a href="https://www.extension.org/" target="_blank" rel="noopener">USDA Extension Service</a> and compost science. Temperature is the primary indicator of decomposition activity and pathogen destruction.</p>
+          <h3>Compost Temperature Stages</h3>
+          <ul>
+            <li><strong>Mesophilic (below 104°F):</strong> Initial stage, slow decomposition</li>
+            <li><strong>Thermophilic (104–160°F):</strong> Active stage, pathogen kill zone</li>
+            <li><strong>Cooling (below 104°F after heating):</strong> Maturation stage</li>
+          </ul>
+          <div class="formula-box">
+Pathogen Kill = Temperature ≥ 131°F for 3 consecutive days
+Optimal Range = 130–150°F (balanced decomposition)
+Turn Frequency = Every 3–7 days during thermophilic stage
+          </div>
+        </section>
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="compost-mix.html">Compost Mix Ratio Calculator</a>
+            <a href="fertilizer.html">Fertilizer Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+          </div>
+        </section>
+      </div>
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Temperature Guide</h3>
+          <p class="text-sm">Compost Temperature Stages</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Temperature</th>
+                <th style="text-align:left;padding:4px 0;">Stage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>40–104°F</td><td>Mesophilic (Initial)</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>104–130°F</td><td>Thermophilic (Active)</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>131–150°F</td><td>Optimal (Pathogen Kill)</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>151–160°F</td><td>Hot (May kill beneficials)</td></tr>
+              <tr><td>&gt;160°F</td><td>Too Hot (Slow decomposition)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Data Sources</h3>
+          <p class="text-sm">Based on USDA Extension compost guidelines and Cornell University compost research.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calculateCompost() {
+  var temp = parseInt(document.getElementById('current-temp').value) || 0;
+  var daysSinceTurn = parseInt(document.getElementById('days-since-turn').value) || 0;
+  var moisture = document.getElementById('moisture-level').value;
+  var pileSize = parseInt(document.getElementById('pile-size').value) || 0;
+
+  var stage, status, turnRec, pathogen, readyIn, task;
+
+  if (temp < 104) {
+    stage = 'Mesophilic';
+    status = 'Cool';
+    turnRec = 'Turn now';
+    pathogen = 'Not achieved';
+    readyIn = '6–12 weeks';
+    task = 'Turn pile to aerate';
+  } else if (temp >= 104 && temp <= 130) {
+    stage = 'Thermophilic';
+    status = 'Active';
+    turnRec = 'Turn in 3–5 days';
+    pathogen = 'Partial';
+    readyIn = '4–8 weeks';
+    task = 'Monitor moisture';
+  } else if (temp >= 131 && temp <= 150) {
+    stage = 'Thermophilic';
+    status = 'Optimal';
+    turnRec = 'Turn in 5–7 days';
+    pathogen = 'Achieved';
+    readyIn = '3–6 weeks';
+    task = 'Maintain moisture';
+  } else if (temp >= 151 && temp <= 160) {
+    stage = 'Thermophilic';
+    status = 'Hot';
+    turnRec = 'Turn now';
+    pathogen = 'Achieved';
+    readyIn = '4–6 weeks';
+    task = 'Turn to cool slightly';
+  } else {
+    stage = 'Overheated';
+    status = 'Too Hot';
+    turnRec = 'Turn immediately';
+    pathogen = 'Achieved';
+    readyIn = '5–8 weeks';
+    task = 'Turn and add greens';
+  }
+
+  document.getElementById('compost-stage').textContent = stage;
+  document.getElementById('temp-status').textContent = status;
+  document.getElementById('turn-recommendation').textContent = turnRec;
+  document.getElementById('pathogen-kill').textContent = pathogen;
+  document.getElementById('estimated-ready').textContent = readyIn;
+  document.getElementById('maintenance-task').textContent = task;
+
+  var summary = document.getElementById('compost-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<strong>Compost Status:</strong> Your pile is at ' + temp + '°F (' + stage + ' stage). Temperature is <strong>' + status + '</strong>. ' + (pathogen === 'Achieved' ? 'Pathogen kill temperature has been reached.' : 'Pathogen kill temperature not yet reached.') + ' Next action: ' + task + '. Estimated compost ready in ' + readyIn + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+document.addEventListener('DOMContentLoaded', calculateCompost);
+</script>
+</body>
+</html>

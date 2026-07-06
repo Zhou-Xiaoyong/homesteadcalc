@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/seed-calculator.html">
+  <title>Seed Calculator — How Many Seeds to Buy (2026)</title>
+  <meta name="description" content="Calculate how many seeds to buy for your garden. Determine seed quantities based on planting area, germination rate, and desired yield.">
+  <meta property="og:title" content="Seed Calculator — Free Garden Planning Tool (2026)">
+  <meta property="og:description" content="Calculate how many seeds to buy for your garden. Determine seed quantities based on planting area, germination rate, and desired yield.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/seed-calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seed Calculator — Free Garden Planning Tool (2026)">
+  <meta name="twitter:description" content="Calculate how many seeds to buy for your garden. Determine seed quantities based on planting area, germination rate, and desired yield.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Seed Calculator",
+    "url": "https://homesteadcalc.com/calculators/seed-calculator.html",
+    "description": "Calculate how many seeds to buy for your garden. Determine seed quantities based on planting area, germination rate, and desired yield.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "Seed Calculator", "item": "https://homesteadcalc.com/calculators/seed-calculator.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Seed Calculator
+    </nav>
+    <h1>Seed Calculator</h1>
+    <p class="text-lg text-muted">Calculate how many seeds to buy for your garden based on planting area, germination rate, and desired yield. Avoid wasting seeds or running out mid-season.</p>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Seed Calculator</h2>
+          <div class="form-group">
+            <label class="form-label" for="crop-type">Crop Type</label>
+            <select id="crop-type" class="form-select">
+              <option value="tomato">Tomato</option>
+              <option value="carrot">Carrot</option>
+              <option value="lettuce">Lettuce</option>
+              <option value="pepper">Pepper</option>
+              <option value="cucumber">Cucumber</option>
+              <option value="bean">Bean</option>
+              <option value="corn">Corn</option>
+              <option value="squash">Squash</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="planting-area">Planting Area (sq ft)</label>
+            <input type="number" id="planting-area" class="form-input" value="100" min="1" max="10000" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="germination-rate">Germination Rate (%)</label>
+            <input type="number" id="germination-rate" class="form-input" value="85" min="50" max="100" step="1">
+            <div class="form-hint">Typical rates: heirloom ~70–80%, hybrid ~85–95%</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="seeding-method">Seeding Method</label>
+            <select id="seeding-method" class="form-select">
+              <option value="direct">Direct Seed</option>
+              <option value="transplant">Start Indoors (Transplant)</option>
+              <option value="both">Both Methods</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="extra-seeds">Extra Seeds for Success (%)</label>
+            <input type="number" id="extra-seeds" class="form-input" value="20" min="0" max="100" step="5">
+            <div class="form-hint">Add extra seeds to account for poor germination or thinning.</div>
+          </div>
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateSeeds()">Calculate Seed Needs</button>
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Seed Requirements</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="seeds-needed">—</div>
+                <div class="label">Seeds Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="plants-expected">—</div>
+                <div class="label">Plants Expected</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="packets-needed">—</div>
+                <div class="label">Seed Packets Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="plants-per-sqft">—</div>
+                <div class="label">Plants per Sq Ft</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="thinning-required">—</div>
+                <div class="label">Thinning Required</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="estimated-yield">—</div>
+                <div class="label">Estimated Yield</div>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="seed-summary" style="display:none;"></div>
+          </div>
+        </div>
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>This calculator helps you determine exactly how many seeds to buy based on your garden size and crop type. It factors in germination rates and recommended plant spacing.</p>
+          <h3>Key Factors</h3>
+          <ul>
+            <li><strong>Germination Rate:</strong> Not all seeds will sprout — older seeds have lower rates</li>
+            <li><strong>Spacing:</strong> Each crop has optimal spacing requirements</li>
+            <li><strong>Transplant vs Direct:</strong> Starting indoors reduces seed waste</li>
+          </ul>
+          <div class="formula-box">
+Seeds Needed = (Plants Required ÷ Germination Rate) × (1 + Extra %)
+Plants Required = Planting Area × Plants per Sq Ft
+          </div>
+        </section>
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="plant-spacing.html">Plant Spacing Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="seed-starting.html">Seed Starting Date Calculator</a>
+          </div>
+        </section>
+      </div>
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Plants per Square Foot</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Crop</th>
+                <th style="text-align:right;padding:4px 0;">Plants/sq ft</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Tomato</td><td>1</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Carrot</td><td>16</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Lettuce</td><td>4</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Pepper</td><td>1</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Cucumber</td><td>1–2</td></tr>
+              <tr><td>Bean</td><td>4</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Data Sources</h3>
+          <p class="text-sm">Based on seed packet guidelines and university extension recommendations.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calculateSeeds() {
+  var cropType = document.getElementById('crop-type').value;
+  var plantingArea = parseInt(document.getElementById('planting-area').value) || 0;
+  var germinationRate = parseInt(document.getElementById('germination-rate').value) || 85;
+  var extraSeeds = parseInt(document.getElementById('extra-seeds').value) || 20;
+
+  var plantsPerSqFt = {
+    'tomato': 1, 'carrot': 16, 'lettuce': 4, 'pepper': 1,
+    'cucumber': 1.5, 'bean': 4, 'corn': 1, 'squash': 1
+  }[cropType] || 1;
+
+  var seedsPerPacket = {
+    'tomato': 50, 'carrot': 1000, 'lettuce': 100, 'pepper': 30,
+    'cucumber': 25, 'bean': 60, 'corn': 100, 'squash': 20
+  }[cropType] || 50;
+
+  var plantsRequired = plantingArea * plantsPerSqFt;
+  var seedsNeeded = Math.ceil((plantsRequired / (germinationRate / 100)) * (1 + extraSeeds / 100));
+  var packetsNeeded = Math.ceil(seedsNeeded / seedsPerPacket);
+  var thinningRequired = seedsNeeded > plantsRequired ? 'Yes' : 'No';
+
+  var yields = {
+    'tomato': '10–20 lbs/plant', 'carrot': '15–20 carrots/ft', 'lettuce': '1 head/plant',
+    'pepper': '10–20 peppers/plant', 'cucumber': '10–15 cucumbers/plant',
+    'bean': '1–2 lbs/plant', 'corn': '1–2 ears/plant', 'squash': '5–10 lbs/plant'
+  };
+  var estimatedYield = yields[cropType] || 'varies';
+
+  document.getElementById('seeds-needed').textContent = seedsNeeded;
+  document.getElementById('plants-expected').textContent = Math.round(plantsRequired);
+  document.getElementById('packets-needed').textContent = packetsNeeded;
+  document.getElementById('plants-per-sqft').textContent = plantsPerSqFt;
+  document.getElementById('thinning-required').textContent = thinningRequired;
+  document.getElementById('estimated-yield').textContent = estimatedYield;
+
+  var summary = document.getElementById('seed-summary');
+  summary.style.display = 'block';
+  var typeLabel = cropType.charAt(0).toUpperCase() + cropType.slice(1);
+  summary.innerHTML = '<strong>Seed Needs:</strong> ' + plantingArea + ' sq ft of ' + typeLabel + ' at ' + plantsPerSqFt + ' plants/sq ft. You need <strong>' + seedsNeeded + ' seeds</strong> (' + packetsNeeded + ' packets of ' + seedsPerPacket + ' seeds each). Expected yield: ' + estimatedYield + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+document.addEventListener('DOMContentLoaded', calculateSeeds);
+</script>
+</body>
+</html>

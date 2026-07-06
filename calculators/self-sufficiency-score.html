@@ -757,6 +757,11 @@
             <h4>Your Next Steps</h4>
             <ul id="nextStepsList"></ul>
           </div>
+
+          <div class="next-steps" id="calculatorRecommendations" style="margin-top: var(--space-xl);">
+            <h4>Recommended Calculators to Improve Your Score</h4>
+            <div id="recommendedCalculatorsList"></div>
+          </div>
         </div>
 
         <!-- How It Works -->
@@ -1003,6 +1008,66 @@ function updateProgress() {
         li.textContent = step;
         stepsList.appendChild(li);
       });
+
+      // Recommended calculators based on lowest scoring categories
+      const calcRecs = {
+        food: [
+          { name: 'Garden Yield Planner', url: 'garden-yield.html', desc: 'Plan your vegetable garden to maximize food production' },
+          { name: 'Seed Calculator', url: 'seed-calculator.html', desc: 'Calculate seed quantities for your garden' },
+          { name: 'Canning Recipe Scaler', url: 'canning-scaler.html', desc: 'Scale recipes for preserving your harvest' },
+          { name: 'Dehydrator Time & Temp', url: 'dehydrator.html', desc: 'Dry fruits, vegetables, and herbs' },
+          { name: 'Chicken Feed Calculator', url: 'chicken-feed.html', desc: 'Calculate feed for your egg-laying flock' }
+        ],
+        water: [
+          { name: 'Rainwater Harvest Calculator', url: 'rainwater-harvest.html', desc: 'Size your rainwater collection system' },
+          { name: 'Livestock Water Calculator', url: 'livestock-water.html', desc: 'Plan water needs for your animals' }
+        ],
+        energy: [
+          { name: 'Solar Power System Calculator', url: 'solar-power.html', desc: 'Size an off-grid solar system' },
+          { name: 'Firewood Requirement Calculator', url: 'firewood-requirement.html', desc: 'Estimate annual heating needs' },
+          { name: 'Greenhouse Heater BTU Calculator', url: 'greenhouse-heater.html', desc: 'Size your greenhouse heating system' }
+        ],
+        shelter: [
+          { name: 'Fencing Material Calculator', url: 'fencing-calculator.html', desc: 'Plan your property fencing' },
+          { name: 'Chicken Coop Size Calculator', url: 'chicken-coop-size.html', desc: 'Determine coop dimensions' },
+          { name: 'Land Requirement Calculator', url: 'land-requirement.html', desc: 'Estimate minimum acreage' },
+          { name: 'Chicken Coop Heating', url: 'chicken-coop-heating.html', desc: 'Calculate winter heating needs' }
+        ],
+        health: [
+          { name: 'Dehydrator Time & Temp', url: 'dehydrator.html', desc: 'Preserve healthy foods' }
+        ],
+        skills: [
+          { name: 'Square Foot Gardening Planner', url: 'square-foot-gardening.html', desc: 'Learn SFG planting method' },
+          { name: 'Plant Spacing Calculator', url: 'plant-spacing.html', desc: 'Optimize garden layout' },
+          { name: 'Seed Starting Date Calculator', url: 'seed-starting.html', desc: 'Master indoor seed starting' }
+        ],
+        community: [
+          { name: 'Garden Yield Planner', url: 'garden-yield.html', desc: 'Plan surplus for bartering' },
+          { name: 'Canning Recipe Scaler', url: 'canning-scaler.html', desc: 'Prepare goods for trade' }
+        ],
+        finance: [
+          { name: 'Chicken Feed Calculator', url: 'chicken-feed.html', desc: 'Calculate feed costs' },
+          { name: 'Goat & Sheep Feed Calculator', url: 'goat-sheep-feed.html', desc: 'Estimate livestock feed expenses' },
+          { name: 'Firewood Requirement Calculator', url: 'firewood-requirement.html', desc: 'Budget for heating costs' }
+        ]
+      };
+
+      const recList = document.getElementById('recommendedCalculatorsList');
+      recList.innerHTML = '';
+      
+      const lowestCats = sorted.slice(-2).reverse();
+      let recHTML = '';
+      
+      lowestCats.forEach(([cat, p]) => {
+        recHTML += '<div style="margin-bottom: var(--space-md);"><strong style="color: var(--green-dark);">' + catMeta[cat].icon + ' Improve ' + catMeta[cat].name + ' (' + p + '%)</strong></div>';
+        recHTML += '<div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-md);">';
+        calcRecs[cat].forEach(calc => {
+          recHTML += '<a href="' + calc.url + '" style="padding: var(--space-xs) var(--space-md); background: var(--white); border: 1px solid var(--border-color); border-radius: 20px; font-size: 0.85rem; color: var(--text-secondary); transition: all 0.15s ease;">' + calc.name + '</a>';
+        });
+        recHTML += '</div>';
+      });
+      
+      recList.innerHTML = recHTML;
 
       // Show results and scroll
       const resultsBox = document.getElementById('results');

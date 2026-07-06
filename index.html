@@ -231,8 +231,135 @@
   </div>
 </section>
 
-<!-- Why Use Our Calculators -->
+<!-- Seasonal Content Calendar -->
 <section class="section" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Seasonal Homesteading Guide</h2>
+      <p>What to do on your homestead this season. Get personalized recommendations based on the time of year.</p>
+    </div>
+    
+    <div class="card" style="margin-top: var(--space-xl);">
+      <div class="tabs">
+        <button class="tab-btn active" data-target="#spring-cal">🌱 Spring</button>
+        <button class="tab-btn" data-target="#summer-cal">☀️ Summer</button>
+        <button class="tab-btn" data-target="#fall-cal">🍂 Fall</button>
+        <button class="tab-btn" data-target="#winter-cal">❄️ Winter</button>
+      </div>
+      
+      <div id="spring-cal" class="tab-content active">
+        <h3 style="color: var(--green-dark); margin-top: var(--space-lg);">Spring Planting Guide</h3>
+        <p style="margin-bottom: var(--space-md);">Spring is the busiest season for homesteaders. Plan your garden, start seeds indoors, and prepare for new life on the farm.</p>
+        <div class="card-grid" style="margin-bottom: var(--space-lg);">
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🌱</span>
+            <h3>Start Seeds Indoors</h3>
+            <p>Tomatoes, peppers, eggplants 6-8 weeks before last frost</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🥕</span>
+            <h3>Plant Cool-Season Crops</h3>
+            <p>Lettuce, spinach, peas, carrots, beets directly outdoors</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🐣</span>
+            <h3>Order Chicks</h3>
+            <p>Spring is ideal for raising new flocks</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+          <a href="calculators/seed-starting.html" class="btn btn-secondary">Seed Starting Calculator</a>
+          <a href="calculators/usda-zone-finder.html" class="btn btn-secondary">Find Your USDA Zone</a>
+          <a href="calculators/seed-calculator.html" class="btn btn-secondary">Seed Calculator</a>
+        </div>
+      </div>
+      
+      <div id="summer-cal" class="tab-content">
+        <h3 style="color: var(--green-dark); margin-top: var(--space-lg);">Summer Growing & Harvest</h3>
+        <p style="margin-bottom: var(--space-md);">Keep the garden watered, harvest regularly, and preserve the bounty for winter.</p>
+        <div class="card-grid" style="margin-bottom: var(--space-lg);">
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🍅</span>
+            <h3>Harvest Warm-Season Crops</h3>
+            <p>Tomatoes, peppers, squash, beans, corn</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🫙</span>
+            <h3>Start Canning</h3>
+            <p>Water bath canning for high-acid foods</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🌿</span>
+            <h3>Plant Fall Crops</h3>
+            <p>Lettuce, spinach, carrots for fall harvest</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+          <a href="calculators/garden-yield.html" class="btn btn-secondary">Garden Yield Planner</a>
+          <a href="calculators/canning-scaler.html" class="btn btn-secondary">Canning Recipe Scaler</a>
+          <a href="calculators/dehydrator.html" class="btn btn-secondary">Dehydrator Calculator</a>
+        </div>
+      </div>
+      
+      <div id="fall-cal" class="tab-content">
+        <h3 style="color: var(--green-dark); margin-top: var(--space-lg);">Fall Harvest & Preparation</h3>
+        <p style="margin-bottom: var(--space-md);">Finish harvesting, prepare the garden for winter, and stock up on supplies.</p>
+        <div class="card-grid" style="margin-bottom: var(--space-lg);">
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🍂</span>
+            <h3>Final Harvest</h3>
+            <p>Pumpkins, squash, root vegetables</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🧅</span>
+            <h3>Plant Garlic</h3>
+            <p>Fall planting for next year's harvest</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🪵</span>
+            <h3>Prepare Firewood</h3>
+            <p>Stock up for winter heating</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+          <a href="calculators/canning-scaler.html" class="btn btn-secondary">Canning Recipe Scaler</a>
+          <a href="calculators/firewood-requirement.html" class="btn btn-secondary">Firewood Calculator</a>
+          <a href="calculators/compost-mix.html" class="btn btn-secondary">Compost Calculator</a>
+        </div>
+      </div>
+      
+      <div id="winter-cal" class="tab-content">
+        <h3 style="color: var(--green-dark); margin-top: var(--space-lg);">Winter Planning & Maintenance</h3>
+        <p style="margin-bottom: var(--space-md);">Plan next year's garden, order seeds, and keep your animals warm.</p>
+        <div class="card-grid" style="margin-bottom: var(--space-lg);">
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">📝</span>
+            <h3>Plan Next Year's Garden</h3>
+            <p>Order seeds and design your beds</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">🔥</span>
+            <h3>Heat the Coop</h3>
+            <p>Keep chickens warm and laying</p>
+          </div>
+          <div class="calc-card" style="background: var(--white);">
+            <span class="calc-icon">📚</span>
+            <h3>Learn New Skills</h3>
+            <p>Read, take courses, plan improvements</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+          <a href="calculators/chicken-coop-heating.html" class="btn btn-secondary">Coop Heating Calculator</a>
+          <a href="calculators/seed-calculator.html" class="btn btn-secondary">Seed Calculator</a>
+          <a href="calculators/self-sufficiency-score.html" class="btn btn-secondary">Self-Sufficiency Score</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Use Our Calculators -->
+<section class="section">
   <div class="container">
     <div class="section-title">
       <h2>Why Homestead Calculators?</h2>
@@ -253,6 +380,33 @@
         <div style="font-size: 2.5rem; margin-bottom: var(--space-sm);">🔬</div>
         <h3>Research-Backed Formulas</h3>
         <p>Our calculations are based on USDA extension data, university research, and real-world homesteading experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pinterest Shareable Infographics -->
+<section class="section" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-title">
+      <h2>📌 Shareable Homesteading Guides</h2>
+      <p>Save these infographics to your Pinterest boards for quick reference.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card" style="padding: var(--space-md); text-align: center;">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=homesteading%20garden%20planning%20infographic%20planting%20calendar%20colorful%20simple&image_size=portrait_4_3" alt="Garden Planting Calendar Infographic" style="width: 100%; border-radius: var(--radius-sm);">
+        <p style="margin-top: var(--space-sm); font-size: 0.9rem;">📅 Garden Planting Calendar</p>
+        <a href="#" class="btn btn-secondary btn-lg" style="margin-top: var(--space-sm);">Save to Pinterest</a>
+      </div>
+      <div class="card" style="padding: var(--space-md); text-align: center;">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=homesteading%20chicken%20keeping%20infographic%20feed%20requirements%20egg%20production&image_size=portrait_4_3" alt="Chicken Keeping Guide Infographic" style="width: 100%; border-radius: var(--radius-sm);">
+        <p style="margin-top: var(--space-sm); font-size: 0.9rem;">🐔 Chicken Keeping Guide</p>
+        <a href="#" class="btn btn-secondary btn-lg" style="margin-top: var(--space-sm);">Save to Pinterest</a>
+      </div>
+      <div class="card" style="padding: var(--space-md); text-align: center;">
+        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=homesteading%20self%20sufficiency%20checklist%20infographic%20tips%20goals&image_size=portrait_4_3" alt="Self-Sufficiency Checklist Infographic" style="width: 100%; border-radius: var(--radius-sm);">
+        <p style="margin-top: var(--space-sm); font-size: 0.9rem;">✅ Self-Sufficiency Checklist</p>
+        <a href="#" class="btn btn-secondary btn-lg" style="margin-top: var(--space-sm);">Save to Pinterest</a>
       </div>
     </div>
   </div>
@@ -310,14 +464,21 @@
         <a href="/calculators/">All Calculators →</a>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="/blog/">Guides & Articles</a>
-        <a href="/about.html">About Us</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Use</a>
+          <h4>Resources</h4>
+          <a href="/blog/">Guides & Articles</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <a href="#" target="_blank" rel="noopener">📺 YouTube</a>
+          <a href="#" target="_blank" rel="noopener">📌 Pinterest</a>
+          <a href="#" target="_blank" rel="noopener">🐦 Twitter</a>
+          <a href="#" target="_blank" rel="noopener">📘 Facebook</a>
+        </div>
       </div>
-    </div>
 
     <!-- Ad Slot Footer (hidden) -->
     <div class="ad-slot" id="ad-footer" aria-label="Advertisement"></div>

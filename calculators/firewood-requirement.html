@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/firewood-requirement.html">
+  <title>Firewood Requirement Calculator — Heating Needs (2026)</title>
+  <meta name="description" content="Calculate your annual firewood requirements based on home size, insulation, climate, and heating type.">
+  <meta property="og:title" content="Firewood Requirement Calculator — Free Heating Tool (2026)">
+  <meta property="og:description" content="Calculate your annual firewood requirements based on home size, insulation, climate, and heating type.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/firewood-requirement.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Firewood Requirement Calculator — Free Heating Tool (2026)">
+  <meta name="twitter:description" content="Calculate your annual firewood requirements based on home size, insulation, climate, and heating type.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Firewood Requirement Calculator",
+    "url": "https://homesteadcalc.com/calculators/firewood-requirement.html",
+    "description": "Calculate your annual firewood requirements based on home size, insulation, climate, and heating type.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "Firewood Requirement Calculator", "item": "https://homesteadcalc.com/calculators/firewood-requirement.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Firewood Requirement Calculator
+    </nav>
+    <h1>Firewood Requirement Calculator</h1>
+    <p class="text-lg text-muted">Calculate your annual firewood requirements based on home size, insulation quality, climate zone, and heating type.</p>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Firewood Calculator</h2>
+          <div class="form-group">
+            <label class="form-label" for="home-size">Home Size (sq ft)</label>
+            <input type="number" id="home-size" class="form-input" value="2000" min="500" max="10000" step="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="insulation">Insulation Quality</label>
+            <select id="insulation" class="form-select">
+              <option value="excellent">Excellent (Energy Star)</option>
+              <option value="good">Good (Modern standard)</option>
+              <option value="fair">Fair (Average)</option>
+              <option value="poor">Poor (Older home)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="climate">Climate Zone</label>
+            <select id="climate" class="form-select">
+              <option value="mild">Mild (0–1,000 heating degree days)</option>
+              <option value="cool">Cool (1,000–3,000 heating degree days)</option>
+              <option value="cold">Cold (3,000–6,000 heating degree days)</option>
+              <option value="frigid">Frigid (6,000+ heating degree days)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="heating-type">Heating Type</label>
+            <select id="heating-type" class="form-select">
+              <option value="primary">Primary Heat Source</option>
+              <option value="secondary">Secondary/Supplemental</option>
+              <option value="backup">Emergency Backup</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wood-type">Wood Type</label>
+            <select id="wood-type" class="form-select">
+              <option value="hardwood">Hardwood (Oak, Maple, Ash)</option>
+              <option value="softwood">Softwood (Pine, Fir, Spruce)</option>
+              <option value="mixed">Mixed Hardwood/Softwood</option>
+            </select>
+          </div>
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateFirewood()">Calculate Firewood Needs</button>
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Firewood Requirements</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="cords-needed">—</div>
+                <div class="label">Cords Needed (Standard)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="cords-face">—</div>
+                <div class="label">Face Cords</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="volume-cuft">—</div>
+                <div class="label">Total Volume (cu ft)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="trees-needed">—</div>
+                <div class="label">Trees Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="stack-space">—</div>
+                <div class="label">Stack Space (sq ft)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="btu-total">—</div>
+                <div class="label">Total BTU</div>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="firewood-summary" style="display:none;"></div>
+          </div>
+        </div>
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>This calculator is based on <a href="https://www.fs.fed.us/" target="_blank" rel="noopener">USDA Forest Service</a> guidelines and heating degree day calculations. Firewood requirements depend on home size, insulation, climate, and heating usage.</p>
+          <h3>Key Terms</h3>
+          <ul>
+            <li><strong>Standard Cord:</strong> 128 cubic feet (4x4x8 ft stack)</li>
+            <li><strong>Face Cord:</strong> 1/3 of a standard cord (4x8 ft face)</li>
+            <li><strong>Heating Degree Days:</strong> Measure of coldness based on 65°F baseline</li>
+          </ul>
+          <div class="formula-box">
+Cords Needed = (Home Size × Climate Factor × Insulation Factor × Heating Factor) ÷ Efficiency
+Standard Cord = 4ft × 4ft × 8ft = 128 cubic feet
+1 Tree ≈ 1/2 to 1 cord (depending on size)
+          </div>
+        </section>
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="solar-power.html">Solar Power Calculator</a>
+            <a href="greenhouse-heater.html">Greenhouse Heater Calculator</a>
+            <a href="land-requirement.html">Land Requirement Calculator</a>
+          </div>
+        </section>
+      </div>
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Annual Firewood Needs by Climate</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Climate</th>
+                <th style="text-align:right;padding:4px 0;">Cords/1,000 sq ft</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Mild</td><td>1–2</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Cool</td><td>3–4</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>Cold</td><td>5–7</td></tr>
+              <tr><td>Frigid</td><td>8–10</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Data Sources</h3>
+          <p class="text-sm">Based on USDA Forest Service firewood guidelines and heating degree day calculations.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calculateFirewood() {
+  var homeSize = parseInt(document.getElementById('home-size').value) || 0;
+  var insulation = document.getElementById('insulation').value;
+  var climate = document.getElementById('climate').value;
+  var heatingType = document.getElementById('heating-type').value;
+
+  var climateFactor = { 'mild': 1, 'cool': 2.5, 'cold': 4, 'frigid': 6 }[climate] || 2;
+  var insulationFactor = { 'excellent': 0.5, 'good': 0.7, 'fair': 1.0, 'poor': 1.4 }[insulation] || 1;
+  var heatingFactor = { 'primary': 1.0, 'secondary': 0.4, 'backup': 0.15 }[heatingType] || 1;
+
+  var baseCordsPerSqFt = climateFactor / 1000;
+  var cordsNeeded = homeSize * baseCordsPerSqFt * insulationFactor * heatingFactor;
+  var faceCords = cordsNeeded * 3;
+  var volumeCuFt = cordsNeeded * 128;
+  var treesNeeded = Math.round(cordsNeeded * 1.5);
+  var stackSpace = cordsNeeded * 32;
+  var btuTotal = cordsNeeded * (insulation === 'softwood' ? 1500000 : 2000000);
+
+  document.getElementById('cords-needed').textContent = cordsNeeded.toFixed(1);
+  document.getElementById('cords-face').textContent = faceCords.toFixed(0);
+  document.getElementById('volume-cuft').textContent = volumeCuFt.toFixed(0);
+  document.getElementById('trees-needed').textContent = treesNeeded;
+  document.getElementById('stack-space').textContent = stackSpace.toFixed(0);
+  document.getElementById('btu-total').textContent = (btuTotal / 1000000).toFixed(1) + 'M';
+
+  var summary = document.getElementById('firewood-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<strong>Firewood Needs:</strong> ' + homeSize + ' sq ft home in ' + climate + ' climate with ' + insulation + ' insulation, using wood as ' + heatingType + ' heat. You need approximately <strong>' + cordsNeeded.toFixed(1) + ' standard cords</strong> (' + faceCords.toFixed(0) + ' face cords) annually. This requires ' + treesNeeded + ' average-sized trees and ' + stackSpace.toFixed(0) + ' sq ft of storage space.';
+
+  document.getElementById('results').classList.add('visible');
+}
+document.addEventListener('DOMContentLoaded', calculateFirewood);
+</script>
+</body>
+</html>

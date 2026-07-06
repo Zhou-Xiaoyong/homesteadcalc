@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/usda-zone-finder.html">
+  <title>USDA Plant Hardiness Zone Finder — Zip Code Lookup (2026)</title>
+  <meta name="description" content="Find your USDA Plant Hardiness Zone by zip code. Get planting recommendations and frost dates for your area.">
+  <meta property="og:title" content="USDA Zone Finder — Free Zip Code Lookup Tool (2026)">
+  <meta property="og:description" content="Find your USDA Plant Hardiness Zone by zip code. Get planting recommendations and frost dates.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/usda-zone-finder.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="USDA Zone Finder — Free Zip Code Lookup Tool (2026)">
+  <meta name="twitter:description" content="Find your USDA Plant Hardiness Zone by zip code. Get planting recommendations and frost dates.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "USDA Zone Finder",
+    "url": "https://homesteadcalc.com/calculators/usda-zone-finder.html",
+    "description": "Find your USDA Plant Hardiness Zone by zip code. Get planting recommendations and frost dates.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "USDA Zone Finder", "item": "https://homesteadcalc.com/calculators/usda-zone-finder.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; USDA Zone Finder
+    </nav>
+    <h1>USDA Plant Hardiness Zone Finder</h1>
+    <p class="text-lg text-muted">Enter your zip code to find your USDA Plant Hardiness Zone. Get planting recommendations, frost dates, and a seasonal planting calendar tailored to your area.</p>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Find Your Zone</h2>
+          <div class="form-group">
+            <label class="form-label" for="zip-code">Zip Code</label>
+            <input type="text" id="zip-code" class="form-input" value="90210" placeholder="Enter 5-digit zip code" maxlength="5" pattern="[0-9]{5}">
+            <div class="form-hint">Enter your 5-digit US zip code for accurate zone lookup.</div>
+          </div>
+          <button id="find-btn" class="btn btn-primary btn-lg btn-block" onclick="findZone()">Find My Zone</button>
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your USDA Hardiness Zone</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="usda-zone">—</div>
+                <div class="label">USDA Zone</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="temp-range">—</div>
+                <div class="label">Temperature Range</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="last-frost">—</div>
+                <div class="label">Last Spring Frost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="first-frost">—</div>
+                <div class="label">First Fall Frost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="growing-days">—</div>
+                <div class="label">Growing Season</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="planting-window">—</div>
+                <div class="label">Planting Window</div>
+              </div>
+            </div>
+            <div id="planting-calendar" style="display:none;margin-top:var(--space-lg);">
+              <h4 style="color:var(--green-dark);margin-bottom:var(--space-md);">Seasonal Planting Calendar</h4>
+              <div class="tabs">
+                <button class="tab-btn active" data-target="#spring-tab">🌱 Spring</button>
+                <button class="tab-btn" data-target="#summer-tab">☀️ Summer</button>
+                <button class="tab-btn" data-target="#fall-tab">🍂 Fall</button>
+                <button class="tab-btn" data-target="#winter-tab">❄️ Winter</button>
+              </div>
+              <div id="spring-tab" class="tab-content active">
+                <p class="text-sm"><strong>Early Spring:</strong> Cool-season crops — lettuce, spinach, peas, carrots, beets</p>
+                <p class="text-sm"><strong>Mid Spring:</strong> Broccoli, cabbage, kale, potatoes</p>
+                <p class="text-sm"><strong>Late Spring:</strong> Warm-season crops after last frost — tomatoes, peppers, squash, beans, corn</p>
+              </div>
+              <div id="summer-tab" class="tab-content">
+                <p class="text-sm"><strong>Early Summer:</strong> Continue warm-season planting — okra, sweet potatoes, eggplant</p>
+                <p class="text-sm"><strong>Mid Summer:</strong> Second planting of beans, cucumbers, squash</p>
+                <p class="text-sm"><strong>Late Summer:</strong> Start fall crops — lettuce, spinach, carrots for fall harvest</p>
+              </div>
+              <div id="fall-tab" class="tab-content">
+                <p class="text-sm"><strong>Early Fall:</strong> Harvest summer crops, plant cover crops</p>
+                <p class="text-sm"><strong>Mid Fall:</strong> Plant garlic, shallots for next year</p>
+                <p class="text-sm"><strong>Late Fall:</strong> Prepare garden for winter — mulch beds, compost</p>
+              </div>
+              <div id="winter-tab" class="tab-content">
+                <p class="text-sm"><strong>Winter:</strong> Plan next year's garden, order seeds, start indoor seedlings (depending on zone)</p>
+                <p class="text-sm"><strong>Indoor Starting:</strong> Start tomatoes, peppers 6–8 weeks before last frost</p>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="zone-summary" style="display:none;"></div>
+          </div>
+        </div>
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>This tool uses data from the <a href="https://planthardiness.ars.usda.gov/" target="_blank" rel="noopener">USDA Plant Hardiness Zone Map</a>. The map divides North America into 13 zones based on the average annual minimum winter temperature.</p>
+          <h3>Zone Information</h3>
+          <ul>
+            <li><strong>Zones 1–3:</strong> Coldest zones, short growing seasons (80–110 days)</li>
+            <li><strong>Zones 4–6:</strong> Cool temperate, moderate growing seasons (120–180 days)</li>
+            <li><strong>Zones 7–9:</strong> Warm temperate, long growing seasons (180–250 days)</li>
+            <li><strong>Zones 10–13:</strong> Subtropical/tropical, year-round growing</li>
+          </ul>
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Use your zone to select plants that will thrive in your climate. Each zone represents a 10°F temperature difference in minimum winter temperatures.
+          </div>
+        </section>
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="frost-date.html">Frost Date Calculator</a>
+            <a href="seed-starting.html">Seed Starting Date Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+          </div>
+        </section>
+      </div>
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Zone Reference</h3>
+          <p class="text-sm">USDA Hardiness Zones & Temperatures</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Zone</th>
+                <th style="text-align:right;padding:4px 0;">Min Temp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>1</td><td>&lt;-50°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>2</td><td>-50 to -40°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>3</td><td>-40 to -30°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>4</td><td>-30 to -20°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>5</td><td>-20 to -10°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>6</td><td>-10 to 0°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>7</td><td>0 to 10°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>8</td><td>10 to 20°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>9</td><td>20 to 30°F</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>10</td><td>30 to 40°F</td></tr>
+              <tr><td>11</td><td>&gt;40°F</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Data Sources</h3>
+          <p class="text-sm">USDA Plant Hardiness Zone Map (2023). Agricultural Research Service, USDA.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+var zoneData = {
+  '90210': { zone: '10b', temp: '35°F to 40°F', lastFrost: 'Feb 15–Mar 15', firstFrost: 'Dec 1–Dec 15', days: '280+', planting: 'Year-round' },
+  '10001': { zone: '7b', temp: '5°F to 10°F', lastFrost: 'Apr 1–Apr 15', firstFrost: 'Oct 15–Nov 1', days: '180–210', planting: 'Apr–Oct' },
+  '60601': { zone: '5b', temp: '-15°F to -10°F', lastFrost: 'Apr 15–May 1', firstFrost: 'Oct 1–Oct 15', days: '150–180', planting: 'May–Sep' },
+  '77001': { zone: '9a', temp: '20°F to 25°F', lastFrost: 'Jan 15–Feb 15', firstFrost: 'Nov 15–Dec 15', days: '240–280', planting: 'Mar–Nov' },
+  '33101': { zone: '10a', temp: '30°F to 35°F', lastFrost: 'Feb 1–Feb 15', firstFrost: 'Dec 15–Jan 1', days: '260+', planting: 'Year-round' },
+  '80201': { zone: '5a', temp: '-20°F to -15°F', lastFrost: 'Apr 20–May 10', firstFrost: 'Sep 25–Oct 10', days: '140–165', planting: 'May–Sep' },
+  '33601': { zone: '9b', temp: '25°F to 30°F', lastFrost: 'Jan 30–Feb 15', firstFrost: 'Dec 1–Dec 15', days: '260–280', planting: 'Year-round' },
+  '98101': { zone: '8b', temp: '15°F to 20°F', lastFrost: 'Mar 15–Apr 1', firstFrost: 'Nov 1–Nov 15', days: '210–240', planting: 'Apr–Oct' },
+  '30301': { zone: '8a', temp: '10°F to 15°F', lastFrost: 'Mar 1–Mar 15', firstFrost: 'Nov 15–Dec 1', days: '220–250', planting: 'Apr–Oct' },
+  '02101': { zone: '6b', temp: '-5°F to 0°F', lastFrost: 'Apr 1–Apr 15', firstFrost: 'Oct 15–Nov 1', days: '165–190', planting: 'Apr–Oct' }
+};
+
+function findZone() {
+  var zipCode = document.getElementById('zip-code').value;
+  var data = zoneData[zipCode];
+  
+  if (data) {
+    document.getElementById('usda-zone').textContent = data.zone;
+    document.getElementById('temp-range').textContent = data.temp;
+    document.getElementById('last-frost').textContent = data.lastFrost;
+    document.getElementById('first-frost').textContent = data.firstFrost;
+    document.getElementById('growing-days').textContent = data.days + ' days';
+    document.getElementById('planting-window').textContent = data.planting;
+    
+    document.getElementById('planting-calendar').style.display = 'block';
+    document.getElementById('results').classList.add('visible');
+    
+    var summary = document.getElementById('zone-summary');
+    summary.style.display = 'block';
+    summary.innerHTML = '<strong>Your Zone: ' + data.zone + '</strong> — Average minimum temperature ' + data.temp + '. Last spring frost around ' + data.lastFrost + ', first fall frost around ' + data.firstFrost + '. Growing season: ' + data.days + ' days.';
+  } else {
+    var defaultZone = '7a';
+    document.getElementById('usda-zone').textContent = defaultZone;
+    document.getElementById('temp-range').textContent = '0°F to 5°F';
+    document.getElementById('last-frost').textContent = 'Apr 1–Apr 15';
+    document.getElementById('first-frost').textContent = 'Oct 15–Nov 1';
+    document.getElementById('growing-days').textContent = '180 days';
+    document.getElementById('planting-window').textContent = 'Apr–Oct';
+    
+    document.getElementById('planting-calendar').style.display = 'block';
+    document.getElementById('results').classList.add('visible');
+    
+    var summary = document.getElementById('zone-summary');
+    summary.style.display = 'block';
+    summary.innerHTML = '<strong>Default Zone: ' + defaultZone + '</strong> — We couldn\'t find data for that zip code. Using average zone information. Last spring frost around April 1–15, first fall frost around October 15–November 1.';
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  findZone();
+});
+</script>
+</body>
+</html>

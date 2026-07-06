@@ -711,6 +711,64 @@ p { margin-bottom: var(--space-md); }
   text-decoration: none;
 }
 
+/* --- Amazon Product Grid --- */
+.amazon-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.amazon-product-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.amazon-product-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.amazon-product-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: var(--gray-50);
+}
+
+.amazon-product-title {
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: 0;
+  color: var(--green-dark);
+}
+
+.amazon-product-desc {
+  font-size: 0.8rem;
+  padding: 0 var(--space-md) var(--space-sm);
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.amazon-product-link {
+  display: block;
+  text-align: center;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--green-mid);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.amazon-product-link:hover {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
 /* --- Category Section on Homepage --- */
 .category-section {
   margin-bottom: var(--space-2xl);

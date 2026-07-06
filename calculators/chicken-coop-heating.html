@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/chicken-coop-heating.html">
+  <title>Chicken Coop Heating Calculator — Winter Warmth (2026)</title>
+  <meta name="description" content="Calculate heating requirements for your chicken coop. Determine heater size, insulation needs, and energy costs for winter chicken care.">
+  <meta property="og:title" content="Chicken Coop Heating Calculator — Free Winter Care Tool (2026)">
+  <meta property="og:description" content="Calculate heating requirements for your chicken coop. Determine heater size, insulation needs, and energy costs.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/chicken-coop-heating.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chicken Coop Heating Calculator — Free Winter Care Tool (2026)">
+  <meta name="twitter:description" content="Calculate heating requirements for your chicken coop. Determine heater size, insulation needs, and energy costs.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Chicken Coop Heating Calculator",
+    "url": "https://homesteadcalc.com/calculators/chicken-coop-heating.html",
+    "description": "Calculate heating requirements for your chicken coop. Determine heater size, insulation needs, and energy costs.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "Chicken Coop Heating Calculator", "item": "https://homesteadcalc.com/calculators/chicken-coop-heating.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Chicken Coop Heating Calculator
+    </nav>
+    <h1>Chicken Coop Heating Calculator</h1>
+    <p class="text-lg text-muted">Calculate heating requirements for your chicken coop to keep your flock warm and healthy during winter. Determine heater size, insulation needs, and energy costs.</p>
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Heating Calculator</h2>
+          <div class="form-group">
+            <label class="form-label" for="coop-size">Coop Size (sq ft)</label>
+            <input type="number" id="coop-size" class="form-input" value="60" min="10" max="500" step="5">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="num-chickens">Number of Chickens</label>
+            <input type="number" id="num-chickens" class="form-input" value="10" min="1" max="100" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="min-temp">Minimum Winter Temperature (°F)</label>
+            <input type="number" id="min-temp" class="form-input" value="-10" min="-50" max="40" step="5">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="target-temp">Target Coop Temperature (°F)</label>
+            <input type="number" id="target-temp" class="form-input" value="40" min="30" max="70" step="5">
+            <div class="form-hint">Chickens are comfortable at 35–45°F; below 20°F requires heating.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="insulation">Insulation Level</label>
+            <select id="insulation" class="form-select">
+              <option value="none">No Insulation</option>
+              <option value="minimal">Minimal (partial)</option>
+              <option value="moderate">Moderate</option>
+              <option value="good">Well-Insulated</option>
+            </select>
+          </div>
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateHeating()">Calculate Heating Needs</button>
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Heating Requirements</h3>
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="btu-needed">—</div>
+                <div class="label">BTU Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="watts-needed">—</div>
+                <div class="label">Watts Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="heater-size">—</div>
+                <div class="label">Recommended Heater Size</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="daily-kwh">—</div>
+                <div class="label">Daily Energy Use (kWh)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-cost">—</div>
+                <div class="label">Monthly Energy Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="insulation-recommendation">—</div>
+                <div class="label">Insulation Recommendation</div>
+              </div>
+            </div>
+            <div class="info-box mt-lg" id="heating-summary" style="display:none;"></div>
+          </div>
+        </div>
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>This calculator uses heat loss calculations based on coop size, temperature difference, and insulation quality. Chickens generate body heat, so larger flocks need less supplemental heating.</p>
+          <h3>Key Factors</h3>
+          <ul>
+            <li><strong>Body Heat:</strong> Each chicken generates ~10 BTU/hour of heat</li>
+            <li><strong>Insulation:</strong> Proper insulation reduces heat loss by 50–70%</li>
+            <li><strong>Temperature:</strong> Chickens can handle cold but need protection from wind chill</li>
+          </ul>
+          <div class="formula-box">
+BTU = (Coop Volume × Temp Difference × Heat Loss Factor) - (Chickens × 10 BTU)
+1 Watt = 3.412 BTU/hour
+Monthly Cost = Daily kWh × 30 × Electricity Rate ($0.15/kWh)
+          </div>
+        </section>
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="chicken-coop-size.html">Chicken Coop Size Calculator</a>
+            <a href="greenhouse-heater.html">Greenhouse Heater Calculator</a>
+            <a href="livestock-water.html">Livestock Water Calculator</a>
+          </div>
+        </section>
+      </div>
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Temperature Guidelines</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Temperature</th>
+                <th style="text-align:left;padding:4px 0;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>35–45°F</td><td>Comfortable</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>20–35°F</td><td>Monitor closely</td></tr>
+              <tr style="border-bottom:1px solid var(--gray-100);"><td>0–20°F</td><td>Supplemental heat</td></tr>
+              <tr><td>&lt;0°F</td><td>Heating required</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Data Sources</h3>
+          <p class="text-sm">Based on poultry science research and USDA Extension Service guidelines.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function calculateHeating() {
+  var coopSize = parseInt(document.getElementById('coop-size').value) || 0;
+  var numChickens = parseInt(document.getElementById('num-chickens').value) || 0;
+  var minTemp = parseInt(document.getElementById('min-temp').value) || 0;
+  var targetTemp = parseInt(document.getElementById('target-temp').value) || 40;
+  var insulation = document.getElementById('insulation').value;
+
+  var tempDiff = targetTemp - minTemp;
+  var coopVolume = coopSize * 7;
+  var insulationFactor = { 'none': 1.0, 'minimal': 0.7, 'moderate': 0.45, 'good': 0.3 }[insulation] || 0.5;
+  var bodyHeat = numChickens * 10;
+
+  var btuNeeded = (coopVolume * tempDiff * 0.133 * insulationFactor) - bodyHeat;
+  btuNeeded = Math.max(btuNeeded, 0);
+  
+  var wattsNeeded = btuNeeded / 3.412;
+  var heaterSize = Math.ceil(wattsNeeded / 100) * 100;
+  var dailyKwh = (wattsNeeded / 1000) * 12;
+  var monthlyCost = dailyKwh * 30 * 0.15;
+
+  var insulationRec = insulation === 'none' ? 'Add insulation' : insulation === 'minimal' ? 'Improve insulation' : 'Insulation adequate';
+
+  document.getElementById('btu-needed').textContent = Math.round(btuNeeded);
+  document.getElementById('watts-needed').textContent = Math.round(wattsNeeded);
+  document.getElementById('heater-size').textContent = heaterSize + 'W';
+  document.getElementById('daily-kwh').textContent = dailyKwh.toFixed(1);
+  document.getElementById('monthly-cost').textContent = '$' + monthlyCost.toFixed(2);
+  document.getElementById('insulation-recommendation').textContent = insulationRec;
+
+  var summary = document.getElementById('heating-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<strong>Heating Requirements:</strong> ' + coopSize + ' sq ft coop with ' + numChickens + ' chickens. Minimum temp: ' + minTemp + '°F, target: ' + targetTemp + '°F. You need <strong>' + Math.round(btuNeeded) + ' BTU</strong> (' + heaterSize + 'W heater). Monthly energy cost: $' + monthlyCost.toFixed(2) + '. ' + insulationRec + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+document.addEventListener('DOMContentLoaded', calculateHeating);
+</script>
+</body>
+</html>
