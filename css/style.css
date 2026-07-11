@@ -1215,10 +1215,18 @@ p { margin-bottom: var(--space-md); }
     font-size: 0.75rem;
     padding: 0.3rem 0.5rem;
     margin: 0.25rem 0;
+    page-break-inside: avoid;
   }
 
-  /* Keep everything on one page */
-  .calc-main {
+  .section {
     page-break-inside: avoid;
+  }
+
+  .section h2 {
+    page-break-after: avoid;
+  }
+
+  .section h3 {
+    page-break-after: avoid;
   }
 }
