@@ -1105,8 +1105,6 @@ p { margin-bottom: var(--space-md); }
   .breadcrumb,
   .mobile-menu-btn,
   .print-btn,
-  /* Hide form inputs — only results matter in print */
-  .form-group,
   .form-hint,
   /* Hide card heading (e.g. "Feed Calculator") — redundant with H1 */
   .calc-main .card > h2,
@@ -1116,7 +1114,7 @@ p { margin-bottom: var(--space-md); }
   }
 
   body {
-    font-size: 11pt;
+    font-size: 10pt;
     background: #fff;
     margin: 0;
   }
@@ -1136,15 +1134,15 @@ p { margin-bottom: var(--space-md); }
 
   /* Compact title */
   .calc-page h1 {
-    font-size: 1.4rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.15rem;
     page-break-after: avoid;
   }
 
   /* Compact description */
   .calc-page .text-lg.text-muted {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
     page-break-after: avoid;
   }
 
@@ -1155,54 +1153,73 @@ p { margin-bottom: var(--space-md); }
     padding: 0;
   }
 
+  /* Compact form inputs */
+  .form-group {
+    margin-bottom: 0.3rem;
+    page-break-inside: avoid;
+  }
+
+  .form-label {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.85rem;
+    border: 1px solid #999;
+    appearance: none;
+  }
+
   /* Results: compact and bordered */
   .result-box {
     border: 2px solid #1b4332;
     border-radius: 6px;
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.6rem;
     margin-top: 0;
     page-break-inside: avoid;
   }
 
   .result-box h3 {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
   }
 
   .result-grid {
-    gap: 0.4rem;
-    margin-top: 0.4rem;
+    gap: 0.35rem;
+    margin-top: 0.3rem;
   }
 
   .result-item {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 0.35rem 0.4rem;
+    padding: 0.3rem 0.35rem;
     page-break-inside: avoid;
   }
 
   .result-item .value {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .result-item .label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .info-box {
-    padding: 0.4rem 0.6rem;
-    margin-top: 0.4rem;
-    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
     page-break-inside: avoid;
   }
 
   .formula-box {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
-    margin: 0.3rem 0;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    margin: 0.25rem 0;
   }
 
-  /* Prevent page breaks within the whole calc-main block */
+  /* Keep everything on one page */
   .calc-main {
     page-break-inside: avoid;
   }
