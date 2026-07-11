@@ -1107,9 +1107,7 @@ p { margin-bottom: var(--space-md); }
   .print-btn,
   .form-hint,
   /* Hide card heading (e.g. "Feed Calculator") — redundant with H1 */
-  .calc-main .card > h2,
-  /* Hide How It Works section on calculator pages */
-  .calc-page > .container > .calc-layout .calc-main > .section {
+  .calc-main .card > h2 {
     display: none !important;
   }
 
