@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/honey-yield.html">
+  <title>Honey Yield Calculator — Estimate Honey Production per Hive (2026)</title>
+  <meta name="description" content="Estimate how much honey your beehives will produce based on hive type, location, climate, and experience level. Get equipment suggestions and annual yield projections.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Honey Yield Calculator — Estimate Honey Production per Hive (2026) | Homestead Calculators">
+  <meta property="og:description" content="Estimate how much honey your beehives will produce based on hive type, location, climate, and experience level. Get equipment suggestions and annual yield projections.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/honey-yield.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Honey Yield Calculator — Estimate Honey Production per Hive (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Estimate how much honey your beehives will produce based on hive type, location, climate, and experience level. Get equipment suggestions and annual yield projections.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Honey Yield Calculator",
+    "url": "https://homesteadcalc.com/calculators/honey-yield.html",
+    "description": "Estimate how much honey your beehives will produce based on hive type, location, climate, and experience level. Get equipment suggestions and annual yield projections.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Honey Yield Calculator",
+        "item": "https://homesteadcalc.com/calculators/honey-yield.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Honey Yield Calculator
+    </nav>
+
+    <h1>🍯 Honey Yield Calculator</h1>
+    <p class="text-lg text-muted">Estimate your annual honey production based on hive count, type, location, and experience. Get realistic yield projections and equipment recommendations for your beekeeping operation.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Honey Yield Estimator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="num-hives">Number of Hives</label>
+            <input type="number" id="num-hives" class="form-input" value="2" min="1" max="500" step="1">
+            <div class="form-hint">Enter the total number of beehives you plan to keep.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hive-type">Hive Type</label>
+            <select id="hive-type" class="form-select">
+              <option value="langstroth">Langstroth</option>
+              <option value="top-bar">Top Bar</option>
+              <option value="warre">Warre</option>
+              <option value="nucleus">Nucleus (Nuc)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="location">Location / Climate</label>
+            <select id="location" class="form-select">
+              <option value="northern">Northern US</option>
+              <option value="central">Central US</option>
+              <option value="southern">Southern US</option>
+              <option value="pacific-nw">Pacific Northwest</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="experience">Experience Level</label>
+            <select id="experience" class="form-select">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateHoney()">Calculate Honey Yield</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Honey Yield Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="annual-yield">—</div>
+                <div class="label">Estimated Annual Yield (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yield-per-hive">—</div>
+                <div class="label">Yield per Hive (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="frames-needed">—</div>
+                <div class="label">Frames Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="honey-value">—</div>
+                <div class="label">Estimated Value</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="jars-pint">—</div>
+                <div class="label">Pint Jars (1 lb)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="supers-needed">—</div>
+                <div class="label">Honey Supers</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="equipment-suggestions" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our honey yield calculator uses data from university extension services, beekeeping associations, and real-world beekeeper surveys to estimate honey production. Yields vary significantly based on climate, forage availability, hive health, and management practices.</p>
+
+          <h3>Factors That Affect Honey Yield</h3>
+          <p>Honey production depends on many variables: nectar flow duration and intensity, colony strength, queen quality, pest and disease management, and weather patterns during foraging season. Our calculator provides baseline estimates — actual yields may be higher or lower.</p>
+
+          <h3>Average Yields by Hive Type</h3>
+          <div class="formula-box">
+Langstroth: 30–100 lbs/year (average 60 lbs)
+Top Bar: 20–60 lbs/year (average 35 lbs)
+Warre: 15–50 lbs/year (average 30 lbs)
+Nucleus: 10–25 lbs/year (average 15 lbs)
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> First-year hives typically produce 50–75% less honey than established colonies. Focus on building strong, healthy colonies the first year and leave enough honey for the bees to survive winter. Harvest sparingly in year one.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+            <a href="rainwater-harvest.html">Rainwater Harvest Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Bee Hive Starter Kit</h4>
+              <p class="amazon-product-desc">Complete Langstroth hive with frames & foundation</p>
+              <a href="https://www.amazon.com/s?k=bee%20hive%20starter%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Honey Extractor</h4>
+              <p class="amazon-product-desc">Manual or electric radial honey extractor</p>
+              <a href="https://www.amazon.com/s?k=honey%20extractor&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Beekeeper Suit</h4>
+              <p class="amazon-product-desc">Full protective suit with veil & gloves</p>
+              <a href="https://www.amazon.com/s?k=beekeeper%20suit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Honey Bottling Kit</h4>
+              <p class="amazon-product-desc">Filter, bottling bucket, jars & labels</p>
+              <a href="https://www.amazon.com/s?k=honey%20bottling%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Average Honey Yield per Hive (lbs/year)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Region</th>
+                <th style="text-align:right;padding:4px 0;">Langstroth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Northern US</td>
+                <td style="text-align:right;">40–70 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Central US</td>
+                <td style="text-align:right;">60–100 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Southern US</td>
+                <td style="text-align:right;">50–90 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Pacific NW</td>
+                <td style="text-align:right;">45–80 lbs</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">National Avg</td>
+                <td style="text-align:right;">~55 lbs</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">First-year hives produce significantly less — expect 20–40% of mature hive yields in year one as the colony establishes itself.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">A single honey bee produces only about 1/12 of a teaspoon of honey in her entire lifetime. It takes roughly 60,000 bees traveling up to 55,000 miles and visiting 2 million flowers to make just one pound of honey.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://www.usda.gov/topics/animals/pollinators" target="_blank" rel="noopener">USDA: Pollinator Health & Honey Production</a></li>
+            <li><a href="https://ag.purdue.edu/entm/bees/Pages/default.aspx" target="_blank" rel="noopener">Purdue University Extension: Beekeeping</a></li>
+            <li><a href="https://entomology.ca.uky.edu/files/bee_well_managed_hive.pdf" target="_blank" rel="noopener">University of Kentucky: Bee Hive Management</a></li>
+            <li><a href="https://www.ams.usda.gov/market-news/honey" target="_blank" rel="noopener">USDA Agricultural Marketing Service: Honey Markets</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var hiveTypeData = {
+  langstroth: {
+    label: 'Langstroth',
+    baseYield: 60,
+    framesPerSuper: 10,
+    lbsPerFrame: 6
+  },
+  'top-bar': {
+    label: 'Top Bar',
+    baseYield: 35,
+    framesPerSuper: 0,
+    lbsPerFrame: 4
+  },
+  warre: {
+    label: 'Warre',
+    baseYield: 30,
+    framesPerSuper: 8,
+    lbsPerFrame: 5
+  },
+  nucleus: {
+    label: 'Nucleus',
+    baseYield: 15,
+    framesPerSuper: 5,
+    lbsPerFrame: 4
+  }
+};
+
+var locationData = {
+  northern: { label: 'Northern US', multiplier: 0.85 },
+  central: { label: 'Central US', multiplier: 1.1 },
+  southern: { label: 'Southern US', multiplier: 1.0 },
+  'pacific-nw': { label: 'Pacific Northwest', multiplier: 0.95 }
+};
+
+var experienceData = {
+  beginner: { label: 'Beginner', multiplier: 0.7 },
+  intermediate: { label: 'Intermediate', multiplier: 1.0 },
+  advanced: { label: 'Advanced', multiplier: 1.2 }
+};
+
+function calculateHoney() {
+  var numHives = parseInt(document.getElementById('num-hives').value) || 0;
+  var hiveType = document.getElementById('hive-type').value;
+  var location = document.getElementById('location').value;
+  var experience = document.getElementById('experience').value;
+
+  if (numHives < 1) {
+    alert('Please enter at least 1 hive.');
+    return;
+  }
+
+  var hive = hiveTypeData[hiveType];
+  var loc = locationData[location];
+  var exp = experienceData[experience];
+
+  var yieldPerHive = hive.baseYield * loc.multiplier * exp.multiplier;
+  var totalYield = yieldPerHive * numHives;
+
+  var framesPerHive = Math.ceil(yieldPerHive / hive.lbsPerFrame);
+  var totalFrames = framesPerHive * numHives;
+
+  var supersPerHive = hiveType === 'top-bar' ? 0 : Math.ceil(framesPerHive / hive.framesPerSuper);
+  var totalSupers = supersPerHive * numHives;
+
+  var honeyValue = totalYield * 8.00;
+
+  var pintJars = Math.ceil(totalYield);
+
+  document.getElementById('annual-yield').textContent = totalYield.toFixed(0) + ' lbs';
+  document.getElementById('yield-per-hive').textContent = yieldPerHive.toFixed(0) + ' lbs';
+  document.getElementById('frames-needed').textContent = totalFrames + ' frames';
+  document.getElementById('honey-value').textContent = '$' + honeyValue.toFixed(2);
+  document.getElementById('jars-pint').textContent = pintJars + ' jars';
+  document.getElementById('supers-needed').textContent = hiveType === 'top-bar' ? 'N/A' : totalSupers + ' supers';
+
+  var equipBox = document.getElementById('equipment-suggestions');
+  equipBox.style.display = 'block';
+
+  var equipList = '';
+  if (hiveType === 'langstroth') {
+    equipList = '<strong>Equipment Suggestions for ' + numHives + ' ' + hive.label + ' Hive(s):</strong><br><br>' +
+      '• ' + (numHives * 2) + ' deep brood boxes (2 per hive)<br>' +
+      '• ' + totalFrames + ' frames with foundation<br>' +
+      '• ' + totalSupers + ' honey supers (medium or shallow)<br>' +
+      '• ' + numHives + ' inner & outer covers<br>' +
+      '• ' + numHives + ' bottom boards<br>' +
+      '• ' + Math.ceil(numHives / 2) + ' smoker(s) & hive tool(s)<br>' +
+      '• 1 honey extractor (shared for up to 10 hives)<br><br>' +
+      '<em>Estimated retail value at $8.00/lb: <strong>$' + honeyValue.toFixed(2) + '</strong></em>';
+  } else if (hiveType === 'top-bar') {
+    equipList = '<strong>Equipment Suggestions for ' + numHives + ' ' + hive.label + ' Hive(s):</strong><br><br>' +
+      '• ' + numHives + ' top bar hive bodies<br>' +
+      '• ' + totalFrames + ' top bars (with starter strips)<br>' +
+      '• ' + numHives + ' follower boards<br>' +
+      '• ' + numHives + ' roof/cover assemblies<br>' +
+      '• ' + Math.ceil(numHives / 2) + ' smoker(s) & hive tool(s)<br>' +
+      '• Honey extraction equipment (crush & strain or extractor)<br><br>' +
+      '<em>Estimated retail value at $8.00/lb: <strong>$' + honeyValue.toFixed(2) + '</strong></em>';
+  } else if (hiveType === 'warre') {
+    equipList = '<strong>Equipment Suggestions for ' + numHives + ' ' + hive.label + ' Hive(s):</strong><br><br>' +
+      '• ' + (numHives * 2) + ' brood boxes (minimum 2 per hive)<br>' +
+      '• ' + totalFrames + ' top bars with starter strips<br>' +
+      '• ' + totalSupers + ' honey supers<br>' +
+      '• ' + numHives + ' quilt boxes<br>' +
+      '• ' + numHives + ' roof assemblies<br>' +
+      '• ' + Math.ceil(numHives / 2) + ' smoker(s) & hive tool(s)<br><br>' +
+      '<em>Estimated retail value at $8.00/lb: <strong>$' + honeyValue.toFixed(2) + '</strong></em>';
+  } else {
+    equipList = '<strong>Equipment Suggestions for ' + numHives + ' ' + hive.label + ' Hive(s):</strong><br><br>' +
+      '• ' + numHives + ' nucleus hive boxes (5-frame)<br>' +
+      '• ' + totalFrames + ' frames with foundation<br>' +
+      '• ' + numHives + ' inner & outer covers<br>' +
+      '• ' + numHives + ' bottom boards<br>' +
+      '• Basic beekeeping tools (smoker, hive tool, brush)<br><br>' +
+      '<em>Note: Nucleus hives are starter colonies. Expect lower yields in the first season as the colony builds up. Many beekeepers overwinter nucs and expand to full hives the following spring.</em><br><br>' +
+      '<em>Estimated retail value at $8.00/lb: <strong>$' + honeyValue.toFixed(2) + '</strong></em>';
+  }
+
+  equipBox.innerHTML = equipList;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var numHives = parseInt(document.getElementById('num-hives').value) || 0;
+  var hiveType = document.getElementById('hive-type').value;
+  var location = document.getElementById('location').value;
+
+  if (numHives < 1) {
+    alert('Please calculate first.');
+    return;
+  }
+
+  var hive = hiveTypeData[hiveType];
+  var loc = locationData[location];
+  var yieldPerHive = hive.baseYield * loc.multiplier;
+  var totalYield = yieldPerHive * numHives;
+
+  var text = '🍯 My ' + numHives + ' ' + hive.label + ' hive(s) in the ' + loc.label + ' could produce ~' + totalYield.toFixed(0) + ' lbs of honey per year! #beekeeping #honey #homestead';
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Honey Yield Estimate',
+      text: text,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(text).then(function() {
+      alert('Results copied to clipboard!');
+    }).catch(function() {
+      window.prompt('Copy this text:', text);
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateHoney();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/hay-forage.html">
+  <title>Hay &amp; Forage Calculator — Livestock Feed Needs &amp; Cost (2026)</title>
+  <meta name="description" content="Calculate daily, weekly, and monthly hay requirements for cattle, horses, goats, sheep, and alpacas. Estimate bale counts, tonnage, and costs based on livestock type, weight, and feed regimen.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hay &amp; Forage Calculator — Livestock Feed Needs &amp; Cost (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate daily, weekly, and monthly hay requirements for cattle, horses, goats, sheep, and alpacas. Estimate bale counts, tonnage, and costs based on livestock type, weight, and feed regimen.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/hay-forage.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hay &amp; Forage Calculator — Livestock Feed Needs &amp; Cost (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate daily, weekly, and monthly hay requirements for cattle, horses, goats, sheep, and alpacas. Estimate bale counts, tonnage, and costs based on livestock type, weight, and feed regimen.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hay & Forage Calculator",
+    "url": "https://homesteadcalc.com/calculators/hay-forage.html",
+    "description": "Calculate daily, weekly, and monthly hay requirements for cattle, horses, goats, sheep, and alpacas. Estimate bale counts, tonnage, and costs.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Hay & Forage Calculator",
+        "item": "https://homesteadcalc.com/calculators/hay-forage.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Hay &amp; Forage Calculator
+    </nav>
+
+    <h1>🌾 Hay &amp; Forage Calculator</h1>
+    <p class="text-lg text-muted">Estimate hay requirements and costs for your livestock. Input animal type, count, weight, and feeding regimen to calculate daily, weekly, and monthly hay needs in bales and tons.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Hay Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="livestock-type">Livestock Type</label>
+            <select id="livestock-type" class="form-select">
+              <option value="cattle-beef">Cattle (Beef)</option>
+              <option value="cattle-dairy">Cattle (Dairy)</option>
+              <option value="horses">Horses</option>
+              <option value="goats">Goats</option>
+              <option value="sheep">Sheep</option>
+              <option value="alpacas">Alpacas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="num-animals">Number of Animals</label>
+            <input type="number" id="num-animals" class="form-input" value="5" min="1" max="1000" step="1">
+            <div class="form-hint">Enter the total number of animals in your herd or flock.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="avg-weight">Average Weight per Animal (lbs)</label>
+            <input type="number" id="avg-weight" class="form-input" value="1000" min="10" max="5000" step="1">
+            <div class="form-hint">Typical weights: Beef cattle 1000–1400 lbs, Dairy cows 1200–1500 lbs, Horses 900–1200 lbs, Goats 100–200 lbs, Sheep 100–200 lbs, Alpacas 100–180 lbs.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="feed-type">Feed Type</label>
+            <select id="feed-type" class="form-select">
+              <option value="hay-only">Hay Only</option>
+              <option value="hay-pasture">Hay + Pasture</option>
+              <option value="hay-grain">Hay + Grain</option>
+            </select>
+            <div class="form-hint">Pasture and grain supplements reduce hay consumption.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hay-quality">Hay Quality</label>
+            <select id="hay-quality" class="form-select">
+              <option value="prime">Prime</option>
+              <option value="good">Good</option>
+              <option value="fair">Fair</option>
+              <option value="poor">Poor</option>
+            </select>
+            <div class="form-hint">Lower quality hay means animals eat more to meet nutritional needs.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hay-price">Hay Price per Bale ($)</label>
+            <input type="number" id="hay-price" class="form-input" value="8.00" min="0" max="200" step="0.01">
+            <div class="form-hint">Average US price: $6–$12 per 50 lb small square bale. Round bales vary widely by region.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bale-weight">Bale Weight (lbs)</label>
+            <input type="number" id="bale-weight" class="form-input" value="50" min="10" max="2000" step="1">
+            <div class="form-hint">Small square bales: 40–60 lbs. Large square bales: 800–1500 lbs. Round bales: 800–1500 lbs.</div>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateHay()">Calculate Hay Needs</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Hay Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="daily-hay">—</div>
+                <div class="label">Daily Hay (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="weekly-bales">—</div>
+                <div class="label">Weekly Hay (bales)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-tons">—</div>
+                <div class="label">Monthly Hay (tons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="monthly-cost">—</div>
+                <div class="label">Est. Monthly Cost</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="daily-per-animal">—</div>
+                <div class="label">Hay per Animal (lbs/day)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yearly-tons">—</div>
+                <div class="label">Yearly Hay (tons)</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="hay-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our hay calculator uses standardized dry matter intake rates based on livestock type and body weight. These values are derived from university extension research and are widely used by livestock producers across the US.</p>
+
+          <h3>Dry Matter Intake Basics</h3>
+          <p>Livestock consume approximately 2–3% of their body weight in dry matter daily. As-fed hay (which contains 10–15% moisture) translates to roughly 2.2–3.5% of body weight per day. Dairy cows and growing animals have higher requirements, while animals on pasture or grain supplements need less hay.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Daily Hay (lbs) = Number of Animals × Weight (lbs) × Intake Rate × Quality Factor × Feed Type Factor
+Weekly Bales = (Daily Hay × 7) ÷ Bale Weight
+Monthly Tons = (Daily Hay × 30) ÷ 2000
+Monthly Cost = (Daily Hay × 30 ÷ Bale Weight) × Price per Bale
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Always buy 10–15% more hay than you calculate for waste, weather losses, and unexpected feeding needs. Hay stored outside can lose 20–30% of its value to weather damage.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="rainwater-harvest.html">Rainwater Harvest Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hay Bale Moisture Tester</h4>
+              <p class="amazon-product-desc">Prevent mold and spoilage, test bales before storage</p>
+              <a href="https://www.amazon.com/s?k=hay%20moisture%20tester&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hay Net / Slow Feeder</h4>
+              <p class="amazon-product-desc">Reduce waste, extend feeding time, mimic natural grazing</p>
+              <a href="https://www.amazon.com/s?k=hay%20net%20slow%20feeder&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Livestock Mineral Feeder</h4>
+              <p class="amazon-product-desc">Weatherproof, protects minerals from rain and sun</p>
+              <a href="https://www.amazon.com/s?k=livestock%20mineral%20feeder&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hay Bale Spear &amp; Fork</h4>
+              <p class="amazon-product-desc">Heavy duty, makes moving bales easier and safer</p>
+              <a href="https://www.amazon.com/s?k=hay%20bale%20spear%20fork&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Daily Hay Intake by Livestock Type (% of body weight, as-fed)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Livestock</th>
+                <th style="text-align:right;padding:4px 0;">% BW / Day</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Beef Cattle</td>
+                <td style="text-align:right;">2.0–2.5%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Dairy Cattle</td>
+                <td style="text-align:right;">2.5–3.5%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Horses</td>
+                <td style="text-align:right;">2.0–2.5%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Goats</td>
+                <td style="text-align:right;">2.5–3.0%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Sheep</td>
+                <td style="text-align:right;">2.5–3.0%</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Alpacas</td>
+                <td style="text-align:right;">2.0–2.5%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">A 1000 lb horse eats about 20–25 lbs of hay per day — roughly half of a 50 lb bale. Plan accordingly for winter feeding when pasture is unavailable.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">A ton of hay is 2000 pounds — about 40 small square bales at 50 lbs each. A single 1000 lb cow needs roughly 1.5 tons of hay for a 6-month winter feeding period.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/beef-cattle-nutrition" target="_blank" rel="noopener">Penn State Extension: Beef Cattle Nutrition</a></li>
+            <li><a href="https://horses.extension.org/hay-and-pasture-for-horses/" target="_blank" rel="noopener">Equine Extension: Hay &amp; Pasture for Horses</a></li>
+            <li><a href="https://www.uaex.uada.edu/yard-garden/livestock/" target="_blank" rel="noopener">University of Arkansas Extension: Livestock</a></li>
+            <li><a href="https://animalscience.tamu.edu/" target="_blank" rel="noopener">Texas A&amp;M Animal Science Department</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/hay-forage.html">Hay &amp; Forage</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides &amp; Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var livestockRates = {
+  'cattle-beef': 0.022,
+  'cattle-dairy': 0.030,
+  'horses': 0.022,
+  'goats': 0.028,
+  'sheep': 0.027,
+  'alpacas': 0.022
+};
+
+var qualityFactors = {
+  'prime': 0.90,
+  'good': 1.00,
+  'fair': 1.15,
+  'poor': 1.30
+};
+
+var feedTypeFactors = {
+  'hay-only': 1.00,
+  'hay-pasture': 0.60,
+  'hay-grain': 0.70
+};
+
+var defaultWeights = {
+  'cattle-beef': 1200,
+  'cattle-dairy': 1400,
+  'horses': 1000,
+  'goats': 150,
+  'sheep': 150,
+  'alpacas': 150
+};
+
+document.getElementById('livestock-type').addEventListener('change', function() {
+  document.getElementById('avg-weight').value = defaultWeights[this.value] || 1000;
+  calculateHay();
+});
+
+document.getElementById('feed-type').addEventListener('change', function() {
+  calculateHay();
+});
+
+document.getElementById('hay-quality').addEventListener('change', function() {
+  calculateHay();
+});
+
+function calculateHay() {
+  var numAnimals = parseInt(document.getElementById('num-animals').value) || 0;
+  var livestockType = document.getElementById('livestock-type').value;
+  var avgWeight = parseFloat(document.getElementById('avg-weight').value) || 0;
+  var feedType = document.getElementById('feed-type').value;
+  var hayQuality = document.getElementById('hay-quality').value;
+  var hayPrice = parseFloat(document.getElementById('hay-price').value) || 0;
+  var baleWeight = parseFloat(document.getElementById('bale-weight').value) || 50;
+
+  var baseRate = livestockRates[livestockType] || 0.022;
+  var qualityFactor = qualityFactors[hayQuality] || 1.0;
+  var feedTypeFactor = feedTypeFactors[feedType] || 1.0;
+
+  var dailyPerAnimal = avgWeight * baseRate * qualityFactor * feedTypeFactor;
+  var dailyHay = numAnimals * dailyPerAnimal;
+  var weeklyBales = (dailyHay * 7) / baleWeight;
+  var monthlyTons = (dailyHay * 30) / 2000;
+  var yearlyTons = (dailyHay * 365) / 2000;
+  var monthlyBales = (dailyHay * 30) / baleWeight;
+  var monthlyCost = monthlyBales * hayPrice;
+
+  document.getElementById('daily-hay').textContent = dailyHay.toFixed(0);
+  document.getElementById('weekly-bales').textContent = weeklyBales.toFixed(1);
+  document.getElementById('monthly-tons').textContent = monthlyTons.toFixed(2);
+  document.getElementById('monthly-cost').textContent = '$' + monthlyCost.toFixed(2);
+  document.getElementById('daily-per-animal').textContent = dailyPerAnimal.toFixed(1);
+  document.getElementById('yearly-tons').textContent = yearlyTons.toFixed(2);
+
+  var summary = document.getElementById('hay-summary');
+  summary.style.display = 'block';
+
+  var livestockLabels = {
+    'cattle-beef': 'Beef Cattle',
+    'cattle-dairy': 'Dairy Cattle',
+    'horses': 'Horses',
+    'goats': 'Goats',
+    'sheep': 'Sheep',
+    'alpacas': 'Alpacas'
+  };
+  var feedTypeLabels = {
+    'hay-only': 'Hay Only',
+    'hay-pasture': 'Hay + Pasture',
+    'hay-grain': 'Hay + Grain'
+  };
+  var qualityLabels = {
+    'prime': 'Prime',
+    'good': 'Good',
+    'fair': 'Fair',
+    'poor': 'Poor'
+  };
+
+  var livestockLabel = livestockLabels[livestockType] || 'Livestock';
+  var feedTypeLabel = feedTypeLabels[feedType] || 'Hay Only';
+  var qualityLabel = qualityLabels[hayQuality] || 'Good';
+
+  summary.innerHTML = '<strong>Herd Profile:</strong> ' + numAnimals + ' × ' + livestockLabel + ' (avg ' + avgWeight + ' lbs) on ' + feedTypeLabel + ' with ' + qualityLabel + ' quality hay. Daily hay requirement: ' + dailyHay.toFixed(0) + ' lbs total (' + dailyPerAnimal.toFixed(1) + ' lbs/animal). At $' + hayPrice.toFixed(2) + ' per ' + baleWeight + ' lb bale, your estimated monthly hay cost is <strong>$' + monthlyCost.toFixed(2) + '</strong> (' + monthlyBales.toFixed(1) + ' bales or ' + monthlyTons.toFixed(2) + ' tons).';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var shareText = 'Check out my hay estimate from Homestead Calculators!';
+  if (navigator.share) {
+    navigator.share({
+      title: 'Hay & Forage Calculator Results',
+      text: shareText,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateHay();
+});
+</script>
+
+</body>
+</html>

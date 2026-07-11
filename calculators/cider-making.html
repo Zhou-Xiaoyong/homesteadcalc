@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/cider-making.html">
+  <title>Cider Making Calculator — Yield, Juice & Fermentation Estimator (2026)</title>
+  <meta name="description" content="Calculate cider yield, juice output, sugar needed, and bottling requirements from your apples. Plan your homemade cider with our free cider making calculator.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cider Making Calculator — Free Yield, Juice & Fermentation Estimator (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate cider yield, juice output, sugar needed, and bottling requirements from your apples. Plan your homemade cider with our free cider making calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/cider-making.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cider Making Calculator — Free Yield, Juice & Fermentation Estimator (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate cider yield, juice output, sugar needed, and bottling requirements from your apples. Plan your homemade cider with our free cider making calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cider Making Calculator",
+    "url": "https://homesteadcalc.com/calculators/cider-making.html",
+    "description": "Calculate cider yield, juice output, sugar needed, and bottling requirements from your apples.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Food Preservation",
+        "item": "https://homesteadcalc.com/calculators/#food-preservation"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Cider Making Calculator",
+        "item": "https://homesteadcalc.com/calculators/cider-making.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; <a href="/calculators/#food-preservation">Food Preservation</a> &raquo; Cider Making Calculator
+    </nav>
+
+    <h1>🍎 Cider Making Calculator</h1>
+    <p class="text-lg text-muted">Estimate cider yield, juice output, sugar requirements, and bottling needs from your apples. Perfect for home cider makers planning their next batch.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Cider Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="apple-quantity">Apple Quantity</label>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="number" id="apple-quantity" class="form-input" value="1" min="0.25" max="1000" step="0.25" style="flex:1;">
+              <select id="apple-unit" class="form-select" style="width:110px;">
+                <option value="bushels">bushels</option>
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
+            <div class="form-hint">1 bushel ≈ 42 lbs ≈ 19 kg of apples.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="apple-type">Apple Type</label>
+            <select id="apple-type" class="form-select">
+              <option value="sweet">Sweet (Red Delicious, Fuji, Gala)</option>
+              <option value="tart">Tart (Granny Smith, Braeburn, McIntosh)</option>
+              <option value="heirloom">Heirloom / Cider (Winesap, Harrison, Kingston Black)</option>
+              <option value="mixed">Mixed Blend</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cider-type">Cider Type</label>
+            <select id="cider-type" class="form-select">
+              <option value="hard">Hard Cider (Alcoholic)</option>
+              <option value="sweet">Sweet Cider (Non-Alcoholic)</option>
+              <option value="sparkling">Sparkling Cider</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="target-abv">Target ABV (Hard Cider)</label>
+            <select id="target-abv" class="form-select">
+              <option value="5">5%</option>
+              <option value="6" selected>6%</option>
+              <option value="7">7%</option>
+              <option value="8">8%</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateCider()">Calculate Cider</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Cider Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="cider-yield-gal">—</div>
+                <div class="label">Cider Yield (gallons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="cider-yield-liters">—</div>
+                <div class="label">Cider Yield (liters)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="juice-yield">—</div>
+                <div class="label">Juice Yield (gallons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="sugar-needed">—</div>
+                <div class="label">Sugar Needed (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yeast-needed">—</div>
+                <div class="label">Yeast Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bottles-needed">—</div>
+                <div class="label">Bottles (750ml)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="ferment-time">—</div>
+                <div class="label">Fermentation (days)</div>
+              </div>
+            </div>
+
+            <div class="result-actions" style="display:flex; gap:0.75rem; margin-top:1.25rem; flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="window.print()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="cider-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our cider making calculator uses standard home cider making ratios based on apple type, cider style, and target alcohol content. These values are derived from established cidermaking references and extension service guidelines widely used by home cider makers and small-scale cidermakers.</p>
+
+          <h3>Juice Yield by Apple Type</h3>
+          <p>Apples are roughly 84% water, but actual juice yield depends on variety and pressing method. A good rule of thumb is that 1 bushel (42 lbs) of apples yields about 3–4 gallons of juice. Heirloom cider apples often have higher juice content and better sugar/acid balance than standard dessert apples.</p>
+
+          <h3>Cider Making Formula</h3>
+          <div class="formula-box">
+Juice Yield (gal) = Apple Weight (lbs) × 0.08–0.10
+Sugar for ABV ≈ (Target ABV ÷ 0.55) × Juice Volume × 0.104
+Yeast ≈ 0.5–1 gram per gallon of juice
+Bottles (750ml) = Total Liters ÷ 0.75
+          </div>
+
+          <h3>Cider Type Differences</h3>
+          <p>Hard cider undergoes full alcoholic fermentation, converting most sugar to alcohol. Sweet cider is fresh pressed apple juice that is either pasteurized or kept refrigerated to prevent fermentation. Sparkling cider can be either alcoholic (carbonated hard cider) or non-alcoholic (carbonated apple juice), with carbonation added through secondary fermentation or forced carbonation.</p>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> For the best cider, use a blend of sweet, tart, and bittersharp apples. Aim for roughly 40% sweet, 40% tart, and 20% bittersharp/heirloom varieties. Always test your juice with a hydrometer before fermentation begins to get an accurate starting gravity reading.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="wine-making.html">Wine Making Calculator</a>
+            <a href="food-preservation.html">Food Preservation Planner</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Apple / Fruit Crusher</h4>
+              <p class="amazon-product-desc">Scratter for juicing apples and fruit</p>
+              <a href="https://www.amazon.com/s?k=apple%20fruit%20crusher%20cider&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cider Press</h4>
+              <p class="amazon-product-desc">Manual press for extracting apple juice</p>
+              <a href="https://www.amazon.com/s?k=cider%20press%20apple&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cider Yeast (Champagne)</h4>
+              <p class="amazon-product-desc">Clean fermenting yeast for hard cider</p>
+              <a href="https://www.amazon.com/s?k=champagne%20yeast%20cider&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Growler / Swing Top Bottles</h4>
+              <p class="amazon-product-desc">Glass bottles with flip-top caps for cider</p>
+              <a href="https://www.amazon.com/s?k=swing%20top%20glass%20bottles%20cider&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Approximate Juice Yield per Bushel of Apples</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Apple Type</th>
+                <th style="text-align:right;padding:4px 0;">Juice (gal)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Sweet</td>
+                <td style="text-align:right;">3.5 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Tart</td>
+                <td style="text-align:right;">3.0 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Heirloom / Cider</td>
+                <td style="text-align:right;">4.0 gal</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Mixed</td>
+                <td style="text-align:right;">3.5 gal</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Actual juice yield varies based on apple ripeness, pressing method, and equipment. Commercial orchards with hydraulic presses can get 4–5 gallons per bushel.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">It takes approximately 36 apples to make one gallon of apple cider. One standard apple tree can produce enough apples for about 15–20 gallons of cider in a good year. That's roughly 500–700 apples per tree!</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/cider-and-juice-production" target="_blank" rel="noopener">Penn State Extension: Cider Production</a></li>
+            <li><a href="https://cornellfruit.cals.cornell.edu/" target="_blank" rel="noopener">Cornell University Fruit Extension</a></li>
+            <li><a href="https://extension.umaine.edu/publications/2574e/" target="_blank" rel="noopener">UMaine Extension: Hard Cider Making</a></li>
+            <li><a href="https://www.wsu.edu/legacy/imagine/issues/issue_28/cider.htm" target="_blank" rel="noopener">Washington State University Cidermaking</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Apple juice yield data
+var appleData = {
+  'sweet': { juicePerBushel: 3.5, juicePerLb: 0.083, naturalSugar: 0.12, fermentDays: 10 },
+  'tart': { juicePerBushel: 3.0, juicePerLb: 0.071, naturalSugar: 0.10, fermentDays: 12 },
+  'heirloom': { juicePerBushel: 4.0, juicePerLb: 0.095, naturalSugar: 0.14, fermentDays: 12 },
+  'mixed': { juicePerBushel: 3.5, juicePerLb: 0.083, naturalSugar: 0.115, fermentDays: 11 }
+};
+
+// Conversion factors
+var LBS_PER_BUSHEL = 42;
+var KG_PER_LB = 0.453592;
+var GAL_TO_L = 3.78541;
+var LBS_SUGAR_PER_GAL_PER_ABV = 0.12;
+var YEAST_GRAMS_PER_GALLON = 0.75;
+
+// Labels
+var appleLabels = {
+  'sweet': 'Sweet (Red Delicious, Fuji, Gala)',
+  'tart': 'Tart (Granny Smith, Braeburn, McIntosh)',
+  'heirloom': 'Heirloom / Cider (Winesap, Harrison, Kingston Black)',
+  'mixed': 'Mixed Blend'
+};
+
+var ciderLabels = {
+  'hard': 'Hard Cider',
+  'sweet': 'Sweet Cider',
+  'sparkling': 'Sparkling Cider'
+};
+
+function calculateCider() {
+  var appleQty = parseFloat(document.getElementById('apple-quantity').value) || 0;
+  var appleUnit = document.getElementById('apple-unit').value;
+  var appleType = document.getElementById('apple-type').value;
+  var ciderType = document.getElementById('cider-type').value;
+  var targetABV = parseFloat(document.getElementById('target-abv').value) || 0;
+
+  var apple = appleData[appleType];
+
+  // Convert everything to pounds first
+  var appleLbs;
+  if (appleUnit === 'bushels') {
+    appleLbs = appleQty * LBS_PER_BUSHEL;
+  } else if (appleUnit === 'kg') {
+    appleLbs = appleQty / KG_PER_LB;
+  } else {
+    appleLbs = appleQty;
+  }
+
+  // Calculate juice yield
+  var juiceGallons = appleLbs * apple.juicePerLb;
+  var juiceLiters = juiceGallons * GAL_TO_L;
+
+  // Final cider yield (same as juice for most types, slight loss for hard cider)
+  var ciderGallons = ciderType === 'hard' ? juiceGallons * 0.95 : juiceGallons;
+  var ciderLiters = ciderGallons * GAL_TO_L;
+
+  // Sugar needed (only for hard cider to reach target ABV)
+  var juiceWeightLbs = juiceGallons * 8.34;
+  var naturalSugarLbs = juiceWeightLbs * apple.naturalSugar;
+  var naturalABV = (apple.naturalSugar / 0.104) * 0.55; // approximate natural ABV
+  var sugarNeededLbs = 0;
+
+  if (ciderType === 'hard') {
+    var sugarForTarget = targetABV * LBS_SUGAR_PER_GAL_PER_ABV * juiceGallons;
+    sugarNeededLbs = Math.max(0, sugarForTarget - naturalSugarLbs);
+  } else if (ciderType === 'sparkling') {
+    // Sparkling cider needs a small amount of sugar for carbonation
+    sugarNeededLbs = juiceGallons * 0.05; // ~0.05 lbs per gallon for priming
+  }
+
+  // Yeast needed (only for hard and sparkling cider)
+  var yeastGrams = 0;
+  if (ciderType === 'hard' || ciderType === 'sparkling') {
+    yeastGrams = juiceGallons * YEAST_GRAMS_PER_GALLON;
+  }
+
+  // Bottles: 750ml bottles
+  var bottlesNeeded = Math.ceil(ciderLiters / 0.75);
+
+  // Fermentation time
+  var fermentDays;
+  if (ciderType === 'sweet') {
+    fermentDays = 'N/A';
+  } else {
+    var baseDays = apple.fermentDays;
+    var extraDays = Math.round(targetABV * 0.5);
+    fermentDays = (baseDays + extraDays) + '–' + (baseDays + extraDays + 5);
+  }
+
+  // Update display
+  document.getElementById('cider-yield-gal').textContent = ciderGallons.toFixed(1);
+  document.getElementById('cider-yield-liters').textContent = ciderLiters.toFixed(1);
+  document.getElementById('juice-yield').textContent = juiceGallons.toFixed(1);
+  document.getElementById('sugar-needed').textContent = sugarNeededLbs.toFixed(1);
+  document.getElementById('yeast-needed').textContent = yeastGrams.toFixed(1);
+  document.getElementById('bottles-needed').textContent = bottlesNeeded;
+  document.getElementById('ferment-time').textContent = fermentDays;
+
+  // Summary
+  var summary = document.getElementById('cider-summary');
+  summary.style.display = 'block';
+  var appleLabel = appleLabels[appleType].split('(')[0].trim();
+  var ciderLabel = ciderLabels[ciderType];
+  var qtyDisplay;
+  if (appleUnit === 'bushels') {
+    qtyDisplay = appleQty + ' bushel' + (appleQty !== 1 ? 's' : '') + ' (' + appleLbs.toFixed(0) + ' lbs)';
+  } else if (appleUnit === 'kg') {
+    qtyDisplay = appleQty + ' kg (' + appleLbs.toFixed(0) + ' lbs)';
+  } else {
+    qtyDisplay = appleLbs + ' lbs';
+  }
+
+  var summaryText = '<strong>Batch Profile:</strong> ' + qtyDisplay + ' of ' + appleLabel + ' apples making ' + juiceGallons.toFixed(1) + ' gallons (' + juiceLiters.toFixed(1) + ' L) of juice, resulting in ' + ciderGallons.toFixed(1) + ' gallons of ' + ciderLabel.toLowerCase() + '.';
+  if (ciderType === 'hard') {
+    summaryText += ' Target ABV: ' + targetABV + '%. You\'ll need about ' + bottlesNeeded + ' bottles.';
+    if (sugarNeededLbs > 0.1) {
+      summaryText += ' Add approximately ' + sugarNeededLbs.toFixed(1) + ' lbs of sugar to reach your target alcohol content.';
+    } else {
+      summaryText += ' The natural sugar content of these apples should be sufficient for your target ABV.';
+    }
+  } else {
+    summaryText += ' You\'ll need about ' + bottlesNeeded + ' bottles.';
+  }
+  summary.innerHTML = summaryText;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Cider Making Calculator Results',
+      text: 'Check out my cider making estimate from Homestead Calculators!',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateCider();
+});
+
+// Recalculate when inputs change
+document.getElementById('apple-quantity').addEventListener('input', calculateCider);
+document.getElementById('apple-unit').addEventListener('change', calculateCider);
+document.getElementById('apple-type').addEventListener('change', calculateCider);
+document.getElementById('cider-type').addEventListener('change', calculateCider);
+document.getElementById('target-abv').addEventListener('change', calculateCider);
+</script>
+
+</body>
+</html>

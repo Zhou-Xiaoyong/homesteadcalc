@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/bread-baking.html">
+  <title>Bread Baking & Fermentation Calculator — Dough & Times (2026)</title>
+  <meta name="description" content="Calculate precise ingredient amounts, fermentation times, and bake times for sourdough, sandwich bread, baguettes, pizza dough, bagels, and more. Perfect your artisan bread with our free calculator.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bread Baking & Fermentation Calculator — Free Dough Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate precise ingredient amounts, fermentation times, and bake times for sourdough, sandwich bread, baguettes, pizza dough, bagels, and more. Perfect your artisan bread with our free calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/bread-baking.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bread Baking & Fermentation Calculator — Free Dough Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate precise ingredient amounts, fermentation times, and bake times for sourdough, sandwich bread, baguettes, pizza dough, bagels, and more. Perfect your artisan bread with our free calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bread Baking & Fermentation Calculator",
+    "url": "https://homesteadcalc.com/calculators/bread-baking.html",
+    "description": "Calculate precise ingredient amounts, fermentation times, and bake times for sourdough, sandwich bread, baguettes, pizza dough, bagels, and more.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bread Baking & Fermentation Calculator",
+        "item": "https://homesteadcalc.com/calculators/bread-baking.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Bread Baking & Fermentation Calculator
+    </nav>
+
+    <h1>🍞 Bread Baking & Fermentation Calculator</h1>
+    <p class="text-lg text-muted">Calculate precise ingredient quantities, fermentation times, proofing times, and bake durations for all your favorite breads. From sourdough loaves to pizza dough and bagels, achieve consistent, professional results every bake.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Bread Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="bread-type">Bread Type</label>
+            <select id="bread-type" class="form-select">
+              <option value="sourdough">Sourdough Loaf</option>
+              <option value="sandwich">Sandwich Bread</option>
+              <option value="baguette">Baguette</option>
+              <option value="pizza">Pizza Dough</option>
+              <option value="dinner-rolls">Dinner Rolls</option>
+              <option value="bagels">Bagels</option>
+              <option value="focaccia">Focaccia</option>
+              <option value="ciabatta">Ciabatta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="num-loaves">Number of Loaves</label>
+            <input type="number" id="num-loaves" class="form-input" value="2" min="1" max="50" step="1">
+            <div class="form-hint">Enter the total number of loaves you want to make.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loaf-size">Loaf Size</label>
+            <select id="loaf-size" class="form-select">
+              <option value="small">Small (500g)</option>
+              <option value="medium" selected>Medium (750g)</option>
+              <option value="large">Large (1000g)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hydration">Hydration Level</label>
+            <select id="hydration" class="form-select">
+              <option value="60">Low (60%)</option>
+              <option value="65">Medium (65%)</option>
+              <option value="70" selected>Standard (70%)</option>
+              <option value="75">High (75%)</option>
+              <option value="80">Very High (80%)</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateBread()">Calculate Recipe</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Bread Recipe</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="flour-amount">—</div>
+                <div class="label">Flour Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="water-amount">—</div>
+                <div class="label">Water Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="salt-amount">—</div>
+                <div class="label">Salt Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yeast-amount">—</div>
+                <div class="label">Yeast / Starter (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bulk-time">—</div>
+                <div class="label">Bulk Fermentation (hrs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="proof-time">—</div>
+                <div class="label">Proofing Time (hrs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bake-time">—</div>
+                <div class="label">Bake Time (min)</div>
+              </div>
+            </div>
+
+            <div class="result-actions" style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="shareResults()" style="flex:1; min-width:140px;">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()" style="flex:1; min-width:140px;">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="bread-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our bread baking calculator uses baker's percentages — a professional baking technique where every ingredient is expressed as a percentage of the total flour weight. This method allows bakers to easily scale recipes up or down while maintaining perfect consistency.</p>
+
+          <h3>Baker's Math Basics</h3>
+          <p>In baker's percentages, flour is always 100%. All other ingredients are calculated relative to the flour weight. For example, a 70% hydration dough means the water weighs 70% of the flour weight. This system is used worldwide in professional bakeries because it makes scaling and comparing recipes straightforward.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Total Dough Weight = Number of Loaves × Loaf Size
+Flour (g) = Total Dough Weight ÷ (1 + Hydration % + Salt % + Yeast %)
+Water (g) = Flour × Hydration %
+Salt (g) = Flour × Salt %
+Yeast / Starter (g) = Flour × Yeast %
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Fermentation times vary significantly with temperature. The times provided assume a room temperature of 70–75°F (21–24°C). For every 5°F warmer, reduce fermentation time by about 25%. For cooler temperatures, increase time accordingly.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="meat-curing.html">Meat Curing & Smoking</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Digital Kitchen Scale</h4>
+              <p class="amazon-product-desc">Precise gram measurements for perfect dough every time</p>
+              <a href="https://www.amazon.com/s?k=digital%20kitchen%20scale%20gram&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Bread Proofing Basket</h4>
+              <p class="amazon-product-desc">Banneton set for sourdough shaping and proofing</p>
+              <a href="https://www.amazon.com/s?k=bread%20proofing%20basket%20set&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Dutch Oven (5-Quart)</h4>
+              <p class="amazon-product-desc">Cast iron for artisan bread with crispy crust</p>
+              <a href="https://www.amazon.com/s?k=5%20quart%20dutch%20oven%20bread&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Bread Lame (Dough Scorer)</h4>
+              <p class="amazon-product-desc">Precision scoring tool for beautiful oven spring</p>
+              <a href="https://www.amazon.com/s?k=bread%20lame%20dough%20scoring%20tool&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Baker's Percentages by Bread Type</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Bread</th>
+                <th style="text-align:right;padding:4px 0;">Hydration</th>
+                <th style="text-align:right;padding:4px 0;">Salt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Sourdough</td>
+                <td style="text-align:right;">65–75%</td>
+                <td style="text-align:right;">2%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Sandwich</td>
+                <td style="text-align:right;">60–65%</td>
+                <td style="text-align:right;">1.8%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Baguette</td>
+                <td style="text-align:right;">65–70%</td>
+                <td style="text-align:right;">1.8%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Pizza</td>
+                <td style="text-align:right;">60–70%</td>
+                <td style="text-align:right;">2%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Focaccia</td>
+                <td style="text-align:right;">75–80%</td>
+                <td style="text-align:right;">2%</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Ciabatta</td>
+                <td style="text-align:right;">75–80%</td>
+                <td style="text-align:right;">2%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Commercial yeast is typically 1–2% of flour weight. Sourdough starter ranges from 10–30% depending on desired flavor and fermentation speed.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">A single gram of active dry yeast contains roughly 20 billion yeast cells. During fermentation, these cells feed on sugars in the dough, producing carbon dioxide gas that leavens the bread and alcohol that contributes to the bread's complex flavor.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://bakerpedia.com/" target="_blank" rel="noopener">Bakerpedia — Baking Knowledge Base</a></li>
+            <li><a href="https://www.kingarthurbaking.com/learn" target="_blank" rel="noopener">King Arthur Baking — Learn to Bake</a></li>
+            <li><a href="https://www.seriouseats.com/bread-baking" target="_blank" rel="noopener">Serious Eats — Bread Baking Guide</a></li>
+            <li><a href="https://cals.cornell.edu/" target="_blank" rel="noopener">Cornell University — Food Science</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/meat-curing.html">Meat Curing</a>
+        <a href="/calculators/bread-baking.html">Bread Baking</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var breadProfiles = {
+  'sourdough': {
+    label: 'Sourdough Loaf',
+    saltPct: 0.02,
+    yeastType: 'sourdough-starter',
+    yeastPct: 0.20,
+    bulkFermentationHrs: 4,
+    proofHrs: 4,
+    bakeMinutes: 45,
+    loafSizeAdjust: 1.0
+  },
+  'sandwich': {
+    label: 'Sandwich Bread',
+    saltPct: 0.018,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.015,
+    bulkFermentationHrs: 1.5,
+    proofHrs: 1,
+    bakeMinutes: 35,
+    loafSizeAdjust: 1.0
+  },
+  'baguette': {
+    label: 'Baguette',
+    saltPct: 0.018,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.01,
+    bulkFermentationHrs: 2.5,
+    proofHrs: 1.5,
+    bakeMinutes: 25,
+    loafSizeAdjust: 0.8
+  },
+  'pizza': {
+    label: 'Pizza Dough',
+    saltPct: 0.02,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.01,
+    bulkFermentationHrs: 2,
+    proofHrs: 24,
+    bakeMinutes: 12,
+    loafSizeAdjust: 0.5
+  },
+  'dinner-rolls': {
+    label: 'Dinner Rolls',
+    saltPct: 0.018,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.02,
+    bulkFermentationHrs: 1.5,
+    proofHrs: 1,
+    bakeMinutes: 18,
+    loafSizeAdjust: 0.15
+  },
+  'bagels': {
+    label: 'Bagels',
+    saltPct: 0.02,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.015,
+    bulkFermentationHrs: 1.5,
+    proofHrs: 12,
+    bakeMinutes: 22,
+    loafSizeAdjust: 0.2
+  },
+  'focaccia': {
+    label: 'Focaccia',
+    saltPct: 0.02,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.012,
+    bulkFermentationHrs: 2,
+    proofHrs: 2,
+    bakeMinutes: 25,
+    loafSizeAdjust: 1.0
+  },
+  'ciabatta': {
+    label: 'Ciabatta',
+    saltPct: 0.02,
+    yeastType: 'instant-yeast',
+    yeastPct: 0.008,
+    bulkFermentationHrs: 3,
+    proofHrs: 1.5,
+    bakeMinutes: 28,
+    loafSizeAdjust: 0.9
+  }
+};
+
+var loafSizeGrams = {
+  'small': 500,
+  'medium': 750,
+  'large': 1000
+};
+
+var breadTypeLabels = {
+  'sourdough': 'Sourdough Loaf',
+  'sandwich': 'Sandwich Bread',
+  'baguette': 'Baguette',
+  'pizza': 'Pizza Dough',
+  'dinner-rolls': 'Dinner Rolls',
+  'bagels': 'Bagels',
+  'focaccia': 'Focaccia',
+  'ciabatta': 'Ciabatta'
+};
+
+var yeastLabels = {
+  'sourdough-starter': 'Sourdough Starter',
+  'instant-yeast': 'Instant Yeast'
+};
+
+function calculateBread() {
+  var breadType = document.getElementById('bread-type').value;
+  var numLoaves = parseInt(document.getElementById('num-loaves').value) || 1;
+  var loafSize = document.getElementById('loaf-size').value;
+  var hydration = parseFloat(document.getElementById('hydration').value) / 100;
+
+  var profile = breadProfiles[breadType];
+  var baseLoafSize = loafSizeGrams[loafSize];
+  var adjustedLoafSize = baseLoafSize * profile.loafSizeAdjust;
+  var totalDoughWeight = adjustedLoafSize * numLoaves;
+
+  var totalPct = 1 + hydration + profile.saltPct + profile.yeastPct;
+  var flour = totalDoughWeight / totalPct;
+  var water = flour * hydration;
+  var salt = flour * profile.saltPct;
+  var yeast = flour * profile.yeastPct;
+
+  var flourCups = flour / 120;
+
+  var bulkTime = profile.bulkFermentationHrs;
+  var proofTime = profile.proofHrs;
+  var bakeTime = profile.bakeMinutes;
+
+  var tempFactor = 1;
+  if (hydration >= 0.75) {
+    bulkTime *= 1.15;
+    proofTime *= 1.1;
+  } else if (hydration <= 0.60) {
+    bulkTime *= 0.9;
+    proofTime *= 0.95;
+  }
+
+  document.getElementById('flour-amount').textContent = flour.toFixed(0);
+  document.getElementById('water-amount').textContent = water.toFixed(0);
+  document.getElementById('salt-amount').textContent = salt.toFixed(1);
+  document.getElementById('yeast-amount').textContent = yeast.toFixed(1);
+  document.getElementById('bulk-time').textContent = bulkTime.toFixed(1);
+  document.getElementById('proof-time').textContent = proofTime.toFixed(1);
+  document.getElementById('bake-time').textContent = bakeTime;
+
+  var summary = document.getElementById('bread-summary');
+  summary.style.display = 'block';
+  var yeastLabel = yeastLabels[profile.yeastType];
+  summary.innerHTML = '<strong>Recipe Profile:</strong> ' + numLoaves + ' × ' + 
+    (loafSize === 'small' ? 'Small' : loafSize === 'medium' ? 'Medium' : 'Large') + ' ' + 
+    breadTypeLabels[breadType] + ' at ' + Math.round(hydration * 100) + '% hydration. ' +
+    'Total flour: <strong>' + flour.toFixed(0) + 'g</strong> (' + flourCups.toFixed(1) + ' cups), ' +
+    'water: <strong>' + water.toFixed(0) + 'g</strong>, ' +
+    'salt: <strong>' + salt.toFixed(1) + 'g</strong>, ' +
+    'yeast: <strong>' + yeast.toFixed(1) + 'g</strong> of ' + yeastLabel.toLowerCase() + '. ' +
+    'Total time: approximately ' + (bulkTime + proofTime).toFixed(1) + ' hours of fermentation plus ' + bakeTime + ' minutes of baking.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Bread Baking & Fermentation Calculator Results',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateBread();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/butter-making.html">
+  <title>Butter Making Calculator — Churn Yield &amp; Time Estimator (2026)</title>
+  <meta name="description" content="Calculate expected butter yield, buttermilk, churning time, and salt needed based on cream volume, fat percentage, and churning method. Perfect for home butter makers.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Butter Making Calculator — Free Churn Yield &amp; Time Estimator (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate expected butter yield, buttermilk, churning time, and salt needed based on cream volume, fat percentage, and churning method. Perfect for home butter makers.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/butter-making.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Butter Making Calculator — Free Churn Yield &amp; Time Estimator (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate expected butter yield, buttermilk, churning time, and salt needed based on cream volume, fat percentage, and churning method. Perfect for home butter makers.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Butter Making Calculator",
+    "url": "https://homesteadcalc.com/calculators/butter-making.html",
+    "description": "Calculate expected butter yield, buttermilk, churning time, and salt needed based on cream volume, fat percentage, and churning method.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Butter Making Calculator",
+        "item": "https://homesteadcalc.com/calculators/butter-making.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Butter Making Calculator
+    </nav>
+
+    <h1>🧈 Butter Making Calculator</h1>
+    <p class="text-lg text-muted">Estimate butter yield, buttermilk, churning time, and salt from your cream. Input cream volume, fat percentage, and churning method to plan your next batch of homemade butter.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Butter Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="cream-volume">Cream Volume</label>
+            <div style="display:flex;gap:0.5rem;">
+              <input type="number" id="cream-volume" class="form-input" value="1" min="0.1" max="100" step="0.1" style="flex:1;">
+              <select id="cream-unit" class="form-select" style="width:120px;">
+                <option value="quarts">Quarts</option>
+                <option value="liters">Liters</option>
+              </select>
+            </div>
+            <div class="form-hint">Enter the total volume of cream for your batch.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cream-fat">Cream Fat Percentage</label>
+            <select id="cream-fat" class="form-select">
+              <option value="30">30% (Light Cream)</option>
+              <option value="35" selected>35% (Heavy Cream)</option>
+              <option value="40">40% (Double Cream)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="churn-method">Churning Method</label>
+            <select id="churn-method" class="form-select">
+              <option value="hand">Hand Churn</option>
+              <option value="electric">Electric Churn</option>
+              <option value="mixer">Stand Mixer</option>
+              <option value="processor">Food Processor</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateButter()">Calculate Butter Yield</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Butter Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="butter-yield-lbs">—</div>
+                <div class="label">Butter Yield (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="butter-yield-grams">—</div>
+                <div class="label">Butter Yield (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="buttermilk-yield">—</div>
+                <div class="label">Buttermilk (cups)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="churning-time">—</div>
+                <div class="label">Churning Time</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="salt-needed">—</div>
+                <div class="label">Salt (tsp)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="butter-sticks">—</div>
+                <div class="label">Butter Sticks</div>
+              </div>
+            </div>
+
+            <div class="result-actions" style="display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="shareResults()" style="flex:1;min-width:140px;">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()" style="flex:1;min-width:140px;">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="butter-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our butter making calculator estimates yield based on cream fat content and typical butterfat recovery rates. Higher fat cream produces more butter, and different churning methods affect both time and yield efficiency.</p>
+
+          <h3>Butter Yield Basics</h3>
+          <p>Butter is essentially milk fat that has been separated from cream through churning. The remaining liquid is buttermilk. A typical batch of heavy cream (35% fat) yields roughly 35–40% of its volume as butter, with the rest being buttermilk.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Cream Weight (lbs) = Cream Volume × Weight per Unit
+Butter Yield (lbs) = Cream Weight × (Fat% / 100) × Recovery Factor
+Buttermilk = Cream Volume − Butter Volume
+Salt = Butter Yield × 0.01 (1% salted butter)
+Butter Sticks = Butter Yield ÷ 0.25 (¼ lb per stick)
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> For best results, let cream warm to 60–65°F (15–18°C) before churning. Cold cream takes longer to churn and may produce lower yield. Always save the buttermilk — it's perfect for baking, pancakes, and salad dressings!
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="goat-cheese-yield.html">Goat Cheese Yield Calculator</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Butter Churn (Glass)</h4>
+              <p class="amazon-product-desc">Traditional hand-crank glass churn, 1–2 quart capacity</p>
+              <a href="https://www.amazon.com/s?k=butter%20churn%20glass&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Butter Paddles</h4>
+              <p class="amazon-product-desc">Wooden butter paddles for working and shaping butter</p>
+              <a href="https://www.amazon.com/s?k=butter%20paddles%20wooden&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Butter Mold &amp; Press</h4>
+              <p class="amazon-product-desc">Classic butter mold with intricate designs, 4 oz size</p>
+              <a href="https://www.amazon.com/s?k=butter%20mold%20press&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cheesecloth for Butter</h4>
+              <p class="amazon-product-desc">Fine grade cheesecloth for washing and draining butter</p>
+              <a href="https://www.amazon.com/s?k=fine%20cheesecloth%20butter&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Typical Butter Yields (per quart of cream)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Cream Type</th>
+                <th style="text-align:right;padding:4px 0;">Butter Yield</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Light Cream (30%)</td>
+                <td style="text-align:right;">~0.6 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Heavy Cream (35%)</td>
+                <td style="text-align:right;">~0.7 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Double Cream (40%)</td>
+                <td style="text-align:right;">~0.8 lb</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Butter Sticks per lb</td>
+                <td style="text-align:right;">4 sticks</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">One US quart of heavy cream weighs approximately 2.1 pounds and yields about 0.7 pounds (or 2.8 sticks) of butter.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">It takes about 21 pounds (2.5 gallons) of whole milk to produce just 1 pound of butter. That's why butter was historically considered a luxury food item in many cultures.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/dairy-processing" target="_blank" rel="noopener">Penn State Extension: Dairy Processing</a></li>
+            <li><a href="https://www.uidaho.edu/extension/dairy" target="_blank" rel="noopener">University of Idaho Extension: Dairy Products</a></li>
+            <li><a href="https://fyi.extension.wisc.edu/milking/" target="_blank" rel="noopener">UW-Madison Extension: Dairy Science</a></li>
+            <li><a href="https://www.usda.gov/topics/dairy" target="_blank" rel="noopener">USDA Dairy Research &amp; Information</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/goat-cheese-yield.html">Goat Cheese Yield</a>
+        <a href="/calculators/butter-making.html">Butter Making</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Churning method data
+var churnMethodData = {
+  hand:       { timeMin: 20, timeMax: 45, recovery: 0.90, timeLabel: '20–45 minutes' },
+  electric:   { timeMin: 5,  timeMax: 15, recovery: 0.95, timeLabel: '5–15 minutes' },
+  mixer:      { timeMin: 8,  timeMax: 20, recovery: 0.92, timeLabel: '8–20 minutes' },
+  processor:  { timeMin: 2,  timeMax: 8,  recovery: 0.88, timeLabel: '2–8 minutes' }
+};
+
+function calculateButter() {
+  var creamVolume = parseFloat(document.getElementById('cream-volume').value) || 0;
+  var creamUnit = document.getElementById('cream-unit').value;
+  var creamFat = parseFloat(document.getElementById('cream-fat').value) || 35;
+  var churnMethod = document.getElementById('churn-method').value;
+
+  // Convert cream volume to quarts then to pounds
+  var quarts = creamUnit === 'liters' ? creamVolume / 0.946353 : creamVolume;
+  var creamWeightLbs = quarts * 2.1;
+  var creamWeightGrams = creamWeightLbs * 453.592;
+
+  // Butter yield: fat content with recovery factor
+  var method = churnMethodData[churnMethod];
+  var butterYieldLbs = creamWeightLbs * (creamFat / 100) * method.recovery;
+  var butterYieldGrams = butterYieldLbs * 453.592;
+
+  // Buttermilk yield in cups
+  // Approx: 1 quart cream yields ~2.5 cups buttermilk (varies by fat%)
+  var buttermilkCups = quarts * 4 * (1 - (creamFat / 100) * method.recovery * 0.7);
+  if (buttermilkCups < 0) buttermilkCups = 0;
+
+  // Salt needed (1% of butter weight for lightly salted butter)
+  var saltTsp = (butterYieldLbs * 0.01 * 48 / 6).toFixed(2); // 1 tsp salt = ~6g, 48 tsp/lb
+  if (parseFloat(saltTsp) < 0.1) saltTsp = '0.1';
+
+  // Number of butter sticks (1 stick = 1/4 lb = 113g)
+  var butterSticks = butterYieldLbs / 0.25;
+
+  document.getElementById('butter-yield-lbs').textContent = butterYieldLbs.toFixed(2);
+  document.getElementById('butter-yield-grams').textContent = Math.round(butterYieldGrams).toLocaleString();
+  document.getElementById('buttermilk-yield').textContent = buttermilkCups.toFixed(1);
+  document.getElementById('churning-time').textContent = method.timeLabel;
+  document.getElementById('salt-needed').textContent = saltTsp;
+  document.getElementById('butter-sticks').textContent = butterSticks.toFixed(1);
+
+  // Summary
+  var summary = document.getElementById('butter-summary');
+  summary.style.display = 'block';
+  var methodLabel = document.getElementById('churn-method').options[document.getElementById('churn-method').selectedIndex].text;
+  var volLabel = creamUnit === 'quarts' ? (quarts + ' quarts') : (creamVolume + ' liters');
+  summary.innerHTML = '<strong>Batch Profile:</strong> ' + volLabel + ' of ' + creamFat + '% cream churned by ' + methodLabel + ' yields approximately <strong>' + butterYieldLbs.toFixed(2) + ' lbs (' + Math.round(butterYieldGrams) + ' g) of butter</strong> (' + butterSticks.toFixed(1) + ' sticks). Expect about ' + buttermilkCups.toFixed(1) + ' cups of buttermilk. Churning time: ' + method.timeLabel + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var text = 'Check out my butter making estimate from Homestead Calculators!';
+  var url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: 'Butter Making Calculator', text: text, url: url });
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateButter();
+});
+</script>
+
+</body>
+</html>
