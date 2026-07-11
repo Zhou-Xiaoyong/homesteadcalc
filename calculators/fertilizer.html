@@ -280,6 +280,11 @@
               </div>
             </div>
 
+            <div class="result-actions">
+              <button class="btn btn-share" onclick="shareResults()">📤 Share Results</button>
+              <button class="btn btn-print" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
             <div class="result-item mt-lg" style="text-align:left;">
               <div class="label" style="text-align:left;margin-bottom:4px;">N Application Rate</div>
               <div class="value" id="n-rate" style="font-size:1.2rem;">—</div>
@@ -568,6 +573,37 @@ document.querySelector('.mobile-menu-btn').addEventListener('click', function() 
 document.addEventListener('DOMContentLoaded', function() {
   calculateFertilizer();
 });
+
+function shareResults() {
+  var title = document.querySelector('h1').textContent;
+  var resultItems = document.querySelectorAll('#results .result-item');
+  var text = title + '\n\n';
+  resultItems.forEach(function(item) {
+    var label = item.querySelector('.label').textContent;
+    var value = item.querySelector('.value').textContent;
+    text += label + ': ' + value + '\n';
+  });
+  
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      text: text,
+      url: window.location.href
+    }).catch(function(err) {
+      console.log('Share error:', err);
+    });
+  } else {
+    navigator.clipboard.writeText(text + '\n' + window.location.href).then(function() {
+      alert('Results copied to clipboard!');
+    }).catch(function() {
+      alert('Share not supported on this browser.');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
 </script>
 
 </body>

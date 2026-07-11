@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/vegetable-storage.html">
+  <title>Vegetable Storage Calculator — Shelf Life &amp; Storage Guide (2026)</title>
+  <meta name="description" content="Calculate expected storage life for potatoes, onions, carrots, apples, and more. Get optimal temperature, humidity, preparation tips, and space requirements for each storage method.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vegetable Storage Calculator — Shelf Life &amp; Storage Guide (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate expected storage life for potatoes, onions, carrots, apples, and more. Get optimal temperature, humidity, preparation tips, and space requirements for each storage method.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/vegetable-storage.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vegetable Storage Calculator — Shelf Life &amp; Storage Guide (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate expected storage life for potatoes, onions, carrots, apples, and more. Get optimal temperature, humidity, preparation tips, and space requirements for each storage method.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Vegetable Storage Calculator",
+    "url": "https://homesteadcalc.com/calculators/vegetable-storage.html",
+    "description": "Calculate expected storage life for potatoes, onions, carrots, apples, and more. Get optimal temperature, humidity, preparation tips, and space requirements.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Vegetable Storage Calculator",
+        "item": "https://homesteadcalc.com/calculators/vegetable-storage.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Vegetable Storage Calculator
+    </nav>
+
+    <h1>🥔 Vegetable Storage Calculator</h1>
+    <p class="text-lg text-muted">Plan your root cellar, pantry, or freezer with confidence. Select your vegetable and storage method to see expected shelf life, optimal conditions, preparation tips, and space requirements.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Storage Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="vegetable-type">Vegetable / Fruit Type</label>
+            <select id="vegetable-type" class="form-select">
+              <option value="potatoes">Potatoes</option>
+              <option value="onions">Onions</option>
+              <option value="carrots">Carrots</option>
+              <option value="cabbage">Cabbage</option>
+              <option value="apples">Apples</option>
+              <option value="pears">Pears</option>
+              <option value="pumpkins">Pumpkins</option>
+              <option value="winter-squash">Winter Squash</option>
+              <option value="garlic">Garlic</option>
+              <option value="sweet-potatoes">Sweet Potatoes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quantity">Quantity</label>
+            <input type="number" id="quantity" class="form-input" value="50" min="1" max="10000" step="1">
+            <div class="form-hint">Enter the quantity of produce you want to store.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="unit">Unit of Measure</label>
+            <select id="unit" class="form-select">
+              <option value="lbs">Pounds (lbs)</option>
+              <option value="kg">Kilograms (kg)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="storage-method">Storage Method</label>
+            <select id="storage-method" class="form-select">
+              <option value="root-cellar">Root Cellar</option>
+              <option value="cold-room">Cold Room</option>
+              <option value="refrigerator">Refrigerator</option>
+              <option value="canning">Canning</option>
+              <option value="freezing">Freezing</option>
+              <option value="dehydrating">Dehydrating</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateStorage()">Calculate Storage</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Storage Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="storage-life">—</div>
+                <div class="label">Expected Storage Life</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="optimal-temp">—</div>
+                <div class="label">Optimal Temperature</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="optimal-humidity">—</div>
+                <div class="label">Optimal Humidity</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="space-needed">—</div>
+                <div class="label">Space Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yield-ratio">—</div>
+                <div class="label">Yield After Storage</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="servings">—</div>
+                <div class="label">Est. Servings</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="prep-tips" style="display:none;">
+              <h4 style="margin-top:0;">Preparation Tips</h4>
+              <div id="tips-content"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our vegetable storage calculator uses data from university extension services and post-harvest research to provide accurate shelf life estimates and optimal storage conditions. Different vegetables have vastly different storage requirements — some need cold and moist conditions, others prefer cool and dry, and some require special preparation before storage.</p>
+
+          <h3>Storage Methods Compared</h3>
+          <p>Root cellars offer the longest storage for many vegetables by providing naturally cool, humid conditions. Canning and freezing preserve food indefinitely (in terms of safety) but alter texture and nutrition. Dehydrating significantly reduces weight and volume, making it ideal for compact, long-term storage.</p>
+
+          <h3>Key Factors</h3>
+          <div class="formula-box">
+Storage Life = Vegetable Type × Storage Method × Quality at Harvest
+Space Needed = Quantity × Storage Density Factor
+Yield Ratio = Initial Weight × (1 − Expected Loss %)
+Servings = Final Yield ÷ Serving Size
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Always inspect produce before storage. One rotten apple really can spoil the barrel — ethylene gas from damaged fruit accelerates ripening and spoilage in nearby produce. Cure potatoes, onions, and garlic before long-term storage for best results.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+            <a href="rainwater-harvest.html">Rainwater Harvest Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Root Cellar Bins &amp; Baskets</h4>
+              <p class="amazon-product-desc">Stackable, breathable storage for root vegetables</p>
+              <a href="https://www.amazon.com/s?k=root%20cellar%20storage%20bins&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Mason Jars &amp; Canning Supplies</h4>
+              <p class="amazon-product-desc">Quart jars, lids, and canning essentials</p>
+              <a href="https://www.amazon.com/s?k=mason%20jars%20canning%20supplies&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Food Dehydrator</h4>
+              <p class="amazon-product-desc">Make shelf-stable fruit leathers, veggie chips, jerky</p>
+              <a href="https://www.amazon.com/s?k=food%20dehydrator&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Vacuum Sealer</h4>
+              <p class="amazon-product-desc">Extend freezer life, prevent freezer burn</p>
+              <a href="https://www.amazon.com/s?k=vacuum%20sealer%20food&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Storage Life by Vegetable (Root Cellar)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Vegetable</th>
+                <th style="text-align:right;padding:4px 0;">Shelf Life</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Potatoes</td>
+                <td style="text-align:right;">5–8 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Onions</td>
+                <td style="text-align:right;">6–12 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Carrots</td>
+                <td style="text-align:right;">4–6 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Cabbage</td>
+                <td style="text-align:right;">3–4 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Apples</td>
+                <td style="text-align:right;">2–6 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Pumpkins</td>
+                <td style="text-align:right;">2–6 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Winter Squash</td>
+                <td style="text-align:right;">2–6 months</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Garlic</td>
+                <td style="text-align:right;">6–9 months</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Sweet Potatoes</td>
+                <td style="text-align:right;">4–6 months</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Storage life varies widely by variety, harvest quality, and storage conditions. Always inspect stored produce regularly and remove any that show signs of spoilage.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">Apples produce ethylene gas as they ripen, which can cause nearby vegetables like carrots and potatoes to sprout or develop off-flavors. Store apples separately from other produce in your root cellar or cold room.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://postharvest.ucdavis.edu/" target="_blank" rel="noopener">UC Davis Postharvest Technology Center</a></li>
+            <li><a href="https://extension.psu.edu/food-preservation" target="_blank" rel="noopener">Penn State Extension: Food Preservation</a></li>
+            <li><a href="https://nchfp.uga.edu/" target="_blank" rel="noopener">National Center for Home Food Preservation</a></li>
+            <li><a href="https://extension.umn.edu/food-preservation-and-safety" target="_blank" rel="noopener">University of Minnesota Extension</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/vegetable-storage.html">Vegetable Storage</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides &amp; Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var vegetableData = {
+  potatoes: {
+    name: 'Potatoes',
+    rootCellar: { life: '5–8 months', temp: '40–45°F (4–7°C)', humidity: '90–95%', density: 0.6, loss: 0.10, serving: 0.5,
+      tips: [
+        'Cure for 1–2 weeks at 50–60°F (10–15°C) and 85–90% humidity before storage',
+        'Store in the dark to prevent greening and solanine buildup',
+        'Do not wash before storage — brush off loose dirt gently',
+        'Check regularly and remove any sprouting or rotting potatoes',
+        'Keep away from onions — both release gases that accelerate spoilage'
+      ]},
+    coldRoom: { life: '3–5 months', temp: '45–55°F (7–13°C)', humidity: '85–90%', density: 0.6, loss: 0.15, serving: 0.5,
+      tips: [
+        'Cure properly before storing in a cold room',
+        'Use breathable burlap sacks or wooden crates',
+        'Monitor for sprouting — higher temps mean faster sprouting'
+      ]},
+    refrigerator: { life: '3–4 months', temp: '38–40°F (3–4°C)', humidity: '90–95%', density: 0.6, loss: 0.08, serving: 0.5,
+      tips: [
+        'Store in crisper drawer with high humidity setting',
+        'Keep in perforated plastic bag to maintain humidity',
+        'Note: Cold storage can convert potato starch to sugar, affecting flavor'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.8, loss: 0.05, serving: 0.5,
+      tips: [
+        'Pressure canning is required for potatoes (low-acid food)',
+        'Process pints for 35 min, quarts for 40 min at 10 psi',
+        'Leave 1-inch headspace in jars'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.5, loss: 0.05, serving: 0.5,
+      tips: [
+        'Blanch for 3–5 minutes before freezing to preserve quality',
+        'Drain well and pat dry before packaging',
+        'Use freezer bags or vacuum seal for best results'
+      ]},
+    dehydrating: { life: '6–12 months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.15, loss: 0.80, serving: 0.1,
+      tips: [
+        'Slice evenly (1/4-inch thick) for uniform drying',
+        'Blanch first to preserve color and nutrients',
+        'Dehydrate at 125°F (52°C) for 6–12 hours until brittle',
+        'Condition jars after drying to prevent mold'
+      ]}
+  },
+  onions: {
+    name: 'Onions',
+    rootCellar: { life: '6–12 months', temp: '32–40°F (0–4°C)', humidity: '65–70%', density: 0.7, loss: 0.10, serving: 0.25,
+      tips: [
+        'Cure for 2–4 weeks after harvest until necks are dry and papery',
+        'Store in mesh bags, pantyhose, or braids for good air circulation',
+        'Keep dry — high humidity causes rot and sprouting',
+        'Store separately from potatoes and apples'
+      ]},
+    coldRoom: { life: '4–8 months', temp: '40–50°F (4–10°C)', humidity: '60–70%', density: 0.7, loss: 0.15, serving: 0.25,
+      tips: [
+        'Hang in mesh bags or braids from the ceiling',
+        'Ensure good air circulation around each onion',
+        'Check regularly for soft spots or sprouting'
+      ]},
+    refrigerator: { life: '1–2 months', temp: '38–40°F (3–4°C)', humidity: 'Low', density: 0.7, loss: 0.05, serving: 0.25,
+      tips: [
+        'Refrigerator moisture can cause onions to mold',
+        'Store in a paper bag in the crisper drawer',
+        'Use within a month for best quality'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.75, loss: 0.10, serving: 0.25,
+      tips: [
+        'Pressure canning required for plain onions (low-acid)',
+        'Pickled onions can be water bath canned',
+        'Choose small, uniform onions for canning whole'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.6, loss: 0.10, serving: 0.25,
+      tips: [
+        'Chop or slice before freezing — whole onions don\'t freeze well',
+        'Flash freeze on trays first, then transfer to bags',
+        'No need to blanch onions before freezing'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.08, loss: 0.90, serving: 0.03,
+      tips: [
+        'Slice thinly (1/8-inch) for best results',
+        'Dehydrate at 125°F (52°C) for 8–12 hours',
+        'Onion powder can be made by grinding dried slices',
+        'Beware — drying onions is very pungent!'
+      ]}
+  },
+  carrots: {
+    name: 'Carrots',
+    rootCellar: { life: '4–6 months', temp: '32–40°F (0–4°C)', humidity: '90–95%', density: 0.5, loss: 0.08, serving: 0.3,
+      tips: [
+        'Remove green tops immediately — they draw moisture from the root',
+        'Store in damp sand, peat moss, or sawdust in wooden crates',
+        'Leave 1/2 inch of stem to prevent moisture loss',
+        'Do not wash before storage — brush off soil gently'
+      ]},
+    coldRoom: { life: '2–4 months', temp: '40–50°F (4–10°C)', humidity: '85–90%', density: 0.5, loss: 0.12, serving: 0.3,
+      tips: [
+        'Pack in damp sand or peat moss to maintain humidity',
+        'Check regularly for soft spots or mold',
+        'Higher temperatures shorten storage life significantly'
+      ]},
+    refrigerator: { life: '3–4 weeks', temp: '38–40°F (3–4°C)', humidity: '90–95%', density: 0.5, loss: 0.05, serving: 0.3,
+      tips: [
+        'Store in perforated plastic bag in crisper drawer',
+        'Do not wash before refrigerating',
+        'Keep away from ethylene-producing fruits (apples, pears)'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.10, serving: 0.3,
+      tips: [
+        'Pressure canning required for carrots (low-acid)',
+        'Cut into uniform pieces for even processing',
+        'Raw pack or hot pack — both work well'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.45, loss: 0.05, serving: 0.3,
+      tips: [
+        'Blanch for 2–5 minutes depending on size',
+        'Cool quickly in ice water after blanching',
+        'Drain well before packaging'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.1, loss: 0.88, serving: 0.05,
+      tips: [
+        'Slice uniformly (1/4-inch thick) or julienne',
+        'Blanch first for better color retention',
+        'Dehydrate at 125°F (52°C) for 8–10 hours until brittle'
+      ]}
+  },
+  cabbage: {
+    name: 'Cabbage',
+    rootCellar: { life: '3–4 months', temp: '32–40°F (0–4°C)', humidity: '90–95%', density: 0.4, loss: 0.10, serving: 1.0,
+      tips: [
+        'Harvest with a few outer leaves intact for protection',
+        'Store whole heads on shelves or in crates, stem side up',
+        'Do not wash before storage',
+        'Remove any damaged outer leaves before storing'
+      ]},
+    coldRoom: { life: '1–2 months', temp: '40–50°F (4–10°C)', humidity: '85–90%', density: 0.4, loss: 0.15, serving: 1.0,
+      tips: [
+        'Check regularly for signs of rot at the stem end',
+        'Keep moist but not wet',
+        'Late-season varieties store best'
+      ]},
+    refrigerator: { life: '2–3 weeks', temp: '38–40°F (3–4°C)', humidity: '90–95%', density: 0.4, loss: 0.05, serving: 1.0,
+      tips: [
+        'Wrap loosely in plastic or store in crisper drawer',
+        'Do not wash until ready to use',
+        'Store whole head for longest life'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.65, loss: 0.15, serving: 1.0,
+      tips: [
+        'Sauerkraut can be fermented then canned via water bath',
+        'Plain cabbage requires pressure canning',
+        'Shred or cut into wedges before canning'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.35, loss: 0.10, serving: 1.0,
+      tips: [
+        'Blanch for 1–2 minutes to preserve color and texture',
+        'Cabbage will be limp after freezing — best for cooked dishes',
+        'Shred or chop before freezing'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.06, loss: 0.92, serving: 0.1,
+      tips: [
+        'Shred finely for best results',
+        'Blanch briefly to set color',
+        'Dehydrate at 125°F (52°C) for 6–10 hours until brittle'
+      ]}
+  },
+  apples: {
+    name: 'Apples',
+    rootCellar: { life: '2–6 months', temp: '30–40°F (-1–4°C)', humidity: '90–95%', density: 0.45, loss: 0.08, serving: 0.5,
+      tips: [
+        'Choose late-maturing, long-keeping varieties (Winesap, Fuji, Granny Smith)',
+        'Wrap each apple individually in newspaper for best results',
+        'Store in crates or baskets lined with straw',
+        'Check regularly — one bad apple spoils the barrel',
+        'Store away from vegetables — ethylene gas speeds ripening'
+      ]},
+    coldRoom: { life: '1–3 months', temp: '40–50°F (4–10°C)', humidity: '85–90%', density: 0.45, loss: 0.12, serving: 0.5,
+      tips: [
+        'Use early and mid-season varieties first',
+        'Inspect weekly for signs of spoilage',
+        'Keep in perforated plastic bags to retain moisture'
+      ]},
+    refrigerator: { life: '1–2 months', temp: '32–38°F (0–3°C)', humidity: '90–95%', density: 0.45, loss: 0.05, serving: 0.5,
+      tips: [
+        'Store in crisper drawer with high humidity',
+        'Keep separate from vegetables',
+        'Don\'t wash until ready to eat'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.15, serving: 0.5,
+      tips: [
+        'Applesauce, apple butter, and pie filling can be water bath canned',
+        'Use a sugar syrup or pack in own juice',
+        'Use firm apples for best texture after canning'
+      ]},
+    freezing: { life: '8–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.4, loss: 0.10, serving: 0.5,
+      tips: [
+        'Treat with ascorbic acid (Fruit Fresh) to prevent browning',
+        'Can be frozen raw or cooked (applesauce, pie filling)',
+        'Slice or chop before freezing'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.08, loss: 0.88, serving: 0.08,
+      tips: [
+        'Slice thinly (1/4-inch) for even drying',
+        'Treat with lemon juice or ascorbic acid to prevent browning',
+        'Dehydrate at 135°F (57°C) for 8–12 hours until leathery',
+        'Condition jars after drying'
+      ]}
+  },
+  pears: {
+    name: 'Pears',
+    rootCellar: { life: '2–4 months', temp: '30–35°F (-1–2°C)', humidity: '90–95%', density: 0.45, loss: 0.10, serving: 0.5,
+      tips: [
+        'Pick slightly underripe for storage — pears ripen from the inside out',
+        'Wrap individually in paper for best results',
+        'Store in crates or baskets lined with straw',
+        'Ripen a few at a time at room temperature as needed'
+      ]},
+    coldRoom: { life: '1–2 months', temp: '40–45°F (4–7°C)', humidity: '85–90%', density: 0.45, loss: 0.15, serving: 0.5,
+      tips: [
+        'Check frequently — pears ripen quickly',
+        'Use soft or ripe pears first',
+        'Keep away from other ethylene-sensitive produce'
+      ]},
+    refrigerator: { life: '1–2 weeks', temp: '35–40°F (2–4°C)', humidity: '90–95%', density: 0.45, loss: 0.05, serving: 0.5,
+      tips: [
+        'Store in crisper drawer with high humidity',
+        'Ripen at room temperature before eating',
+        'Don\'t store with strong-smelling foods — pears absorb odors'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.15, serving: 0.5,
+      tips: [
+        'Water bath canning is safe for pears in syrup',
+        'Use light or medium syrup for best flavor',
+        'Peel, core, and halve or quarter before canning'
+      ]},
+    freezing: { life: '8–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.4, loss: 0.10, serving: 0.5,
+      tips: [
+        'Treat with ascorbic acid to prevent browning',
+        'Pack in syrup or sugar for best quality',
+        'Can also be frozen as pear sauce or butter'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.08, loss: 0.88, serving: 0.08,
+      tips: [
+        'Peel, core, and slice thinly (1/4-inch)',
+        'Treat with lemon juice to prevent browning',
+        'Dehydrate at 135°F (57°C) for 8–12 hours until leathery'
+      ]}
+  },
+  pumpkins: {
+    name: 'Pumpkins',
+    rootCellar: { life: '2–4 months', temp: '50–55°F (10–13°C)', humidity: '50–60%', density: 0.3, loss: 0.10, serving: 1.0,
+      tips: [
+        'Cure for 10 days–2 weeks at 80–85°F (27–29°C) before storage',
+        'Leave 3–4 inches of stem on each pumpkin',
+        'Do not wash before storage — wipe with a dry cloth',
+        'Store on shelves or straw, not directly on concrete',
+        'Check regularly for soft spots'
+      ]},
+    coldRoom: { life: '1–2 months', temp: '55–60°F (13–16°C)', humidity: '50–60%', density: 0.3, loss: 0.15, serving: 1.0,
+      tips: [
+        'Warm temperatures speed up decay',
+        'Use pumpkins with short stems or damage first',
+        'Good air circulation is important'
+      ]},
+    refrigerator: { life: '1–2 weeks', temp: '45–50°F (7–10°C)', humidity: '50–60%', density: 0.3, loss: 0.05, serving: 1.0,
+      tips: [
+        'Refrigerator is too cold for whole pumpkins long-term',
+        'Better for cut pumpkin — wrap tightly and use within days',
+        'Whole pumpkins may suffer chilling injury below 50°F'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.20, serving: 1.0,
+      tips: [
+        'Pressure canning required for pumpkin (low-acid)',
+        'Can as cubed pumpkin or pumpkin puree',
+        'Pie pumpkins have better flavor than carving pumpkins'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.4, loss: 0.10, serving: 1.0,
+      tips: [
+        'Cook first — pumpkin freezes better cooked than raw',
+        'Puree or cube before freezing',
+        'Freeze in measured portions for easy use'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.06, loss: 0.90, serving: 0.1,
+      tips: [
+        'Cut into uniform cubes (1/2-inch) or thin slices',
+        'Blanch first or roast for better flavor',
+        'Dehydrate at 125°F (52°C) for 10–16 hours until hard',
+        'Grind into pumpkin flour for baking'
+      ]}
+  },
+  'winter-squash': {
+    name: 'Winter Squash',
+    rootCellar: { life: '2–6 months', temp: '50–55°F (10–13°C)', humidity: '50–70%', density: 0.35, loss: 0.08, serving: 1.0,
+      tips: [
+        'Cure for 1–2 weeks at 75–80°F (24–27°C) before storage',
+        'Leave 1–2 inches of stem attached',
+        'Do not wash before storage',
+        'Store on shelves lined with newspaper or straw',
+        'Butternut and acorn store longest; spaghetti squash shorter'
+      ]},
+    coldRoom: { life: '1–3 months', temp: '55–60°F (13–16°C)', humidity: '50–60%', density: 0.35, loss: 0.12, serving: 1.0,
+      tips: [
+        'Use thinner-skinned varieties first',
+        'Rotate stock — check weekly for soft spots',
+        'Good air circulation prevents mold'
+      ]},
+    refrigerator: { life: '1–2 weeks', temp: '45–50°F (7–10°C)', humidity: '50–60%', density: 0.35, loss: 0.05, serving: 1.0,
+      tips: [
+        'Whole squash can suffer chilling injury in refrigerator',
+        'Cut squash: wrap tightly, use within 5 days',
+        'Refrigerator is too cold for long-term whole squash storage'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.15, serving: 1.0,
+      tips: [
+        'Pressure canning required for winter squash (low-acid)',
+        'Can as cubed squash or puree',
+        'Butternut squash is excellent for canning'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.45, loss: 0.10, serving: 1.0,
+      tips: [
+        'Cook first — roasted or steamed',
+        'Can be frozen as cubes or pureed',
+        'Cool completely before packaging'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.07, loss: 0.88, serving: 0.1,
+      tips: [
+        'Cut into 1/2-inch cubes or 1/4-inch slices',
+        'Blanch or steam lightly first',
+        'Dehydrate at 125°F (52°C) for 8–14 hours until hard'
+      ]}
+  },
+  garlic: {
+    name: 'Garlic',
+    rootCellar: { life: '6–9 months', temp: '32–40°F (0–4°C)', humidity: '65–70%', density: 0.4, loss: 0.08, serving: 0.05,
+      tips: [
+        'Cure for 2–3 weeks in a warm, dry, well-ventilated area before storage',
+        'Leave the papery skins and tops on until ready to use',
+        'Store in mesh bags or braids for good air circulation',
+        'Softneck varieties store longer than hardneck',
+        'Check periodically for sprouting or mold'
+      ]},
+    coldRoom: { life: '5–8 months', temp: '40–50°F (4–10°C)', humidity: '60–70%', density: 0.4, loss: 0.10, serving: 0.05,
+      tips: [
+        'Hang braided garlic from the ceiling',
+        'Ensure good air circulation',
+        'Use hardneck garlic first — it stores shorter'
+      ]},
+    refrigerator: { life: '3–6 months', temp: '38–40°F (3–4°C)', humidity: 'Low', density: 0.4, loss: 0.05, serving: 0.05,
+      tips: [
+        'Cold storage can trigger sprouting in garlic',
+        'Store in a paper bag — plastic traps moisture',
+        'Let come to room temp before using for best flavor'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.6, loss: 0.10, serving: 0.05,
+      tips: [
+        'Garlic in oil must be pressure canned — botulism risk!',
+        'Pickled garlic can be water bath canned',
+        'Always use tested recipes for garlic preservation'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.35, loss: 0.05, serving: 0.05,
+      tips: [
+        'Can be frozen whole, chopped, or as a paste with oil',
+        'Texture changes — frozen garlic is best for cooking, not raw',
+        'Portion in ice cube trays with oil for easy use'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.05, loss: 0.92, serving: 0.01,
+      tips: [
+        'Slice thinly (1/8-inch) for uniform drying',
+        'Dehydrate at 125°F (52°C) for 6–10 hours until crisp',
+        'Grind into garlic powder for versatile seasoning',
+        'Store in airtight containers away from light'
+      ]}
+  },
+  'sweet-potatoes': {
+    name: 'Sweet Potatoes',
+    rootCellar: { life: '4–6 months', temp: '55–60°F (13–16°C)', humidity: '85–90%', density: 0.5, loss: 0.08, serving: 0.5,
+      tips: [
+        'Cure for 1–2 weeks at 80–85°F (27–29°C) and 85–90% humidity before storage',
+        'Do not wash before storage — brush off dirt gently',
+        'Wrap each in newspaper or store in peat moss',
+        'Store on shelves or in crates, not on concrete floor',
+        'Chilling injury occurs below 50°F — they need warmer storage than regular potatoes'
+      ]},
+    coldRoom: { life: '2–3 months', temp: '55–65°F (13–18°C)', humidity: '80–85%', density: 0.5, loss: 0.15, serving: 0.5,
+      tips: [
+        'Sweet potatoes are sensitive to cold temperatures',
+        'Check frequently for signs of decay',
+        'Use any damaged or bruised roots first'
+      ]},
+    refrigerator: { life: '1–2 weeks', temp: '40–45°F (4–7°C)', humidity: '85–90%', density: 0.5, loss: 0.05, serving: 0.5,
+      tips: [
+        'Refrigerator is too cold for sweet potatoes long-term',
+        'Chilling injury causes hard, dark spots and off-flavor',
+        'Better to store in a cool pantry than refrigerator'
+      ]},
+    canning: { life: '12+ months', temp: 'Room temp (50–70°F)', humidity: 'Dry', density: 0.7, loss: 0.10, serving: 0.5,
+      tips: [
+        'Pressure canning required for sweet potatoes (low-acid)',
+        'Can be canned plain in syrup or as sweet potato pie filling',
+        'Peel before canning — skins get tough'
+      ]},
+    freezing: { life: '10–12 months', temp: '0°F (-18°C)', humidity: 'N/A', density: 0.45, loss: 0.08, serving: 0.5,
+      tips: [
+        'Cook first — sweet potatoes freeze better cooked',
+        'Mashed, pureed, or cubed all work well',
+        'Freeze in portion-sized containers'
+      ]},
+    dehydrating: { life: '12+ months', temp: 'Room temp (60–70°F)', humidity: 'Low (<60%)', density: 0.1, loss: 0.85, serving: 0.08,
+      tips: [
+        'Cook first — steam or bake until tender',
+        'Mash or slice before dehydrating',
+        'Dehydrate at 125°F (52°C) for 8–12 hours',
+        'Sweet potato leather is a delicious snack!'
+      ]}
+  }
+};
+
+document.getElementById('vegetable-type').addEventListener('change', function() {
+  calculateStorage();
+});
+
+document.getElementById('storage-method').addEventListener('change', function() {
+  calculateStorage();
+});
+
+document.getElementById('unit').addEventListener('change', function() {
+  calculateStorage();
+});
+
+function calculateStorage() {
+  var vegType = document.getElementById('vegetable-type').value;
+  var quantity = parseFloat(document.getElementById('quantity').value) || 0;
+  var unit = document.getElementById('unit').value;
+  var storageMethod = document.getElementById('storage-method').value;
+
+  var veg = vegetableData[vegType];
+  if (!veg) return;
+
+  var methodKey = storageMethod;
+  var methodData = veg[methodKey];
+  if (!methodData) return;
+
+  var quantityLbs = unit === 'kg' ? quantity * 2.20462 : quantity;
+  var yieldLbs = quantityLbs * (1 - methodData.loss);
+  var yieldDisplay = unit === 'kg' ? (yieldLbs / 2.20462).toFixed(1) + ' kg' : yieldLbs.toFixed(1) + ' lbs';
+  var spaceCuFt = quantityLbs * methodData.density / 62.4;
+  var servings = Math.floor(yieldLbs / methodData.serving);
+
+  document.getElementById('storage-life').textContent = methodData.life;
+  document.getElementById('optimal-temp').textContent = methodData.temp;
+  document.getElementById('optimal-humidity').textContent = methodData.humidity;
+  document.getElementById('space-needed').textContent = spaceCuFt.toFixed(1) + ' cu ft';
+  document.getElementById('yield-ratio').textContent = yieldDisplay;
+  document.getElementById('servings').textContent = servings.toLocaleString();
+
+  var prepTips = document.getElementById('prep-tips');
+  var tipsContent = document.getElementById('tips-content');
+  prepTips.style.display = 'block';
+
+  var tipsHtml = '<ul style="margin: 0; padding-left: var(--space-lg); line-height: 1.8;">';
+  methodData.tips.forEach(function(tip) {
+    tipsHtml += '<li>' + tip + '</li>';
+  });
+  tipsHtml += '</ul>';
+  tipsContent.innerHTML = tipsHtml;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var shareText = 'Check out my vegetable storage estimate from Homestead Calculators!';
+  if (navigator.share) {
+    navigator.share({
+      title: 'Vegetable Storage Calculator Results',
+      text: shareText,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateStorage();
+});
+</script>
+
+</body>
+</html>

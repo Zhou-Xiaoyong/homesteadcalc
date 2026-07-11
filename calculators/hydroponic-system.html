@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/hydroponic-system.html">
+  <title>Hydroponic System Calculator — Nutrients, Yield & Cost (2026)</title>
+  <meta name="description" content="Calculate hydroponic nutrient mix ratios, pH targets, water usage, electricity costs, expected yield, and monthly nutrient expenses for your system.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hydroponic System Calculator — Nutrients, Yield &amp; Cost Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate hydroponic nutrient mix ratios, pH targets, water usage, electricity costs, expected yield, and monthly nutrient expenses for your system.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/hydroponic-system.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hydroponic System Calculator — Nutrients, Yield &amp; Cost Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate hydroponic nutrient mix ratios, pH targets, water usage, electricity costs, expected yield, and monthly nutrient expenses for your system.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hydroponic System Calculator",
+    "url": "https://homesteadcalc.com/calculators/hydroponic-system.html",
+    "description": "Calculate hydroponic nutrient mix ratios, pH targets, water usage, electricity costs, expected yield, and monthly nutrient expenses for your system.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Hydroponic System Calculator",
+        "item": "https://homesteadcalc.com/calculators/hydroponic-system.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Hydroponic System Calculator
+    </nav>
+
+    <h1>🌿 Hydroponic System Calculator</h1>
+    <p class="text-lg text-muted">Plan your hydroponic garden with precision. Calculate nutrient solution mix ratios, pH targets, water usage, electricity costs, expected yields, and monthly nutrient expenses.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Hydroponic Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="system-type">System Type</label>
+            <select id="system-type" class="form-select">
+              <option value="dwc">Deep Water Culture (DWC)</option>
+              <option value="nft">Nutrient Film Technique (NFT)</option>
+              <option value="ebb-flow">Ebb and Flow</option>
+              <option value="drip">Drip System</option>
+              <option value="aeroponics">Aeroponics</option>
+              <option value="kratky">Kratky Method</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reservoir-size">Reservoir Size</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="number" id="reservoir-size" class="form-input" value="50" min="1" max="10000" step="1" style="flex:1;">
+              <select id="reservoir-unit" class="form-select" style="width: 120px;">
+                <option value="gallons">gallons</option>
+                <option value="liters">liters</option>
+              </select>
+            </div>
+            <div class="form-hint">Total capacity of your nutrient reservoir.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="num-plants">Number of Plants</label>
+            <input type="number" id="num-plants" class="form-input" value="12" min="1" max="10000" step="1">
+            <div class="form-hint">Total number of plants in your system.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="plant-type">Plant Type</label>
+            <select id="plant-type" class="form-select">
+              <option value="leafy-greens">Leafy Greens (lettuce, kale)</option>
+              <option value="herbs">Herbs (basil, mint)</option>
+              <option value="tomatoes">Tomatoes</option>
+              <option value="peppers">Peppers</option>
+              <option value="cucumbers">Cucumbers</option>
+              <option value="strawberries">Strawberries</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="growing-area">Growing Area (sq ft)</label>
+            <input type="number" id="growing-area" class="form-input" value="20" min="1" max="10000" step="1">
+            <div class="form-hint">Total floor or bench space used by your system.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="electricity-rate">Electricity Rate ($/kWh)</label>
+            <input type="number" id="electricity-rate" class="form-input" value="0.15" min="0" max="5" step="0.01">
+            <div class="form-hint">Average US residential rate: $0.13–$0.20/kWh.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nutrient-cost">Nutrient Cost per Gallon ($)</label>
+            <input type="number" id="nutrient-cost" class="form-input" value="0.15" min="0" max="20" step="0.01">
+            <div class="form-hint">Typical: $0.10–$0.25 per gallon of mixed nutrient solution.</div>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateHydroponics()">Calculate System</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Hydroponic System Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="nutrient-ratio">—</div>
+                <div class="label">Nutrient Mix Ratio</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="ph-target">—</div>
+                <div class="label">pH Target Range</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="ec-target">—</div>
+                <div class="label">EC/PPM Target</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="water-daily">—</div>
+                <div class="label">Water Usage / Day</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="electricity-monthly">—</div>
+                <div class="label">Electricity / Month</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yield-monthly">—</div>
+                <div class="label">Expected Yield (lbs/month)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="nutrient-cost-monthly">—</div>
+                <div class="label">Nutrient Cost / Month</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="hydro-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our hydroponic system calculator uses established horticultural data to estimate nutrient requirements, water consumption, energy use, and crop yields for common hydroponic system types and plant varieties. Values are derived from university extension research and commercial hydroponics industry standards.</p>
+
+          <h3>Nutrient Solutions & EC/PPM</h3>
+          <p>Electrical Conductivity (EC) measures the dissolved salts in your nutrient solution, typically expressed in mS/cm or converted to PPM (parts per million). Different plants require different nutrient strengths: leafy greens thrive at lower EC (1.2–1.8 mS/cm), while fruiting crops like tomatoes need higher EC (2.0–3.0 mS/cm) during fruiting stages. PPM is roughly EC × 500 (using the 500 scale) or EC × 700 (using the 700 scale).</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Water Usage = Number of Plants × Daily Water per Plant
+Nutrient Cost = (Reservoir Volume × Refills per Month) × Cost per Gallon
+Electricity = Pump/Wattage × Hours/Day × 30 Days × $/kWh
+Yield = Growing Area × Yield per Sq Ft × Growth Rate Factor
+Monthly Yield = (Total Yield per Crop × Crops per Month)
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> The Kratky method uses no electricity for water pumps, making it the lowest-cost hydroponic system for beginners. Leafy greens and herbs are the easiest to start with — they grow fast, have lower nutrient demands, and tolerate a wider pH range than fruiting crops.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="mushroom-growing.html">Mushroom Growing Calculator</a>
+            <a href="solar-power.html">Solar Power Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hydroponic Grow System</h4>
+              <p class="amazon-product-desc">Complete DWC system, 6 sites with air pump</p>
+              <a href="https://www.amazon.com/s?k=hydroponic%20grow%20system%20dwc&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">pH & EC Meter Combo</h4>
+              <p class="amazon-product-desc">Digital water quality tester for hydroponics</p>
+              <a href="https://www.amazon.com/s?k=ph%20ec%20meter%20hydroponics&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">General Hydroponics Nutrients</h4>
+              <p class="amazon-product-desc">FloraSeries 3-part nutrient set</p>
+              <a href="https://www.amazon.com/s?k=general%20hydroponics%20flora%20series&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">LED Grow Light</h4>
+              <p class="amazon-product-desc">Full spectrum, energy efficient indoor grow light</p>
+              <a href="https://www.amazon.com/s?k=led%20grow%20light%20full%20spectrum&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Optimal pH Range by Plant Type</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Plant</th>
+                <th style="text-align:right;padding:4px 0;">pH Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Leafy Greens</td>
+                <td style="text-align:right;">5.5–6.5</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Herbs</td>
+                <td style="text-align:right;">5.5–6.5</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Tomatoes</td>
+                <td style="text-align:right;">5.5–6.5</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Peppers</td>
+                <td style="text-align:right;">5.5–7.0</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Cucumbers</td>
+                <td style="text-align:right;">5.5–6.5</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Strawberries</td>
+                <td style="text-align:right;">5.5–6.5</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Nutrient solution should be changed every 1–2 weeks for most systems, or when EC drops below target range.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">Hydroponic systems use up to 90% less water than traditional soil gardening because water is recirculated, and plants grow 30–50% faster with optimal nutrient delivery.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/hydroponics" target="_blank" rel="noopener">Penn State Extension: Hydroponics</a></li>
+            <li><a href="https://ucanr.edu/sites/Hydroponics/" target="_blank" rel="noopener">UC Agriculture: Hydroponic Production</a></li>
+            <li><a href="https://edis.ifas.ufl.edu/topic_hydroponics" target="_blank" rel="noopener">UF IFAS Extension: Hydroponics</a></li>
+            <li><a href="https://hort.extension.wisc.edu/" target="_blank" rel="noopener">UW-Madison Extension: Horticulture</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Plant data
+var plantData = {
+  'leafy-greens': {
+    name: 'Leafy Greens',
+    ph: '5.5–6.5',
+    ecMin: 1.0,
+    ecMax: 1.8,
+    ppmMin: 500,
+    ppmMax: 900,
+    waterPerPlantGal: 0.25,
+    yieldPerSqFtMonth: 1.5,
+    nutrientStrength: 'Mild'
+  },
+  'herbs': {
+    name: 'Herbs',
+    ph: '5.5–6.5',
+    ecMin: 1.2,
+    ecMax: 2.0,
+    ppmMin: 600,
+    ppmMax: 1000,
+    waterPerPlantGal: 0.2,
+    yieldPerSqFtMonth: 0.8,
+    nutrientStrength: 'Mild-Moderate'
+  },
+  'tomatoes': {
+    name: 'Tomatoes',
+    ph: '5.5–6.5',
+    ecMin: 2.0,
+    ecMax: 3.0,
+    ppmMin: 1000,
+    ppmMax: 1500,
+    waterPerPlantGal: 1.5,
+    yieldPerSqFtMonth: 2.5,
+    nutrientStrength: 'Moderate-High'
+  },
+  'peppers': {
+    name: 'Peppers',
+    ph: '5.5–7.0',
+    ecMin: 1.8,
+    ecMax: 2.5,
+    ppmMin: 900,
+    ppmMax: 1250,
+    waterPerPlantGal: 1.0,
+    yieldPerSqFtMonth: 1.8,
+    nutrientStrength: 'Moderate'
+  },
+  'cucumbers': {
+    name: 'Cucumbers',
+    ph: '5.5–6.5',
+    ecMin: 1.7,
+    ecMax: 2.5,
+    ppmMin: 850,
+    ppmMax: 1250,
+    waterPerPlantGal: 1.2,
+    yieldPerSqFtMonth: 3.0,
+    nutrientStrength: 'Moderate-High'
+  },
+  'strawberries': {
+    name: 'Strawberries',
+    ph: '5.5–6.5',
+    ecMin: 1.2,
+    ecMax: 1.8,
+    ppmMin: 600,
+    ppmMax: 900,
+    waterPerPlantGal: 0.4,
+    yieldPerSqFtMonth: 0.6,
+    nutrientStrength: 'Mild-Moderate'
+  }
+};
+
+// System data
+var systemData = {
+  'dwc': {
+    name: 'Deep Water Culture (DWC)',
+    pumpWatts: 15,
+    pumpHoursPerDay: 24,
+    waterLossFactor: 1.1,
+    refillsPerMonth: 3,
+    nutrientMixRatio: '2–3 ml/L (Part A + B)'
+  },
+  'nft': {
+    name: 'Nutrient Film Technique (NFT)',
+    pumpWatts: 25,
+    pumpHoursPerDay: 24,
+    waterLossFactor: 1.15,
+    refillsPerMonth: 4,
+    nutrientMixRatio: '2–3 ml/L (Part A + B)'
+  },
+  'ebb-flow': {
+    name: 'Ebb and Flow',
+    pumpWatts: 40,
+    pumpHoursPerDay: 6,
+    waterLossFactor: 1.2,
+    refillsPerMonth: 4,
+    nutrientMixRatio: '3–4 ml/L (Part A + B)'
+  },
+  'drip': {
+    name: 'Drip System',
+    pumpWatts: 30,
+    pumpHoursPerDay: 4,
+    waterLossFactor: 1.25,
+    refillsPerMonth: 4,
+    nutrientMixRatio: '2.5–3.5 ml/L (Part A + B)'
+  },
+  'aeroponics': {
+    name: 'Aeroponics',
+    pumpWatts: 50,
+    pumpHoursPerDay: 12,
+    waterLossFactor: 1.3,
+    refillsPerMonth: 5,
+    nutrientMixRatio: '1.5–2.5 ml/L (Part A + B)'
+  },
+  'kratky': {
+    name: 'Kratky Method',
+    pumpWatts: 0,
+    pumpHoursPerDay: 0,
+    waterLossFactor: 1.05,
+    refillsPerMonth: 1,
+    nutrientMixRatio: '3–4 ml/L (one-time mix)'
+  }
+};
+
+function calculateHydroponics() {
+  var systemType = document.getElementById('system-type').value;
+  var reservoirSize = parseFloat(document.getElementById('reservoir-size').value) || 0;
+  var reservoirUnit = document.getElementById('reservoir-unit').value;
+  var numPlants = parseInt(document.getElementById('num-plants').value) || 0;
+  var plantType = document.getElementById('plant-type').value;
+  var growingArea = parseFloat(document.getElementById('growing-area').value) || 0;
+  var electricityRate = parseFloat(document.getElementById('electricity-rate').value) || 0;
+  var nutrientCostPerGal = parseFloat(document.getElementById('nutrient-cost').value) || 0;
+
+  var plant = plantData[plantType];
+  var system = systemData[systemType];
+
+  var reservoirGal;
+  if (reservoirUnit === 'liters') {
+    reservoirGal = reservoirSize * 0.264172;
+  } else {
+    reservoirGal = reservoirSize;
+  }
+
+  var waterDailyGal = numPlants * plant.waterPerPlantGal * system.waterLossFactor;
+  var waterDailyL = waterDailyGal * 3.78541;
+  var waterDailyDisplay;
+  if (reservoirUnit === 'liters') {
+    waterDailyDisplay = waterDailyL.toFixed(1) + ' L';
+  } else {
+    waterDailyDisplay = waterDailyGal.toFixed(1) + ' gal';
+  }
+
+  var ecTarget = ((plant.ecMin + plant.ecMax) / 2).toFixed(1) + ' mS/cm';
+  var ppmTarget = Math.round((plant.ppmMin + plant.ppmMax) / 2) + ' PPM';
+  var ecPpmDisplay = ecTarget + ' / ' + ppmTarget;
+
+  var kwhPerDay = (system.pumpWatts * system.pumpHoursPerDay) / 1000;
+  var electricityMonthly = kwhPerDay * 30 * electricityRate;
+
+  var yieldMonthly = growingArea * plant.yieldPerSqFtMonth;
+
+  var totalSolutionPerMonth = reservoirGal * system.refillsPerMonth;
+  var nutrientCostMonthly = totalSolutionPerMonth * nutrientCostPerGal;
+
+  document.getElementById('nutrient-ratio').textContent = system.nutrientMixRatio;
+  document.getElementById('ph-target').textContent = plant.ph;
+  document.getElementById('ec-target').textContent = ecPpmDisplay;
+  document.getElementById('water-daily').textContent = waterDailyDisplay;
+  document.getElementById('electricity-monthly').textContent = '$' + electricityMonthly.toFixed(2);
+  document.getElementById('yield-monthly').textContent = yieldMonthly.toFixed(1) + ' lbs';
+  document.getElementById('nutrient-cost-monthly').textContent = '$' + nutrientCostMonthly.toFixed(2);
+
+  var summary = document.getElementById('hydro-summary');
+  summary.style.display = 'block';
+  var resDisplay = reservoirUnit === 'liters' ? reservoirSize + ' L' : reservoirSize + ' gal';
+  summary.innerHTML = '<strong>System Profile:</strong> ' + system.name + ' with ' + resDisplay + ' reservoir, growing ' + numPlants + ' ' + plant.name + ' plants in ' + growingArea + ' sq ft. Target pH: ' + plant.ph + ', EC: ' + ecTarget + '. Estimated monthly yield: <strong>' + yieldMonthly.toFixed(1) + ' lbs</strong>. Operating cost: ~$' + (electricityMonthly + nutrientCostMonthly).toFixed(2) + '/month (electricity + nutrients).';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var text = 'Check out my hydroponic system estimate from Homestead Calculators!';
+  if (navigator.share) {
+    navigator.share({
+      title: 'Hydroponic System Calculator',
+      text: text,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateHydroponics();
+});
+</script>
+
+</body>
+</html>

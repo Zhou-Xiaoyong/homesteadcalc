@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/wine-making.html">
+  <title>Wine Making Calculator — Yield, Sugar & Bottling Estimator (2026)</title>
+  <meta name="description" content="Calculate wine yield, sugar needed, yeast nutrient, and bottling requirements from your fruit. Plan your homemade wine with our free wine making calculator.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wine Making Calculator — Free Yield, Sugar & Bottling Estimator (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate wine yield, sugar needed, yeast nutrient, and bottling requirements from your fruit. Plan your homemade wine with our free wine making calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/wine-making.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wine Making Calculator — Free Yield, Sugar & Bottling Estimator (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate wine yield, sugar needed, yeast nutrient, and bottling requirements from your fruit. Plan your homemade wine with our free wine making calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Wine Making Calculator",
+    "url": "https://homesteadcalc.com/calculators/wine-making.html",
+    "description": "Calculate wine yield, sugar needed, yeast nutrient, and bottling requirements from your fruit.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Food Preservation",
+        "item": "https://homesteadcalc.com/calculators/#food-preservation"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Wine Making Calculator",
+        "item": "https://homesteadcalc.com/calculators/wine-making.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; <a href="/calculators/#food-preservation">Food Preservation</a> &raquo; Wine Making Calculator
+    </nav>
+
+    <h1>🍷 Wine Making Calculator</h1>
+    <p class="text-lg text-muted">Estimate wine yield, sugar requirements, yeast nutrient, and bottling needs from your fruit. Perfect for home winemakers planning their next batch.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Wine Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="fruit-type">Fruit / Grape Type</label>
+            <select id="fruit-type" class="form-select">
+              <option value="grapes-red">Grapes (Red)</option>
+              <option value="grapes-white">Grapes (White)</option>
+              <option value="apples">Apples</option>
+              <option value="blackberries">Blackberries</option>
+              <option value="blueberries">Blueberries</option>
+              <option value="peaches">Peaches</option>
+              <option value="pears">Pears</option>
+              <option value="plums">Plums</option>
+              <option value="strawberries">Strawberries</option>
+              <option value="cherries">Cherries</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fruit-quantity">Fruit Quantity</label>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="number" id="fruit-quantity" class="form-input" value="50" min="1" max="10000" step="1" style="flex:1;">
+              <select id="fruit-unit" class="form-select" style="width:100px;">
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
+            <div class="form-hint">Enter the total weight of fruit you have for winemaking.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wine-style">Wine Style</label>
+            <select id="wine-style" class="form-select">
+              <option value="dry">Dry</option>
+              <option value="off-dry">Off-Dry</option>
+              <option value="semi-sweet">Semi-Sweet</option>
+              <option value="sweet">Sweet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="target-abv">Target ABV</label>
+            <select id="target-abv" class="form-select">
+              <option value="10">10%</option>
+              <option value="11">11%</option>
+              <option value="12" selected>12%</option>
+              <option value="13">13%</option>
+              <option value="14">14%</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateWine()">Calculate Wine</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Wine Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="wine-yield-gal">—</div>
+                <div class="label">Wine Yield (gallons)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="wine-yield-liters">—</div>
+                <div class="label">Wine Yield (liters)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="sugar-needed">—</div>
+                <div class="label">Sugar Needed (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yeast-nutrient">—</div>
+                <div class="label">Yeast Nutrient (tsp)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="acid-adjust">—</div>
+                <div class="label">Acid Adjustment</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bottles-needed">—</div>
+                <div class="label">Bottles (750ml)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="ferment-days">—</div>
+                <div class="label">Fermentation (days)</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-share" onclick="shareResults()">📤 Share Results</button>
+              <button class="btn btn-print" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="wine-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our wine making calculator uses standard home winemaking ratios based on fruit type, desired sweetness level, and target alcohol content. These values are derived from established winemaking references and are widely used by home winemakers and small-scale vintners.</p>
+
+          <h3>Juice Yield by Fruit Type</h3>
+          <p>Different fruits yield different amounts of juice per pound. Grapes are the most efficient, producing roughly 150–180 gallons of juice per ton (about 0.75–0.9 gallons per 10 lbs). Soft fruits like strawberries yield less juice per pound due to their high fiber and water content structure.</p>
+
+          <h3>Sugar & Alcohol Formula</h3>
+          <div class="formula-box">
+Alcohol by Volume (ABV) ≈ (Initial Brix − Final Brix) × 0.55
+Sugar Needed = (Target ABV ÷ 0.55) × Juice Volume × 1.04
+Yeast Nutrient ≈ 1 tsp per gallon of must
+Bottles (750ml) = Total Liters ÷ 0.75
+          </div>
+
+          <h3>Wine Style Residual Sugar Guide</h3>
+          <p>Dry wines have less than 1% residual sugar, off-dry wines have 1–2%, semi-sweet wines have 2–5%, and sweet wines have 5% or more. The calculator adjusts sugar additions to account for both alcohol production and desired residual sweetness.</p>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Always test your must with a hydrometer before fermentation begins. Actual sugar content varies by fruit ripeness, growing conditions, and variety. Adjust sugar additions based on your hydrometer reading, not just estimates.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="cider-making.html">Cider Making Calculator</a>
+            <a href="food-preservation.html">Food Preservation Planner</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Wine Making Starter Kit</h4>
+              <p class="amazon-product-desc">Complete equipment set for 1-gallon batches</p>
+              <a href="https://www.amazon.com/s?k=wine%20making%20starter%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hydrometer & Test Jar</h4>
+              <p class="amazon-product-desc">Measure specific gravity and track fermentation</p>
+              <a href="https://www.amazon.com/s?k=wine%20hydrometer%20test%20jar&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Wine Yeast (Red Star)</h4>
+              <p class="amazon-product-desc">Reliable yeast for consistent fermentation</p>
+              <a href="https://www.amazon.com/s?k=red%20star%20wine%20yeast&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Glass Carboy (5 gal)</h4>
+              <p class="amazon-product-desc">Clear glass fermenter for secondary fermentation</p>
+              <a href="https://www.amazon.com/s?k=5%20gallon%20glass%20carboy&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Approximate Juice Yield per 10 lbs of Fruit</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Fruit Type</th>
+                <th style="text-align:right;padding:4px 0;">Juice (gal)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Grapes (Red)</td>
+                <td style="text-align:right;">0.85 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Grapes (White)</td>
+                <td style="text-align:right;">0.90 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Apples</td>
+                <td style="text-align:right;">0.55 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Blackberries</td>
+                <td style="text-align:right;">0.65 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Blueberries</td>
+                <td style="text-align:right;">0.60 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Peaches</td>
+                <td style="text-align:right;">0.50 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Pears</td>
+                <td style="text-align:right;">0.55 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Plums</td>
+                <td style="text-align:right;">0.55 gal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Strawberries</td>
+                <td style="text-align:right;">0.60 gal</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Cherries</td>
+                <td style="text-align:right;">0.55 gal</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Actual juice yield varies based on fruit ripeness, pressing method, and variety. These are average estimates for home winemaking.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">It takes approximately 2.5 pounds of grapes to make one standard 750ml bottle of wine. A typical grape vine produces about 10 bottles of wine per season. That's roughly 400–500 grapes in each bottle.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/winemaking" target="_blank" rel="noopener">Penn State Extension: Winemaking</a></li>
+            <li><a href="https://ucanr.edu/sites/winemaking/" target="_blank" rel="noopener">UC Davis Winemaking Program</a></li>
+            <li><a href="https://www.clemson.edu/extension/food/preservation/wine.html" target="_blank" rel="noopener">Clemson Extension: Home Winemaking</a></li>
+            <li><a href="https://content.ces.ncsu.edu/home-fruit-winemaking" target="_blank" rel="noopener">NC State Extension: Fruit Winemaking</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Fruit juice yield data (gallons per pound)
+var fruitData = {
+  'grapes-red': { juicePerLb: 0.085, naturalSugar: 0.24, naturalAcid: 0.006, fermentDays: 10 },
+  'grapes-white': { juicePerLb: 0.090, naturalSugar: 0.22, naturalAcid: 0.007, fermentDays: 10 },
+  'apples': { juicePerLb: 0.055, naturalSugar: 0.12, naturalAcid: 0.004, fermentDays: 14 },
+  'blackberries': { juicePerLb: 0.065, naturalSugar: 0.10, naturalAcid: 0.015, fermentDays: 12 },
+  'blueberries': { juicePerLb: 0.060, naturalSugar: 0.10, naturalAcid: 0.010, fermentDays: 12 },
+  'peaches': { juicePerLb: 0.050, naturalSugar: 0.10, naturalAcid: 0.004, fermentDays: 14 },
+  'pears': { juicePerLb: 0.055, naturalSugar: 0.10, naturalAcid: 0.003, fermentDays: 14 },
+  'plums': { juicePerLb: 0.055, naturalSugar: 0.11, naturalAcid: 0.007, fermentDays: 12 },
+  'strawberries': { juicePerLb: 0.060, naturalSugar: 0.07, naturalAcid: 0.012, fermentDays: 12 },
+  'cherries': { juicePerLb: 0.055, naturalSugar: 0.12, naturalAcid: 0.006, fermentDays: 12 }
+};
+
+// Residual sugar by wine style (percent by weight)
+var styleResidualSugar = {
+  'dry': 0.002,
+  'off-dry': 0.015,
+  'semi-sweet': 0.035,
+  'sweet': 0.070
+};
+
+// Style labels
+var fruitLabels = {
+  'grapes-red': 'Grapes (Red)',
+  'grapes-white': 'Grapes (White)',
+  'apples': 'Apples',
+  'blackberries': 'Blackberries',
+  'blueberries': 'Blueberries',
+  'peaches': 'Peaches',
+  'pears': 'Pears',
+  'plums': 'Plums',
+  'strawberries': 'Strawberries',
+  'cherries': 'Cherries'
+};
+
+var styleLabels = {
+  'dry': 'Dry',
+  'off-dry': 'Off-Dry',
+  'semi-sweet': 'Semi-Sweet',
+  'sweet': 'Sweet'
+};
+
+function calculateWine() {
+  var fruitType = document.getElementById('fruit-type').value;
+  var fruitQty = parseFloat(document.getElementById('fruit-quantity').value) || 0;
+  var fruitUnit = document.getElementById('fruit-unit').value;
+  var wineStyle = document.getElementById('wine-style').value;
+  var targetABV = parseFloat(document.getElementById('target-abv').value) || 0;
+
+  // Convert to lbs if in kg
+  var fruitLbs = fruitUnit === 'kg' ? fruitQty * 2.20462 : fruitQty;
+
+  var fruit = fruitData[fruitType];
+  var residualSugarPct = styleResidualSugar[wineStyle];
+
+  // Calculate juice yield
+  var juiceGallons = fruitLbs * fruit.juicePerLb;
+  var juiceLiters = juiceGallons * 3.78541;
+
+  // Juice weight in lbs (approx 8.34 lbs per gallon of juice)
+  var juiceWeightLbs = juiceGallons * 8.34;
+
+  // Natural sugar from fruit (in lbs)
+  var naturalSugarLbs = juiceWeightLbs * fruit.naturalSugar;
+
+  // Sugar needed for target ABV (approx 0.055 lbs of sugar per gallon per 1% ABV)
+  // Formula: sugar for ABV = (targetABV / 0.55) * juiceGallons * 0.104 lbs sugar per gal per Brix
+  // Simplified: ~0.13 lbs sugar per gallon per 1% ABV
+  var sugarForABV = targetABV * 0.13 * juiceGallons;
+
+  // Additional sugar for residual sweetness
+  var sugarForSweetness = juiceWeightLbs * residualSugarPct;
+
+  // Total sugar needed (subtracting natural sugar)
+  var totalSugarNeeded = Math.max(0, sugarForABV + sugarForSweetness - naturalSugarLbs);
+
+  // Yeast nutrient: ~1 tsp per gallon
+  var yeastNutrientTsp = juiceGallons * 1.0;
+
+  // Acid adjustment estimate
+  var targetAcidPct = 0.0065; // 0.65% tartaric acid equivalent
+  var acidDiff = (targetAcidPct - fruit.naturalAcid) * juiceWeightLbs;
+  var acidAdjustment;
+  if (acidDiff > 0.01) {
+    acidAdjustment = '+' + acidDiff.toFixed(1) + ' oz acid blend';
+  } else if (acidDiff < -0.01) {
+    acidAdjustment = Math.abs(acidDiff).toFixed(1) + ' oz reduce';
+  } else {
+    acidAdjustment = 'Balanced';
+  }
+
+  // Bottles: 750ml bottles
+  var bottlesNeeded = Math.ceil(juiceLiters / 0.75);
+
+  // Fermentation days estimate
+  var fermentDays = fruit.fermentDays + Math.round(targetABV * 0.5);
+
+  // Update display
+  document.getElementById('wine-yield-gal').textContent = juiceGallons.toFixed(1);
+  document.getElementById('wine-yield-liters').textContent = juiceLiters.toFixed(1);
+  document.getElementById('sugar-needed').textContent = totalSugarNeeded.toFixed(1);
+  document.getElementById('yeast-nutrient').textContent = yeastNutrientTsp.toFixed(1);
+  document.getElementById('acid-adjust').textContent = acidAdjustment;
+  document.getElementById('bottles-needed').textContent = bottlesNeeded;
+  document.getElementById('ferment-days').textContent = fermentDays + '–' + (fermentDays + 5);
+
+  // Summary
+  var summary = document.getElementById('wine-summary');
+  summary.style.display = 'block';
+  var fruitLabel = fruitLabels[fruitType];
+  var styleLabel = styleLabels[wineStyle];
+  var qtyDisplay = fruitUnit === 'kg' ? fruitQty + ' kg' : fruitLbs + ' lbs';
+  summary.innerHTML = '<strong>Batch Profile:</strong> ' + qtyDisplay + ' of ' + fruitLabel + ' making ' + juiceGallons.toFixed(1) + ' gallons (' + juiceLiters.toFixed(1) + ' L) of ' + styleLabel.toLowerCase() + ' wine at ' + targetABV + '% ABV. Expect about ' + bottlesNeeded + ' bottles, with primary fermentation lasting roughly ' + fermentDays + '–' + (fermentDays + 5) + ' days.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Wine Making Calculator Results',
+      text: 'Check out my wine making estimate from Homestead Calculators!',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateWine();
+});
+
+// Recalculate when inputs change
+document.getElementById('fruit-type').addEventListener('change', calculateWine);
+document.getElementById('fruit-quantity').addEventListener('input', calculateWine);
+document.getElementById('fruit-unit').addEventListener('change', calculateWine);
+document.getElementById('wine-style').addEventListener('change', calculateWine);
+document.getElementById('target-abv').addEventListener('change', calculateWine);
+</script>
+
+</body>
+</html>

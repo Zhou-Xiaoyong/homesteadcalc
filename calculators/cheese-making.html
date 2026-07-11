@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/cheese-making.html">
+  <title>Cheese Making Calculator — Yield, Ingredients & Aging (2026)</title>
+  <meta name="description" content="Calculate expected cheese yield, rennet, culture, and salt needed, plus pressing time, aging time, and wheel estimates based on milk type, volume, and cheese variety.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cheese Making Calculator — Yield, Ingredients &amp; Aging Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate expected cheese yield, rennet, culture, and salt needed, plus pressing time, aging time, and wheel estimates based on milk type, volume, and cheese variety.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/cheese-making.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cheese Making Calculator — Yield, Ingredients &amp; Aging Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate expected cheese yield, rennet, culture, and salt needed, plus pressing time, aging time, and wheel estimates based on milk type, volume, and cheese variety.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cheese Making Calculator",
+    "url": "https://homesteadcalc.com/calculators/cheese-making.html",
+    "description": "Calculate expected cheese yield, rennet, culture, and salt needed, plus pressing time, aging time, and wheel estimates based on milk type, volume, and cheese variety.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Cheese Making Calculator",
+        "item": "https://homesteadcalc.com/calculators/cheese-making.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Cheese Making Calculator
+    </nav>
+
+    <h1>🧀 Cheese Making Calculator</h1>
+    <p class="text-lg text-muted">Plan your homemade cheese batches with precision. Calculate expected yield, ingredient quantities (rennet, culture, salt), pressing time, and aging duration for your favorite cheese varieties.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Cheese Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="milk-type">Milk Type</label>
+            <select id="milk-type" class="form-select">
+              <option value="cow">Cow's Milk</option>
+              <option value="goat">Goat's Milk</option>
+              <option value="sheep">Sheep's Milk</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="milk-volume">Milk Volume</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="number" id="milk-volume" class="form-input" value="2" min="0.1" max="1000" step="0.1" style="flex:1;">
+              <select id="volume-unit" class="form-select" style="width: 120px;">
+                <option value="gallons">gallons</option>
+                <option value="liters">liters</option>
+              </select>
+            </div>
+            <div class="form-hint">Volume of milk for your cheese batch.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cheese-type">Cheese Type</label>
+            <select id="cheese-type" class="form-select">
+              <option value="mozzarella">Mozzarella</option>
+              <option value="cheddar">Cheddar</option>
+              <option value="swiss">Swiss</option>
+              <option value="brie">Brie</option>
+              <option value="camembert">Camembert</option>
+              <option value="feta">Feta</option>
+              <option value="ricotta">Ricotta</option>
+              <option value="cottage">Cottage Cheese</option>
+              <option value="parmesan">Parmesan</option>
+              <option value="gouda">Gouda</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="milk-fat">Milk Fat Percentage</label>
+            <select id="milk-fat" class="form-select">
+              <option value="2">2%</option>
+              <option value="3.25">3.25% (Whole)</option>
+              <option value="4">4%</option>
+              <option value="5">5%</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateCheese()">Calculate Cheese</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Cheese Making Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="cheese-yield-lbs">—</div>
+                <div class="label">Expected Yield (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="cheese-yield-kg">—</div>
+                <div class="label">Expected Yield (kg)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="rennet-needed">—</div>
+                <div class="label">Rennet Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="culture-needed">—</div>
+                <div class="label">Culture Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="salt-needed">—</div>
+                <div class="label">Salt Needed</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="pressing-time">—</div>
+                <div class="label">Pressing Time</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="aging-time">—</div>
+                <div class="label">Aging Time</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="wheels-estimate">—</div>
+                <div class="label">Wheels / Blocks</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="cheese-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our cheese making calculator uses traditional cheese yield formulas and ingredient ratios based on milk type, fat content, and cheese variety. The calculations follow established cheesemaking principles from university extension programs and master cheesemakers.</p>
+
+          <h3>Cheese Yield Explained</h3>
+          <p>Cheese yield depends primarily on the protein (casein) and fat content of the milk. On average, cow's milk produces about 10–15% cheese by weight — meaning 10 pounds of milk yields roughly 1–1.5 pounds of cheese. Sheep's milk, with its higher protein and fat content, can produce 15–20% yield. Fresh cheeses like ricotta and mozzarella have different formulas since ricotta is made from whey and mozzarella is stretched curd.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Cheese Yield (lbs) = Milk Weight × Yield Percentage × Fat Factor
+Rennet = Milk Volume × Rennet per Gallon
+Salt = Cheese Yield × Salt Percentage
+Milk Weight = Volume × 8.6 lbs/gal (cow), 8.4 lbs/gal (goat), 9.1 lbs/gal (sheep)
+Total Yield = (Casein + Fat) × Recovery Rate
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> For the best cheese yield, use fresh, high-quality milk that hasn't been ultra-pasteurized (UHT). Raw or pasteurized (not ultra-pasteurized) milk works best. Goat's milk produces softer cheese with a tangy flavor, while sheep's milk is richer and produces higher yields. Always measure pH during cheesemaking — it's the most reliable indicator of proper curd development.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="food-preservation.html">Food Preservation Calculator</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cheesemaking Starter Kit</h4>
+              <p class="amazon-product-desc">Complete kit with rennet, culture, cheese mold</p>
+              <a href="https://www.amazon.com/s?k=cheese%20making%20starter%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cheese Press</h4>
+              <p class="amazon-product-desc">Stainless steel, adjustable pressure</p>
+              <a href="https://www.amazon.com/s?k=cheese%20press%20stainless%20steel&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Digital pH Meter</h4>
+              <p class="amazon-product-desc">Accurate pH testing for cheesemaking</p>
+              <a href="https://www.amazon.com/s?k=digital%20ph%20meter%20food&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cheesemaking Book</h4>
+              <p class="amazon-product-desc">Comprehensive guide to home cheesemaking</p>
+              <a href="https://www.amazon.com/s?k=home%20cheese%20making%20book%20mastering%20artisan&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Typical Cheese Yield by Type (per gallon milk)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Cheese</th>
+                <th style="text-align:right;padding:4px 0;">Yield / Gal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Mozzarella</td>
+                <td style="text-align:right;">0.9–1.1 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Cheddar</td>
+                <td style="text-align:right;">0.9–1.1 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Swiss</td>
+                <td style="text-align:right;">0.8–1.0 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Brie</td>
+                <td style="text-align:right;">0.8–1.0 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Feta</td>
+                <td style="text-align:right;">0.9–1.1 lbs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Ricotta</td>
+                <td style="text-align:right;">0.4–0.6 lb</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Parmesan</td>
+                <td style="text-align:right;">0.7–0.9 lb</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Gouda</td>
+                <td style="text-align:right;">0.9–1.1 lbs</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">A typical 2-gallon batch makes about 1.5–2.5 lbs of hard cheese, or roughly one small wheel. The whey byproduct can be used for ricotta or animal feed.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">It takes about 10 pounds (roughly 1.2 gallons) of milk to make 1 pound of hard cheese. About 90% of the milk's weight becomes whey — the watery byproduct that's rich in protein and can be used to make ricotta.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/cheese-making" target="_blank" rel="noopener">Penn State Extension: Cheese Making</a></li>
+            <li><a href="https://foodsci.wisc.edu/extension/cheese/" target="_blank" rel="noopener">UW-Madison: Cheese Science & Technology</a></li>
+            <li><a href="https://ucanr.edu/sites/dairy/" target="_blank" rel="noopener">UC Davis: Dairy Science & Technology</a></li>
+            <li><a href="https://nysipm.cornell.edu/agriculture/dairy/" target="_blank" rel="noopener">Cornell University: Dairy Processing</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Milk data
+var milkData = {
+  'cow': { name: "Cow's Milk", weightPerGal: 8.6, baseCasein: 0.032, baseFat: 0.0325, yieldFactor: 1.0 },
+  'goat': { name: "Goat's Milk", weightPerGal: 8.4, baseCasein: 0.028, baseFat: 0.035, yieldFactor: 0.95 },
+  'sheep': { name: "Sheep's Milk", weightPerGal: 9.1, baseCasein: 0.05, baseFat: 0.06, yieldFactor: 1.4 }
+};
+
+// Cheese data
+var cheeseData = {
+  'mozzarella': {
+    name: 'Mozzarella',
+    yieldPercent: 0.11,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.02,
+    pressingTime: '4–6 hours',
+    agingTime: 'Fresh–1 week',
+    wheelWeight: 1.0
+  },
+  'cheddar': {
+    name: 'Cheddar',
+    yieldPercent: 0.10,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.02,
+    pressingTime: '12–24 hours',
+    agingTime: '1–12+ months',
+    wheelWeight: 2.0
+  },
+  'swiss': {
+    name: 'Swiss',
+    yieldPercent: 0.095,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.012,
+    pressingTime: '12–18 hours',
+    agingTime: '2–6 months',
+    wheelWeight: 2.0
+  },
+  'brie': {
+    name: 'Brie',
+    yieldPercent: 0.09,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/8 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.125,
+    saltPercent: 0.015,
+    pressingTime: '4–8 hours (light)',
+    agingTime: '2–6 weeks',
+    wheelWeight: 1.0
+  },
+  'camembert': {
+    name: 'Camembert',
+    yieldPercent: 0.09,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/8 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.125,
+    saltPercent: 0.015,
+    pressingTime: '2–4 hours (light)',
+    agingTime: '2–4 weeks',
+    wheelWeight: 0.5
+  },
+  'feta': {
+    name: 'Feta',
+    yieldPercent: 0.105,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.03,
+    pressingTime: '6–12 hours',
+    agingTime: '2–4 weeks (brined)',
+    wheelWeight: 1.0
+  },
+  'ricotta': {
+    name: 'Ricotta',
+    yieldPercent: 0.05,
+    rennetPerGal: '1/4 tsp (citric acid)',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.25,
+    culturePerGal: 'None',
+    cultureUnit: '',
+    cultureAmount: 0,
+    saltPercent: 0.005,
+    pressingTime: 'Drain 1–2 hours',
+    agingTime: 'Fresh (eat immediately)',
+    wheelWeight: 0.5
+  },
+  'cottage': {
+    name: 'Cottage Cheese',
+    yieldPercent: 0.13,
+    rennetPerGal: 'Few drops',
+    rennetUnit: 'drops',
+    rennetAmount: 0.05,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.01,
+    pressingTime: 'None (drained)',
+    agingTime: 'Fresh (eat within 1 week)',
+    wheelWeight: 1.0
+  },
+  'parmesan': {
+    name: 'Parmesan',
+    yieldPercent: 0.08,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.025,
+    pressingTime: '24–48 hours',
+    agingTime: '12–36+ months',
+    wheelWeight: 2.0
+  },
+  'gouda': {
+    name: 'Gouda',
+    yieldPercent: 0.10,
+    rennetPerGal: '1/8 tsp',
+    rennetUnit: 'tsp',
+    rennetAmount: 0.125,
+    culturePerGal: '1/16 tsp',
+    cultureUnit: 'tsp',
+    cultureAmount: 0.0625,
+    saltPercent: 0.02,
+    pressingTime: '12–24 hours',
+    agingTime: '1–12 months',
+    wheelWeight: 2.0
+  }
+};
+
+function formatTsp(amount) {
+  if (amount <= 0) return 'None';
+  if (amount >= 1) {
+    if (amount === 1) return '1 tsp';
+    return amount.toFixed(2) + ' tsp';
+  }
+  if (amount >= 0.25) {
+    if (amount === 0.25) return '1/4 tsp';
+    if (amount === 0.5) return '1/2 tsp';
+    if (amount === 0.75) return '3/4 tsp';
+    return amount.toFixed(2) + ' tsp';
+  }
+  if (amount >= 0.125) {
+    if (amount === 0.125) return '1/8 tsp';
+    if (amount === 0.1875) return '3/16 tsp';
+    return amount.toFixed(3) + ' tsp';
+  }
+  if (amount >= 0.0625) {
+    if (amount === 0.0625) return '1/16 tsp';
+    return amount.toFixed(4) + ' tsp';
+  }
+  return amount.toFixed(4) + ' tsp';
+}
+
+function calculateCheese() {
+  var milkType = document.getElementById('milk-type').value;
+  var milkVolume = parseFloat(document.getElementById('milk-volume').value) || 0;
+  var volumeUnit = document.getElementById('volume-unit').value;
+  var cheeseType = document.getElementById('cheese-type').value;
+  var milkFat = parseFloat(document.getElementById('milk-fat').value) || 3.25;
+
+  var milk = milkData[milkType];
+  var cheese = cheeseData[cheeseType];
+
+  var milkGal;
+  if (volumeUnit === 'liters') {
+    milkGal = milkVolume * 0.264172;
+  } else {
+    milkGal = milkVolume;
+  }
+
+  var milkWeight = milkGal * milk.weightPerGal;
+  var fatFactor = 0.8 + (milkFat / 3.25) * 0.4;
+  var yieldLbs = milkWeight * cheese.yieldPercent * milk.yieldFactor * fatFactor;
+  var yieldKg = yieldLbs / 2.20462;
+
+  var rennetAmount = cheese.rennetAmount * milkGal;
+  var cultureAmount = cheese.cultureAmount * milkGal;
+  var saltOz = yieldLbs * cheese.saltPercent * 16;
+  var saltG = saltOz * 28.3495;
+
+  var rennetDisplay;
+  if (cheese.rennetUnit === 'drops') {
+    rennetDisplay = Math.round(rennetAmount * 60) + ' drops';
+  } else {
+    rennetDisplay = formatTsp(rennetAmount);
+  }
+
+  var cultureDisplay;
+  if (cheese.cultureUnit === '') {
+    cultureDisplay = 'None';
+  } else {
+    cultureDisplay = formatTsp(cultureAmount);
+  }
+
+  var saltDisplay = saltOz.toFixed(1) + ' oz (' + saltG.toFixed(0) + ' g)';
+
+  var wheels = Math.max(1, Math.round(yieldLbs / cheese.wheelWeight * 10) / 10);
+
+  document.getElementById('cheese-yield-lbs').textContent = yieldLbs.toFixed(1) + ' lbs';
+  document.getElementById('cheese-yield-kg').textContent = yieldKg.toFixed(1) + ' kg';
+  document.getElementById('rennet-needed').textContent = rennetDisplay;
+  document.getElementById('culture-needed').textContent = cultureDisplay;
+  document.getElementById('salt-needed').textContent = saltDisplay;
+  document.getElementById('pressing-time').textContent = cheese.pressingTime;
+  document.getElementById('aging-time').textContent = cheese.agingTime;
+  document.getElementById('wheels-estimate').textContent = wheels.toFixed(1);
+
+  var summary = document.getElementById('cheese-summary');
+  summary.style.display = 'block';
+  var volDisplay = volumeUnit === 'liters' ? milkVolume + ' L' : milkVolume + ' gal';
+  summary.innerHTML = '<strong>Batch Profile:</strong> ' + cheese.name + ' from ' + volDisplay + ' of ' + milk.name + ' (' + milkFat + '% fat). Expected yield: <strong>' + yieldLbs.toFixed(1) + ' lbs</strong> (' + yieldKg.toFixed(1) + ' kg), roughly ' + wheels.toFixed(1) + ' wheel(s)/block(s). Press: ' + cheese.pressingTime + ' | Age: ' + cheese.agingTime + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var text = 'Check out my cheese making estimate from Homestead Calculators!';
+  if (navigator.share) {
+    navigator.share({
+      title: 'Cheese Making Calculator',
+      text: text,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateCheese();
+});
+</script>
+
+</body>
+</html>

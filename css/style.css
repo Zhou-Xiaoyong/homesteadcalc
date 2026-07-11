@@ -533,6 +533,41 @@ p { margin-bottom: var(--space-md); }
   margin-top: 2px;
 }
 
+.result-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.result-actions .btn {
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-share {
+  background: var(--white);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn-share:hover {
+  background: var(--accent-light);
+  text-decoration: none;
+}
+
+.btn-print {
+  background: var(--white);
+  color: var(--gray-700);
+  border: 1.5px solid var(--gray-300);
+}
+
+.btn-print:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+  text-decoration: none;
+}
+
 /* --- Ad Placeholder (hidden by default) --- */
 .ad-slot {
   background: var(--gray-100);
@@ -901,6 +936,76 @@ p { margin-bottom: var(--space-md); }
 .tab-btn.active {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+.up-next-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--accent-light);
+  color: var(--green-dark);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.planning-note {
+  background: var(--bg-accent);
+  border-left: 4px solid var(--accent);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.month-breakdown {
+  margin-top: var(--space-xl);
+}
+
+.month-block {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.month-block h4 {
+  color: var(--green-dark);
+  margin-bottom: var(--space-sm);
+  font-size: 1.1rem;
+}
+
+.month-block ul {
+  margin: 0;
+  padding-left: var(--space-lg);
+}
+
+.month-block li {
+  margin-bottom: var(--space-xs);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.season-tools {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
+}
+
+.season-tools h4 {
+  margin-bottom: var(--space-sm);
+}
+
+.print-btn {
+  margin-top: var(--space-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .tab-content {

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/mushroom-growing.html">
+  <title>Mushroom Growing Calculator — Yield, Biological Efficiency & Timeline (2026)</title>
+  <meta name="description" content="Calculate expected mushroom yield, biological efficiency, harvest cycles, and estimated value based on mushroom type, growing method, substrate quantity, and experience level.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mushroom Growing Calculator — Yield &amp; Biological Efficiency Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate expected mushroom yield, biological efficiency, harvest cycles, and estimated value based on mushroom type, growing method, substrate quantity, and experience level.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/mushroom-growing.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mushroom Growing Calculator — Yield &amp; Biological Efficiency Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate expected mushroom yield, biological efficiency, harvest cycles, and estimated value based on mushroom type, growing method, substrate quantity, and experience level.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mushroom Growing Calculator",
+    "url": "https://homesteadcalc.com/calculators/mushroom-growing.html",
+    "description": "Calculate expected mushroom yield, biological efficiency, harvest cycles, and estimated value based on mushroom type, growing method, substrate quantity, and experience level.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mushroom Growing Calculator",
+        "item": "https://homesteadcalc.com/calculators/mushroom-growing.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Mushroom Growing Calculator
+    </nav>
+
+    <h1>🍄 Mushroom Growing Calculator</h1>
+    <p class="text-lg text-muted">Estimate your mushroom harvest yield, biological efficiency, harvest timeline, and estimated market value. Input your mushroom type, growing method, and substrate quantity.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Mushroom Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="mushroom-type">Mushroom Type</label>
+            <select id="mushroom-type" class="form-select">
+              <option value="shiitake">Shiitake</option>
+              <option value="oyster-pearl">Oyster (Pearl)</option>
+              <option value="oyster-king">Oyster (King)</option>
+              <option value="button">Button/White</option>
+              <option value="portobello">Portobello</option>
+              <option value="lions-mane">Lion's Mane</option>
+              <option value="reishi">Reishi</option>
+              <option value="chanterelle">Chanterelle</option>
+              <option value="morel">Morel</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="growing-method">Growing Method</label>
+            <select id="growing-method" class="form-select">
+              <option value="indoor-bags">Indoor Bags (Substrate)</option>
+              <option value="logs">Logs (Outdoor)</option>
+              <option value="tray-tub">Tray/Tub</option>
+              <option value="bottle">Bottle Culture</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="substrate-quantity">Substrate / Log Quantity</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="number" id="substrate-quantity" class="form-input" value="20" min="0.1" max="10000" step="0.1" style="flex:1;">
+              <select id="quantity-unit" class="form-select" style="width: 120px;">
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+                <option value="logs">logs</option>
+              </select>
+            </div>
+            <div class="form-hint">Enter substrate weight or number of logs.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="experience-level">Experience Level</label>
+            <select id="experience-level" class="form-select">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="price-per-lb">Mushroom Price per lb ($)</label>
+            <input type="number" id="price-per-lb" class="form-input" value="8.00" min="0" max="200" step="0.01">
+            <div class="form-hint">Average retail: $6–$12/lb for common gourmet mushrooms.</div>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateMushrooms()">Calculate Yield</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Mushroom Harvest Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="expected-yield-lbs">—</div>
+                <div class="label">Expected Yield (lbs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="expected-yield-kg">—</div>
+                <div class="label">Expected Yield (kg)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="bio-efficiency">—</div>
+                <div class="label">Biological Efficiency (%)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="harvest-cycles">—</div>
+                <div class="label">Harvest Cycles / Flushes</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="colonization-days">—</div>
+                <div class="label">Colonization Time (days)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="fruiting-days">—</div>
+                <div class="label">Fruiting Time (days)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="estimated-value">—</div>
+                <div class="label">Estimated Value ($)</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="mushroom-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our mushroom growing calculator uses established biological efficiency (BE) values and growth timelines based on mushroom species and cultivation method. Biological efficiency measures how efficiently a mushroom strain converts substrate dry weight into mushroom fresh weight, expressed as a percentage.</p>
+
+          <h3>Biological Efficiency Explained</h3>
+          <p>Biological Efficiency (BE) is the standard metric in mushroom cultivation, calculated as the ratio of fresh mushroom weight to dry substrate weight, expressed as a percentage. For example, a 100% BE means 1 pound of dry substrate produces 1 pound of fresh mushrooms. Different species naturally have different BE potentials — oyster mushrooms can achieve 100–150% BE, while shiitake on logs typically ranges from 30–50%.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Expected Yield (lbs) = Substrate Weight × Biological Efficiency (%) × Experience Factor
+Total Timeline = Colonization Time + Fruiting Time
+Estimated Value = Expected Yield × Price per Pound
+Total Harvest = Yield per Flush × Number of Flushes
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Maintaining proper temperature, humidity, and fresh air exchange (FAE) is critical for achieving optimal biological efficiency. Beginners typically achieve 60–80% of the maximum BE, while advanced growers can reach 90–110%+ of expected yields with optimized conditions.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="hydroponic-system.html">Hydroponic System Calculator</a>
+            <a href="food-preservation.html">Food Preservation Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Mushroom Grow Kit</h4>
+              <p class="amazon-product-desc">All-in-one kit, perfect for beginners</p>
+              <a href="https://www.amazon.com/s?k=mushroom%20grow%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Pressure Cooker (23 Qt)</h4>
+              <p class="amazon-product-desc">Sterilize substrate and grain spawn</p>
+              <a href="https://www.amazon.com/s?k=pressure%20cooker%2023%20quart%20canner&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Humidity & Temperature Meter</h4>
+              <p class="amazon-product-desc">Monitor grow chamber conditions</p>
+              <a href="https://www.amazon.com/s?k=digital%20humidity%20temperature%20meter&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Mushroom Growing Book</h4>
+              <p class="amazon-product-desc">Comprehensive guide to cultivation</p>
+              <a href="https://www.amazon.com/s?k=organic%20mushroom%20farming%20book&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Typical Biological Efficiency by Species</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Mushroom</th>
+                <th style="text-align:right;padding:4px 0;">BE Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Oyster (Pearl)</td>
+                <td style="text-align:right;">80–150%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Shiitake (bags)</td>
+                <td style="text-align:right;">70–120%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Button/White</td>
+                <td style="text-align:right;">80–120%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Lion's Mane</td>
+                <td style="text-align:right;">60–100%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Portobello</td>
+                <td style="text-align:right;">70–100%</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Reishi</td>
+                <td style="text-align:right;">30–60%</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Shiitake (logs)</td>
+                <td style="text-align:right;">30–50%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">A standard 5 lb substrate bag of oyster mushrooms typically produces 4–7 lbs total over 3–4 flushes, with the first flush being the largest.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">Mushrooms can double in size every 24 hours during peak fruiting. A tiny pinhead can become a full-sized oyster mushroom in just 3–5 days under optimal conditions.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/mushroom-production" target="_blank" rel="noopener">Penn State Extension: Mushroom Production</a></li>
+            <li><a href="https://ohioline.osu.edu/factsheet/anr-45" target="_blank" rel="noopener">Ohio State University: Mushroom Cultivation</a></li>
+            <li><a href="https://www.uaex.uada.edu/yard-garden/vegetables/mushrooms.aspx" target="_blank" rel="noopener">University of Arkansas: Mushroom Growing</a></li>
+            <li><a href="https://hort.extension.wisc.edu/articles/growing-mushrooms/" target="_blank" rel="noopener">UW-Madison Extension: Growing Mushrooms</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+// Mushroom data
+var mushroomData = {
+  'shiitake': {
+    name: 'Shiitake',
+    be: { 'indoor-bags': 0.9, 'logs': 0.4, 'tray-tub': 0.75, 'bottle': 0.8 },
+    flushes: { 'indoor-bags': 3, 'logs': 4, 'tray-tub': 3, 'bottle': 2 },
+    colonization: { 'indoor-bags': 14, 'logs': 60, 'tray-tub': 14, 'bottle': 21 },
+    fruiting: { 'indoor-bags': 14, 'logs': 21, 'tray-tub': 14, 'bottle': 14 }
+  },
+  'oyster-pearl': {
+    name: 'Oyster (Pearl)',
+    be: { 'indoor-bags': 1.2, 'logs': 0.5, 'tray-tub': 1.0, 'bottle': 0.9 },
+    flushes: { 'indoor-bags': 4, 'logs': 3, 'tray-tub': 4, 'bottle': 3 },
+    colonization: { 'indoor-bags': 10, 'logs': 45, 'tray-tub': 10, 'bottle': 14 },
+    fruiting: { 'indoor-bags': 10, 'logs': 14, 'tray-tub': 10, 'bottle': 10 }
+  },
+  'oyster-king': {
+    name: 'Oyster (King)',
+    be: { 'indoor-bags': 0.9, 'logs': 0.35, 'tray-tub': 0.8, 'bottle': 0.75 },
+    flushes: { 'indoor-bags': 3, 'logs': 3, 'tray-tub': 3, 'bottle': 2 },
+    colonization: { 'indoor-bags': 14, 'logs': 60, 'tray-tub': 14, 'bottle': 18 },
+    fruiting: { 'indoor-bags': 14, 'logs': 21, 'tray-tub': 14, 'bottle': 14 }
+  },
+  'button': {
+    name: 'Button/White',
+    be: { 'indoor-bags': 1.0, 'logs': 0.3, 'tray-tub': 0.9, 'bottle': 0.85 },
+    flushes: { 'indoor-bags': 4, 'logs': 2, 'tray-tub': 4, 'bottle': 3 },
+    colonization: { 'indoor-bags': 14, 'logs': 90, 'tray-tub': 14, 'bottle': 18 },
+    fruiting: { 'indoor-bags': 10, 'logs': 14, 'tray-tub': 10, 'bottle': 10 }
+  },
+  'portobello': {
+    name: 'Portobello',
+    be: { 'indoor-bags': 0.85, 'logs': 0.25, 'tray-tub': 0.8, 'bottle': 0.7 },
+    flushes: { 'indoor-bags': 3, 'logs': 2, 'tray-tub': 3, 'bottle': 2 },
+    colonization: { 'indoor-bags': 17, 'logs': 90, 'tray-tub': 17, 'bottle': 21 },
+    fruiting: { 'indoor-bags': 14, 'logs': 21, 'tray-tub': 14, 'bottle': 14 }
+  },
+  'lions-mane': {
+    name: "Lion's Mane",
+    be: { 'indoor-bags': 0.75, 'logs': 0.35, 'tray-tub': 0.7, 'bottle': 0.8 },
+    flushes: { 'indoor-bags': 2, 'logs': 3, 'tray-tub': 2, 'bottle': 2 },
+    colonization: { 'indoor-bags': 21, 'logs': 75, 'tray-tub': 21, 'bottle': 28 },
+    fruiting: { 'indoor-bags': 21, 'logs': 28, 'tray-tub': 21, 'bottle': 21 }
+  },
+  'reishi': {
+    name: 'Reishi',
+    be: { 'indoor-bags': 0.45, 'logs': 0.25, 'tray-tub': 0.4, 'bottle': 0.5 },
+    flushes: { 'indoor-bags': 2, 'logs': 2, 'tray-tub': 2, 'bottle': 1 },
+    colonization: { 'indoor-bags': 30, 'logs': 90, 'tray-tub': 30, 'bottle': 35 },
+    fruiting: { 'indoor-bags': 45, 'logs': 60, 'tray-tub': 45, 'bottle': 45 }
+  },
+  'chanterelle': {
+    name: 'Chanterelle',
+    be: { 'indoor-bags': 0.25, 'logs': 0.15, 'tray-tub': 0.2, 'bottle': 0.15 },
+    flushes: { 'indoor-bags': 1, 'logs': 2, 'tray-tub': 1, 'bottle': 1 },
+    colonization: { 'indoor-bags': 60, 'logs': 120, 'tray-tub': 60, 'bottle': 75 },
+    fruiting: { 'indoor-bags': 30, 'logs': 45, 'tray-tub': 30, 'bottle': 30 }
+  },
+  'morel': {
+    name: 'Morel',
+    be: { 'indoor-bags': 0.2, 'logs': 0.1, 'tray-tub': 0.15, 'bottle': 0.1 },
+    flushes: { 'indoor-bags': 1, 'logs': 1, 'tray-tub': 1, 'bottle': 1 },
+    colonization: { 'indoor-bags': 45, 'logs': 180, 'tray-tub': 45, 'bottle': 60 },
+    fruiting: { 'indoor-bags': 21, 'logs': 30, 'tray-tub': 21, 'bottle': 21 }
+  }
+};
+
+var experienceFactors = {
+  'beginner': 0.65,
+  'intermediate': 0.85,
+  'advanced': 1.0
+};
+
+// Auto-update unit options based on method
+document.getElementById('growing-method').addEventListener('change', function() {
+  var unitSelect = document.getElementById('quantity-unit');
+  if (this.value === 'logs') {
+    unitSelect.value = 'logs';
+    unitSelect.disabled = false;
+  } else {
+    unitSelect.value = 'lbs';
+  }
+  calculateMushrooms();
+});
+
+function calculateMushrooms() {
+  var mushroomType = document.getElementById('mushroom-type').value;
+  var growingMethod = document.getElementById('growing-method').value;
+  var quantity = parseFloat(document.getElementById('substrate-quantity').value) || 0;
+  var quantityUnit = document.getElementById('quantity-unit').value;
+  var experienceLevel = document.getElementById('experience-level').value;
+  var pricePerLb = parseFloat(document.getElementById('price-per-lb').value) || 0;
+
+  var data = mushroomData[mushroomType];
+  var expFactor = experienceFactors[experienceLevel];
+  var baseBE = data.be[growingMethod];
+  var adjustedBE = baseBE * expFactor;
+
+  var substrateLbs;
+  if (quantityUnit === 'kg') {
+    substrateLbs = quantity * 2.20462;
+  } else if (quantityUnit === 'logs') {
+    substrateLbs = quantity * 8;
+  } else {
+    substrateLbs = quantity;
+  }
+
+  var yieldLbs = substrateLbs * adjustedBE;
+  var yieldKg = yieldLbs / 2.20462;
+  var flushes = data.flushes[growingMethod];
+  var colonizationDays = data.colonization[growingMethod];
+  var fruitingDays = data.fruiting[growingMethod];
+  var estValue = yieldLbs * pricePerLb;
+
+  document.getElementById('expected-yield-lbs').textContent = yieldLbs.toFixed(1);
+  document.getElementById('expected-yield-kg').textContent = yieldKg.toFixed(1);
+  document.getElementById('bio-efficiency').textContent = (adjustedBE * 100).toFixed(0) + '%';
+  document.getElementById('harvest-cycles').textContent = flushes;
+  document.getElementById('colonization-days').textContent = colonizationDays;
+  document.getElementById('fruiting-days').textContent = fruitingDays;
+  document.getElementById('estimated-value').textContent = '$' + estValue.toFixed(2);
+
+  var summary = document.getElementById('mushroom-summary');
+  summary.style.display = 'block';
+  var methodLabel = growingMethod === 'indoor-bags' ? 'Indoor Bags' : growingMethod === 'logs' ? 'Logs' : growingMethod === 'tray-tub' ? 'Tray/Tub' : 'Bottle Culture';
+  var expLabel = experienceLevel === 'beginner' ? 'Beginner' : experienceLevel === 'intermediate' ? 'Intermediate' : 'Advanced';
+  var qtyLabel = quantityUnit === 'logs' ? quantity + ' logs' : quantity + ' ' + quantityUnit;
+  summary.innerHTML = '<strong>Profile:</strong> ' + data.name + ' mushrooms grown via ' + methodLabel + ' with ' + qtyLabel + ' of substrate. At ' + expLabel + ' experience level, expect ' + yieldLbs.toFixed(1) + ' lbs (' + yieldKg.toFixed(1) + ' kg) of mushrooms across ' + flushes + ' flushes. Estimated market value: <strong>$' + estValue.toFixed(2) + '</strong>.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var text = 'Check out my mushroom growing estimate from Homestead Calculators!';
+  if (navigator.share) {
+    navigator.share({
+      title: 'Mushroom Growing Calculator',
+      text: text,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateMushrooms();
+});
+</script>
+
+</body>
+</html>

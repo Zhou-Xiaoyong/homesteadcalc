@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/hatching-countdown.html">
+  <title>Hatching Countdown Timer — Incubation Days & Hatch Date (2026)</title>
+  <meta name="description" content="Track your egg incubation progress with our free hatching countdown timer. Calculate hatch dates, days remaining, and incubation stages for chickens, ducks, quail, and more.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hatching Countdown Timer — Free Incubation Days &amp; Hatch Date Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Track your egg incubation progress with our free hatching countdown timer. Calculate hatch dates, days remaining, and incubation stages for chickens, ducks, quail, and more.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/hatching-countdown.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hatching Countdown Timer — Free Incubation Days &amp; Hatch Date Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Track your egg incubation progress with our free hatching countdown timer. Calculate hatch dates, days remaining, and incubation stages for chickens, ducks, quail, and more.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hatching Countdown Timer",
+    "url": "https://homesteadcalc.com/calculators/hatching-countdown.html",
+    "description": "Track your egg incubation progress with our free hatching countdown timer. Calculate hatch dates, days remaining, and incubation stages for chickens, ducks, quail, and more.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Hatching Countdown Timer",
+        "item": "https://homesteadcalc.com/calculators/hatching-countdown.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Hatching Countdown Timer
+    </nav>
+
+    <h1>🐣 Hatching Countdown Timer</h1>
+    <p class="text-lg text-muted">Track your incubation progress from set date to hatch day. Select your bird type, enter your set date, and get real-time countdown, stage information, and incubation tips.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Incubation Countdown</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="bird-type">Bird Type</label>
+            <select id="bird-type" class="form-select">
+              <option value="21">Chicken (21 days)</option>
+              <option value="28">Duck (28 days)</option>
+              <option value="28-turkey">Turkey (28 days)</option>
+              <option value="30">Goose (30 days)</option>
+              <option value="18">Quail (18 days)</option>
+              <option value="23">Pheasant (23 days)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="set-date">Set Date (Date eggs were placed)</label>
+            <input type="date" id="set-date" class="form-input">
+            <div class="form-hint">Choose the date you placed the eggs in the incubator.</div>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateHatching()">Calculate Hatch Date</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Incubation Timeline</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="days-remaining">—</div>
+                <div class="label">Days Remaining</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="hatch-date">—</div>
+                <div class="label">Hatch Date</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="progress">—</div>
+                <div class="label">Incubation Progress</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="current-stage">—</div>
+                <div class="label">Current Stage</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="day-number">—</div>
+                <div class="label">Incubation Day</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="total-days">—</div>
+                <div class="label">Total Incubation Days</div>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-secondary" onclick="shareResults()">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="stage-tips" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our hatching countdown timer uses standard incubation periods for each bird species, based on data from poultry science extensions and experienced breeders. Incubation stages are divided into four key phases: setting, turning, lockdown, and hatching.</p>
+
+          <h3>Incubation Stages Explained</h3>
+          <p>Understanding the stages of incubation helps you provide the right care at the right time. Each stage has specific temperature, humidity, and turning requirements that are critical for successful hatching.</p>
+
+          <h3>Incubation Periods by Bird Type</h3>
+          <div class="formula-box">
+Chicken: 21 days
+Duck: 28 days
+Turkey: 28 days
+Goose: 30 days
+Quail: 18 days
+Pheasant: 23 days
+          </div>
+
+          <div class="info-box">
+            <strong>Pro Tip:</strong> Always mark your calendar with both the set date and expected hatch date. Eggs can hatch up to 24–48 hours early or late depending on temperature fluctuations and individual egg variation.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+            <a href="egg-production.html">Egg Production Estimator</a>
+            <a href="chicken-coop-size.html">Chicken Coop Size Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Digital Egg Incubator</h4>
+              <p class="amazon-product-desc">Automatic turning, temperature & humidity display</p>
+              <a href="https://www.amazon.com/s?k=digital%20egg%20incubator&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Incubator Thermometer</h4>
+              <p class="amazon-product-desc">Accurate digital temperature & humidity monitor</p>
+              <a href="https://www.amazon.com/s?k=incubator%20thermometer%20hygrometer&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Egg Candler</h4>
+              <p class="amazon-product-desc">LED candling light to check embryo development</p>
+              <a href="https://www.amazon.com/s?k=egg%20candler%20led&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Brooder Heat Lamp</h4>
+              <p class="amazon-product-desc">Adjustable heat for newly hatched chicks</p>
+              <a href="https://www.amazon.com/s?k=brooder%20heat%20lamp%20chicks&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Incubation Periods by Bird Type</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Bird Type</th>
+                <th style="text-align:right;padding:4px 0;">Days</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Chicken</td>
+                <td style="text-align:right;">21</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Duck</td>
+                <td style="text-align:right;">28</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Turkey</td>
+                <td style="text-align:right;">28</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Goose</td>
+                <td style="text-align:right;">30</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Quail</td>
+                <td style="text-align:right;">18</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Pheasant</td>
+                <td style="text-align:right;">23</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Incubation times can vary by ±1–2 days depending on egg storage, incubation temperature, and breed variation.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">During the final 3 days of incubation (lockdown), chicks position themselves for hatching by pipping the air cell. Stop turning eggs during lockdown and increase humidity to 65–75% to prevent the membrane from drying out.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://extension.psu.edu/poultry-incubation" target="_blank" rel="noopener">Penn State Extension: Poultry Incubation</a></li>
+            <li><a href="https://www.uaex.uada.edu/yard-garden/poultry/index.aspx" target="_blank" rel="noopener">University of Arkansas Extension: Poultry Management</a></li>
+            <li><a href="https://animalscience.tamu.edu/poultry/" target="_blank" rel="noopener">Texas A&amp;M Poultry Science Department</a></li>
+            <li><a href="https://www.usda.gov/media/blog/2015/03/26/usda-research-helps-backyard-chicken-keepers" target="_blank" rel="noopener">USDA Research: Backyard Chicken Management</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest.html">Rainwater Harvest</a>
+        <a href="/calculators/solar-power.html">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var birdNames = {
+  '21': 'Chicken',
+  '28': 'Duck',
+  '28-turkey': 'Turkey',
+  '30': 'Goose',
+  '18': 'Quail',
+  '23': 'Pheasant'
+};
+
+var stageTips = {
+  setting: {
+    title: 'Setting Stage',
+    tips: '<strong>Setting Stage Tips:</strong><br><br>• Pre-warm the incubator to 99.5°F (37.5°C) for 24 hours before setting eggs.<br>• Let eggs warm to room temperature for 4–6 hours before placing in the incubator.<br>• Set humidity at 45–55% for the first 18 days (chickens).<br>• Mark eggs with an X on one side and O on the other to track turning.<br>• Candle eggs at day 7–10 to check for development and remove infertile eggs.'
+  },
+  turning: {
+    title: 'Turning Stage',
+    tips: '<strong>Turning Stage Tips:</strong><br><br>• Turn eggs at least 3–5 times per day, evenly spaced.<br>• Always turn an odd number of times so the egg rests on a different side each night.<br>• Wash your hands before handling eggs to prevent contamination.<br>• Maintain consistent temperature: 99.5°F (37.5°C) for forced air, 101°F (38.3°C) for still air.<br>• Candle again at day 14 to monitor development and remove quitters.'
+  },
+  lockdown: {
+    title: 'Lockdown Stage',
+    tips: '<strong>Lockdown Stage Tips:</strong><br><br>• Stop turning eggs 3 days before expected hatch (day 18 for chickens).<br>• Increase humidity to 65–75% to prevent the membrane from drying.<br>• Do not open the incubator during lockdown — temperature and humidity drops can be fatal.<br>• Ensure ventilation holes are fully open for increased oxygen needs.<br>• Lower temperature slightly to 98.5–99°F (36.9–37.2°C) if using forced air.'
+  },
+  hatching: {
+    title: 'Hatching Stage',
+    tips: '<strong>Hatching Stage Tips:</strong><br><br>• Resist the urge to help chicks out of the shell — hatching is a critical exercise.<br>• Chicks can rest for 4–8 hours after pipping before zipping begins.<br>• Keep the incubator closed; each opening drops humidity significantly.<br>• Chicks can survive 24–48 hours in the incubator without food or water.<br>• Once most chicks are dry and fluffed up, move them to a pre-warmed brooder at 95°F (35°C).'
+  },
+  hatched: {
+    title: 'Hatched!',
+    tips: '<strong>Post-Hatch Tips:</strong><br><br>• Move chicks to the brooder once they are dry and active (usually 12–24 hours after hatch).<br>• Brooder temperature: 95°F (35°C) for the first week, decrease by 5°F each week.<br>• Provide fresh water with electrolytes and starter feed (18–20% protein).<br>• Use marbles in the waterer for the first few days to prevent drowning.<br>• Monitor chicks closely — pasty butt, lethargy, or crowding indicate issues.'
+  }
+};
+
+function getIncubationDays(birdType) {
+  if (birdType === '28-turkey') return 28;
+  return parseInt(birdType);
+}
+
+function getCurrentStage(dayNumber, totalDays) {
+  var pct = (dayNumber / totalDays) * 100;
+  if (dayNumber < 0) return 'setting';
+  if (dayNumber >= totalDays) return 'hatched';
+  if (pct < 15) return 'setting';
+  if (pct < 85) return 'turning';
+  if (pct < 100) return 'lockdown';
+  return 'hatched';
+}
+
+function calculateHatching() {
+  var birdType = document.getElementById('bird-type').value;
+  var setDateStr = document.getElementById('set-date').value;
+
+  if (!setDateStr) {
+    alert('Please select a set date.');
+    return;
+  }
+
+  var totalDays = getIncubationDays(birdType);
+  var birdName = birdNames[birdType];
+
+  var setDate = new Date(setDateStr + 'T00:00:00');
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  var hatchDate = new Date(setDate);
+  hatchDate.setDate(hatchDate.getDate() + totalDays);
+
+  var diffTime = today - setDate;
+  var dayNumber = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  var daysRemaining = Math.ceil((hatchDate - today) / (1000 * 60 * 60 * 24));
+
+  if (daysRemaining < 0) daysRemaining = 0;
+  if (dayNumber > totalDays) dayNumber = totalDays;
+
+  var progress = Math.min(100, Math.max(0, (dayNumber / totalDays) * 100));
+  var stage = getCurrentStage(dayNumber, totalDays);
+
+  var stageLabels = {
+    setting: 'Setting',
+    turning: 'Turning',
+    lockdown: 'Lockdown',
+    hatching: 'Hatching',
+    hatched: 'Hatched! 🎉'
+  };
+
+  document.getElementById('days-remaining').textContent = daysRemaining + (daysRemaining === 1 ? ' day' : ' days');
+  document.getElementById('hatch-date').textContent = hatchDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  document.getElementById('progress').textContent = progress.toFixed(0) + '%';
+  document.getElementById('current-stage').textContent = stageLabels[stage];
+  document.getElementById('day-number').textContent = 'Day ' + dayNumber + ' / ' + totalDays;
+  document.getElementById('total-days').textContent = totalDays + ' days';
+
+  var tipsBox = document.getElementById('stage-tips');
+  tipsBox.style.display = 'block';
+  tipsBox.innerHTML = stageTips[stage].tips;
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  var birdType = document.getElementById('bird-type').value;
+  var setDateStr = document.getElementById('set-date').value;
+  if (!setDateStr) {
+    alert('Please calculate first.');
+    return;
+  }
+
+  var totalDays = getIncubationDays(birdType);
+  var birdName = birdNames[birdType];
+  var setDate = new Date(setDateStr + 'T00:00:00');
+  var hatchDate = new Date(setDate);
+  hatchDate.setDate(hatchDate.getDate() + totalDays);
+
+  var text = '🐣 My ' + birdName + ' eggs are incubating! Set date: ' + setDate.toLocaleDateString() + ' — Hatch date: ' + hatchDate.toLocaleDateString() + ' #homestead #incubation #backyardpoultry';
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Hatching Countdown',
+      text: text,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(text).then(function() {
+      alert('Results copied to clipboard!');
+    }).catch(function() {
+      window.prompt('Copy this text:', text);
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-set today as set date and auto-calculate
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date();
+  var dateStr = today.toISOString().split('T')[0];
+  document.getElementById('set-date').value = dateStr;
+  calculateHatching();
+});
+</script>
+
+</body>
+</html>

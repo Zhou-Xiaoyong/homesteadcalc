@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/meat-curing.html">
+  <title>Meat Curing & Smoking Calculator — Cure, Salt & Time (2026)</title>
+  <meta name="description" content="Calculate exact cure amounts, curing times, smoke times, and expected yields for bacon, ham, brisket, salmon, sausage, and jerky. Perfect your home curing with our free calculator.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Meat Curing & Smoking Calculator — Free Cure & Time Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate exact cure amounts, curing times, smoke times, and expected yields for bacon, ham, brisket, salmon, sausage, and jerky. Perfect your home curing with our free calculator.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/meat-curing.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meat Curing & Smoking Calculator — Free Cure & Time Tool (2026) | Homestead Calculators">
+  <meta name="twitter:description" content="Calculate exact cure amounts, curing times, smoke times, and expected yields for bacon, ham, brisket, salmon, sausage, and jerky. Perfect your home curing with our free calculator.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Meat Curing & Smoking Calculator",
+    "url": "https://homesteadcalc.com/calculators/meat-curing.html",
+    "description": "Calculate exact cure amounts, curing times, smoke times, and expected yields for bacon, ham, brisket, salmon, sausage, and jerky.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculators",
+        "item": "https://homesteadcalc.com/calculators/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Meat Curing & Smoking Calculator",
+        "item": "https://homesteadcalc.com/calculators/meat-curing.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Meat Curing & Smoking Calculator
+    </nav>
+
+    <h1>🥓 Meat Curing & Smoking Calculator</h1>
+    <p class="text-lg text-muted">Calculate precise cure amounts, curing times, smoke durations, and expected yields for all your home cured meats. From bacon and ham to salmon and jerky, get professional results every time.</p>
+
+    <div class="ad-slot"></div>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="card">
+          <h2>Curing Calculator</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="meat-type">Meat Type</label>
+            <select id="meat-type" class="form-select">
+              <option value="pork-belly">Pork Belly (Bacon)</option>
+              <option value="pork-shoulder">Pork Shoulder (Ham)</option>
+              <option value="beef-brisket">Beef Brisket</option>
+              <option value="turkey">Turkey</option>
+              <option value="chicken">Chicken</option>
+              <option value="salmon">Salmon</option>
+              <option value="sausage">Sausage</option>
+              <option value="jerky">Jerky (Beef)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="meat-weight">Meat Weight</label>
+            <div style="display:flex; gap:0.5rem;">
+              <input type="number" id="meat-weight" class="form-input" value="5" min="0.1" max="1000" step="0.1" style="flex:1;">
+              <select id="weight-unit" class="form-select" style="width:100px;">
+                <option value="lbs">lbs</option>
+                <option value="kg">kg</option>
+              </select>
+            </div>
+            <div class="form-hint">Enter the raw weight of the meat before curing.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="method">Method</label>
+            <select id="method" class="form-select">
+              <option value="dry-cure">Dry Cure</option>
+              <option value="wet-cure">Wet Cure (Brine)</option>
+              <option value="smoked-only">Smoked Only</option>
+              <option value="dehydrated">Dehydrated (Jerky)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cure-type">Cure Type</label>
+            <select id="cure-type" class="form-select">
+              <option value="prague-1">Prague Powder #1</option>
+              <option value="prague-2">Prague Powder #2</option>
+              <option value="morton-tq">Morton Tender Quick</option>
+              <option value="himalayan">Himalayan Salt</option>
+            </select>
+          </div>
+
+          <button id="calculate-btn" class="btn btn-primary btn-lg btn-block" onclick="calculateCuring()">Calculate Curing Needs</button>
+
+          <div id="results" class="result-box">
+            <h3 style="margin-bottom:1rem;">Your Curing Estimate</h3>
+
+            <div class="result-grid">
+              <div class="result-item">
+                <div class="value" id="cure-amount">—</div>
+                <div class="label">Cure / Salt Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="sugar-amount">—</div>
+                <div class="label">Sugar Needed (g)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="cure-time">—</div>
+                <div class="label">Curing Time (days)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="smoke-time">—</div>
+                <div class="label">Smoke Time (hrs)</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="yield-weight">—</div>
+                <div class="label">Expected Yield</div>
+              </div>
+              <div class="result-item">
+                <div class="value" id="shelf-life">—</div>
+                <div class="label">Shelf Life Estimate</div>
+              </div>
+            </div>
+
+            <div class="result-actions" style="display:flex; gap:0.75rem; margin-top:1.5rem; flex-wrap:wrap;">
+              <button class="btn btn-secondary" onclick="shareResults()" style="flex:1; min-width:140px;">📤 Share</button>
+              <button class="btn btn-secondary" onclick="printResults()" style="flex:1; min-width:140px;">🖨️ Print Results</button>
+            </div>
+
+            <div class="info-box mt-lg" id="cure-summary" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="section">
+          <h2>How It Works</h2>
+          <p>Our meat curing calculator uses industry-standard curing ratios and times based on meat type, weight, and curing method. These values are derived from food safety guidelines and artisanal curing traditions practiced by charcutiers and home curers worldwide.</p>
+
+          <h3>Curing Science Basics</h3>
+          <p>Curing preserves meat through osmosis and the antimicrobial properties of salt and nitrates. Prague Powder #1 (6.25% sodium nitrite) is used for short cures and cooked products, while Prague Powder #2 (6.25% sodium nitrite + 1% sodium nitrate) is used for long, dry-cured products like prosciutto and pepperoni that require extended aging.</p>
+
+          <h3>Formula</h3>
+          <div class="formula-box">
+Cure Amount (g) = Meat Weight (g) × Cure Percentage
+Sugar (g) = Meat Weight (g) × Sugar Percentage
+Curing Time (days) = Meat Weight (lbs) × Days per Pound
+Smoke Time (hrs) = Meat Weight (lbs) × Hours per Pound
+Yield = Meat Weight × Yield Percentage
+          </div>
+
+          <div class="info-box">
+            <strong>Food Safety Note:</strong> Always use precise measurements when working with curing salts. Never exceed recommended amounts — too much nitrite can be dangerous. Follow food safety guidelines and maintain proper temperatures throughout the curing process.
+          </div>
+        </section>
+
+        <!-- Related Calculators -->
+        <section class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="bread-baking.html">Bread Baking & Fermentation</a>
+            <a href="garden-yield.html">Garden Yield Planner</a>
+            <a href="chicken-feed.html">Chicken Feed Calculator</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Prague Powder #1</h4>
+              <p class="amazon-product-desc">Sodium nitrite cure for bacon, ham, and sausage</p>
+              <a href="https://www.amazon.com/s?k=prague%20powder%20%231&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Digital Kitchen Scale</h4>
+              <p class="amazon-product-desc">Precise measurements for accurate curing results</p>
+              <a href="https://www.amazon.com/s?k=digital%20kitchen%20scale%20gram&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Meat Thermometer</h4>
+              <p class="amazon-product-desc">Instant-read for perfect smoking and cooking</p>
+              <a href="https://www.amazon.com/s?k=instant%20read%20meat%20thermometer&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Curing Salt Kit</h4>
+              <p class="amazon-product-desc">Complete set with Prague #1, #2, and pink salt</p>
+              <a href="https://www.amazon.com/s?k=curing%20salt%20kit&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="calc-sidebar">
+        <div class="card mb-lg">
+          <h3>Quick Reference</h3>
+          <p class="text-sm">Curing Times by Meat Type (Dry Cure)</p>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border-color);">
+                <th style="text-align:left;padding:4px 0;">Meat</th>
+                <th style="text-align:right;padding:4px 0;">Days/lb</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Bacon</td>
+                <td style="text-align:right;">7 days</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Ham</td>
+                <td style="text-align:right;">3–4 days</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Brisket</td>
+                <td style="text-align:right;">1.5 days</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Turkey</td>
+                <td style="text-align:right;">2 days</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--gray-100);">
+                <td style="padding:4px 0;">Salmon</td>
+                <td style="text-align:right;">1 day</td>
+              </tr>
+              <tr>
+                <td style="padding:4px 0;">Sausage</td>
+                <td style="text-align:right;">1–2 days</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-sm text-muted mt-md">Prague Powder #1 is used at 1 tsp per 5 lbs of meat (or 0.25% of meat weight). Always weigh your cure for accuracy.</p>
+        </div>
+
+        <div class="card">
+          <h3>Did You Know?</h3>
+          <p class="text-sm">The characteristic pink color of cured meats comes from nitric oxide reacting with myoglobin in the muscle tissue. This reaction is what gives bacon, ham, and hot dogs their distinctive pink hue and cured flavor.</p>
+        </div>
+
+        <div class="card" style="margin-top: var(--space-lg);">
+          <h3>Data Sources</h3>
+          <ul style="padding-left: var(--space-lg); font-size:0.85rem; line-height: 1.8;">
+            <li><a href="https://www.fsis.usda.gov/" target="_blank" rel="noopener">USDA Food Safety & Inspection Service</a></li>
+            <li><a href="https://extension.psu.edu/food-safety" target="_blank" rel="noopener">Penn State Extension: Food Safety</a></li>
+            <li><a href="https://foodsafety.ces.ncsu.edu/" target="_blank" rel="noopener">NC State Extension: Food Safety</a></li>
+            <li><a href="https://www.meatpoultry.org/" target="_blank" rel="noopener">North American Meat Institute</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed.html">Chicken Feed</a>
+        <a href="/calculators/meat-curing.html">Meat Curing</a>
+        <a href="/calculators/bread-baking.html">Bread Baking</a>
+        <a href="/calculators/garden-yield.html">Garden Yield</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  var nav = document.querySelector('.header-nav');
+  var expanded = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', expanded);
+});
+
+var meatProfiles = {
+  'pork-belly': {
+    label: 'Pork Belly (Bacon)',
+    cureRate: { 'prague-1': 0.0025, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.035 },
+    sugarRate: 0.02,
+    dryCureDaysPerLb: 7,
+    wetCureDaysPerLb: 3.5,
+    smokeHoursPerLb: 3,
+    yieldPct: 0.75,
+    shelfLife: { refrigerated: '2–3 weeks', frozen: '6 months' }
+  },
+  'pork-shoulder': {
+    label: 'Pork Shoulder (Ham)',
+    cureRate: { 'prague-1': 0.0025, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.035 },
+    sugarRate: 0.015,
+    dryCureDaysPerLb: 3.5,
+    wetCureDaysPerLb: 2,
+    smokeHoursPerLb: 2.5,
+    yieldPct: 0.78,
+    shelfLife: { refrigerated: '1–2 weeks', frozen: '6 months' }
+  },
+  'beef-brisket': {
+    label: 'Beef Brisket',
+    cureRate: { 'prague-1': 0.002, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.03 },
+    sugarRate: 0.01,
+    dryCureDaysPerLb: 1.5,
+    wetCureDaysPerLb: 1,
+    smokeHoursPerLb: 1.5,
+    yieldPct: 0.65,
+    shelfLife: { refrigerated: '5–7 days', frozen: '6 months' }
+  },
+  'turkey': {
+    label: 'Turkey',
+    cureRate: { 'prague-1': 0.0025, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.03 },
+    sugarRate: 0.015,
+    dryCureDaysPerLb: 2,
+    wetCureDaysPerLb: 1,
+    smokeHoursPerLb: 0.75,
+    yieldPct: 0.72,
+    shelfLife: { refrigerated: '3–4 days', frozen: '4 months' }
+  },
+  'chicken': {
+    label: 'Chicken',
+    cureRate: { 'prague-1': 0.0025, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.03 },
+    sugarRate: 0.01,
+    dryCureDaysPerLb: 1,
+    wetCureDaysPerLb: 0.5,
+    smokeHoursPerLb: 0.5,
+    yieldPct: 0.7,
+    shelfLife: { refrigerated: '3–4 days', frozen: '4 months' }
+  },
+  'salmon': {
+    label: 'Salmon',
+    cureRate: { 'prague-1': 0.002, 'prague-2': 0.002, 'morton-tq': 0.008, 'himalayan': 0.03 },
+    sugarRate: 0.02,
+    dryCureDaysPerLb: 1,
+    wetCureDaysPerLb: 0.5,
+    smokeHoursPerLb: 1,
+    yieldPct: 0.8,
+    shelfLife: { refrigerated: '1–2 weeks', frozen: '3 months' }
+  },
+  'sausage': {
+    label: 'Sausage',
+    cureRate: { 'prague-1': 0.0025, 'prague-2': 0.0025, 'morton-tq': 0.01, 'himalayan': 0.025 },
+    sugarRate: 0.01,
+    dryCureDaysPerLb: 1.5,
+    wetCureDaysPerLb: 0.5,
+    smokeHoursPerLb: 1.5,
+    yieldPct: 0.75,
+    shelfLife: { refrigerated: '1–2 weeks', frozen: '6 months' }
+  },
+  'jerky': {
+    label: 'Jerky (Beef)',
+    cureRate: { 'prague-1': 0.002, 'prague-2': 0.002, 'morton-tq': 0.008, 'himalayan': 0.025 },
+    sugarRate: 0.015,
+    dryCureDaysPerLb: 0.5,
+    wetCureDaysPerLb: 0.25,
+    smokeHoursPerLb: 2,
+    yieldPct: 0.4,
+    shelfLife: { refrigerated: '1–2 months', roomTemp: '2 weeks' }
+  }
+};
+
+var cureLabels = {
+  'prague-1': 'Prague Powder #1',
+  'prague-2': 'Prague Powder #2',
+  'morton-tq': 'Morton Tender Quick',
+  'himalayan': 'Himalayan Salt'
+};
+
+var methodLabels = {
+  'dry-cure': 'Dry Cure',
+  'wet-cure': 'Wet Cure (Brine)',
+  'smoked-only': 'Smoked Only',
+  'dehydrated': 'Dehydrated (Jerky)'
+};
+
+function calculateCuring() {
+  var meatType = document.getElementById('meat-type').value;
+  var weight = parseFloat(document.getElementById('meat-weight').value) || 0;
+  var weightUnit = document.getElementById('weight-unit').value;
+  var method = document.getElementById('method').value;
+  var cureType = document.getElementById('cure-type').value;
+
+  var profile = meatProfiles[meatType];
+  
+  var weightLbs = weightUnit === 'kg' ? weight * 2.20462 : weight;
+  var weightKg = weightUnit === 'lbs' ? weight * 0.453592 : weight;
+  var weightGrams = weightKg * 1000;
+
+  var cureAmount = weightGrams * profile.cureRate[cureType];
+  var sugarAmount = weightGrams * profile.sugarRate;
+
+  var cureTime;
+  if (method === 'dry-cure') {
+    cureTime = weightLbs * profile.dryCureDaysPerLb;
+  } else if (method === 'wet-cure') {
+    cureTime = weightLbs * profile.wetCureDaysPerLb;
+  } else if (method === 'smoked-only') {
+    cureTime = 0;
+  } else {
+    cureTime = weightLbs * 0.2;
+  }
+
+  var smokeTime;
+  if (method === 'dehydrated') {
+    smokeTime = 0;
+  } else if (method === 'smoked-only') {
+    smokeTime = weightLbs * profile.smokeHoursPerLb * 1.2;
+  } else {
+    smokeTime = weightLbs * profile.smokeHoursPerLb;
+  }
+
+  var yieldLbs = weightLbs * profile.yieldPct;
+  var yieldKg = yieldLbs * 0.453592;
+  var yieldDisplay;
+  if (weightUnit === 'lbs') {
+    yieldDisplay = yieldLbs.toFixed(1) + ' lbs';
+  } else {
+    yieldDisplay = yieldKg.toFixed(1) + ' kg';
+  }
+
+  var shelfLife;
+  if (method === 'dehydrated' || meatType === 'jerky') {
+    shelfLife = '1–2 months';
+  } else if (cureType === 'prague-2') {
+    shelfLife = '3–6 months';
+  } else {
+    shelfLife = profile.shelfLife.refrigerated;
+  }
+
+  document.getElementById('cure-amount').textContent = cureAmount.toFixed(1);
+  document.getElementById('sugar-amount').textContent = sugarAmount.toFixed(1);
+  document.getElementById('cure-time').textContent = cureTime > 0 ? cureTime.toFixed(1) : '—';
+  document.getElementById('smoke-time').textContent = smokeTime > 0 ? smokeTime.toFixed(1) : '—';
+  document.getElementById('yield-weight').textContent = yieldDisplay;
+  document.getElementById('shelf-life').textContent = shelfLife;
+
+  var summary = document.getElementById('cure-summary');
+  summary.style.display = 'block';
+  var weightDisplay = weightUnit === 'lbs' ? weight.toFixed(1) + ' lbs' : weight.toFixed(1) + ' kg';
+  summary.innerHTML = '<strong>Curing Profile:</strong> ' + weightDisplay + ' of ' + profile.label + ' using the ' + methodLabels[method] + ' method with ' + cureLabels[cureType] + '. ' + 
+    (cureTime > 0 ? 'Plan for ' + cureTime.toFixed(1) + ' days of curing, followed by ' + smokeTime.toFixed(1) + ' hours of smoking. ' : 'Plan for ' + smokeTime.toFixed(1) + ' hours of smoking. ') +
+    'Expected yield: <strong>' + yieldDisplay + '</strong> with a shelf life of approximately ' + shelfLife + '.';
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function shareResults() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Meat Curing & Smoking Calculator Results',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      alert('Link copied to clipboard!');
+    });
+  }
+}
+
+function printResults() {
+  window.print();
+}
+
+// Auto-calculate on page load
+document.addEventListener('DOMContentLoaded', function() {
+  calculateCuring();
+});
+</script>
+
+</body>
+</html>
