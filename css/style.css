@@ -1096,16 +1096,58 @@ p { margin-bottom: var(--space-md); }
   .site-footer,
   .ad-slot,
   .calc-sidebar,
-  .btn {
+  .btn,
+  .result-actions,
+  .related-calc,
+  .amazon-product-grid,
+  .amazon-product-card,
+  .calc-breadcrumb,
+  .breadcrumb,
+  .mobile-menu-btn,
+  .print-btn {
+    display: none !important;
+  }
+
+  /* Hide How It Works section on calculator pages */
+  .calc-page > .container > .calc-layout .calc-main > .section {
     display: none !important;
   }
 
   body {
     font-size: 12pt;
+    background: #fff;
   }
 
   .container {
     max-width: 100%;
     padding: 0;
+  }
+
+  .calc-layout {
+    display: block;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .result-box {
+    page-break-inside: avoid;
+    border: 2px solid #1b4332;
+  }
+
+  .result-item {
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .info-box {
+    page-break-inside: avoid;
+  }
+
+  h1 {
+    page-break-after: avoid;
   }
 }
