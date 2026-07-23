@@ -93,6 +93,7 @@
         <a href="/">Home</a>
         <a href="/calculators/">All Calculators</a>
         <a href="/blog/">Guides</a>
+        <a href="/printables/">Printables</a>
         <a href="/about.html">About</a>
       </nav>
     </div>
@@ -303,6 +304,34 @@ Pressure Canner PSI by altitude:
               <a href="square-foot-gardening.html">Square Foot Gardening Calculator</a>
             </div>
           </div>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <div class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Pressure Canner</h4>
+            <p class="amazon-product-desc">USDA-recommended for low-acid foods, with accurate dial gauge</p>
+            <a href="https://www.amazon.com/s?k=pressure%20canner&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Water Bath Canner</h4>
+            <p class="amazon-product-desc">Large enamel canner with jar rack for high-acid foods</p>
+            <a href="https://www.amazon.com/s?k=water%20bath%20canner%20with%20rack&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Mason Jars (Quart)</h4>
+            <p class="amazon-product-desc">Regular-mouth quart jars with lids and bands</p>
+            <a href="https://www.amazon.com/s?k=mason%20jars%20quart&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Canning Tool Set</h4>
+            <p class="amazon-product-desc">Jar lifter, funnel, bubble remover, and lid wand</p>
+            <a href="https://www.amazon.com/s?k=canning%20kit%20tools&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </div>
         </div>
 
         <!-- Sidebar -->
@@ -396,6 +425,7 @@ Pressure Canner PSI by altitude:
         <div class="footer-col">
           <h4>Resources</h4>
           <a href="/blog/">Guides & Articles</a>
+        <a href="/printables/">Printables & Charts</a>
           <a href="/about.html">About Us</a>
           <a href="/contact.html">Contact</a>
           <a href="/privacy-policy.html">Privacy Policy</a>
@@ -524,8 +554,8 @@ Pressure Canner PSI by altitude:
     }
 
     function getAltitudeAdjustment(altitude, method) {
-      // Sea level baseline — dial and weighted gauge both 10/15 PSI at <=1000ft
-      if (altitude <= 1000) return { timeAdjust: 0, psiDial: 10, psiWeighted: 15 };
+      // Sea level baseline (0–1,000 ft) per USDA: dial gauge 11 PSI, weighted gauge 10 PSI
+      if (altitude <= 1000) return { timeAdjust: 0, psiDial: 11, psiWeighted: 10 };
 
       if (method === 'water-bath' || method === 'steam') {
         if (altitude <= 3000) return { timeAdjust: 5, psiDial: null, psiWeighted: null };

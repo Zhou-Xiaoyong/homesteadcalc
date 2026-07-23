@@ -66,6 +66,7 @@
       <a href="/">Home</a>
       <a href="/calculators/">All Calculators</a>
       <a href="/blog/">Guides</a>
+      <a href="/printables/">Printables</a>
       <a href="/about.html">About</a>
     </nav>
   </div>
@@ -178,6 +179,34 @@ Standard Cord = 4ft × 4ft × 8ft = 128 cubic feet
             <a href="land-requirement.html">Land Requirement Calculator</a>
           </div>
         </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <section class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Chainsaw</h4>
+              <p class="amazon-product-desc">Reliable saw for bucking logs to stove length</p>
+              <a href="https://www.amazon.com/s?k=chainsaw&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Log Splitter</h4>
+              <p class="amazon-product-desc">Splits rounds fast — save your back and time</p>
+              <a href="https://www.amazon.com/s?k=log%20splitter&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Firewood Rack with Cover</h4>
+              <p class="amazon-product-desc">Keeps seasoned wood dry and off the ground</p>
+              <a href="https://www.amazon.com/s?k=firewood%20rack%20outdoor%20with%20cover&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Wood Moisture Meter</h4>
+              <p class="amazon-product-desc">Verify wood is below 20% moisture before burning</p>
+              <a href="https://www.amazon.com/s?k=wood%20moisture%20meter&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+            </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </section>
       </div>
       <aside class="calc-sidebar">
         <div class="card mb-lg">
@@ -222,6 +251,7 @@ Standard Cord = 4ft × 4ft × 8ft = 128 cubic feet
       <div class="footer-col">
         <h4>Resources</h4>
         <a href="/blog/">Guides & Articles</a>
+        <a href="/printables/">Printables & Charts</a>
         <a href="/about.html">About Us</a>
       </div>
     </div>
@@ -241,18 +271,23 @@ function calculateFirewood() {
   var insulation = document.getElementById('insulation').value;
   var climate = document.getElementById('climate').value;
   var heatingType = document.getElementById('heating-type').value;
+  var woodType = document.getElementById('wood-type').value;
 
   var climateFactor = { 'mild': 1, 'cool': 2.5, 'cold': 4, 'frigid': 6 }[climate] || 2;
   var insulationFactor = { 'excellent': 0.5, 'good': 0.7, 'fair': 1.0, 'poor': 1.4 }[insulation] || 1;
   var heatingFactor = { 'primary': 1.0, 'secondary': 0.4, 'backup': 0.15 }[heatingType] || 1;
+  // Softwood has ~40% less heat per cord, so more cords are needed for the same heat
+  var woodFactor = { 'hardwood': 1.0, 'mixed': 1.2, 'softwood': 1.5 }[woodType] || 1;
+  // Approx. BTU per cord: hardwood ~24M, mixed ~20M, softwood ~16M
+  var btuPerCord = { 'hardwood': 24000000, 'mixed': 20000000, 'softwood': 16000000 }[woodType] || 24000000;
 
   var baseCordsPerSqFt = climateFactor / 1000;
-  var cordsNeeded = homeSize * baseCordsPerSqFt * insulationFactor * heatingFactor;
+  var cordsNeeded = homeSize * baseCordsPerSqFt * insulationFactor * heatingFactor * woodFactor;
   var faceCords = cordsNeeded * 3;
   var volumeCuFt = cordsNeeded * 128;
   var treesNeeded = Math.round(cordsNeeded * 1.5);
   var stackSpace = cordsNeeded * 32;
-  var btuTotal = cordsNeeded * (insulation === 'softwood' ? 1500000 : 2000000);
+  var btuTotal = cordsNeeded * btuPerCord;
 
   document.getElementById('cords-needed').textContent = cordsNeeded.toFixed(1);
   document.getElementById('cords-face').textContent = faceCords.toFixed(0);
