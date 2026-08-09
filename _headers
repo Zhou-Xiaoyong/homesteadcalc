@@ -10,7 +10,7 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # HTML pages: short cache with stale-while-revalidate
-/*.html
+/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 # CSS / JS: moderate cache (no immutable — filenames are not versioned)
