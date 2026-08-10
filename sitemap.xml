@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/solar-power</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -308,7 +308,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/solar-power-guide</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -410,7 +410,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/printables/solar-power-reference</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -455,5 +455,11 @@
     <lastmod>2026-06-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/solar-panels-for-refrigerator</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
