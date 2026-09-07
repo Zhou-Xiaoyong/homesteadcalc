@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/chicken-feed</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/egg-production</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/chicken-feed-guide</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -501,6 +501,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/fencing-for-1-acre</loc>
     <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/chicken-feed-per-day</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
