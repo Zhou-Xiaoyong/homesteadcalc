@@ -34,6 +34,9 @@
 5. **回填 CSV**：该行 status=published、publish_date=YYYY-MM-DD、published_url=完整 URL。
 6. **验证**：文章内所有站内链接对应文件存在；HTML 标签平衡；无 "Coming Soon"/TODO/占位文本。
 7. **发布**：`git add -A && git commit -m "content: <keyword> (kw #<id>)" && git push origin main`（仓库已配置 schannelCheckRevoke=false + sslBackend=schannel）。Cloudflare Pages 自动部署。
+8. **线上复核**：推送后跑 `python seo/live_verify.py`（自带 ~95 秒部署等待）。它逐项验证：新文章干净 URL 200 且正文命中、`.html` 地址 308 跟随到干净 URL、
+   `/blog/` 已含新卡片、`/sitemap.xml` 含新 URL 且零 `.html`、各反向内链老页面线上确实带链接。退出码 0/1。
+   （若 shell 缺 coreutils 导致 `sleep`/`curl` 不可用，直接用这个 Python 脚本，别硬套 curl。）
 
 ## 硬性规则
 
