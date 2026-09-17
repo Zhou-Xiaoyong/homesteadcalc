@@ -35,7 +35,9 @@
 6. **验证**：文章内所有站内链接对应文件存在；HTML 标签平衡；无 "Coming Soon"/TODO/占位文本。
 7. **发布**：`git add -A && git commit -m "content: <keyword> (kw #<id>)" && git push origin main`（仓库已配置 schannelCheckRevoke=false + sslBackend=schannel）。Cloudflare Pages 自动部署。
 8. **线上复核**：推送后跑 `python seo/live_verify.py`（自带 ~95 秒部署等待）。它逐项验证：新文章干净 URL 200 且正文命中、`.html` 地址 308 跟随到干净 URL、
-   `/blog/` 已含新卡片、`/sitemap.xml` 含新 URL 且零 `.html`、各反向内链老页面线上确实带链接。退出码 0/1。
+   `/blog/` 已含新卡片且 guide 计数与磁盘一致、`/sitemap.xml` 含新 URL 且零 `.html`、各反向内链老页面线上确实带链接。退出码 0/1。
+   目标文章**自动从 `keyword-library.csv` 取**（published 中 publish_date 最新、再按 id 最大），也可显式传 slug：`python seo/live_verify.py my-slug`；
+   已经等过部署时可加 `--no-wait`，改等待时长用 `--wait 120`。反向链接页面也是扫本地全站自动发现的，无需手工维护清单。
    （若 shell 缺 coreutils 导致 `sleep`/`curl` 不可用，直接用这个 Python 脚本，别硬套 curl。）
 
 ## 硬性规则
