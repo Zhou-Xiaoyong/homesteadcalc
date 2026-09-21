@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/goat-cheese-yield</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/cheese-making</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,13 +254,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/butter-from-gallon-cream</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -525,6 +525,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/dehydrate-apples-time</loc>
     <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/cheese-from-gallon-milk</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
