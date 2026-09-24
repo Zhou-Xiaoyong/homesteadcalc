@@ -32,7 +32,9 @@
    - **索引页**：`blog/index.html` 列表最前面加新文章卡片（复用现有卡片结构）。
 4. **sitemap.xml**：新增文章 URL（lastmod=当天，changefreq=monthly，priority=0.7）；被改动的老页面 lastmod 同步为当天。
 5. **回填 CSV**：该行 status=published、publish_date=YYYY-MM-DD、published_url=完整 URL。
-6. **验证**：文章内所有站内链接对应文件存在；HTML 标签平衡；无 "Coming Soon"/TODO/占位文本。
+6. **验证**：跑 `python seo/validate_post.py <新文章.html> <改动的老页面...>`（一次性校验：站内链接文件存在 / 内链无 `.html` 后缀 /
+   HTML 标签平衡 / 可见文本无占位符）。退出码 0/1。占位符扫描已在剥离标签后的纯文本上做，
+   不会把 `placeholder="e.g., 1000"` 这类 input 属性误报成占位文本。
 7. **发布**：`git add -A && git commit -m "content: <keyword> (kw #<id>)" && git push origin main`（仓库已配置 schannelCheckRevoke=false + sslBackend=schannel）。Cloudflare Pages 自动部署。
 8. **线上复核**：推送后跑 `python seo/live_verify.py`（自带 ~95 秒部署等待）。它逐项验证：新文章干净 URL 200 且正文命中、`.html` 地址 308 跟随到干净 URL、
    `/blog/` 已含新卡片且 guide 计数与磁盘一致、`/sitemap.xml` 含新 URL 且零 `.html`、各反向内链老页面线上确实带链接。退出码 0/1。
