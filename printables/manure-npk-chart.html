@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/printables/manure-npk-chart">
+  <title>Manure N-P-K Chart — Nutrient Values by Animal | Free Printable</title>
+  <meta name="description" content="Free printable manure N-P-K chart. Average nitrogen, phosphorus, and potassium content by livestock type, nitrogen availability over years, application rates, and safety guidelines.">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manure N-P-K Chart — Nutrient Values by Animal | Free Printable">
+  <meta property="og:description" content="Free printable manure N-P-K chart. Average nitrogen, phosphorus, and potassium content by livestock type, nitrogen availability over years, application rates, and safety guidelines.">
+  <meta property="og:url" content="https://homesteadcalc.com/printables/manure-npk-chart">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Manure N-P-K Chart — Nutrient Values by Animal | Free Printable">
+  <meta name="twitter:description" content="Free printable manure N-P-K chart. Average nitrogen, phosphorus, and potassium content by livestock type, nitrogen availability over years, application rates, and safety guidelines.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .print-page-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-color);
+      padding: var(--space-md) 0;
+      position: sticky;
+      top: var(--header-height);
+      z-index: 50;
+    }
+
+    .print-page-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .print-page-header h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      color: var(--green-dark);
+    }
+
+    .print-btn-group {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    .print-content {
+      padding: var(--space-2xl) 0;
+    }
+
+    .print-intro {
+      max-width: 720px;
+      margin-bottom: var(--space-xl);
+      color: var(--text-secondary);
+    }
+
+    .print-section {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .print-section h2 {
+      color: var(--green-dark);
+      font-size: 1.25rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-xs);
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    .print-table-container {
+      overflow-x: auto;
+      margin-bottom: var(--space-md);
+    }
+
+    .print-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .print-table th,
+    .print-table td {
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border-color);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .print-table th {
+      background: var(--green-dark);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .print-table tbody tr:nth-child(even) {
+      background: var(--gray-50);
+    }
+
+    .print-table .highlight {
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
+    .print-table .num {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .print-table .n-high { background: #fef3c7; }
+    .print-table .n-med { background: #ecfdf5; }
+    .print-table .n-low { background: #f0f9ff; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .print-footer-note {
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .tip-card {
+      background: var(--bg-accent);
+      border: 1px solid var(--accent-light);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .tip-card h4 {
+      color: var(--green-dark);
+      margin-bottom: var(--space-xs);
+      font-size: 0.95rem;
+    }
+
+    .tip-card p {
+      margin-bottom: 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .warning-box {
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+
+    .warning-box h4 {
+      color: #c2410c;
+      margin-bottom: var(--space-xs);
+      font-size: 1rem;
+    }
+
+    .warning-box p {
+      margin-bottom: 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    @media print {
+      .site-header,
+      .site-footer,
+      .print-page-header,
+      .back-link,
+      .btn {
+        display: none !important;
+      }
+
+      body {
+        font-size: 10pt;
+        background: var(--white);
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .print-content {
+        padding: 0;
+      }
+
+      .print-table {
+        font-size: 8pt;
+      }
+
+      .print-table th,
+      .print-table td {
+        padding: 4px 6px;
+      }
+
+      .print-section {
+        page-break-inside: avoid;
+        margin-bottom: 16px;
+      }
+
+      .print-section h2 {
+        font-size: 12pt;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tip-card {
+        padding: 8px;
+      }
+
+      .print-footer-note {
+        display: none;
+      }
+
+      @page {
+        margin: 0.5in;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Manure N-P-K Chart",
+    "description": "Free printable manure N-P-K chart. Average nitrogen, phosphorus, and potassium content by livestock type, nitrogen availability over years, application rates, and safety guidelines.",
+    "image": "https://homesteadcalc.com/images/og-default.jpg",
+    "author": {
+      "@type": "Organization",
+      "name": "Homestead Calculators"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Homestead Calculators",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://homesteadcalc.com/images/favicon-256.png"
+      }
+    },
+    "dateModified": "2026-07-23",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://homesteadcalc.com/printables/manure-npk-chart"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Printables",
+        "item": "https://homesteadcalc.com/printables/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Manure N-P-K Chart",
+        "item": "https://homesteadcalc.com/printables/manure-npk-chart"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="../" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../calculators/">All Calculators</a>
+      <a href="../blog/">Guides</a>
+      <a href="/printables/">Printables</a>
+      <a href="../about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="print-page-header">
+  <div class="container">
+    <div class="print-page-header-inner">
+      <h1>🐄 Manure N-P-K Chart</h1>
+      <div class="print-btn-group">
+        <button onclick="window.print()" class="btn btn-primary">🖨️ Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="print-content">
+  <div class="container">
+
+    <a href="./" class="back-link">&larr; Back to All Printables</a>
+
+    <p class="print-intro">
+      Turn livestock manure into a precise fertilizer. This chart gives average N-P-K values by animal, how much nitrogen is actually available each year, how much to apply for a target nitrogen rate, and the safety rules for using manure on food crops.
+    </p>
+
+    <section class="print-section">
+      <h2>1. Average Manure N-P-K by Animal Type (Fresh Weight %)</h2>
+      <div class="print-table-container">
+        <table class="print-table">
+          <thead>
+            <tr><th>Manure Type</th><th>N (%)</th><th>P₂O₅ (%)</th><th>K₂O (%)</th><th>N-P-K Ratio</th><th>Organic Matter (%)</th><th>N Level</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">🐔 Chicken</td><td class="num n-high">1.5</td><td class="num">1.0</td><td class="num">0.8</td><td class="num">1.5-1.0-0.8</td><td class="num">40</td><td>Very High</td></tr>
+            <tr><td class="highlight">🐇 Rabbit</td><td class="num n-high">1.5</td><td class="num">0.5</td><td class="num">1.0</td><td class="num">1.5-0.5-1.0</td><td class="num">45</td><td>Very High</td></tr>
+            <tr><td class="highlight">🐑 Sheep / Goat</td><td class="num n-med">0.7</td><td class="num">0.3</td><td class="num">0.9</td><td class="num">0.7-0.3-0.9</td><td class="num">50</td><td>Medium</td></tr>
+            <tr><td class="highlight">🐎 Horse</td><td class="num n-med">0.7</td><td class="num">0.3</td><td class="num">0.6</td><td class="num">0.7-0.3-0.6</td><td class="num">55</td><td>Medium</td></tr>
+            <tr><td class="highlight">🐄 Cow / Dairy</td><td class="num n-low">0.6</td><td class="num">0.3</td><td class="num">0.5</td><td class="num">0.6-0.3-0.5</td><td class="num">45</td><td>Low–Medium</td></tr>
+            <tr><td class="highlight">🐖 Pig / Hog</td><td class="num n-low">0.6</td><td class="num">0.4</td><td class="num">0.4</td><td class="num">0.6-0.4-0.4</td><td class="num">35</td><td>Low–Medium</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0;">Values are averages for fresh manure. Actual content varies with animal diet, bedding material (straw, shavings), moisture, and how the manure is stored. Composting concentrates nutrients (removes water) but also loses some nitrogen to the air.</p>
+    </section>
+
+    <section class="print-section">
+      <h2>2. Nutrient Availability Over Time</h2>
+      <div class="print-table-container">
+        <table class="print-table">
+          <thead>
+            <tr><th>Nutrient</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Nitrogen (N)</td><td class="num">50%</td><td class="num">25%</td><td class="num">10%</td><td>Only half is available immediately; rest is slow-release organic N</td></tr>
+            <tr><td class="highlight">Phosphorus (P₂O₅)</td><td class="num">80–90%</td><td class="num">~10%</td><td class="num">—</td><td>Most P is available the first year; it binds to soil over time</td></tr>
+            <tr><td class="highlight">Potassium (K₂O)</td><td class="num">80–90%</td><td class="num">~10%</td><td class="num">—</td><td>Highly available; leaches more readily than P</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0;"><strong>Why this matters:</strong> If you apply manure every year, nitrogen accumulates. Account for residual N from previous years' applications to avoid over-fertilizing, which wastes money, burns plants, and pollutes waterways.</p>
+    </section>
+
+    <section class="print-section">
+      <h2>3. Manure Needed for 2 lbs N per 1,000 sq ft (Year 1 Available)</h2>
+      <div class="print-table-container">
+        <table class="print-table">
+          <thead>
+            <tr><th>Manure Type</th><th>Total N %</th><th>Available N % (×0.50)</th><th>Manure Needed (lbs)</th><th>Equivalent (5-gal buckets)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Chicken</td><td class="num">1.5%</td><td class="num">0.75%</td><td class="num">267 lbs</td><td class="num">~9–10 buckets</td></tr>
+            <tr><td class="highlight">Rabbit</td><td class="num">1.5%</td><td class="num">0.75%</td><td class="num">267 lbs</td><td class="num">~9–10 buckets</td></tr>
+            <tr><td class="highlight">Sheep / Goat</td><td class="num">0.7%</td><td class="num">0.35%</td><td class="num">571 lbs</td><td class="num">~18–20 buckets</td></tr>
+            <tr><td class="highlight">Horse</td><td class="num">0.7%</td><td class="num">0.35%</td><td class="num">571 lbs</td><td class="num">~18–20 buckets</td></tr>
+            <tr><td class="highlight">Cow / Dairy</td><td class="num">0.6%</td><td class="num">0.30%</td><td class="num">667 lbs</td><td class="num">~20–25 buckets</td></tr>
+            <tr><td class="highlight">Pig / Hog</td><td class="num">0.6%</td><td class="num">0.30%</td><td class="num">667 lbs</td><td class="num">~20–25 buckets</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0;"><strong>Formula:</strong> Manure Needed = (Target N × Area ÷ 1,000) ÷ (N% × 0.50 ÷ 100). Most vegetables need 1–3 lbs of available N per 1,000 sq ft per season. Bucket weights vary by moisture — 25–40 lbs per 5-gallon bucket is typical.</p>
+    </section>
+
+    <section class="print-section">
+      <h2>4. Nutrients in 100 lbs of Each Manure Type</h2>
+      <div class="print-table-container">
+        <table class="print-table">
+          <thead>
+            <tr><th>Manure</th><th>Total N (lbs)</th><th>Available N Year 1 (lbs)</th><th>P₂O₅ (lbs)</th><th>K₂O (lbs)</th><th>Organic Matter (lbs)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Chicken</td><td class="num">1.5</td><td class="num">0.75</td><td class="num">1.0</td><td class="num">0.8</td><td class="num">40</td></tr>
+            <tr><td class="highlight">Rabbit</td><td class="num">1.5</td><td class="num">0.75</td><td class="num">0.5</td><td class="num">1.0</td><td class="num">45</td></tr>
+            <tr><td class="highlight">Sheep / Goat</td><td class="num">0.7</td><td class="num">0.35</td><td class="num">0.3</td><td class="num">0.9</td><td class="num">50</td></tr>
+            <tr><td class="highlight">Horse</td><td class="num">0.7</td><td class="num">0.35</td><td class="num">0.3</td><td class="num">0.6</td><td class="num">55</td></tr>
+            <tr><td class="highlight">Cow / Dairy</td><td class="num">0.6</td><td class="num">0.30</td><td class="num">0.3</td><td class="num">0.5</td><td class="num">45</td></tr>
+            <tr><td class="highlight">Pig / Hog</td><td class="num">0.6</td><td class="num">0.30</td><td class="num">0.4</td><td class="num">0.4</td><td class="num">35</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="print-section">
+      <h2>5. Manure Safety Rules for Food Crops</h2>
+      <div class="warning-box">
+        <h4>⚠️ Raw Manure &amp; Pathogens</h4>
+        <p>Fresh manure may contain E. coli, Salmonella, and other pathogens. Never apply raw manure to crops that will be eaten raw within the waiting periods below. Composting to 131°F (55°C) for 3 consecutive days kills most pathogens.</p>
+      </div>
+      <div class="print-table-container">
+        <table class="print-table">
+          <thead>
+            <tr><th>Crop Type</th><th>Minimum Wait (Raw Manure)</th><th>Composted Manure</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="highlight">Crops touching soil (lettuce, strawberries)</td><td class="num">90 days</td><td class="num">0 days (safe anytime)</td></tr>
+            <tr><td class="highlight">Root crops (carrots, potatoes)</td><td class="num">120 days</td><td class="num">0 days (safe anytime)</td></tr>
+            <tr><td class="highlight">Above-ground fruiting (tomatoes, corn)</td><td class="num">90 days</td><td class="num">0 days (safe anytime)</td></tr>
+            <tr><td class="highlight">Crops that touch soil &amp; are eaten raw</td><td class="num">120 days</td><td class="num">0 days (safe anytime)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="print-section">
+      <h2>6. Best Uses by Manure Type</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>🐔 Chicken Manure</h4>
+          <p>Highest N — great for heavy feeders (corn, tomatoes, squash). <strong>Must be composted</strong> or aged; fresh chicken manure burns plants. Compost first to reduce pathogens.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🐇 Rabbit Manure</h4>
+          <p>"Cold" manure — safe to apply fresh directly to the garden. High N, won't burn. Pellet form makes it easy to side-dress plants. Excellent for raised beds.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🐑 Sheep / Goat Manure</h4>
+          <p>Also a "cold" manure — safe fresh. Pelletized, easy to spread. Good balanced N-P-K. Excellent for vegetable gardens and can be applied any time.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🐎 Horse Manure</h4>
+          <p>Often has lots of bedding (straw/shavings) which is high carbon. Compost well to avoid nitrogen tie-up. Great for building soil organic matter.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🐄 Cow Manure</h4>
+          <p>Lower N, high organic matter. Mild and safe when composted. Great for conditioning soil and top-dressing. Less risk of burning than chicken manure.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🐖 Pig Manure</h4>
+          <p>Similar to cow in N but higher P. <strong>Must be composted</strong> — pig manure can carry parasites. Good for fields and compost piles, less ideal for direct garden use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="print-section">
+      <h2>7. Application Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>🔬 Test Your Soil</h4>
+          <p>Test N-P-K and pH before applying manure. Over-application of phosphorus (common with manure) can lock up micronutrients and pollute streams.</p>
+        </div>
+        <div class="tip-card">
+          <h4>📅 Apply in Fall or Early Spring</h4>
+          <p>Incorporate manure into the soil before planting. Fall applications give organic matter time to break down and nutrients to stabilize.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🌿 Compost First When Possible</h4>
+          <p>Composting kills pathogens, reduces volume, stabilizes N, and eliminates the "burn" risk. Aged (6+ months) manure is the next best thing.</p>
+        </div>
+        <div class="tip-card">
+          <h4>💧 Water It In</h4>
+          <p>Always water manure into the soil to prevent nutrient runoff, volatilization (N loss as ammonia), and attraction of pests.</p>
+        </div>
+        <div class="tip-card">
+          <h4>♻️ Account for Residual N</h4>
+          <p>25% of last year's N and 10% from 2 years ago is available this year. Reduce fresh applications accordingly to avoid over-fertilizing.</p>
+        </div>
+        <div class="tip-card">
+          <h4>🚫 Avoid Runoff</h4>
+          <p>Don't apply manure before heavy rain. Keep it out of waterways and wells. Buffer strips of grass along streams help filter runoff.</p>
+        </div>
+      </div>
+    </section>
+
+    <div style="display: flex; gap: var(--space-sm); justify-content: center; margin-top: var(--space-2xl); flex-wrap: wrap;">
+      <button onclick="window.print()" class="btn btn-primary btn-lg">🖨️ Print This Page</button>
+      <a href="../calculators/manure-fertilizer" class="btn btn-secondary btn-lg">🧮 Manure Fertilizer Calculator</a>
+      <a href="./" class="btn btn-secondary btn-lg">← All Printables</a>
+    </div>
+
+    <div class="print-footer-title" style="text-align: center; margin-top: var(--space-2xl);">
+      <h2 style="color: var(--green-dark); font-size: 1.5rem; margin-bottom: var(--space-sm);">🐄 Manure N-P-K Chart</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">homesteadcalc.com</p>
+    </div>
+
+    <div class="print-footer-note">
+      <p>Nutrient values are averages and vary with diet, bedding, and storage. For precise rates, send a manure sample to a lab for analysis. Always follow local regulations for manure application.</p>
+      <p>Source: Homestead Calculators — homesteadcalc.com</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more. No sign-ups, no paywalls — just useful tools.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="../calculators/chicken-feed">Chicken Feed Calculator</a>
+        <a href="../calculators/garden-yield">Garden Yield Planner</a>
+        <a href="../calculators/rainwater-harvest">Rainwater Harvest</a>
+        <a href="../calculators/solar-power">Solar Power System</a>
+        <a href="../calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/printables/">Printables</a>
+        <a href="../blog/">Guides &amp; Articles</a>
+        <a href="../about">About Us</a>
+        <a href="../contact">Contact</a>
+        <a href="../privacy-policy">Privacy Policy</a>
+        <a href="../terms">Terms of Use</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#" target="_blank" rel="noopener">📺 YouTube</a>
+        <a href="#" target="_blank" rel="noopener">📌 Pinterest</a>
+        <a href="#" target="_blank" rel="noopener">🐦 Twitter</a>
+        <a href="#" target="_blank" rel="noopener">📘 Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="../privacy-policy">Privacy</a>
+        <a href="../terms">Terms</a>
+        <a href="../sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

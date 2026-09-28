@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/calculators/raised-bed-soil">
+  <title>Raised Bed Soil Calculator — How Much Soil Do You Need? (2026)</title>
+  <meta name="description" content="Calculate exactly how much soil, compost, and amendments you need to fill your raised garden beds. Get cubic feet, cubic yards, and gallons for any bed size.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Raised Bed Soil Calculator — Free Soil Volume Tool (2026) | Homestead Calculators">
+  <meta property="og:description" content="Calculate exactly how much soil, compost, and amendments you need to fill your raised garden beds. Get cubic feet, cubic yards, and gallons for any bed size.">
+  <meta property="og:url" content="https://homesteadcalc.com/calculators/raised-bed-soil">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Raised Bed Soil Calculator — Free Soil Volume Tool (2026)">
+  <meta name="twitter:description" content="Calculate exactly how much soil, compost, and amendments you need to fill your raised garden beds.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Raised Bed Soil Calculator",
+    "url": "https://homesteadcalc.com/calculators/raised-bed-soil",
+    "description": "Calculate exactly how much soil, compost, and amendments you need to fill your raised garden beds. Get cubic feet, cubic yards, and gallons for any bed size.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://homesteadcalc.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://homesteadcalc.com/calculators/" },
+      { "@type": "ListItem", "position": 3, "name": "Raised Bed Soil Calculator", "item": "https://homesteadcalc.com/calculators/raised-bed-soil" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Raised Bed Soil Calculator",
+    "description": "Raised beds need a lightweight, nutrient-rich soil mix. The volume depends on the bed's length, width, and depth. A good mix combines topsoil for structure, compost for nutrients, and a lightening agent like peat moss or perlite for drainage.",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Enter your parameters", "text": "Fill in the calculator's input fields with your specific values (quantity, size, breed, or other parameters relevant to your situation)." },
+      { "@type": "HowToStep", "position": 2, "name": "Review the formula", "text": "Check the How It Works section to understand the formula and reference data the calculator uses so you can interpret the results accurately." },
+      { "@type": "HowToStep", "position": 3, "name": "Calculate the results", "text": "Click the Calculate button to generate your personalized estimates based on the inputs you provided." },
+      { "@type": "HowToStep", "position": 4, "name": "Adjust and recalculate", "text": "Review the output estimates, adjust your inputs as needed, and recalculate to compare different scenarios for your homestead planning." }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/printables/">Printables</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="calc-page">
+  <div class="container">
+    <nav class="calc-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <a href="/calculators/">Calculators</a> &raquo; Raised Bed Soil Calculator
+    </nav>
+
+    <h1>Raised Bed Soil Calculator</h1>
+    <p class="text-muted">Figure out exactly how much soil, compost, and amendments you need to fill your raised garden beds. Results in cubic feet, cubic yards, gallons, and bag counts.</p>
+
+    <div class="calc-layout">
+      <div class="calc-main">
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <div class="calc-form" id="calcForm">
+          <div class="form-group">
+            <label class="form-label" for="bedLength">Bed Length (ft)</label>
+            <input type="number" id="bedLength" class="form-input" value="8" min="1" max="100" step="0.5">
+            <span class="form-hint">Standard raised beds are typically 4 or 8 feet long.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bedWidth">Bed Width (ft)</label>
+            <input type="number" id="bedWidth" class="form-input" value="4" min="1" max="20" step="0.5">
+            <span class="form-hint">Keep beds 3–4 ft wide so you can reach the center from either side.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bedDepth">Bed Depth (inches)</label>
+            <input type="number" id="bedDepth" class="form-input" value="12" min="4" max="36" step="1">
+            <span class="form-hint">Most vegetables need 6–12 inches. Root crops and tomatoes need 12+ inches.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="numBeds">Number of Beds</label>
+            <input type="number" id="numBeds" class="form-input" value="1" min="1" max="50" step="1">
+            <span class="form-hint">Calculate soil for multiple identical beds at once.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="soilMix">Soil Mix Recipe</label>
+            <select id="soilMix" class="form-select">
+              <option value="balanced">Balanced (60% topsoil / 30% compost / 10% perlite)</option>
+              <option value="mel">Mel's Mix (1/3 topsoil / 1/3 compost / 1/3 peat moss)</option>
+              <option value="organic">Organic (50% compost / 30% topsoil / 20% coir)</option>
+              <option value="lightweight">Lightweight (40% topsoil / 30% compost / 30% perlite)</option>
+            </select>
+            <span class="form-hint">Different recipes suit different crops and drainage needs.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bagSize">Soil Bag Size (cu ft)</label>
+            <input type="number" id="bagSize" class="form-input" value="2" min="0.5" max="5" step="0.5">
+            <span class="form-hint">Most garden soil bags are 1 or 2 cubic feet. Bulk soil is sold by the cubic yard.</span>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" onclick="calculateSoil()">Calculate Soil Needed</button>
+        </div>
+
+        <div class="result-box" id="results" style="display:none;">
+          <h3 style="margin-bottom: var(--space-md);">🪴 Soil Volume Breakdown</h3>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="value" id="totalCuFt">—</div>
+              <div class="label">Total Volume (cubic feet)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="totalCuYd">—</div>
+              <div class="label">Total Volume (cubic yards)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="totalGal">—</div>
+              <div class="label">Total Volume (gallons)</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="totalBags">—</div>
+              <div class="label">Bags Needed</div>
+            </div>
+          </div>
+
+          <h4 style="margin: var(--space-lg) 0 var(--space-sm);">Soil Mix Components</h4>
+          <div id="mixBreakdown" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);"></div>
+
+          <div class="result-actions">
+            <button class="btn btn-print" onclick="printResults()">🖨️ Print Results</button>
+          </div>
+        </div>
+
+        <div class="ad-slot" aria-hidden="true"></div>
+
+        <h2>How It Works</h2>
+        <p>The volume of soil you need is simply the volume of your raised bed: length × width × depth. Convert depth from inches to feet by dividing by 12. The calculator then splits the total volume into the components of your chosen soil mix recipe.</p>
+
+        <div class="formula-box">
+Volume (cu ft) = Length (ft) × Width (ft) × (Depth (in) ÷ 12) × Number of Beds
+
+Volume (cu yd) = Volume (cu ft) ÷ 27
+Volume (gallons) = Volume (cu ft) × 7.48
+
+Each component = Total Volume × Component Percentage</div>
+
+        <h3>Choosing the Right Soil Mix</h3>
+        <p><strong>Balanced (60/30/10):</strong> Great all-purpose mix for most vegetables. Topsoil provides structure, compost adds nutrients, perlite improves drainage.</p>
+        <p><strong>Mel's Mix (1/3 each):</strong> Made famous by Square Foot Gardening. Lightweight and nutrient-rich. Peat moss retains moisture but is not renewable — consider coir as an alternative.</p>
+        <p><strong>Organic (50/30/20):</strong> High compost content for heavy feeders. Coir is a sustainable peat alternative.</p>
+        <p><strong>Lightweight (40/30/30):</strong> Extra perlite for containers and beds where drainage is critical (e.g., roofs, wet climates).</p>
+
+        <h3>Tips</h3>
+        <p><strong>Buy in bulk:</strong> Soil is much cheaper by the cubic yard than by the bag. One cubic yard = 27 cu ft = about 13–14 two-cubic-foot bags.</p>
+        <p><strong>Don't use garden soil alone:</strong> It compacts in raised beds and drains poorly. Always mix with compost and a lightening agent.</p>
+        <p><strong>Leave 1–2 inches at the top:</strong> Fill beds to within 1–2 inches of the rim to leave room for watering and mulch.</p>
+
+        <div class="related-calc">
+          <h3>Related Calculators</h3>
+          <div class="related-calc-list">
+            <a href="/calculators/square-foot-gardening">Square Foot Gardening Planner</a>
+            <a href="/calculators/plant-spacing">Plant Spacing Calculator</a>
+            <a href="/calculators/garden-yield">Garden Yield</a>
+            <a href="/calculators/">All Calculators</a>
+          </div>
+        </div>
+
+        <div class="related-calc">
+          <h3>Related Guides</h3>
+          <div class="related-calc-list">
+            <a href="/blog/garden-size-family-of-4">Garden Size for a Family of 4: How Much to Plant</a>
+            <a href="/blog/square-foot-gardening-guide">Square Foot Gardening: Complete Beginner's Guide</a>
+          </div>
+        </div>
+
+        <section class="related-calc">
+          <h3>Related Printable</h3>
+          <div class="related-calc-list">
+            <a href="/printables/raised-bed-soil-chart">Raised Bed Soil Chart (Printable PDF)</a>
+          </div>
+        </section>
+
+        <!-- Amazon Affiliate Recommendations -->
+        <div class="related-calc">
+          <h3>Recommended Products</h3>
+          <div class="amazon-product-grid">
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Raised Garden Bed</h4>
+            <p class="amazon-product-desc">Cedar raised bed kit, 4×8 ft, 12 in deep</p>
+            <a href="https://www.amazon.com/s?k=raised%20garden%20bed%204x8%20cedar&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Garden Soil</h4>
+            <p class="amazon-product-desc">Raised bed soil mix, 2 cu ft bags</p>
+            <a href="https://www.amazon.com/s?k=raised%20bed%20soil%20mix%202%20cubic%20feet&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Compost</h4>
+            <p class="amazon-product-desc">Organic compost for nutrient-rich soil</p>
+            <a href="https://www.amazon.com/s?k=organic%20compost%20garden%20soil&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          <div class="amazon-product-card">
+            <h4 class="amazon-product-title">Perlite</h4>
+            <p class="amazon-product-desc">Improves soil aeration and drainage</p>
+            <a href="https://www.amazon.com/s?k=perlite%20organic%20garden&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored">View on Amazon</a>
+          </div>
+          </div>
+          <p class="text-sm text-muted" style="margin-top: var(--space-md);">*Affiliate links: We may earn a commission if you purchase through these links at no additional cost to you.</p>
+        </div>
+      </div>
+
+      <aside class="calc-sidebar">
+        <div class="card">
+          <h3>Standard Bed Volumes</h3>
+          <p class="text-sm text-muted mb-md">Soil needed for common bed sizes at 12-inch depth.</p>
+          <table style="width:100%;font-size:0.8rem;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">Bed Size</th>
+                <th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">cu ft</th>
+                <th style="text-align:center;padding:3px 0;border-bottom:1px solid var(--border-color);color:var(--text-muted);font-size:0.65rem;text-transform:uppercase;">cu yd</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">4×4 ft</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">16</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">0.6</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">4×6 ft</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">24</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">0.9</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">4×8 ft</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">32</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">1.2</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">4×10 ft</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">40</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">1.5</td></tr>
+              <tr><td style="padding:2px 0;border-bottom:1px solid var(--gray-100);">4×12 ft</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">48</td><td style="text-align:center;padding:2px 0;border-bottom:1px solid var(--gray-100);font-family:var(--font-mono);">1.8</td></tr>
+              <tr><td style="padding:2px 0;">2×8 ft</td><td style="text-align:center;padding:2px 0;font-family:var(--font-mono);">16</td><td style="text-align:center;padding:2px 0;font-family:var(--font-mono);">0.6</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card mt-md">
+          <h3>Quick Tips</h3>
+          <ul style="font-size:0.85rem;padding-left:1rem;margin-bottom:0;">
+            <li>1 cubic yard = 27 cubic feet</li>
+            <li>1 cu ft ≈ 7.48 gallons</li>
+            <li>Buy in bulk for big projects</li>
+            <li>Leave 1–2 in of headspace</li>
+            <li>Mix components thoroughly</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed">Chicken Feed</a>
+        <a href="/calculators/garden-yield">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest">Rainwater Harvest</a>
+        <a href="/calculators/solar-power">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/printables/">Printables & Charts</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const soilMixes = {
+  balanced: {
+    name: 'Balanced Mix',
+    components: [
+      { name: 'Topsoil', pct: 0.60 },
+      { name: 'Compost', pct: 0.30 },
+      { name: 'Perlite', pct: 0.10 }
+    ]
+  },
+  mel: {
+    name: "Mel's Mix",
+    components: [
+      { name: 'Topsoil', pct: 0.333 },
+      { name: 'Compost', pct: 0.333 },
+      { name: 'Peat Moss', pct: 0.334 }
+    ]
+  },
+  organic: {
+    name: 'Organic Mix',
+    components: [
+      { name: 'Compost', pct: 0.50 },
+      { name: 'Topsoil', pct: 0.30 },
+      { name: 'Coco Coir', pct: 0.20 }
+    ]
+  },
+  lightweight: {
+    name: 'Lightweight Mix',
+    components: [
+      { name: 'Topsoil', pct: 0.40 },
+      { name: 'Compost', pct: 0.30 },
+      { name: 'Perlite', pct: 0.30 }
+    ]
+  }
+};
+
+function calculateSoil() {
+  const length = parseFloat(document.getElementById('bedLength').value);
+  const width = parseFloat(document.getElementById('bedWidth').value);
+  const depth = parseFloat(document.getElementById('bedDepth').value);
+  const numBeds = parseInt(document.getElementById('numBeds').value);
+  const mixKey = document.getElementById('soilMix').value;
+  const bagSize = parseFloat(document.getElementById('bagSize').value);
+
+  if (isNaN(length) || isNaN(width) || isNaN(depth) || isNaN(numBeds)) {
+    alert('Please enter valid numbers for all bed dimensions.');
+    return;
+  }
+
+  // Volume in cubic feet
+  const cuFt = length * width * (depth / 12) * numBeds;
+  const cuYd = cuFt / 27;
+  const gallons = cuFt * 7.48;
+  const bags = Math.ceil(cuFt / bagSize);
+
+  document.getElementById('totalCuFt').textContent = cuFt.toFixed(1);
+  document.getElementById('totalCuYd').textContent = cuYd.toFixed(2);
+  document.getElementById('totalGal').textContent = gallons.toFixed(0);
+  document.getElementById('totalBags').textContent = bags;
+
+  // Mix components
+  const mix = soilMixes[mixKey];
+  const breakdown = document.getElementById('mixBreakdown');
+  breakdown.innerHTML = '';
+  mix.components.forEach(comp => {
+    const compCuFt = cuFt * comp.pct;
+    const compBags = Math.ceil(compCuFt / bagSize);
+    const div = document.createElement('div');
+    div.className = 'summary-item';
+    div.style.cssText = 'background:var(--white);border-radius:var(--radius-sm);padding:var(--space-md);text-align:center;border:1px solid var(--border-color);';
+    div.innerHTML = '<div style="font-size:1.3rem;font-weight:700;color:var(--green-dark);">' + compCuFt.toFixed(1) + ' cu ft</div>' +
+                    '<div style="font-size:0.8rem;color:var(--text-secondary);margin-top:2px;">' + comp.name + ' (' + (comp.pct * 100).toFixed(0) + '%)</div>' +
+                    '<div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">~' + compBags + ' bags</div>';
+    breakdown.appendChild(div);
+  });
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+  const nav = document.querySelector('.header-nav');
+  nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
+
+function printResults() {
+  window.print();
+}
+</script>
+</body>
+</html>

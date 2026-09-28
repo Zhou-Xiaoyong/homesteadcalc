@@ -50,6 +50,26 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://homesteadcalc.com/contact"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -71,6 +91,12 @@
 </header>
 
 <main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/">Home</a> &rsaquo; <span>Contact</span>
+    </div>
+  </nav>
+
   <section class="page-hero">
     <div class="container">
       <h1>Contact Us</h1>

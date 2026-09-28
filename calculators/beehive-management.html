@@ -53,6 +53,40 @@
     ]
   }
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Beehive Management Calculator",
+  "description": "This calculator is based on guidelines from the American Beekeeping Federation and university extension programs. Honey production varies significantly based on hive type, location, and forage availability.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Enter your parameters",
+      "text": "Fill in the calculator's input fields with your specific values (quantity, size, breed, or other parameters relevant to your situation)."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Review the formula",
+      "text": "Check the How It Works section to understand the formula and reference data the calculator uses so you can interpret the results accurately."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Calculate the results",
+      "text": "Click the Calculate button to generate your personalized estimates based on the inputs you provided."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Adjust and recalculate",
+      "text": "Review the output estimates, adjust your inputs as needed, and recalculate to compare different scenarios for your homestead planning."
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header" role="banner">
@@ -166,8 +200,8 @@
           </ul>
           <div class="formula-box">
 Annual Honey = Hives × Base Production × Nectar Flow Factor × Climate Factor
-Winter Feed = Hives × 60 lbs (minimum for cold climates)
-Swarm Risk = (Colony Strength ÷ Available Space) × 100
+Winter Feed = Hives × Feed Rate (cold 80 lbs, temperate 60 lbs, warm/arid 40 lbs)
+Swarm Risk = based on Nectar Flow Factor (>1.1 High, <0.8 Low, otherwise Moderate)
           </div>
         </section>
         <section class="related-calc">
