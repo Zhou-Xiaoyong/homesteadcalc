@@ -462,7 +462,7 @@ function calculateWine() {
   // Natural sugar from fruit (in lbs)
   var naturalSugarLbs = juiceWeightLbs * fruit.naturalSugar;
 
-  // Sugar needed for target ABV (approx 0.055 lbs of sugar per gallon per 1% ABV)
+  // Sugar needed for target ABV (approx 0.13 lbs of sugar per gallon per 1% ABV)
   // Formula: sugar for ABV = (targetABV / 0.55) * juiceGallons * 0.104 lbs sugar per gal per Brix
   // Simplified: ~0.13 lbs sugar per gallon per 1% ABV
   var sugarForABV = targetABV * 0.13 * juiceGallons;

@@ -308,7 +308,7 @@ function calculateYield() {
   var perTreeYield = baseYield * ageFactor * rootFactor * condFactor;
   var totalYield = perTreeYield * numTrees;
   var bushels = totalYield / bushelWeight;
-  var jars = totalYield * 1.5;
+  var jars = totalYield * 1.0;
   var treesPerAcre = Math.round(43560 / (spacing[rootstock] * spacing[rootstock]));
 
   document.getElementById('per-tree-yield').textContent = perTreeYield.toFixed(0);

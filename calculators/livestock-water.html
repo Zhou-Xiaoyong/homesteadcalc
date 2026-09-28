@@ -266,7 +266,7 @@ Daily water per animal = Base rate × Season multiplier × Lactation multiplier
 Season multipliers:
   Summer: 1.15 (15% increase)
   Spring/Fall: 1.00 (base rate)
-  Winter: 0.85 (15% decrease, except dairy which stays higher)
+  Winter: 0.85 (15% decrease)
 
 Lactation multiplier: 2.0 (doubles for lactating dairy/beef)
 
@@ -498,7 +498,7 @@ Recommended tank size = Daily total × 3 (3-day emergency supply)
 
     const animalData = {
       beef: { name: 'Beef Cattle', base: 12, summer: 15, winter: 8, unit: 'head' },
-      dairy: { name: 'Dairy Cattle', base: 35, summer: 40, winter: 30, unit: 'head', lactation: true },
+      dairy: { name: 'Dairy Cattle', base: 17, summer: 20, winter: 15, unit: 'head', lactation: true },
       horse: { name: 'Horses', base: 10, summer: 12, winter: 6, unit: 'head' },
       sheep: { name: 'Sheep', base: 1.5, summer: 2, winter: 0.75, unit: 'head' },
       goat: { name: 'Goats', base: 1.5, summer: 2, winter: 0.75, unit: 'head' },

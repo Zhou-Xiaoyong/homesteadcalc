@@ -466,8 +466,8 @@ Standard heater sizes:
       const fuelType = document.getElementById('fuelType').value;
       const zoneSelect = document.getElementById('usdaZone');
 
-      // Surface area: 2*(L*H + W*H) + L*W
-      const surfaceArea = 2 * (length * height + width * height) + length * width;
+      // Surface area: walls + roof + floor (2*(L*H + W*H + L*W))
+      const surfaceArea = 2 * (length * height + width * height + length * width);
 
       // Temperature difference
       const tempDiff = insideTemp - outsideTemp;
