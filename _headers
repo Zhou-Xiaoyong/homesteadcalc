@@ -1,15 +1,15 @@
 # Cloudflare Pages Headers Configuration
 
-# Security headers for all routes
+# 铁律：同一个 URL pattern 只能出现一次
+# —— Cloudflare Pages 按 pattern 去重，后出现的块会覆盖先出现的块。
+
+# 全站：安全头 + HTML 缓存
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-
-# HTML pages: short cache with stale-while-revalidate
-/*
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 # CSS / JS: moderate cache (no immutable — filenames are not versioned)
