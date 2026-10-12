@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3625422078884598"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2D3MS57EL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X2D3MS57EL');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="canonical" href="https://homesteadcalc.com/blog/calculate-cider-abv">
+  <title>Calculating ABV for Hard Cider With a Hydrometer</title>
+  <meta name="description" content="How to calculate ABV in hard cider: take a starting and final hydrometer reading, then apply (OG - FG) x 131.25. Typical cider lands at 5-8% ABV.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculating ABV for Hard Cider With a Hydrometer">
+  <meta property="og:description" content="How to calculate ABV in hard cider: take a starting and final hydrometer reading, then apply (OG - FG) x 131.25. Typical cider lands at 5-8% ABV.">
+  <meta property="og:url" content="https://homesteadcalc.com/blog/calculate-cider-abv">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Homestead Calculators">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://homesteadcalc.com/images/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calculating ABV for Hard Cider With a Hydrometer">
+  <meta name="twitter:description" content="How to calculate ABV in hard cider: take a starting and final hydrometer reading, then apply (OG - FG) x 131.25. Typical cider lands at 5-8% ABV.">
+  <meta name="twitter:image" content="https://homesteadcalc.com/images/og-default.jpg">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Calculating ABV for Hard Cider With a Hydrometer",
+    "description": "How to calculate ABV in hard cider: take a starting and final hydrometer reading, then apply (OG - FG) x 131.25. Typical cider lands at 5-8% ABV.",
+    "datePublished": "2026-10-12",
+    "dateModified": "2026-10-12",
+    "author": { "@type": "Organization", "name": "Homestead Calculators" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Homestead Calculators",
+      "logo": { "@type": "ImageObject", "url": "https://homesteadcalc.com/images/favicon-256.png" }
+    },
+    "mainEntityOfPage": "https://homesteadcalc.com/blog/calculate-cider-abv",
+    "image": "https://homesteadcalc.com/images/og-default.jpg"
+  }
+  </script>
+
+  <!-- BreadcrumbList structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://homesteadcalc.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://homesteadcalc.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Calculating ABV for Hard Cider With a Hydrometer",
+        "item": "https://homesteadcalc.com/blog/calculate-cider-abv"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the formula for calculating ABV in hard cider?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subtract final gravity from starting gravity, then multiply by 131.25. A cider that starts at 1.052 and finishes at 1.000 gives (1.052 minus 1.000) times 131.25, or about 6.8 percent ABV. Both readings must come from a clear sample at the hydrometer's calibration temperature, and fermentation must be genuinely finished."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a typical starting gravity for hard cider?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fresh pressed cider from dessert apples usually starts between 1.045 and 1.055, which is about 6 to 7 percent potential alcohol. Juice from true cider apples with higher sugar can start at 1.055 to 1.065. Most commercial and home hard cider finishes between 5 and 8 percent ABV."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did my cider finish sweeter than expected?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A high final gravity means sugar is still in the cider, either because the yeast hit its alcohol tolerance and died, the temperature dropped and stalled fermentation, or you stabilized the batch with sorbate and sulfite to keep it sweet on purpose. A sweet cider at 1.020 has several percent less alcohol than the same juice fermented dry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to add sugar to reach a normal cider ABV?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually not. Apple juice naturally ferments to 5 to 7 percent ABV on its own, which covers most commercial hard cider. Add sugar only if you want more than about 7 percent: one pound of sucrose per gallon raises starting gravity by roughly 0.045, adding about 5.9 percentage points of potential alcohol."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Homestead Calculators Home">
+      <span class="logo-icon">🌱</span>
+      <span>Homestead Calculators</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/calculators/">All Calculators</a>
+      <a href="/blog/">Guides</a>
+      <a href="/printables/">Printables</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="blog-article">
+  <div class="container">
+    <div class="calc-breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Guides</a> / <span>Calculating ABV for Hard Cider With a Hydrometer</span>
+    </div>
+
+    <h1>Calculating ABV for Hard Cider With a Hydrometer</h1>
+    <p class="text-muted">Published: October 12, 2026 · 9 min read</p>
+
+    <p><strong>To calculate ABV in hard cider, subtract final gravity from starting gravity and multiply by 131.25.</strong> A cider that starts at 1.050 and finishes at 1.000 works out to (1.050 − 1.000) × 131.25 = 6.6% ABV. That is the entire formula. It is accurate to within about a tenth of a percentage point, provided both numbers come from the same hydrometer, a clear sample, and a fermentation that has genuinely stopped.</p>
+
+    <p>Cider is the easiest fermented drink to measure this way because apple juice starts in a narrow sugar range. A cider maker can usually press, pitch, and be done, because the juice already holds enough sugar for a normal-strength drink. To plan the batch before you press, the <a href="/calculators/cider-making">Cider Making Calculator</a> predicts juice yield, starting gravity, sugar additions, and target ABV from your apple weight. The number that ends up on your label, though, always comes from two hydrometer readings.</p>
+
+    <h2>The ABV Formula for Hard Cider</h2>
+
+    <div class="formula-box">
+ABV (%) = (Starting Gravity − Final Gravity) × 131.25
+
+Potential ABV from juice alone = (Starting Gravity − 1.000) × 131.25
+    </div>
+
+    <h3>Why the constant is 131.25</h3>
+    <p>The constant converts a drop in specific gravity into percent alcohol by volume. It assumes a normal fermentation in which roughly half the sugar's mass is converted to ethanol and the rest to carbon dioxide. Home brewing references use 131 or 131.25 almost interchangeably; some wine texts use 129 or 133. Across a typical cider the spread between those constants is about 0.15 percentage points — smaller than the error introduced by reading a hydrometer carelessly, so pick one and stay consistent.</p>
+
+    <h3>What the two numbers mean</h3>
+    <p><strong>Starting gravity (OG)</strong> is the density of the juice right before you pitch yeast. It is set entirely by how much sugar the apples delivered, plus anything you added. <strong>Final gravity (FG)</strong> is the density when fermentation ends, typically at or slightly below 1.000, because ethanol is lighter than water. The gap between them is the alcohol. If the gap closes to nothing, you have not made cider — you have made apple juice.</p>
+
+    <h3>A worked example</h3>
+    <p>Juice reads 1.052 on day zero. Three weeks later the same cider reads 1.000 and has not moved in three days. Subtract: 1.052 − 1.000 = 0.052. Multiply: 0.052 × 131.25 = 6.825, so about <strong>6.8% ABV</strong>. If the batch had instead stopped at 1.012 with residual sweetness, the same juice yields 0.040 × 131.25 = 5.25% ABV. Same apples, 1.5 percentage points apart, decided entirely by whether the yeast finished the job.</p>
+
+    <h2>What Gravity Does Hard Cider Start At?</h2>
+
+    <p>Apple juice is roughly 11 to 13 °Brix, which puts most fresh pressed cider in a tight band. The table below shows what a starting gravity means for the finished drink.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Starting Gravity</th>
+          <th>Approx. °Brix</th>
+          <th>Potential ABV</th>
+          <th>What It Usually Means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1.035</td>
+          <td>9</td>
+          <td>4.6%</td>
+          <td>Diluted juice, or a low-sugar year</td>
+        </tr>
+        <tr>
+          <td>1.045</td>
+          <td>11.5</td>
+          <td>5.9%</td>
+          <td>Bottled juice or supermarket cider</td>
+        </tr>
+        <tr>
+          <td>1.050</td>
+          <td>12.5</td>
+          <td>6.6%</td>
+          <td>Ordinary dessert-apple cider</td>
+        </tr>
+        <tr>
+          <td>1.060</td>
+          <td>15</td>
+          <td>7.9%</td>
+          <td>Cider apples, or juice plus sugar</td>
+        </tr>
+        <tr>
+          <td>1.070</td>
+          <td>17.5</td>
+          <td>9.2%</td>
+          <td>Chaptalized — needs a strong yeast</td>
+        </tr>
+        <tr>
+          <td>1.080</td>
+          <td>20</td>
+          <td>10.5%</td>
+          <td>Cider-apple wine territory</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Dessert apples give the lower half of that table; true bittersweet cider varieties such as Kingston Black or Yarlington Mill press sweeter and land higher. Traditional cider apples also carry tannin and acid that make a dry, structured drink, which is why a 1.055 juice from cider fruit tastes stronger and more complete than the same gravity built by adding sugar to bland juice.</p>
+
+    <div class="info-box">
+      <strong>Adding sugar (chaptalization):</strong> one pound of sucrose dissolved in one gallon of juice raises starting gravity by roughly 0.045 — about 5.9 percentage points of potential alcohol. Honey is close, around 0.035 per pound per gallon. Add it to the juice before pitching, stir until fully dissolved, and re-check gravity rather than trusting the estimate.
+    </div>
+
+    <h2>How to Take Both Readings Correctly</h2>
+
+    <h3>1. Sanitize the sample, not the batch</h3>
+    <p>Pull a sample with a sanitized wine thief into a clean test jar. Never drop the hydrometer into the fermenter, and never pour the sample back in — even slight contamination can turn a clean cider acetic. Two 4-ounce samples are the entire cost of knowing your ABV.</p>
+
+    <h3>2. Take the starting gravity before you pitch</h3>
+    <p>Measure the juice the moment it is in the fermenter, before yeast goes in. Once fermentation begins, gravity drops within hours and you have permanently lost the starting number. Record it along with the date and the juice temperature.</p>
+
+    <h3>3. Read at the hydrometer's calibration temperature</h3>
+    <p>Hydrometers are calibrated at 60°F or 68°F — check the paper inside the tube. Liquid expands as it warms, so a warm sample lets the hydrometer sink and reads low. The usual rule of thumb is to add about 0.001 to the reading for every 10°F above the calibration point.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sample Temperature</th>
+          <th>Correction to Add (60°F calibration)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>50°F</td>
+          <td>−0.001</td>
+        </tr>
+        <tr>
+          <td>60°F</td>
+          <td>0.000</td>
+        </tr>
+        <tr>
+          <td>70°F</td>
+          <td>+0.001</td>
+        </tr>
+        <tr>
+          <td>80°F</td>
+          <td>+0.002</td>
+        </tr>
+        <tr>
+          <td>90°F</td>
+          <td>+0.004</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>These corrections assume a standard triple-scale hydrometer and a roughly 1.050 liquid, so treat them as close approximations. A two-point error shifts a 6% cider by about 0.26 percentage points, which matters most when you compare batches side by side.</p>
+
+    <h3>4. Knock the bubbles off the hydrometer</h3>
+    <p>Dissolved carbon dioxide from active fermentation clings to the hydrometer and lifts it, giving a falsely low reading. Spin the hydrometer to throw the bubbles off, or let the sample stand 10 minutes and tap the jar. A reading that drifts upward while you watch it is not your gravity — it is CO₂ coming out of solution.</p>
+
+    <h3>5. Read at eye level</h3>
+    <p>Liquid climbs the side of the test jar, so read the bottom of that curve at eye level. Tilting the jar or looking down at the scale is the most common source of a two- to four-point error.</p>
+
+    <h2>When Fermentation Is Actually Finished</h2>
+
+    <p>A final gravity taken too early is the most expensive mistake in cider, because it leads straight to bottle bombs. Fermentation is finished only when the gravity stops falling, not when the airlock stops bubbling. Warm cider near 70°F can chew through most of its sugar in 7 to 10 days; a cellar at 55°F takes three to four weeks.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Typical Timing</th>
+          <th>Expected Gravity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pitch day</td>
+          <td>Before yeast goes in</td>
+          <td>1.045–1.060</td>
+        </tr>
+        <tr>
+          <td>Active fermentation</td>
+          <td>Days 3–5</td>
+          <td>1.020–1.030</td>
+        </tr>
+        <tr>
+          <td>Slowing</td>
+          <td>Days 7–10</td>
+          <td>1.005–1.015</td>
+        </tr>
+        <tr>
+          <td>Dry cider</td>
+          <td>Days 10–21, then stable</td>
+          <td>0.995–1.005</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Take the final reading twice, three days apart. Two identical numbers mean the yeast is done and your ABV is final. Only then should you bottle and lock in the number.</p>
+
+    <h2>Where ABV Calculations Go Wrong</h2>
+
+    <h3>A stored or pitched sample</h3>
+    <p>Juice left overnight before you remember to take the OG has already begun fermenting on wild yeast, so the starting reading comes out low — and the ABV comes out low with it. Read first.</p>
+
+    <h3>Adding sugar after the final gravity</h3>
+    <p>Priming sugar and backsweetening both add fermentable sugar after your FG reading. Bottle conditioning at the usual ounce of sugar per gallon adds only about 0.3% ABV, but a pound per gallon of backsweetening pushes the finished ABV a full 5.9 points above what your calculation said. Stabilize with sorbate and sulfite first and the sugar stays sugar, leaving ABV unchanged.</p>
+
+    <h3>Refractometer readings once alcohol is present</h3>
+    <p>A refractometer is fine for measuring juice before fermentation, but alcohol bends light differently than sugar. A refractometer reading taken mid-fermentation or at bottling is not gravity, and using it in the formula will understate — sometimes badly — the true ABV. Use the refractometer for the OG and a hydrometer for the FG, or apply the published refractometer alcohol correction.</p>
+
+    <h3>A yeast that gives up early</h3>
+    <p>If your FG settles at 1.018 and holds there, the most likely explanation is that the yeast stalled or hit its alcohol tolerance. Check temperature first, then consider adding fresh yeast or a nutrient. Cider yeast and champagne strains tolerate 12 to 18 percent ABV; a weak or underpitched culture in a cold garage may quit at half that.</p>
+
+    <h2>Related Fermentation Tools</h2>
+
+    <p>The same math works for fruit wine and mead, which use identical gravity readings. If you are branching out from cider, the <a href="/calculators/wine-making">Wine Making Calculator</a> handles Brix, acidity, and yeast nutrient alongside gravity, and our <a href="/blog/wine-making-guide">Homemade Wine: Complete Beginner's Guide</a> walks through the full process from fruit to bottle. To see how much fruit your cider habit actually requires, start with <a href="/blog/apples-per-gallon-cider">How Many Apples for a Gallon of Cider?</a></p>
+
+    <div class="info-box">
+      <strong>Get your numbers before you pitch:</strong> plug in apple weight, variety, and target ABV to see predicted juice yield, starting gravity, sugar to add, and bottle count for the batch.
+      <p style="margin-top: 1rem;"><a href="/calculators/cider-making" class="btn btn-primary">Open the Cider Making Calculator →</a></p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>What is the formula for calculating ABV in hard cider?</h3>
+    <p>Subtract final gravity from starting gravity, then multiply by 131.25. A cider that starts at 1.052 and finishes at 1.000 gives (1.052 minus 1.000) times 131.25, or about 6.8 percent ABV. Both readings must come from a clear sample at the hydrometer's calibration temperature, and fermentation must be genuinely finished.</p>
+
+    <h3>What is a typical starting gravity for hard cider?</h3>
+    <p>Fresh pressed cider from dessert apples usually starts between 1.045 and 1.055, which is about 6 to 7 percent potential alcohol. Juice from true cider apples with higher sugar can start at 1.055 to 1.065. Most commercial and home hard cider finishes between 5 and 8 percent ABV.</p>
+
+    <h3>Why did my cider finish sweeter than expected?</h3>
+    <p>A high final gravity means sugar is still in the cider, either because the yeast hit its alcohol tolerance and died, the temperature dropped and stalled fermentation, or you stabilized the batch with sorbate and sulfite to keep it sweet on purpose. A sweet cider at 1.020 has several percent less alcohol than the same juice fermented dry.</p>
+
+    <h3>Do I need to add sugar to reach a normal cider ABV?</h3>
+    <p>Usually not. Apple juice naturally ferments to 5 to 7 percent ABV on its own, which covers most commercial hard cider. Add sugar only if you want more than about 7 percent: one pound of sucrose per gallon raises starting gravity by roughly 0.045, adding about 5.9 percentage points of potential alcohol.</p>
+
+    <p><strong>Bottom line:</strong> two hydrometer readings, one multiplication, and a stable final gravity tell you exactly what your cider is. Take the starting gravity before you pitch, correct for temperature, wait until the gravity stops moving, and the ABV you calculate will match what a lab would report within a fraction of a percent. Run the batch through the <a href="/calculators/cider-making">Cider Making Calculator</a> before you press to see where your juice will land, then confirm it with your own readings.</p>
+
+  </div>
+
+        <section class="related-calc" data-amz-block="homesteadcalc">
+          <h3>Recommended Products</h3>
+          <p class="amazon-disclosure" style="margin-top:1rem;font-size:0.8rem;line-height:1.6;opacity:.8"><em>As an Amazon Associate, Homestead Calculators earns from qualifying purchases. Prices and availability are subject to change &mdash; always check Amazon for current pricing.</em></p>
+          <div class="amazon-product-grid">
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Hydrometer and Test Jar</h4>
+              <p class="amazon-product-desc">Triple-scale brewing hydrometer with a clear sample tube</p>
+              <a href="https://www.amazon.com/s?k=hydrometer%20test%20jar%20brewing&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored noopener">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Wine Thief / Sample Taker</h4>
+              <p class="amazon-product-desc">Pull clean samples without opening the whole batch</p>
+              <a href="https://www.amazon.com/s?k=wine%20thief%20sanitizer%20sampler&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored noopener">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Cider Yeast</h4>
+              <p class="amazon-product-desc">Clean-fermenting strain for hard cider and apple wine</p>
+              <a href="https://www.amazon.com/s?k=cider%20yeast%20hard%20cider&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored noopener">View on Amazon</a>
+            </div>
+            <div class="amazon-product-card">
+              <h4 class="amazon-product-title">Swing-Top Bottles</h4>
+              <p class="amazon-product-desc">Glass flip-top bottles for dry, bottle-conditioned cider</p>
+              <a href="https://www.amazon.com/s?k=swing%20top%20glass%20bottles%20cider&tag=calchive-20" target="_blank" class="amazon-product-link" rel="nofollow sponsored noopener">View on Amazon</a>
+            </div>
+          </div>
+        </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About Homestead Calculators</h4>
+        <p>Free, practical calculators for the modern homesteader. Built to help you plan smarter, save money, and grow more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="/calculators/chicken-feed">Chicken Feed</a>
+        <a href="/calculators/garden-yield">Garden Yield</a>
+        <a href="/calculators/rainwater-harvest">Rainwater Harvest</a>
+        <a href="/calculators/solar-power">Solar Power</a>
+        <a href="/calculators/">All Calculators →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/">Guides & Articles</a>
+        <a href="/printables/">Printables</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+<p style="width:100%;font-size:0.75rem;opacity:.75;margin-top:0.5rem;line-height:1.5">As an Amazon Associate, Homestead Calculators earns from qualifying purchases.</p>
+      <p>&copy; 2026 Homestead Calculators. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
