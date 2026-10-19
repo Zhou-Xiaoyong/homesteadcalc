@@ -110,7 +110,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/fencing-calculator</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -206,7 +206,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/goat-sheep-feed</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -500,7 +500,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/fencing-for-1-acre</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -518,7 +518,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/goats-per-acre</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -645,6 +645,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/kit-vs-diy-substrate</loc>
     <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/electric-fence-goats</loc>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
