@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/chicken-feed</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/chicken-coop-size</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -284,13 +284,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/how-many-chickens-family-of-4</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/chicken-feed-guide</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -651,6 +651,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/electric-fence-goats</loc>
     <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/coop-size-10-chickens</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
