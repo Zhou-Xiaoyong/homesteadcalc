@@ -50,13 +50,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/frost-date</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/seed-starting</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -326,13 +326,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/frost-date-guide</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/seed-starting-guide</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -657,6 +657,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/coop-size-10-chickens</loc>
     <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/seed-starting-zone-6</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
