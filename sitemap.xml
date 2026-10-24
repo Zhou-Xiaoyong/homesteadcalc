@@ -170,7 +170,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/butter-making</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/bread-baking</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,13 +254,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/butter-from-gallon-cream</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -675,6 +675,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/tomatoes-per-quart-sauce</loc>
     <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/sourdough-feeding-ratio</loc>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
