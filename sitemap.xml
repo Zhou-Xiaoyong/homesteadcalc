@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/plant-spacing</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/frost-date</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -236,7 +236,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/fruit-tree-yield</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -482,7 +482,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/apples-per-tree</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -705,6 +705,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/rainwater-safe-vegetables</loc>
     <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/fruit-tree-first-harvest</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
