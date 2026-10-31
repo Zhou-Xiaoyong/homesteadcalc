@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/mushroom-growing</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -494,7 +494,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/oyster-mushrooms-straw</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -644,7 +644,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/kit-vs-diy-substrate</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -717,6 +717,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/wine-from-garden-grapes</loc>
     <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/mushroom-log-lifespan</loc>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
