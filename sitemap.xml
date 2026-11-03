@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/chicken-coop-size</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -218,7 +218,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/chicken-coop-heating</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/chicken-feed-guide</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -656,7 +656,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/coop-size-10-chickens</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -729,6 +729,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/cattle-panel-vs-woven-wire</loc>
     <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/do-chickens-need-heat-winter</loc>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
