@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/plant-spacing</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -68,7 +68,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/square-foot-gardening</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -338,7 +338,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/plant-spacing-guide</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -512,7 +512,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/tomato-plants-per-person</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -560,7 +560,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/raised-bed-soil</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -734,6 +734,12 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/do-chickens-need-heat-winter</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/tomato-spacing-raised-beds</loc>
     <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
