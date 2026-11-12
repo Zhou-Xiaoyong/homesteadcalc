@@ -170,7 +170,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/butter-making</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,13 +254,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/butter-from-gallon-cream</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -602,7 +602,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/cow-milk</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -789,6 +789,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/how-much-gravy-per-person</loc>
     <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/how-much-butter-for-thanksgiving</loc>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
