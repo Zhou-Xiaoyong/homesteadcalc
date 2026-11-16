@@ -196,6 +196,7 @@
     .ph-scale .acidic { background: #e74c3c; flex: 4; display: flex; align-items: center; justify-content: center; }
     .ph-scale .neutral { background: #27ae60; flex: 1.5; display: flex; align-items: center; justify-content: center; }
     .ph-scale .alkaline { background: #3498db; flex: 4.5; display: flex; align-items: center; justify-content: center; }
+    .ph-scale > div { padding: 0 8px; line-height: 1.25; }
 
     @media print {
       .site-header,
@@ -352,9 +353,9 @@
     <section class="print-section">
       <h2>1. The pH Scale at a Glance</h2>
       <div class="ph-scale">
-        <div class="acidic">3.5 – 6.0 Acidic (add lime)</div>
+        <div class="acidic">Below 6.0 — Acidic (add lime)</div>
         <div class="neutral">6.0 – 7.0 Ideal</div>
-        <div class="alkaline">7.0 – 9.5 Alkaline (add sulfur)</div>
+        <div class="alkaline">Above 7.0 — Alkaline (add sulfur)</div>
       </div>
       <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0;">Most vegetables thrive between pH 6.0 and 7.0 because that's where nitrogen, phosphorus, potassium, and micronutrients are most available.</p>
     </section>
@@ -367,7 +368,7 @@
             <tr><th>Soil Type</th><th>pH Change</th><th>Lime Needed</th><th>50-lb Bags</th><th>Notes</th></tr>
           </thead>
           <tbody>
-            <tr><td class="highlight">Sandy</td><td class="num">1 point</td><td class="num">25 lbs</td><td class="num">1 bag</td><td>Low buffering — easy to overshoot</td></tr>
+            <tr><td class="highlight">Sandy</td><td class="num">1 point</td><td class="num">25 lbs</td><td class="num">0.5 bag</td><td>Low buffering — easy to overshoot</td></tr>
             <tr><td class="highlight">Loam</td><td class="num">1 point</td><td class="num">50 lbs</td><td class="num">1 bag</td><td>Medium buffering — standard rate</td></tr>
             <tr><td class="highlight">Clay</td><td class="num">1 point</td><td class="num">75 lbs</td><td class="num">1.5 bags</td><td>High buffering — needs the most</td></tr>
             <tr><td class="highlight">Sandy</td><td class="num">2 points</td><td class="num">50 lbs</td><td class="num">1 bag</td><td>Apply in split doses</td></tr>
@@ -376,7 +377,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:0.85rem;color:var(--text-secondary);"><strong>Formula:</strong> Lime (lbs) = (Area ÷ 1,000) × pH Change × Rate. Calcitic lime adds calcium; dolomitic lime adds calcium + magnesium.</p>
+      <p style="font-size:0.85rem;color:var(--text-secondary);"><strong>Formula:</strong> Lime (lbs) = (Area ÷ 1,000) × pH Change × Rate. Bag counts are 50-lb equivalents — where a fraction is shown you'll buy a whole bag and store the remainder. Calcitic lime adds calcium; dolomitic lime adds calcium + magnesium.</p>
     </section>
 
     <section class="print-section">
@@ -387,12 +388,12 @@
             <tr><th>Soil Type</th><th>pH Change</th><th>Elemental Sulfur</th><th>50-lb Bags</th><th>Notes</th></tr>
           </thead>
           <tbody>
-            <tr><td class="highlight">Sandy</td><td class="num">1 point</td><td class="num">5 lbs</td><td class="num">⅒ bag</td><td>Responds fastest</td></tr>
-            <tr><td class="highlight">Loam</td><td class="num">1 point</td><td class="num">10 lbs</td><td class="num">⅕ bag</td><td>Standard rate</td></tr>
-            <tr><td class="highlight">Clay</td><td class="num">1 point</td><td class="num">15 lbs</td><td class="num">⅓ bag</td><td>Takes longest to react</td></tr>
-            <tr><td class="highlight">Sandy</td><td class="num">2 points</td><td class="num">10 lbs</td><td class="num">⅕ bag</td><td>—</td></tr>
-            <tr><td class="highlight">Loam</td><td class="num">2 points</td><td class="num">20 lbs</td><td class="num">⅖ bag</td><td>—</td></tr>
-            <tr><td class="highlight">Clay</td><td class="num">2 points</td><td class="num">30 lbs</td><td class="num">⅗ bag</td><td>—</td></tr>
+            <tr><td class="highlight">Sandy</td><td class="num">1 point</td><td class="num">5 lbs</td><td class="num">0.1 bag</td><td>Responds fastest</td></tr>
+            <tr><td class="highlight">Loam</td><td class="num">1 point</td><td class="num">10 lbs</td><td class="num">0.2 bag</td><td>Standard rate</td></tr>
+            <tr><td class="highlight">Clay</td><td class="num">1 point</td><td class="num">15 lbs</td><td class="num">0.3 bag</td><td>Takes longest to react</td></tr>
+            <tr><td class="highlight">Sandy</td><td class="num">2 points</td><td class="num">10 lbs</td><td class="num">0.2 bag</td><td>—</td></tr>
+            <tr><td class="highlight">Loam</td><td class="num">2 points</td><td class="num">20 lbs</td><td class="num">0.4 bag</td><td>—</td></tr>
+            <tr><td class="highlight">Clay</td><td class="num">2 points</td><td class="num">30 lbs</td><td class="num">0.6 bag</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
