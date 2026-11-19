@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/calculators/bread-baking</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,7 +254,7 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -776,13 +776,13 @@
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/dinner-rolls-for-thanksgiving</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://homesteadcalc.com/blog/stuffing-for-thanksgiving</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -831,6 +831,12 @@
   <url>
     <loc>https://homesteadcalc.com/blog/frozen-vs-fresh-turkey</loc>
     <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://homesteadcalc.com/blog/turkey-roasting-time</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
